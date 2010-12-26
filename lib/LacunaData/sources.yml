@@ -1,0 +1,9 @@
+---
+descriptions:
+  file: ../../data/resources.json
+  url: http://us1.lacunaexpanse.com/resources.json
+smd:
+  file: ../../data/smd.json
+  url: https://github.com/plainblack/Lacuna-Web-Client/raw/master/smd.js
+server-list:
+  url: http://www.lacunaexpanse.com/servers.json
