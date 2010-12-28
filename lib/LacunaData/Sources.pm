@@ -10,7 +10,7 @@ use LWP::Simple;
 
 require Exporter;
 our @ISA = qw'Exporter';
-our @EXPORT_OK = qw'source_of file_for get_source';
+our @EXPORT_OK = qw'source_of url_for file_for get_source';
 
 our $global_config;
 our $path;
