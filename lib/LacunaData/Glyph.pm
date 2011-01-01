@@ -8,6 +8,7 @@ use LacunaData::Resources 'ore_list';
 use HTML::TreeBuilder;
 use YAML qw'thaw Dump DumpFile';
 use LWP::Simple;
+use Scalar::Util qw'reftype';
 use List::MoreUtils qw'uniq';
 use 5.12.2;
 
@@ -45,6 +46,35 @@ sub decorative{
     $self->{$_}{type} eq 'decorative'
   } keys %$self;
   return @functional;
+}
+
+sub loop{
+  my($self,$code) = @_;
+  my $opaque = [];
+  while( my($name,$data) = each %$self ){
+    my $reftype = reftype $data->{recipe};
+    if( $reftype eq 'ARRAY' ){
+      _loop($data,$name,$code,$opaque);
+    }elsif( $reftype eq 'HASH' ){
+      my $type = $data->{type};
+      for my $recipe_name ( keys %{$data->{recipe}} ){
+        my %data = (
+          type => $type,
+          recipe => $data->{recipe}{$recipe_name},
+        );
+        my $current_name = "$name ($recipe_name)";
+        _loop(\%data,$current_name,$code,$opaque);
+      }
+    }
+  }
+  return @$opaque;
+}
+sub _loop{
+  my($data,$name,$code,$opaque) = @_;
+  my $elem = LacunaData::Glyph::Building->new($data,$name);
+  local $_ = $elem;
+  my @return = $code->($elem);
+  push @$opaque, @return;
 }
 
 sub rebuild{
@@ -155,6 +185,33 @@ sub reload_list{
   }
  
   return $self;
+}
+
+{
+  package LacunaData::Glyph::Building;
+  sub new{
+    my($class,$data,$name) = @_;
+    bless $data,$class;
+    $data->{name} = $name;
+    return $data;
+  }
+  BEGIN{
+    no strict 'refs';
+    for my $method ( qw'type name' ){
+      *$method = sub{
+        my($self) = @_;
+        return $self->{$method};
+      }
+    }
+    for my $method ( qw'recipe' ){
+      *$method = sub{
+        my($self) = @_;
+        my $return = $self->{$method};
+        return @$return if wantarray;
+        return [@$return];
+      }
+    }
+  }
 }
 
 1;
