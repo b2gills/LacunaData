@@ -32,6 +32,21 @@ sub building_list{
   return keys %$self;
 }
 
+sub functional{
+  my($self) = @_;
+  my @functional = grep{
+    $self->{$_}{type} eq 'functional'
+  } keys %$self;
+  return @functional;
+}
+sub decorative{
+  my($self) = @_;
+  my @functional = grep{
+    $self->{$_}{type} eq 'decorative'
+  } keys %$self;
+  return @functional;
+}
+
 sub rebuild{
   my($self) = @_;
  
