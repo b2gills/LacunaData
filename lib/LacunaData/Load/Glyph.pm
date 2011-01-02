@@ -30,6 +30,7 @@ sub _load{
     print STDERR 'processing ', $building, $pad, "\r";
     _load_building($data,$building);
   }
+  print STDERR ' ' x ($length + 11), "\r";
   
   return $data;
 }

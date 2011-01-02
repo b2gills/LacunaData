@@ -34,6 +34,7 @@ sub _load{
     print STDERR 'processing ', $building, $pad, "\r";
     $building_data{$building} = _get_api_info($url);
   }
+  print STDERR ' ' x ($length + 11), "\r";
 
   $building_data{common} = $common;
   return \%building_data;
