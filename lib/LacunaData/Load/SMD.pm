@@ -1,4 +1,4 @@
-package LacunaData::SMD;
+package LacunaData::Load::SMD;
 use strict;
 use warnings;
 use autodie;
