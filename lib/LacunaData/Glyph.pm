@@ -62,13 +62,14 @@ sub decorative{
 sub loop{
   my($self,$code) = @_;
   my $opaque = [];
-  while( my($name,$data) = each %$self ){
+  for my $name ( mixed_sort keys %$self ){
+    my $data = $self->{$name};
     my $reftype = reftype $data->{recipe};
     if( $reftype eq 'ARRAY' ){
       _loop($data,$name,$code,$opaque);
     }elsif( $reftype eq 'HASH' ){
       my $type = $data->{type};
-      for my $recipe_name ( keys %{$data->{recipe}} ){
+      for my $recipe_name ( sort keys %{$data->{recipe}} ){
         my %data = (
           type => $type,
           recipe => $data->{recipe}{$recipe_name},
