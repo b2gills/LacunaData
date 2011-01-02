@@ -14,7 +14,7 @@ use 5.12.2;
 
 my $data;
 eval{
-  $data = thaw(LacunaData::Sources->get_source('glyph-data'));
+  $data = thaw(LacunaData::Sources->get_source('glyph-data','file'));
   bless $data, __PACKAGE__;
 } or do{
   $data = bless {}, __PACKAGE__;

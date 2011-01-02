@@ -86,6 +86,8 @@ sub get_source{
   }else{
     $uri = $class->source_of($source);
   }
+  
+  die unless $uri;
 
   given( $uri ){
     return get $uri when m(^(?: https? | ftp ):// )x;
