@@ -11,3 +11,5 @@ glyph-list:
   url: http://community.lacunaexpanse.com/wiki/glyph-recipes
 glyph-data:
   file: ../../data/glyph.yml
+building-api:
+  url: http://us1.lacunaexpanse.com/api/Buildings.html
