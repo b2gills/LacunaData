@@ -21,26 +21,29 @@ sub _clean_up{
   return $js
 }
 
-{
-  # cache a cleaned up copy
+sub Load{
   my $source_uri  = LacunaData::Sources->source_of('smd');
   my $source_file = LacunaData::Sources->file_for('smd');
-  unless( $source_file eq $source_uri ){
-    my $raw = LacunaData::Sources->get_source('smd','url');
-    open my $fh, '>', $source_file;
-    print {$fh} _clean_up $raw;
-    close $fh;
+  my $source      = LacunaData::Sources->get_source('smd');
+  if( $source_file ne $source_uri ){
+    $source = _clean_up $source;
+  }
+  return decode_json $source;
+}
+
+sub Cache{
+  # cache a cleaned up copy
+  my $source_file = LacunaData::Sources->file_for('smd');
+  my $raw = LacunaData::Sources->get_source('smd','url');
+  my $clean = _clean_up($raw);
+  
+  open my $fh, '>', $source_file;
+  print {$fh} $clean;
+  close $fh;
+  
+  # return the data structure unless called in void context
+  if( defined wantarray ){
+    return decode_json $clean;
   }
 }
-our $data;
-{
-  my $source = LacunaData::Sources->get_source('smd');
-  $data = decode_json $source;
-  bless $data, __PACKAGE__;
-}
-
-
-sub object{
-  return $data;
-}
-
+1;
