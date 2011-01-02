@@ -12,4 +12,5 @@ glyph-list:
 glyph-data:
   file: ../../data/glyph.yml
 building-api:
+  file: ../../data/building-api.yml
   url: http://us1.lacunaexpanse.com/api/Buildings.html

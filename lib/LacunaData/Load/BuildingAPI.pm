@@ -2,26 +2,52 @@ package LacunaData::Load::BuildingAPI;
 use strict;
 use warnings;
 use 5.12.2;
+use autodie;
 
 use LacunaData::Sources;
+use YAML qw'freeze thaw';
 
 use LWP::Simple 'get';
 use HTML::TreeBuilder;
 
 sub Load{
+  my $source_file = LacunaData::Sources->file_for('building-api');
+  my $source_uri  = LacunaData::Sources->source_of('building-api');
+  if( $source_file ne $source_uri ){
+    return _load();
+  }else{
+    return thaw( LacunaData::Sources->get_source('building-api','file') );
+  }
+}
+
+sub _load{
   my $listing = _get_api_listing();
   my %building_data;
 
   my $common = _get_common_api_info();
-  my @common = keys %$common;
+  
+  use List::Util 'max';
+  my $length = max map { length } keys %$listing;
 
   while( my($building,$url) = each %$listing ){
-    say STDERR 'processing ', $building;
+    my $pad = ' ' x ($length - length $building);
+    print STDERR 'processing ', $building, $pad, "\r";
     $building_data{$building} = _get_api_info($url);
   }
 
   $building_data{common} = $common;
   return \%building_data;
+}
+
+sub Cache{
+  my $data = _load();
+  my $filename = LacunaData::Sources->file_for('building-api');
+  
+  open my $fh, '>', $filename;
+  print {$fh} freeze($data);
+  close $fh;
+  
+  return $data;
 }
 
 sub base_url{
@@ -123,7 +149,8 @@ sub _get_api_method_info{
             my @throws = sort {$a<=>$b} split /\D+/, $1;
             $method{$method}{throws} = \@throws;
           }else{
-            $method{$method}{desc} = $text;
+            no warnings 'uninitialized';
+            $method{$method}{desc} .= $text;
           }
         }
       }
