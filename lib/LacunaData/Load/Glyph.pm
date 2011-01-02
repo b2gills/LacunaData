@@ -16,11 +16,11 @@ sub Load{
   if( -e $source_file ){
     return thaw( LacunaData::Sources->get_source('glyph-data') );
   }else{
-    return Cache();
+    return _load();
   }
 }
 
-sub Cache{
+sub _load{
   my $data = _load_list();
   
   my $length = max map { length } keys %$data;
@@ -28,8 +28,14 @@ sub Cache{
   for my $building ( keys %$data ){
     my $pad = ' ' x ($length - length $building);
     print STDERR 'processing ', $building, $pad, "\r";
-    _load($data,$building);
+    _load_building($data,$building);
   }
+  
+  return $data;
+}
+
+sub Cache{
+  my $data = _load();
   
   use YAML 'DumpFile';
   my $filename = LacunaData::Sources->file_for('glyph-data');
@@ -50,7 +56,7 @@ sub Cache{
   }
 }
 
-sub _load{
+sub _load_building{
   my($data,$building) = @_;
  
   my $tree = HTML::TreeBuilder->new();
