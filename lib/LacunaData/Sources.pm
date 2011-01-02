@@ -32,7 +32,8 @@ sub source_of{
       if( -e $file ){
         return $file;
       }
-    }elsif( $config->{url} ){
+    }
+    if( $config->{url} ){
       return $config->{url};
     }
   }
