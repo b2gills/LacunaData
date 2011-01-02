@@ -1,0 +1,242 @@
+---
+Algae Pond:
+  recipe:
+    - uraninite
+    - methane
+  type: functional
+  wiki: http://community.lacunaexpanse.com/wiki/algae-pond
+Beach 1:
+  recipe:
+    - gypsum
+  type: decorative
+  wiki: http://community.lacunaexpanse.com/wiki/beach-1
+Beach 10:
+  recipe:
+    - gypsum
+    - methane
+  type: decorative
+  wiki: http://community.lacunaexpanse.com/wiki/beach-10
+Beach 11:
+  recipe:
+    - gypsum
+    - chromite
+  type: decorative
+  wiki: http://community.lacunaexpanse.com/wiki/beach-11
+Beach 12:
+  recipe:
+    - gypsum
+    - goethite
+  type: decorative
+  wiki: http://community.lacunaexpanse.com/wiki/beach-12
+Beach 13:
+  recipe:
+    - gypsum
+    - galena
+  type: decorative
+  wiki: http://community.lacunaexpanse.com/wiki/beach-13
+Beach 2:
+  recipe:
+    - gypsum
+    - gypsum
+  type: decorative
+  wiki: http://community.lacunaexpanse.com/wiki/beach-2
+Beach 3:
+  recipe:
+    - gypsum
+    - magnetite
+  type: decorative
+  wiki: http://community.lacunaexpanse.com/wiki/beach-3
+Beach 4:
+  recipe:
+    - gypsum
+    - uraninite
+  type: decorative
+  wiki: http://community.lacunaexpanse.com/wiki/beach-4
+Beach 5:
+  recipe:
+    - gypsum
+    - halite
+  type: decorative
+  wiki: http://community.lacunaexpanse.com/wiki/beach-5
+Beach 6:
+  recipe:
+    - gypsum
+    - rutile
+  type: decorative
+  wiki: http://community.lacunaexpanse.com/wiki/beach-6
+Beach 7:
+  recipe:
+    - gypsum
+    - chalcopyrite
+  type: decorative
+  wiki: http://community.lacunaexpanse.com/wiki/beach-7
+Beach 8:
+  recipe:
+    - gypsum
+    - sulfur
+  type: decorative
+  wiki: http://community.lacunaexpanse.com/wiki/beach-8
+Beach 9:
+  recipe:
+    - gypsum
+    - anthracite
+  type: decorative
+  wiki: http://community.lacunaexpanse.com/wiki/beach-9
+Citadel of Knope:
+  recipe:
+    - beryl
+    - sulfur
+    - monazite
+    - galena
+  type: functional
+  wiki: http://community.lacunaexpanse.com/wiki/citadel-of-knope
+Crashed Ship Site:
+  recipe:
+    - monazite
+    - trona
+    - gold
+    - bauxite
+  type: functional
+  wiki: http://community.lacunaexpanse.com/wiki/crashed-ship-site
+Crater:
+  recipe:
+    - rutile
+  type: decorative
+  wiki: http://community.lacunaexpanse.com/wiki/crater
+Gas Giant Settlement Platform:
+  recipe:
+    - sulfur
+    - methane
+    - galena
+    - anthracite
+  type: functional
+  wiki: http://community.lacunaexpanse.com/wiki/gas-giant-settlement-platform
+Geo Thermal Vent:
+  recipe:
+    - chalcopyrite
+    - sulfur
+  type: functional
+  wiki: http://community.lacunaexpanse.com/wiki/geo-thermal-vent
+Grove of Trees:
+  recipe:
+    - methane
+  type: decorative
+  wiki: http://community.lacunaexpanse.com/wiki/grove-of-trees
+Halls of Vrbansk:
+  recipe:
+    A:
+      - goethite
+      - halite
+      - gypsum
+      - trona
+    B:
+      - gold
+      - anthracite
+      - uraninite
+      - bauxite
+    C:
+      - kerogen
+      - methane
+      - sulfur
+      - zircon
+    D:
+      - monazite
+      - fluorite
+      - beryl
+      - magnetite
+    E:
+      - rutile
+      - chromite
+      - chalcopyrite
+      - galena
+  type: functional
+  wiki: http://community.lacunaexpanse.com/wiki/halls-of-vrbansk
+Interdimensional Rift:
+  recipe:
+    - methane
+    - zircon
+    - fluorite
+  type: functional
+  wiki: http://community.lacunaexpanse.com/wiki/interdimensional-rift
+Kalavian Ruins:
+  recipe:
+    - galena
+    - gold
+  type: functional
+  wiki: http://community.lacunaexpanse.com/wiki/kalavian-ruins
+Lagoon:
+  recipe:
+    - chalcopyrite
+  type: decorative
+  wiki: http://community.lacunaexpanse.com/wiki/lagoon
+Lake:
+  recipe:
+    - goethite
+  type: decorative
+  wiki: http://community.lacunaexpanse.com/wiki/lake
+Lapis Forest:
+  recipe:
+    - halite
+    - anthracite
+  type: functional
+  wiki: http://community.lacunaexpanse.com/wiki/lapis-forest2
+Malcud Field:
+  recipe:
+    - fluorite
+    - kerogen
+  type: functional
+  wiki: http://community.lacunaexpanse.com/wiki/malcud-field2
+Natural Spring:
+  recipe:
+    - magnetite
+    - halite
+  type: functional
+  wiki: http://community.lacunaexpanse.com/wiki/natural-spring
+Pantheon of Hagness:
+  recipe:
+    - gypsum
+    - trona
+    - beryl
+    - anthracite
+  type: functional
+  wiki: http://community.lacunaexpanse.com/wiki/pantheon-of-hagness
+Patch of Sand:
+  recipe:
+    - bauxite
+  type: decorative
+  wiki: http://community.lacunaexpanse.com/wiki/patch-of-sand
+Ravine:
+  recipe:
+    - zircon
+    - methane
+    - galena
+    - fluorite
+  type: functional
+  wiki: http://community.lacunaexpanse.com/wiki/ravine
+Rocky Outcropping:
+  recipe:
+    - trona
+  type: decorative
+  wiki: http://community.lacunaexpanse.com/wiki/rocky-outcropping
+Temple of the Drajilites:
+  recipe:
+    - kerogen
+    - rutile
+    - chromite
+    - chalcopyrite
+  type: functional
+  wiki: http://community.lacunaexpanse.com/wiki/temple-of-the-drajilites
+Terraforming Platform:
+  recipe:
+    - methane
+    - zircon
+    - magnetite
+    - beryl
+  type: functional
+  wiki: http://community.lacunaexpanse.com/wiki/terraforming-platform
+Volcano:
+  recipe:
+    - magnetite
+    - uraninite
+  type: functional
+  wiki: http://community.lacunaexpanse.com/wiki/volcano
