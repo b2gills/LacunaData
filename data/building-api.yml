@@ -257,7 +257,7 @@ Intelligence:
   methods:
     assign_spy:
       arg-info:
-        assignment: 'NOTE: You can do good things to enemies, and bad things to allies using these assignments.'
+        assignment: 'NOTE: You can do bad things to allies using these assignments.'
         building_id: The unique id of your Intelligence Ministry.
         session_id: A session id.
         spy_id: The unique id of the spy you wish to assign.
@@ -329,7 +329,7 @@ Intelligence:
         - session_id
         - building_id
         - '[ page_number ]'
-      desc: Returns the list of spies you have on your roster.Take a look at the assign_spy method below for assignment descriptions.
+      desc: 'Returns the list of spies you have on your roster.Take a look at the assign_spy method below for assignment descriptions.NOTE: If a spy is already recovering from a particular assignment, then possible_assignments will return only that one assignment and the recovery time will be however much recovery time is remaining.'
 InterDimensionalRift:
   api-url: /interdimensionalrift
 JunkHengeSculpture:
