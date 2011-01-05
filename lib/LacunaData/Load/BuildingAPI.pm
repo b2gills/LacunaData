@@ -4,19 +4,25 @@ use warnings;
 use 5.12.2;
 use autodie;
 
-use LacunaData::Sources;
 use YAML qw'freeze thaw';
 
-use LWP::Simple 'get';
 use HTML::TreeBuilder;
 
+use LacunaData::Sources (
+  id => ['building-api'],
+  qw(
+    source_file
+    source_url
+    get_source_from_url
+    get_source_from_file
+  )
+);
+
 sub Load{
-  my $source_file = LacunaData::Sources->file_for('building-api');
-  my $source_uri  = LacunaData::Sources->source_of('building-api');
-  if( $source_file ne $source_uri ){
-    return _load();
+  if( -e source_file ){
+    return thaw( get_source_from_file );
   }else{
-    return thaw( LacunaData::Sources->get_source('building-api','file') );
+    return _load();
   }
 }
 
@@ -34,7 +40,7 @@ sub _load{
     print STDERR 'processing ', $building, $pad, "\r";
     $building_data{$building} = _get_api_info($url);
   }
-  print STDERR ' ' x ($length + 11), "\r";
+  print STDERR ' ' x $length, "\r";
 
   $building_data{common} = $common;
   return \%building_data;
@@ -42,9 +48,8 @@ sub _load{
 
 sub Cache{
   my $data = _load();
-  my $filename = LacunaData::Sources->file_for('building-api');
-  
-  open my $fh, '>', $filename;
+
+  open my $fh, '>', source_file;
   print {$fh} freeze($data);
   close $fh;
   
@@ -52,7 +57,7 @@ sub Cache{
 }
 
 sub base_url{
-  my $base_url = LacunaData::Sources->url_for('building-api');
+  my $base_url = source_url;
   $base_url =~ s(:// [^/]+ \K .*){}x;
   return $base_url;
 }
@@ -61,8 +66,7 @@ sub _get_api_listing{
   my %urls;
 
   my $tree = HTML::TreeBuilder->new();
-  my $content = LacunaData::Sources->get_source('building-api','url');
-  $tree->parse_content($content);
+  $tree->parse_content( get_source_from_url );
 
   my @list = $tree->find('dl')->find('dt');
   for my $building ( @list ){
@@ -76,11 +80,8 @@ sub _get_api_listing{
 }
 
 sub _get_common_api_info{
-  my $url = LacunaData::Sources->url_for('building-api');
-
   my $tree = HTML::TreeBuilder->new();
-  my $content = get($url);
-  $tree->parse_content($content);
+  $tree->parse_content( get_source_from_url );
 
   my($method_head) = grep {
     $_->as_text eq 'Building Methods'
@@ -95,7 +96,9 @@ sub _get_api_info{
   my %data;
 
   my $tree = HTML::TreeBuilder->new();
-  my $content = get($url);
+  require LWP::Simple;
+  my $content = LWP::Simple::get($url);
+  die unless $content;
   $tree->parse_content($content);
 
   $data{'api-url'} = $tree->find('code')->as_text;
