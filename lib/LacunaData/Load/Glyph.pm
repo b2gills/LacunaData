@@ -74,6 +74,13 @@ sub _load_building{
       $_[0]->attr('id') &&
       $_[0]->attr('id') eq 'wikipagecontent'
   })->content_list;
+  
+  {
+    my $desc = $body->find('p')->as_text;
+    $desc =~ s/^\s+ //x;
+    $desc =~ s/ \s+$//x;
+    $data->{$building}{desc} = $desc;
+  }
  
   # ignore anything that can't be a glyph
   my @glyphs = map _only_png, $body->find('img');
