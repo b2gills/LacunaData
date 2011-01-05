@@ -3,7 +3,15 @@ use strict;
 use warnings;
 use autodie;
 
-use LacunaData::Sources;
+use LacunaData::Sources (
+  id => ['smd'],
+  qw(
+    source_file
+    get_source_from_file
+    get_source_from_url
+  )
+);
+
 use JSON;
 
 sub _clean_up{
@@ -22,22 +30,18 @@ sub _clean_up{
 }
 
 sub Load{
-  my $source_uri  = LacunaData::Sources->source_of('smd');
-  my $source_file = LacunaData::Sources->file_for('smd');
-  my $source      = LacunaData::Sources->get_source('smd');
-  if( $source_file ne $source_uri ){
-    $source = _clean_up $source;
+  if( -e source_file ){
+    return decode_json  get_source_from_file;
+  }else{
+    return _clean_up    get_source_from_url;
   }
-  return decode_json $source;
 }
 
 sub Cache{
   # cache a cleaned up copy
-  my $source_file = LacunaData::Sources->file_for('smd');
-  my $raw = LacunaData::Sources->get_source('smd','url');
-  my $clean = _clean_up($raw);
+  my $clean = _clean_up get_source_from_url;
   
-  open my $fh, '>', $source_file;
+  open my $fh, '>', source_file;
   print {$fh} $clean;
   close $fh;
   

@@ -7,10 +7,9 @@ smd:
   url: https://github.com/plainblack/Lacuna-Web-Client/raw/master/smd.js
 server-list:
   url: http://www.lacunaexpanse.com/servers.json
-glyph-list:
-  url: http://community.lacunaexpanse.com/wiki/glyph-recipes
 glyph-data:
   file: ../../data/glyph.yml
+  url: http://community.lacunaexpanse.com/wiki/glyph-recipes
 building-api:
   file: ../../data/building-api.yml
   url: http://us1.lacunaexpanse.com/api/Buildings.html

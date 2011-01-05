@@ -3,7 +3,16 @@ use strict;
 use warnings;
 use autodie;
 
-use LacunaData::Sources;
+use LacunaData::Sources (
+  id => ['glyph-data'],
+  qw(
+    source_file
+    source_url
+    get_source_from_file
+    get_source_from_url
+  )
+);
+
 use LacunaData::Resources 'ore_list';
 use HTML::TreeBuilder;
 use YAML qw'thaw';
@@ -12,9 +21,8 @@ use List::Util qw'max';
 use 5.12.2;
 
 sub Load{
-  my $source_file = LacunaData::Sources->file_for('glyph-data');
-  if( -e $source_file ){
-    return thaw( LacunaData::Sources->get_source('glyph-data') );
+  if( -e source_file ){
+    return thaw get_source_from_file;
   }else{
     return _load();
   }
@@ -39,8 +47,7 @@ sub Cache{
   my $data = _load();
   
   use YAML 'DumpFile';
-  my $filename = LacunaData::Sources->file_for('glyph-data');
-  DumpFile($filename,$data);
+  DumpFile( source_file, $data );
   
   return $data;
 }
@@ -117,12 +124,9 @@ sub _load_building{
 sub _load_list{
   my %info;
   my $tree = HTML::TreeBuilder->new();
-  {
-    my $content = LacunaData::Sources->get_source('glyph-list');
-    $tree->parse_content($content);
-  }
-  my $uri = LacunaData::Sources->url_for('glyph-list');
-  $uri =~ m(^( \w+ :// [^/]+ ))x;
+  $tree->parse_content( get_source_from_url );
+  
+  source_url =~ m(^( \w+ :// [^/]+ ))x;
   my $uri_root = $1;
 
   my @tables = $tree->look_down('class','recipe_table');
