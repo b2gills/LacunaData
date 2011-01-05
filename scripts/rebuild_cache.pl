@@ -20,4 +20,5 @@ while( readdir $dh ){
   say STDERR 'Loading ', $module;
   eval "require $module" &&
   $module->Cache;
+  print STDERR $@ if $@;
 }
