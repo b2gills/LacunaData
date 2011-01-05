@@ -6,7 +6,6 @@ use autodie;
 
 use YAML qw'freeze thaw';
 
-use LWP::Simple 'get';
 use HTML::TreeBuilder;
 
 use LacunaData::Sources (
@@ -97,7 +96,9 @@ sub _get_api_info{
   my %data;
 
   my $tree = HTML::TreeBuilder->new();
-  my $content = get($url);
+  require LWP::Simple;
+  my $content = LWP::Simple::get($url);
+  die unless $content;
   $tree->parse_content($content);
 
   $data{'api-url'} = $tree->find('code')->as_text;

@@ -16,7 +16,6 @@ use LacunaData::Sources (
 use LacunaData::Resources 'ore_list';
 use HTML::TreeBuilder;
 use YAML qw'thaw';
-use LWP::Simple;
 use List::Util qw'max';
 use 5.12.2;
 
@@ -70,7 +69,9 @@ sub _load_building{
   my $tree = HTML::TreeBuilder->new();
   {
     my $url = $data->{$building}{wiki};
-    my $content = get($url);
+    require LWP::Simple;
+    my $content = LWP::Simple::get( $url );
+    die unless $content;
     $tree->parse_content($content);
   }
   # <div id="wikipagecontent"><div>

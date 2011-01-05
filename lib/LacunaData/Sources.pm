@@ -6,7 +6,6 @@ use 5.12.2;
 
 use YAML qw'LoadFile';
 use File::Spec::Functions qw'splitpath rel2abs catfile catpath';
-use LWP::Simple;
 
 sub _generator{
   my($arg) = @_;
@@ -110,8 +109,13 @@ sub get_source_from_file{
 }
 sub get_source_from_url{
   my $uri = source_url( $_[0] );
-
-  return get $uri if $uri =~ m(^(?: https? | ftp ):// )x;
+  
+  if( $uri =~ m(^(?: https? | ftp ):// )x ){
+    require LWP::Simple;
+    my $return = LWP::Simple::get( $uri );
+    die unless $return;
+    return $return;
+  }
   if( $uri =~ m(^file://(.*)) ){
     return _read_file($1);
   }
