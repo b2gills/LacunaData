@@ -127,6 +127,174 @@ Development:
       desc: This method is extended to include details about what's in your build queue.
 Embassy:
   api-url: /embassy
+  methods:
+    accept_invite:
+      arg-info:
+        building_id: The unique id of the embassy.
+        invite_id: The unique id of an invitation. See get_my_invites for details.
+        message: Optional. A personalized message that will be sent to the alliance leader with your acceptance.
+        session_id: A session id.
+      arg-order:
+        - session_id
+        - building_id
+        - invite_id
+        - '[ message ]'
+      desc: Accept an invitation. Returns the same output as get_alliance_status.
+    assign_alliance_leader:
+      arg-info:
+        building_id: The unique id of the embassy.
+        new_leader_id: The unique id of an empire that will lead the alliance going forward. The empire must already be a member of the alliance.
+        session_id: A session id.
+      arg-order:
+        - session_id
+        - building_id
+        - new_leader_id
+      desc: Sets a new empire to lead the alliance. Can only be called by the current alliance leader. Returns the same thing as get_alliance_status.
+    create_alliance:
+      arg-info:
+        building_id: The unique id of the embassy.
+        name: 'A unique name for this alliance. Must be between 3 and 30 characters, cannot contain profanity or restricted characters.'
+        session_id: A session id.
+      arg-order:
+        - session_id
+        - building_id
+        - name
+      desc: Create a new alliance. Returns the same output as get_alliance_status.
+    dissolve_alliance:
+      arg-info:
+        building_id: The unique id of the embassy.
+        session_id: A session id.
+      arg-order:
+        - session_id
+        - building_id
+      desc: Can only be called by alliance leader. Disbands and existing alliance.
+    donate_to_stash:
+      arg-info:
+        building_id: The unique id of the embassy.
+        donation: 'NOTE: Cannot donate waste.'
+        session_id: A session id.
+      arg-order:
+        - session_id
+        - building_id
+        - donation
+      desc: Returns view_stash
+    exchange_with_stash:
+      arg-info:
+        building_id: The unique id of the embassy.
+        donation: 'NOTE: Cannot donate waste.'
+        request: 'NOTE: The total sum, must add up to the sum of the donation, but can be in different concentrations.'
+        session_id: A session id.
+      arg-order:
+        - session_id
+        - building_id
+        - donation
+        - request
+      desc: Returns view_stash
+    expel_member:
+      arg-info:
+        building_id: The unique id of the embassy.
+        empire_id: The unique id of the empire to remove from the alliance.
+        message: An optional message about why you're removing them from the alliance. Cannot contain restricted characters or profanity.
+        session_id: A session id.
+      arg-order:
+        - session_id
+        - building_id
+        - empire_id
+        - '[ message ]'
+      desc: Forcibly removes a member from an alliance. Returns the same thing as get_alliance_status. Can only be called by the alliance leader.
+    get_alliance_status:
+      arg-info:
+        building_id: The unique id of the embassy.
+        session_id: A session id.
+      arg-order:
+        - session_id
+        - building_id
+      desc: Returns everything about an alliance that members should know.
+    get_my_invites:
+      arg-info:
+        building_id: The unique id of the embassy.
+        session_id: A session id.
+      arg-order:
+        - session_id
+        - building_id
+      desc: Returns a list of invitations that have been offered to this empire.
+    get_pending_invites:
+      arg-info:
+        building_id: The unique id of the embassy.
+        session_id: A session id.
+      arg-order:
+        - session_id
+        - building_id
+      desc: 'Can only be called by the alliance leader. Returns a list of invitations that have been sent out, but that have not been accepted, rejected, or withdrawn.'
+    leave_alliance:
+      arg-info:
+        building_id: The unique id of the embassy.
+        message: An optional message about why you're leaving the alliance. Cannot contain restricted characters or profanity.
+        session_id: A session id.
+      arg-order:
+        - session_id
+        - building_id
+        - '[ message ]'
+      desc: A member of an alliance revokes their own membership.
+    reject_invite:
+      arg-info:
+        building_id: The unique id of the embassy.
+        invite_id: The unique id of an invitation. See get_my_invites for details.
+        message: Optional. A personalized message that will be sent to the alliance leader along with your rejection.
+        session_id: A session id.
+      arg-order:
+        - session_id
+        - building_id
+        - invite_id
+        - '[ message ]'
+      desc: Delete an invitation.
+    send_invite:
+      arg-info:
+        building_id: The unique id of the embassy.
+        invitee_id: The unique id of an empire you'd like to invite to an alliance. See "search_empires" in Empire to look up empire ids.
+        message: Optional. A personalized welcome message that will be included in the invitation.
+        session_id: A session id.
+      arg-order:
+        - session_id
+        - building_id
+        - invitee_id
+        - '[ message ]'
+      desc: Can only be called by alliance leader. Invite an empire to an alliance.
+    update_alliance:
+      arg-info:
+        building_id: The unique id of the embassy.
+        params: A hash reference of alliance properties. None of which can contain profanity or restricted characters. You can update any or all of these properties at the same time.
+        session_id: A session id.
+      arg-order:
+        - session_id
+        - building_id
+        - params
+      desc: Updates the properties of an alliance. Returns the same thing as get_alliance_status. Can only be called by the alliance leader.
+    view:
+      arg-order:
+        - session_id
+        - building_id
+      desc: Same as view in Buildings except:We add an alliance_status block if this empire is in an alliance. It contains the same information as get_alliance_status
+    view_stash:
+      arg-info:
+        building_id: The unique id of the embassy.
+        session_id: A session id.
+      arg-order:
+        - session_id
+        - building_id
+      desc: 'Returns a list of what is in the current stash:'
+    withdraw_invite:
+      arg-info:
+        building_id: The unique id of the embassy.
+        invite_id: The unique id of an invitation. See get_pending_invites for details.
+        message: Optional. A personalized message that will be sent to the user about why their invitation has been withdrawn.
+        session_id: A session id.
+      arg-order:
+        - session_id
+        - building_id
+        - invite_id
+        - '[ message ]'
+      desc: Can only be called by alliance leader. Delete an invitation.
 EnergyReserve:
   api-url: /energyreserve
   methods:
@@ -671,6 +839,48 @@ Shake:
   api-url: /shake
 Shipyard:
   api-url: /shipyard
+  description: "The shipyard is where you build ships. However, you'll need other building types to enable the different kinds of ships that are available. The higher the level of the shipyard, faster your ships will be built."
+  methods:
+    build_ship:
+      arg-info:
+        building_id: The unique id of the shipyard.
+        session_id: A session id.
+        type: A ship type. Get from get_buildable.
+      arg-order:
+        - session_id
+        - building_id
+        - type
+      desc: Adds a ship to the build queue. Returns the same thing as view_build_queue().
+    get_buildable:
+      arg-info:
+        building_id: The unique id of the shipyard.
+        session_id: A session id.
+        tag: 'An optional tag to limit the list of available ships to something shorter. If no tag is specified, then all ships will be displayed.'
+      arg-order:
+        - session_id
+        - building_id
+        - '[ tag ]'
+      desc: "Returns a list of buildable ships and their costs, and if they're not buildable, gives a reason why not in the form of an exception."
+    subsidize_build_queue:
+      arg-info:
+        building_id: The unique id of the Shipyard.
+        session_id: A session id.
+      arg-order:
+        - session_id
+        - building_id
+      desc: Will spend 1 essentia per ship to complete the current build queue immediately. Returns view.
+      throws:
+        - 1011
+    view_build_queue:
+      arg-info:
+        building_id: The unique id of this shipyard.
+        page_number.: Defaults to 1. An integer representing the page of data to view. There are 25 items per page.
+        session_id: A session id.
+      arg-order:
+        - session_id
+        - building_id
+        - '[page_number]'
+      desc: Retrieves what is already being built at this shipyard.
 Singularity:
   api-url: /singularity
 Soup:
@@ -908,8 +1118,281 @@ ThemePark:
       desc: This method is changed from the default because it adds a themepark element to the output.Consult the work block to see how long the Theme Park will remain in operation.
 Trade:
   api-url: /trade
+  methods:
+    accept_from_market:
+      arg-info:
+        building_id: The unique id of this building.
+        captcha_guid: The view_market list also includes a captcha guid. That string must be passed along with the trade. The guid used must be the most recent one returned (if you're caching the list of trades in some UI).
+        captcha_solution: The captcha described by view_market will require the user to solve a simple puzzle to prove their humanity. The answer to that puzzle must be provided here.
+        session_id: A session id.
+        trade_id: The unique id of the trade.
+      arg-order:
+        - session_id
+        - building_id
+        - trade_id
+        - captcha_guid
+        - captcha_solution
+      desc: Accept a trade offer from the list of available trades. See view_market.
+    add_to_market:
+      arg-info:
+        ask: An integer representing the amount of essentia you are asking for in this trade. Must be between 1 and 99.
+        building_id: The unique id of the trade ministry.
+        offer: 'An array reference of hash references of items you wish to trade. There are five types of items that can be traded via this mechanism. They are resources, glyphs, plans, prisoners, and ships.'
+        options: A hash reference of options to modify the trade.
+        session_id: A session id.
+      arg-order:
+        - session_id
+        - building_id
+        - offer
+        - ask
+        - options
+      desc: 'Queues a trade for others to see. Returns:'
+    get_glyphs:
+      arg-info:
+        building_id: The unique id of this building.
+        session_id: A session id.
+      arg-order:
+        - session_id
+        - building_id
+      desc: Returns a list of glyphs that may be traded. Used with the add_trade method.
+    get_plans:
+      arg-info:
+        building_id: The unique id of this building.
+        session_id: A session id.
+      arg-order:
+        - session_id
+        - building_id
+      desc: Returns a list of plans that may be traded. Used with the add_trade method.
+    get_prisoners:
+      arg-info:
+        building_id: The unique id of this building.
+        session_id: A session id.
+      arg-order:
+        - session_id
+        - building_id
+      desc: Returns a list of prisoners that may be traded. Used with the add_trade method.
+    get_ships:
+      arg-info:
+        building_id: The unique id of this building.
+        session_id: A session id.
+      arg-order:
+        - session_id
+        - building_id
+      desc: Returns a list of ships that may be traded. Used with the add_trade method.
+    get_stored_resources:
+      arg-info:
+        building_id: The unique id of this building.
+        session_id: A session id.
+      arg-order:
+        - session_id
+        - building_id
+      desc: Returns a list of the resources you have stored to make it easier to identify what you want to trade.
+    get_trade_ships:
+      arg-info:
+        building_id: The unique id of the trade ministry.
+        session_id: A session id.
+        target_body_id: The unique id of the body you'll be shipping to. Optional. If included it will calculate the estimated travel time of the ships to this body.
+      arg-order:
+        - session_id
+        - building_id
+        - '[ target_body_id ]'
+      desc: Returns a list of the ships that could be used to do a trade.
+    push_items:
+      arg-info:
+        building_id: The unique id of this building.
+        items: 'An array reference of hash references of items you wish to ship to the target planet. There are five types of items that can be shipped via this mechanism. They are resources, glyphs, plans, prisoners, and ships.'
+        options: A hash reference of options to modify the trade.
+        session_id: A session id.
+        target_id: 'NOTE: The list of your planets comes back with every empire status message.'
+      arg-order:
+        - session_id
+        - building_id
+        - target_id
+        - items
+        - options
+      desc: Allows you to push items between your colonies.
+    report_abuse:
+      arg-info:
+        building_id: The unique id of this building.
+        session_id: A session id.
+        trade_id: The unique id of the trade.
+      arg-order:
+        - session_id
+        - building_id
+        - trade_id
+      desc: Report a trade that you think is abusing the trade system.
+    view_market:
+      arg-info:
+        building_id: The unique id of this building.
+        filter: 'Optional. A string which will narrow the offered trades to those who are offering a specific kind of object, such as ships. Filter options include: food ore water waste energy glyph prisoner ship plan'
+        page_number: Optional. An integer representing the page of trades (25 per page) to return. Defaults to 1.
+        session_id: A session id.
+      arg-order:
+        - session_id
+        - building_id
+        - '[ page_number'
+        - 'filter ]'
+      desc: Displays a list of trades available at the present time.
+    view_my_market:
+      arg-info:
+        building_id: The unique id of this building.
+        page_number: An integer representing the page of trades (25 per page) to return. Defaults to 1.
+        session_id: A session id.
+      arg-order:
+        - session_id
+        - building_id
+        - '[ page_number ]'
+      desc: Displays a list of trades the current user has posted.
+    withdraw_from_market:
+      arg-info:
+        building_id: The unique id of this building.
+        session_id: A session id.
+        trade_id: The unique id of the trade.
+      arg-order:
+        - session_id
+        - building_id
+        - trade_id
+      desc: Remove a trade that you have offered and collect the items up for trade.
 Transporter:
   api-url: /transporter
+  methods:
+    accept_from_market:
+      arg-info:
+        building_id: The unique id of this building.
+        captcha_guid: The view_market list also includes a captcha guid. That string must be passed along with the trade. The guid used must be the most recent one returned (if you're caching the list of trades in some UI).
+        captcha_solution: The captcha described by view_market will require the user to solve a simple puzzle to prove their humanity. The answer to that puzzle must be provided here.
+        session_id: A session id.
+        trade_id: The unique id of the trade.
+      arg-order:
+        - session_id
+        - building_id
+        - trade_id
+        - captcha_guid
+        - captcha_solution
+      desc: 'Accept a trade offer from the list of available trades. In addition to paying whatever the asking price is, the subspace transporter uses 1 essentia to complete the transaction. See view_market.'
+    add_to_market:
+      arg-info:
+        ask: An integer which represents how much essentia you are asking for in this trade. Must be between 1 and 99.
+        building_id: The unique id of the subspace transporter.
+        items: 'An array reference of hash references of items you wish to trade. There are five types of items that can be traded via this mechanism. They are resources, glyphs, plans, prisoners, and ships.'
+        session_id: A session id.
+      arg-order:
+        - session_id
+        - building_id
+        - offer
+        - ask
+      desc: 'Queues a trade for others to see. In addition to anything offered in your trade, setting up the trade will cost you 1 essentia. Returns:'
+    get_glyphs:
+      arg-info:
+        building_id: The unique id of this building.
+        session_id: A session id.
+      arg-order:
+        - session_id
+        - building_id
+      desc: Returns a list of glyphs that may be traded. Used with the add_trade method.
+    get_plans:
+      arg-info:
+        building_id: The unique id of this building.
+        session_id: A session id.
+      arg-order:
+        - session_id
+        - building_id
+      desc: Returns a list of plans that may be traded. Used with the add_trade method.
+    get_prisoners:
+      arg-info:
+        building_id: The unique id of this building.
+        session_id: A session id.
+      arg-order:
+        - session_id
+        - building_id
+      desc: Returns a list of prisoners that may be traded. Used with the add_trade method.
+    get_ships:
+      arg-info:
+        building_id: The unique id of this building.
+        session_id: A session id.
+      arg-order:
+        - session_id
+        - building_id
+      desc: Returns a list of ships that may be traded. Used with the add_trade method.
+    get_stored_resources:
+      arg-info:
+        building_id: The unique id of this building.
+        session_id: A session id.
+      arg-order:
+        - session_id
+        - building_id
+      desc: Returns a list of the resources you have stored to make it easier to identify what you want to trade.
+    push_items:
+      arg-info:
+        building_id: The unique id of this building.
+        items: 'An array reference of hash references of items you wish to ship to the target planet. There are five types of items that can be shipped via this mechanism. They are resources, glyphs, plans, prisoners, and ships.'
+        session_id: A session id.
+        target_id: 'NOTE: The list of your planets comes back with every empire status message.'
+      arg-order:
+        - session_id
+        - building_id
+        - target_id
+        - items
+    report_abuse:
+      arg-info:
+        building_id: The unique id of this building.
+        session_id: A session id.
+        trade_id: The unique id of the trade.
+      arg-order:
+        - session_id
+        - building_id
+        - trade_id
+      desc: Report a trade that you think is abusing the trade system.
+    trade_one_for_one:
+      arg-info:
+        building_id: The unique id of this building.
+        have: The name of the resource you have. See get_stored_resources to see what you have.
+        quantity: The amount of resources that will be traded one for one.
+        session_id: A session id.
+        want: The name of any resource you want.
+      arg-order:
+        - session_id
+        - building_id
+        - have
+        - want
+        - quantity
+      desc: Lacuna Expanse Corp will do one for one trades of any resource in exchange for 3 essentia.
+    view:
+      arg-order:
+        - session_id
+        - building_id
+    view_market:
+      arg-info:
+        building_id: The unique id of this building.
+        filter: 'Optional. A string which will narrow the offered trades to those who are offering a specific kind of object, such as ships. Filter options include: food ore water waste energy glyph prisoner ship plan'
+        page_number: Optional. An integer representing the page of trades (25 per page) to return. Defaults to 1.
+        session_id: A session id.
+      arg-order:
+        - session_id
+        - building_id
+        - '[ page_number'
+        - 'filter ]'
+      desc: Displays a list of trades available at the present time.
+    view_my_market:
+      arg-info:
+        building_id: The unique id of this building.
+        page_number: An integer representing the page of trades (25 per page) to return. Defaults to 1.
+        session_id: A session id.
+      arg-order:
+        - session_id
+        - building_id
+        - '[ page_number ]'
+      desc: Displays a list of trades the current user has posted.
+    withdraw_from_market:
+      arg-info:
+        building_id: The unique id of this building.
+        session_id: A session id.
+        trade_id: The unique id of the trade.
+      arg-order:
+        - session_id
+        - building_id
+        - trade_id
+      desc: Remove a trade that you have offered and collect the items up for trade.
 University:
   api-url: /university
 Volcano:
