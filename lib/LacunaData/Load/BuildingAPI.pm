@@ -103,7 +103,9 @@ sub _get_api_info{
 
   $data{'api-url'} = $tree->find('code')->as_text;
 
-  my $head = $tree->find('h1');
+  my($head) = grep {
+    $_->as_text =~ /\bmethods \s* $/xi
+  } $tree->find('h1');
   my(undef,@tail) = $head->right;
   pop @tail;
 
