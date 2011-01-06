@@ -18,6 +18,11 @@ Archaeology:
         - building_id
         - ids
       desc: 'Turns glyphs into rare ancient items. Returns:'
+      returns: |-
+        {
+            "status" : { ... },
+            "item_name" : "Volcano"
+         }
     get_glyphs:
       arg-info:
         building_id: The unique id of the Archaeology Ministry.
@@ -26,6 +31,17 @@ Archaeology:
         - session_id
         - building_id
       desc: Returns a list of glyphs that have been found by this archaeology ministry.
+      returns: |-
+        {
+            "status" : { ... },
+            "glyphs" : [
+                {
+                    "id" : "id-goes-here",
+                    "type" : "bauxite",
+                },
+                ...
+            ]
+         }
     get_ores_available_for_processing:
       arg-info:
         building_id: The unique id of the Archaeology Ministry.
@@ -34,6 +50,14 @@ Archaeology:
         - session_id
         - building_id
       desc: Returns a list of ore names that the user has enough of to process for glyphs.
+      returns: |-
+        {
+            "status" : { ... },
+            "ore" : {
+                "bauxite" : 39949,
+                "rutile" : 19393
+                }
+         }
     search_for_glyph:
       arg-info:
         building_id: The unique id of the Archaeology Ministry.
@@ -79,11 +103,17 @@ Capitol:
         - building_id
         - name
       desc: Spend some essentia to rename your empire.
+      returns: "{\n    \"status\" : { ... }\n }"
     view:
       arg-order:
         - session_id
         - building_id
       desc: 'Same as view in Buildings except:'
+      returns: |-
+        {
+            "status" : { ... },
+            "rename_empire_cost" : 29,
+         }
 Cheese:
   api-url: /cheese
 Chip:
@@ -120,11 +150,40 @@ Development:
         - session_id
         - building_id
       desc: 'Allows a player to instantly finish any buildings in their build queue. The cost is returned by the view method. Returns:'
+      returns: |-
+        {
+            "status" : { ... },
+            "essentia_spent" : 8
+         }
     view:
       arg-order:
         - session
         - building_id
       desc: This method is extended to include details about what's in your build queue.
+      returns: |-
+        {
+            "building" : { ... },
+            "status" : { ... },
+            "build_queue" : [
+                {
+                    "building_id" : "building-id-goes-here",
+                    "name" : "Planetary Commmand",
+                    "to_level" : 9,
+                    "seconds_remaining" : 537,
+                    "x" : 0,
+                    "y" : 0
+                },
+                {
+                    "building_id" : "building-id-goes-here",
+                    "name" : "Wheat Farm",
+                    "to_level" : 15,
+                    "seconds_remaining" : 9748,
+                    "x" : -1,
+                    "y" : 4
+                }
+            ],
+            "subsidy_cost" : 8 # the essentia cost to subsidize the build queue
+         }
 Embassy:
   api-url: /embassy
   methods:
@@ -168,6 +227,7 @@ Embassy:
         - session_id
         - building_id
       desc: Can only be called by alliance leader. Disbands and existing alliance.
+      returns: "{\n    \"status\" : { ... }\n }"
     donate_to_stash:
       arg-info:
         building_id: The unique id of the embassy.
@@ -178,6 +238,11 @@ Embassy:
         - building_id
         - donation
       desc: Returns view_stash
+      returns: |-
+        {
+            "water" : 4500,
+            "bread" : 5000
+         }
     exchange_with_stash:
       arg-info:
         building_id: The unique id of the embassy.
@@ -190,6 +255,11 @@ Embassy:
         - donation
         - request
       desc: Returns view_stash
+      returns: |-
+        {
+            "energy" : 2000,
+            "meal" : 7500
+         }
     expel_member:
       arg-info:
         building_id: The unique id of the embassy.
@@ -210,6 +280,26 @@ Embassy:
         - session_id
         - building_id
       desc: Returns everything about an alliance that members should know.
+      returns: |-
+        {
+            "status" : { ... },
+            "alliance" : {
+                "id" : "id-goes-here",
+                "name" : "United Federation of Planets",
+                "members" : [
+                    {
+                        "empire_id" : "id goes here",
+                        "name" : "Klingons",
+                    }
+                    ...
+                ],
+                "leader_id" : "id goes here",
+                "forum_uri" : "http://forum.example.com/",
+                "description" : "This is public information.",
+                "announcements" : "This is private information.",
+                "date_created" : "01 31 2010 13:09:05 +0600"
+             }
+         }
     get_my_invites:
       arg-info:
         building_id: The unique id of the embassy.
@@ -218,6 +308,18 @@ Embassy:
         - session_id
         - building_id
       desc: Returns a list of invitations that have been offered to this empire.
+      returns: |-
+        {
+            "status" : { ... },
+            "invites" : [
+                {
+                    "id" : "id-goes-here",
+                    "name" : "United Federation of Planets",
+                    "alliance_id" : "id-goes-here"
+                },
+                ...
+            ]
+         }
     get_pending_invites:
       arg-info:
         building_id: The unique id of the embassy.
@@ -226,6 +328,18 @@ Embassy:
         - session_id
         - building_id
       desc: 'Can only be called by the alliance leader. Returns a list of invitations that have been sent out, but that have not been accepted, rejected, or withdrawn.'
+      returns: |-
+        {
+            "status" : { ... },
+            "invites" : [
+                {
+                    "id" : "id-goes-here",
+                    "name" : "The Borg",
+                    "empire_id" : "id-goes-here"
+                },
+                ...
+            ]
+         }
     leave_alliance:
       arg-info:
         building_id: The unique id of the embassy.
@@ -236,6 +350,7 @@ Embassy:
         - building_id
         - '[ message ]'
       desc: A member of an alliance revokes their own membership.
+      returns: "{\n    \"status\" : { ... }\n }"
     reject_invite:
       arg-info:
         building_id: The unique id of the embassy.
@@ -248,6 +363,7 @@ Embassy:
         - invite_id
         - '[ message ]'
       desc: Delete an invitation.
+      returns: "{\n    \"status\" : { ... }\n }"
     send_invite:
       arg-info:
         building_id: The unique id of the embassy.
@@ -260,6 +376,7 @@ Embassy:
         - invitee_id
         - '[ message ]'
       desc: Can only be called by alliance leader. Invite an empire to an alliance.
+      returns: "{\n    \"status\" : { ... }\n }"
     update_alliance:
       arg-info:
         building_id: The unique id of the embassy.
@@ -275,6 +392,12 @@ Embassy:
         - session_id
         - building_id
       desc: Same as view in Buildings except:We add an alliance_status block if this empire is in an alliance. It contains the same information as get_alliance_status
+      returns: |-
+        {
+            "status" : { ... },
+            "building" : { ... },
+            "alliance_status" : { get_alliance_status() }
+         }
     view_stash:
       arg-info:
         building_id: The unique id of the embassy.
@@ -283,6 +406,24 @@ Embassy:
         - session_id
         - building_id
       desc: 'Returns a list of what is in the current stash:'
+      returns: |-
+        {
+            "status" : { ... },
+            "stash" : {                # what is stored in the stash
+                "gold" : 4500,
+                "water" : 1000,
+                "apple" : 8
+            },
+            "stored" : {               # what is stored in planetary storage
+                "energy" : 40000,
+                "algae" : 43000,
+                "water" : 19000,
+                "bauxite" : 1110,
+                "galena" : 33120
+            },
+            "max_exchange_size" : 30000,
+            "exchanges_remaining_today" : 1
+         }
     withdraw_invite:
       arg-info:
         building_id: The unique id of the embassy.
@@ -295,6 +436,7 @@ Embassy:
         - invite_id
         - '[ message ]'
       desc: Can only be called by alliance leader. Delete an invitation.
+      returns: "{\n    \"status\" : { ... }\n }"
 EnergyReserve:
   api-url: /energyreserve
   methods:
@@ -308,6 +450,7 @@ EnergyReserve:
         - building_id
         - amount
       desc: Converts energy into waste.
+      returns: "{\n    \"status\" : { ... }\n }"
 Entertainment:
   api-url: /entertainment
   methods:
@@ -327,11 +470,27 @@ Entertainment:
         - session_id
         - building_id
       desc: 'This is the starting point to a voting lottery system. The user can vote on a site once and only once per day and each vote enters him/her into a lottery. At the end of the day a lottery ticket will be drawn, and a winner will be chosen to receive 10 essentia. Every vote is equal, but the more votes you have the greater your odds of winning.Returns a list of sites that the user can vote on.NOTE: The URLs returned in the url parameter need to be opened into a new browser window so that the user can go vote on a remote site.Each url is usable only once every 24 hours. The server keeps track of this, but the client must remove the URL from the list after the user has clicked on it so they know not to click again.'
+      returns: |-
+        {
+            "options" : [
+                {
+                    "name" : "Some Site",
+                    "url" : "http://www.somesite.com/vote?id=44"
+                },
+                ...
+            ],
+            "status" : { ... }
+         }
     view:
       arg-order:
         - session_id
         - building_id
       desc: 'Same as view in Buildings except:'
+      returns: |-
+        {
+            "status" : { ... },
+            "ducks_quacked" : 493
+         }
 Espionage:
   api-url: /espionage
 EssentiaVein:
@@ -354,11 +513,23 @@ FoodReserve:
         - type
         - amount
       desc: Converts food into waste.
+      returns: "{\n    \"status\" : { ... }\n }"
     view:
       arg-order:
         - session_id
         - building_id
       desc: This method is extended to include details about what kind of food is stored.
+      returns: |-
+        {
+            "building" : { ... },
+            "status" : { ... },
+            "food_stored" : {
+                "apple" : 0,
+                "bread" : 47,
+                "algae" : 301,
+                ...
+            }
+         }
 Fusion:
   api-url: /fusion
 GasGiantLab:
@@ -376,6 +547,33 @@ GeneticsLab:
         - session_id
         - building_id
       desc: Returns everything you need to set up an experiment.
+      returns: |-
+        {
+            "status" : { ... },
+            "grafts" : [
+                {
+                    "spy" : {
+                        "id" : "id-goes-here",
+                        "name" : "James Bond",
+                        ...
+                    },
+                    "species" : {
+                        "min_orbit" : 3,
+                        "max_orbit" : 4,
+                        "science_affinity" : 4,
+                        ...
+                    },
+                    graftable_affinities : [
+                        "min_orbit",
+                        "management_affinity"
+                    ]
+                },
+                ...
+            ],
+            "survival_odds" : 31,
+            "graft_odds" : 11,
+            "essentia_cost" : 2
+         }
     run_experiment:
       arg-info:
         building_id: The unique id of the genetics lab.
@@ -386,6 +584,15 @@ GeneticsLab:
         - spy_id
         - affinity
       desc: Allows you to experiment on prisoners attempting to graft their genetic traits onto your own species.
+      returns: |-
+        {
+            "experiment" : {
+                "graft" : 1,        # did the graft succeed
+                "survive" : 0,      # did the prisoner survive
+                "message" : "The graft was a success, and the prisoner did not survive the experiment."
+            },
+            # the rest is the same as prepare_experiment 
+         }
 Geo:
   api-url: /geo
 GeoThermalVent:
@@ -407,6 +614,22 @@ HallsOfVrbansk:
         - session_id
         - building_id
       desc: Returns a list of buildings that can be upgraded by the Halls of Vrbansk.
+      returns: |-
+        {
+            "status" : { ... },
+            "buildings" : [
+                {
+                    "name" : "Oracle of Anid",
+                    "id" : "id-goes-here",
+                    "x" : -3,
+                    "y" : 2,
+                    "image" : "oracleanid1",
+                    "level" : 1,
+                    "url" : "/oracleofanid"
+                },
+                ...
+            ]
+         }
     sacrifice_to_upgrade:
       arg-info:
         building_id: The unique id of the Halls of Vrbansk.
@@ -417,6 +640,7 @@ HallsOfVrbansk:
         - building_id
         - upgrade_building_id
       desc: 'Sacrifices a number of the Halls of Vrbansk to upgrade a building.NOTE: In all likelyhood the Halls of Vrbansk that the player is looking at when they call this method will be destroyed. The building will return a status, but then you should close whatever screen you have open for it and refresh the planet surface. The needs_surface_refresh flag will be set in the body status on the return. You should wait for the return to close the building though, in case of an exception.'
+      returns: "{\n    \"status\" : { ... }\n }"
 Hydrocarbon:
   api-url: /hydrocarbon
 Intelligence:
@@ -435,6 +659,53 @@ Intelligence:
         - spy_id
         - assignment
       desc: 'Set a spy on a new task.The mission block allows you to give immediate feedback to the player. The result types that can be sent back are:The reason provides a message in sentence form about why a spy won or lost a mission. This message is related to the success or failure, not any outcome that results from that success or failure.The message_id refers to a message in the Inbox. Providing this ID allows you to pop open the inbox to a specific message to display to the user. The message will tell you what the outcome of the mission is if any. Not all missions will provide a message_id.'
+      returns: |-
+        {
+            "status" : { ... },
+            "mission" : {
+                "result" : "Failure",
+                "message_id" : "id-goes-here",
+                "reason" : "I'm under heavy fire over here!"
+            },
+            "spy" : {
+                "id" : "id-goes-here",
+                "name" : "Jason Bourne",
+                "assignment" : "Idle",
+                "possible_assignments" : [
+                    {
+                        "task" : "Idle",
+                        "recovery" : 0,
+                        "skill" : "none"
+                    },
+                    {
+                        "task" : "Counter Espionage",
+                        "recovery" : 0,
+                        "skill" : "*"
+                    },
+                    {
+                        "task" : "Security Sweep",
+                        "recovery" : 14400,        # in seconds
+                        "skill" : "intel"
+                    },
+                    ...
+                ],
+                "level" : 9,
+                "politics" : 0,                         # experience in handling happiness
+                "mayhem" : 20,                          # experience in handling missions involving murder and destruction
+                "theft" : 40,                           # experience in handling missions involving stealing items
+                "intel" : 33,                           # experience in handling missions involving information and spies
+                "offense_rating" : 570,
+                "defense_rating" : 150,
+                "assigned_to" : {
+                    "body_id" : "id-goes-here",
+                    "name" : "Earth",
+                },
+                "is_available" : 1, # can be reassigned
+                "available_on" : "01 31 2010 13:09:05 +0600", # if can't be reassigned, this is when will be available
+                "started_assignment" : "01 31 2010 13:09:05 +0600",
+                "seconds_remaining" : 45
+            }
+         }
     burn_spy:
       arg-info:
         building_id: The unique id of your Intelligence Ministry.
@@ -445,6 +716,7 @@ Intelligence:
         - building_id
         - spy_id
       desc: Allows you to eliminate one of your spies from your payroll.
+      returns: "{\n    \"status\" : { ... }\n }"
     name_spy:
       arg-info:
         building_id: The unique id of the intelligence building.
@@ -457,6 +729,7 @@ Intelligence:
         - spy_id
         - name
       desc: 'Set the name of the spy. Returns:'
+      returns: "{\n    \"status\" : { ... }\n }"
       throws:
         - 1002
         - 1005
@@ -481,6 +754,12 @@ Intelligence:
         - building_id
         - '[ quantity ]'
       desc: Allows you to train more spies.The only reason not_trained might be over 0 is if you specify training more spies than you have resources to spend.
+      returns: |-
+        {
+            "status" : { ... },
+            "trained" : 3,
+            "not_trained" : 2
+         }
       throws:
         - 1009
         - 1013
@@ -488,6 +767,24 @@ Intelligence:
       arg-order:
         - session_id
         - building_id
+      returns: |-
+        {
+            "status" : { ... },
+            "building" : { ... },
+            "spies" : {
+                "maximum" : 5,
+                "current" : 1,
+                "in_training" : 1,
+                "training_costs" : {
+                    "food" : 100,
+                    "water" : 120,
+                    "energy" : 20,
+                    "ore" : 5,
+                    "waste" : 10,
+                    "time" : 60,
+                }
+            },
+         }
     view_spies:
       arg-info:
         building_id: The unique id of your Intelligence Ministry.
@@ -498,6 +795,49 @@ Intelligence:
         - building_id
         - '[ page_number ]'
       desc: 'Returns the list of spies you have on your roster.Take a look at the assign_spy method below for assignment descriptions.NOTE: If a spy is already recovering from a particular assignment, then possible_assignments will return only that one assignment and the recovery time will be however much recovery time is remaining.'
+      returns: |-
+        {
+            "status" : { ... },
+            "spies" : [
+                {
+                    "id" : "id-goes-here",
+                    "name" : "Jason Bourne",
+                    "assignment" : "Idle",
+                    "possible_assignments" : [
+                        {
+                            "task" : "Idle",
+                            "recovery" : 0,
+                        },
+                        {
+                            "task" : "Counter Espionage",
+                            "recovery" : 0,
+                        },
+                        {
+                            "task" : "Security Sweep",
+                            "recovery" : 14400,        # in seconds
+                        },
+                        ...
+                    ],
+                    "level" : 9,
+                    "politics" : 0,                         # experience in handling happiness
+                    "mayhem" : 20,                          # experience in handling missions involving murder and destruction
+                    "theft" : 40,                           # experience in handling missions involving stealing items
+                    "intel" : 33,                           # experience in handling missions involving information and spies
+                    "offense_rating" : 570,
+                    "defense_rating" : 150,
+                    "assigned_to" : {
+                        "body_id" : "id-goes-here",
+                        "name" : "Earth",
+                    },
+                    "is_available" : 1, # can be reassigned
+                    "available_on" : "01 31 2010 13:09:05 +0600", # if can't be reassigned, this is when will be available
+                    "started_assignment" : "01 31 2010 13:09:05 +0600",
+                    "seconds_remaining" : 45
+                },
+                ...
+            ],
+            "spy_count" : 12
+         }
 InterDimensionalRift:
   api-url: /interdimensionalrift
 JunkHengeSculpture:
@@ -525,6 +865,27 @@ LibraryOfJith:
         - building_id
         - empire_id
       desc: Returns a list of species stats for any species in the game.
+      returns: |-
+        {
+            "species" : {
+               "name" : "Human",
+               "description" : "The descendants of Earth.",
+               "min_orbit" : 3,
+               "max_orbit" : 3,
+               "manufacturing_affinity" : 4,
+               "deception_affinity" : 4,
+               "research_affinity" : 4,
+               "management_affinity" : 4,
+               "farming_affinity" : 4,
+               "mining_affinity" : 4,
+               "science_affinity" : 4,
+               "environmental_affinity" : 4,
+               "political_affinity" : 4,
+               "trade_affinity" : 4,
+               "growth_affinity" : 4
+            },
+            "status" : { ... }
+         }
 LuxuryHousing:
   api-url: /luxuryhousing
 Malcud:
@@ -549,6 +910,7 @@ MiningMinistry:
         - building_id
         - platform_id
       desc: Close down an existing mining platform.
+      returns: "{\n    \"status\" : { ... }\n }"
       throws:
         - 1002
     add_cargo_ship_to_fleet:
@@ -561,6 +923,7 @@ MiningMinistry:
         - building_id
         - ship_id
       desc: Take a cargo ship from the space port and add it to the mining fleet.
+      returns: "{\n    \"status\" : { ... }\n }"
       throws:
         - 1009
     remove_cargo_ship_from_fleet:
@@ -573,6 +936,7 @@ MiningMinistry:
         - building_id
         - ship_id
       desc: Tell one of the cargo ships in the mining fleet to come home and park at the space port.
+      returns: "{\n    \"status\" : { ... }\n }"
       throws:
         - 1009
     view_platforms:
@@ -583,6 +947,46 @@ MiningMinistry:
         - session_id
         - building_id
       desc: "Returns a list of the mining platforms currently controlled by this ministry.The shipping_capacity number is a percent which gives you an indication of your production vs shipping efficiency. If it's a -1 then you have no ships servicing the platforms. If it's at 0, then it means you have ships but no production. If it's 1 to 99 then you've got more shipping capacity than production. If it's at 100 then everything is in harmony. And if it's greater than 100 then you need to add ships because you're producing more than your ships can handle."
+      returns: |-
+        {
+            "status" : { ... },
+            "max_platforms" : 1,
+            "platforms" : [
+                {
+                    "id" : "id-goes-here",
+                    "asteroid" : {
+                        "id" : "id-goes-here",
+                        "name" : "Kuiper",
+                        "x" : 0,
+                        "y" : -444,
+                        "image" : "a1-5",
+                        ...
+                    },
+                    "rutile_hour" : 10,
+                    "chromite_hour" : 10,
+                    "chalcopyrite_hour" : 10,
+                    "galena_hour" : 10,
+                    "gold_hour" : 10,
+                    "uraninite_hour" : 10,
+                    "bauxite_hour" : 10,
+                    "goethite_hour" : 10,
+                    "halite_hour" : 10,
+                    "gypsum_hour" : 10,
+                    "trona_hour" : 10,
+                    "kerogen_hour" : 10,
+                    "methane_hour" : 10,
+                    "anthracite_hour" : 10,
+                    "sulfur_hour" : 10,
+                    "zircon_hour" : 10,
+                    "monazite_hour" : 10,
+                    "fluorite_hour" : 10,
+                    "beryl_hour" : 10,
+                    "magnetite_hour" : 10,  
+                    "shipping_capacity" : 51 
+                },
+                ...
+            ]
+         }
     view_ships:
       arg-info:
         building_id: The unique id of the mining ministry.
@@ -591,6 +995,20 @@ MiningMinistry:
         - session_id
         - building_id
       desc: 'Shows you the ships that are working in the mining fleet, and available to work in the mining fleet.'
+      returns: |-
+        {
+            "ships" : [
+                {
+                    "name" : "CS4",
+                    "id" : "id-goes-here",
+                    "task" : "Mining",
+                    "speed" : 350,
+                    "hold_size" : 5600
+                },
+                ...
+            ],
+            "status" : { ... }
+         }
 MissionCommand:
   api-url: /missioncommand
   methods:
@@ -604,6 +1022,7 @@ MissionCommand:
         - building_id
         - mission_id
       desc: 'Completes a mission. Will be rejected if you do not have all the objectives met. If you have met the objectives, then the rewards will be distributed to you.'
+      returns: "{\n    \"status\" : { ... }\n }"
     get_missions:
       arg-info:
         building_id: The unique id for the mission command building.
@@ -612,6 +1031,28 @@ MissionCommand:
         - session_id
         - building_id
       desc: "Returns a list of missions that you are eligible to complete in this zone.NOTE: This is not the complete list of missions in the zone. You cannot complete missions you've already completed, nor can you complete missions that are registered as being below your university level."
+      returns: |-
+        {
+            "status" : { ... },
+            "missions" : [
+                {
+                    "id" : "id-goes-here",
+                    "max_university_level" : 12,
+                    "date_posted" : "01 31 2010 13:09:05 +0600",
+                    "name" : "The Big Mission",
+                    "description" : "Do the big thing and make it go.",
+                    "objectives" : [
+                      "1500 apple",
+                      "Kill a spy",
+                      "Destroy a ship"
+                    ],
+                    "rewards" : [
+                        "1 essentia"
+                    ]
+                },
+                ...
+            ]
+         }
     skip_mission:
       arg-info:
         building_id: The unique id for the mission command building.
@@ -622,6 +1063,7 @@ MissionCommand:
         - building_id
         - mission_id
       desc: Skips a mission. This mission won't show up on the list of missions for this user for 30 days.
+      returns: "{\n    \"status\" : { ... }\n }"
 MunitionsLab:
   api-url: /munitionslab
 NaturalSpring:
@@ -640,12 +1082,19 @@ Network19:
         - building_id
         - onoff
       desc: You can enact or disband a policy to restrict what Network 19 covers about your planet. Restricting coverage does make your citizens unhappy.
+      returns: "{\n    \"status\" : { ... }\n }"
       throws:
         - 1009
     view:
       arg-order:
         - session_id
         - building_id
+      returns: |-
+        {
+            "status" : { ... },
+            "building" : { ... },
+            "restrict_coverage" : 1 # see restrict_coverage()
+         }
     view_news:
       arg-info:
         building_id: The unique id of the Network 19 Affiliate.
@@ -654,6 +1103,20 @@ Network19:
         - session_id
         - building_id
       desc: Get the top 100 headlines from your region of space (called a zone). It also returns a list of RSS feeds that can be used outside the game to see the same news in a given zone.
+      returns: |-
+        {
+            "news" : [
+                {
+                    "headline" : "HCorp founded a new colony on Rigel 4.",
+                    "date" : "01 31 2010 13:09:05 +0600"
+                },
+                ...
+            ],
+            "feeds" : {
+                "0|0|0" : 'http://feeds.game.lacunaexpanse.com/78d5e7b2-b8d7-317c-b244-3f774264be57.rss'
+            },
+            "status" : { ... }
+         }
 Observatory:
   api-url: /observatory
   description: The observatory controls stellar probes.
@@ -668,6 +1131,10 @@ Observatory:
         - building_id
         - star_id
       desc: 'The probe is deactivated, and allowed to burn up in the star.'
+      returns: |-
+        {
+                "status" : { ... }
+         }
       throws:
         - 1002
         - 1010
@@ -681,6 +1148,23 @@ Observatory:
         - building_id
         - '[ page_number ]'
       desc: Returns a list of the stars that have been probed by this planet.
+      returns: |-
+        {
+                "status" : { ... },
+            "stars" : [
+                "id" : "id-goes-here",
+                        "color" : "yellow",
+                        "name" : "Sol",
+                        "x" : 17,
+                        "y" : 4,
+                        "z" : -3,
+                        "bodies" : [
+                    { See get_status() in Body },
+                    ...
+                ]
+                ],
+            "star_count" : 37
+         }
 OracleOfAnid:
   api-url: /oracleofanid
   methods:
@@ -694,6 +1178,22 @@ OracleOfAnid:
         - building_id
         - star_id
       desc: "Retrieves info on a single star. Works like \"get_star\" in Map except that you can see the bodies even if there is no probe there. Therefore the same displays that you would have for the star and these bodies in the star map should work from this interface. Send a scow to a star, attack a player, send a mining platform, etc.There is a range to the Oracle based upon it's level. A 10 map unit radius per level. A 1009 exception will be thrown if you request a star that its outside that range.NOTE: Use \"search_stars\" in Map to look up the id of a star by name."
+      returns: |-
+        { 
+            "star" : {
+                "name"          : "Sol",
+                "color"         : "yellow",
+                "x"             : -41,
+                "y"             : 27,
+                "bodies"        : [     
+                    {
+                        same data as get_status() on /body
+                    },
+                    ...
+                ]
+            }    
+            "status" : { ... }
+         }
 OreRefinery:
   api-url: /orerefinery
 OreStorage:
@@ -712,11 +1212,23 @@ OreStorage:
         - type
         - amount
       desc: Converts ore into waste.
+      returns: "{\n    \"status\" : { ... }\n }"
     view:
       arg-order:
         - session_id
         - building_id
       desc: This method is extended to include details about what kinds of ore are stored.
+      returns: |-
+        {
+            "building" : { ... },
+            "status" : { ... },
+            "ore_stored" : {
+                "bauxite" : 0,
+                "gold" : 47,
+                "trona" : 301,
+                ...
+            }
+         }
 Oversight:
   api-url: /oversight
 Pancake:
@@ -758,6 +1270,16 @@ Park:
         - session_id
         - building_id
       desc: This method is changed from the default because it adds a party element to the output.If there's an ongoing party you'll be able to see how long it has left. And if there's not a party it will let you know whether you have the resources to throw one.
+      returns: |-
+        {
+            "building" : { ... },
+            "status" : { ... },
+            "party" : {
+                "seconds_remaining" : 397,
+                "happiness" : 10000,
+                "can_throw" : 0
+            }
+         }
 Pie:
   api-url: /pie
 PilotTraining:
@@ -771,6 +1293,49 @@ PlanetaryCommand:
         - session_id
         - building_id
       desc: Command extends the view method to include a planet section.
+      returns: |-
+        {
+            "building" : { ... },
+            "status" : { ... },
+            "next_colony_cost" : 750000,        # the amount of happiness required to settle your next colony
+            "planet" : {
+                "id" : "id-goes-here",
+                "x" : -4,
+                "y" : 10,
+                "z" : 6,
+                "star_id" : "id-goes-here",
+                "orbit" : 3,
+                "type" : "habitable planet",
+                "name" : "Earth",
+                "image" : "p13",
+                "size" : 67,
+                "water" : 900,
+                "ore" : {
+                    "gold" : 3399,
+                    "bauxite" : 4000,
+                    ...
+                },
+                "building_count" : 7,
+                "population" : 470000,
+                "happiness" : 3939,
+                "happiness_hour" : 25,
+                "food_stored" : 33329,
+                "food_capacity" : 40000,
+                "food_hour" : 229,
+                "energy_stored" : 39931,
+                "energy_capacity" : 43000,
+                "energy_hour" : 391,
+                "ore_hour" 284,
+                "ore_capacity" 35000,
+                "ore_stored" 1901,
+                "waste_hour" : 933,
+                "waste_stored" : 9933,
+                "waste_capacity" : 13000,
+                "water_stored" : 9929,
+                "water_hour" : 295,
+                "water_capacity" : 51050
+            }
+         }
     view_plans:
       arg-info:
         building_id: The unique id of the PCC.
@@ -779,6 +1344,18 @@ PlanetaryCommand:
         - session_id
         - building_id
       desc: "Returns a list of all the plans you've collected through various means.If the level is 1, and there is an extra_build_level, that means that the building will be built up to 1 plus the extra build level when complete. So in the example above, it would be a level 6 directly after being built."
+      returns: |-
+        {
+            "status" : { ... },
+            "plans" : [
+                {
+                   "name" : "Malcud Fungus Farm",
+                   "level" : 1,
+                   "extra_build_level" : 5
+                },
+                ...
+            ]
+         }
 Potato:
   api-url: /potato
 Propulsion:
@@ -805,6 +1382,7 @@ Security:
         - building_id
         - prisoner_id
       desc: "You may choose to execute a prisoner rather than letting him serve his sentence and be released. However, that will cost you 10,000 times the prisoner's level in happiness from your planet. So a level 11 prisoner would cost you 110,000 happiness."
+      returns: "{\n    \"status\" : { ... }\n }"
     release_prisoner:
       arg-info:
         building_id: The unique id of the security ministry.
@@ -815,6 +1393,7 @@ Security:
         - building_id
         - prisoner_id
       desc: You may choose to release a prisoner by calling this method.
+      returns: "{\n    \"status\" : { ... }\n }"
     view_foreign_spies:
       arg-info:
         building_id: The unique id of the security ministry.
@@ -825,6 +1404,18 @@ Security:
         - building_id
         - '[ page_number ]'
       desc: 'Displays a list of the spies that are on your planet, and have a level lower than your security ministry.'
+      returns: |-
+        {
+            "status" : { ... },
+            "spies" : [
+                {
+                    "name" : "James Bond",
+                    "level" : 11,
+                    "next_mission" : "01 31 2010 13:09:05 +0600"
+                },
+                ...
+            ]
+         }
     view_prisoners:
       arg-info:
         building_id: The unique id of the security ministry.
@@ -835,6 +1426,19 @@ Security:
         - building_id
         - '[ page_number ]'
       desc: Displays a list of the spies that have been captured.
+      returns: |-
+        {
+            "status" : { ... },
+            "prisoners" : [
+                {
+                    "id" : "id-goes-here",
+                    "name" : "James Bond",
+                    "level" : "20",
+                    "sentence_expires" : "01 31 2010 13:09:05 +0600"
+                },
+                ...
+            ]
+         }
 Shake:
   api-url: /shake
 Shipyard:
@@ -861,6 +1465,33 @@ Shipyard:
         - building_id
         - '[ tag ]'
       desc: "Returns a list of buildable ships and their costs, and if they're not buildable, gives a reason why not in the form of an exception."
+      returns: |-
+        {
+            "buildable" : {
+                "probe" : {
+                    "can" : 1,             # can it be built or not
+                    "reason" : null,       # if it can't an array ref will be here with the exception for why not
+                    "cost" : {
+                        "seconds" : 900,
+                        "food" : 1100,
+                        "water" : 1000,
+                        "energy" : 1200,
+                        "ore" : 1200,
+                        "waste" : 100,
+                    },
+                    attributes : {
+                        "speed" : 1000,    # 100 roughly equals 1 star in 1 hour
+                        "hold_size" : 1000,
+                        "max_occupants" : 2,
+                        "combat" : 0,
+                        "stealth" : 1500
+                    }
+                },
+                ...
+            },
+            "docks_available" : 7,         # you can only build ships up to the number of docks you have available
+            "status" : { ... },
+         }
     subsidize_build_queue:
       arg-info:
         building_id: The unique id of the Shipyard.
@@ -881,6 +1512,19 @@ Shipyard:
         - building_id
         - '[page_number]'
       desc: Retrieves what is already being built at this shipyard.
+      returns: |-
+        {
+             "status" : { ... },
+             "number_of_ships_building" : 30,
+             "cost_to_subsidize" : 30,
+             "ships_building" : [
+                 {
+                     "type" : "spy_pod",
+                     "date_completed" : "01 31 2010 13:09:05 +0600"
+                 }
+                 ...
+             ]
+         }
 Singularity:
   api-url: /singularity
 Soup:
@@ -905,6 +1549,19 @@ SpacePort:
         - ship_id
         - spy_ids
       desc: 'Sends a specified ship to fetch specified spies from on_body_id, and bring them back to to_body_id. See also prepare_fetch_spies.NOTE: If the spies are not Idle when the ship arrives, they will not be picked up.'
+      returns: |-
+        {
+             "ship" : {
+                "id" : "id-goes-here",
+                "name" : "CS4",
+                "hold_size" : 1100,
+                "speed" : 400,
+                "type" : "cargo_ship",
+                "date_arrives" : "01 31 2010 13:09:05 +0600",
+                ...
+             },
+             "status" : { ... }
+         }
     get_ships_for:
       arg-info:
         from_body_id: The unique id of the planet that should send the ship.
@@ -915,6 +1572,16 @@ SpacePort:
         - from_body_id
         - target
       desc: 'Provides a list of incoming ships and ships that are available to send to a specific target. Use with send_ship.The unavailable block tells you about ships that are docked, but are for some reason not available to be used. The mining_platforms block will be returned only if the target is an asteroid that has platforms on it.'
+      returns: |-
+        { "body_name" : "Earth" }
+         
+         { "body_id" : "id-goes-here" }
+         
+         { "star_name" : "Sol" }
+         
+         { "star_id" : "id-goes-here" }
+         
+         { "x" : 4, "y" : -3 }
     name_ship:
       arg-info:
         building_id: The unique id for the space port.
@@ -937,6 +1604,35 @@ SpacePort:
         - on_body_id
         - to_body_id
       desc: Gathers the information needed to call the fetch_spies method.
+      returns: |-
+        {
+            "status" : { ... },
+            "ships" : [
+                {
+                    "id" : "id-goes-here",
+                    "name" : "CS4",
+                    "hold_size" : 1100,
+                    "speed" : 400,
+                    "type" : "cargo_ship",
+                    "estimated_travel_time" : 3600, # in seconds
+                    ...
+                },
+                ...
+            ],
+            "spies" : [
+                {
+                    "id" : "id-goes-here",
+                    "level" : 12,
+                    "name" : "Jack Bauer",
+                    "assigned_to" : {
+                       "body_id" : "id-goes-here",
+                       "name" : "Earth"
+                    },
+                    ...
+                },
+                ...
+            ]
+         }
     prepare_send_spies:
       arg-info:
         on_body_id: The unique id of the planet that the spies are on and ship will be dispatched from.
@@ -947,6 +1643,35 @@ SpacePort:
         - on_body_id
         - to_body_id
       desc: 'Gathers the information needed to call the send_spies method.NOTE: Only a certain number of spies can fit in each type of ship. Spy Pods can hold 1. Spy Shuttles can hold 4. And ships with a cargo hold can hold 1 for every 350 units of hold size.'
+      returns: |-
+        {
+            "status" : { ... },
+            "ships" : [
+                {
+                    "id" : "id-goes-here",
+                    "name" : "CS4",
+                    "hold_size" : 1100,
+                    "speed" : 400,
+                    "type" : "cargo_ship",
+                    "estimated_travel_time" : 3600, # in seconds
+                    ...
+                },
+                ...
+            ],
+            "spies" : [
+                {
+                    "id" : "id-goes-here",
+                    "level" : 12,
+                    "name" : "Jack Bauer",
+                    "assigned_to" : {
+                       "body_id" : "id-goes-here",
+                       "name" : "Earth"
+                    },
+                    ...
+                },
+                ...
+            ]
+         }
     scuttle_ship:
       arg-info:
         building_id: The unique id for the space port.
@@ -967,6 +1692,16 @@ SpacePort:
         - ship_id
         - target
       desc: Sends a ship to a specified body or star. Use with get_ships_for.
+      returns: |-
+        { "body_name" : "Earth" }
+         
+         { "body_id" : "id-goes-here" }
+         
+         { "star_name" : "Sol" }
+         
+         { "star_id" : "id-goes-here" }
+         
+         { "x" : 4, "y" : -3 }
     send_spies:
       arg-info:
         on_body_id: The unique id of the planet that should send the ship and that has the spies.
@@ -981,11 +1716,44 @@ SpacePort:
         - ship_id
         - spy_ids
       desc: Sends one or more of spies to a planet using a selected ship. See also prepare_send_spies.
+      returns: |-
+        {
+             "ship" : {
+                "id" : "id-goes-here",
+                "name" : "CS4",
+                "hold_size" : 1100,
+                "speed" : 400,
+                "type" : "cargo_ship",
+                "date_arrives" : "01 31 2010 13:09:05 +0600",
+                ...
+             },
+            "spies_sent" : ["id-goes-here","id-goes-here","id-goes-here"],     # should be identical to "spy_ids"
+            "spies_not_sent" : ["id-goes-here","id-goes-here","id-goes-here"],  # should only contain something if you're cheating, or a spy dies/turns between RPC calls
+            "status" : { ... }
+         }
     view:
       arg-order:
         - session_id
         - building_id
       desc: This method is extended to include a list of docked ships.
+      returns: |-
+        {
+            "building" : { ... },
+            "status" : { ... },
+            "max_ships" : 8,
+            "docks_available" : 4,
+            "docked_ships" : {
+                "probe" : 3,
+                "cargo_ship" : 0,
+                "spy_pod" : 1,
+                "colony_ship" : 0,
+                "terraforming_platform_ship": 0,
+                "gas_giant_settlement_platform_ship" : 0,
+                "mining_platform_ship" : 0,
+                "smuggler_ship" : 1,
+                "space_station" : 0,
+            }
+         }
     view_all_ships:
       arg-info:
         building_id: The unique id of the space port.
@@ -996,6 +1764,37 @@ SpacePort:
         - building_id
         - page_number
       desc: Shows you all your ships whatever they are doing.
+      returns: |-
+        {
+            "ships" : [
+                {
+                    "id" : "id-goes-here",
+                    "name" : "CS3",
+                    "type_human" : "Cargo Ship",
+                    "type" : "cargo_ship",
+                    "task" : "Travelling",
+                    "speed" : "400",
+                    "stealth" : "0",
+                    "hold_size" : "1200",
+                    "date_started" : "01 31 2010 13:09:05 +0600",
+                    "date_available" : "02 01 2010 10:08:33 +0600",
+                    "date_arrives" : "02 01 2010 10:08:33 +0600",
+                    "from" : {
+                       "id" : "id-goes-here",
+                       "type" : "body",
+                       "name" : "Earth"
+                    },
+                    "to" : {
+                       "id" : "id-goes-here",
+                       "type" : "body",
+                       "name" : "Mars"
+                    }
+                },
+                ...
+            ],
+            "number_of_ships" : 13,
+            "status" : { ... }
+         }
     view_foreign_ships:
       arg-info:
         building_id: The unique id of the space port.
@@ -1006,6 +1805,7 @@ SpacePort:
         - building_id
         - page_number
       desc: "Shows you all the foreign ships that are incoming. However, the list is filtered by the stealth of the ship vs the level of the SpacePort. The formula is:If your SpacePort exceeds the Ship's Stealth, then you'll see it incoming. Otherwise you won't.The from block is only included if"
+      returns: 100 * SpacePort Level >= Ship Stealth
     view_ships_travelling:
       arg-info:
         building_id: The unique id of the space port.
@@ -1016,6 +1816,30 @@ SpacePort:
         - building_id
         - '[ page_number ]'
       desc: 'Returns a list of the ships that are travelling to or from this planet.NOTE: All inbound/outbound ships are shown regardless of which space port they will eventually land at.'
+      returns: |-
+        {
+            "status" : { ... },
+            "number_of_ships_travelling" : 30,
+            "ships_travelling" : [
+               {
+                   "id" : "id-goes-here",
+                   "type" : "probe",
+                    "type_human" : "Probe",
+                   "date_arrives" : "01 31 2010 13:09:05 +0600",
+                   "from" : {
+                       "id" : "id-goes-here",
+                       "type" : "body",
+                       "name" : "Earth",
+                   },
+                   "to" : {
+                       "id" : "id-goes-here",
+                       "type" : "star",
+                       "name" : "Sol",
+                   }
+               },
+               ...
+            ]
+         }
 Stockpile:
   api-url: /stockpile
 SubspaceSupplyDepot:
@@ -1029,6 +1853,17 @@ SubspaceSupplyDepot:
         - session_id
         - building_id
       desc: Trade seconds for build queue time.
+      returns: |-
+        {
+            "building" : {
+                "work" : {
+                    "seconds_remaining" : 99,
+                    "start" : "01 31 2010 13:09:05 +0600",
+                    "end" : "01 31 2010 13:09:05 +0600"
+                }
+            },
+            "status" : { ... }   
+         }
     transmit_energy:
       arg-info:
         building_id: A building id.
@@ -1037,6 +1872,17 @@ SubspaceSupplyDepot:
         - session_id
         - building_id
       desc: Convert 3600 seconds into 3600 energy.
+      returns: |-
+        {
+            "building" : {
+                "work" : {
+                    "seconds_remaining" : 99,
+                    "start" : "01 31 2010 13:09:05 +0600",
+                    "end" : "01 31 2010 13:09:05 +0600"
+                }
+            },
+            "status" : { ... }   
+         }
     transmit_food:
       arg-info:
         building_id: A building id.
@@ -1045,6 +1891,17 @@ SubspaceSupplyDepot:
         - session_id
         - building_id
       desc: Convert 3600 seconds into 3600 food.
+      returns: |-
+        {
+            "building" : {
+                "work" : {
+                    "seconds_remaining" : 99,
+                    "start" : "01 31 2010 13:09:05 +0600",
+                    "end" : "01 31 2010 13:09:05 +0600"
+                }
+            },
+            "status" : { ... }   
+         }
     transmit_ore:
       arg-info:
         building_id: A building id.
@@ -1053,6 +1910,17 @@ SubspaceSupplyDepot:
         - session_id
         - building_id
       desc: Convert 3600 seconds into 3600 ore.
+      returns: |-
+        {
+            "building" : {
+                "work" : {
+                    "seconds_remaining" : 99,
+                    "start" : "01 31 2010 13:09:05 +0600",
+                    "end" : "01 31 2010 13:09:05 +0600"
+                }
+            },
+            "status" : { ... }   
+         }
     transmit_water:
       arg-info:
         building_id: A building id.
@@ -1061,6 +1929,17 @@ SubspaceSupplyDepot:
         - session_id
         - building_id
       desc: Convert 3600 seconds into 3600 water.
+      returns: |-
+        {
+            "building" : {
+                "work" : {
+                    "seconds_remaining" : 99,
+                    "start" : "01 31 2010 13:09:05 +0600",
+                    "end" : "01 31 2010 13:09:05 +0600"
+                }
+            },
+            "status" : { ... }   
+         }
 Syrup:
   api-url: /syrup
 TempleOfTheDrajilites:
@@ -1076,6 +1955,17 @@ TempleOfTheDrajilites:
         - building_id
         - '[ star_id ]'
       desc: Provides the list of the planets around a given star.
+      returns: |-
+        {
+            "status" : { ... },
+            "planets" : [
+                {
+                    "id" : "id-goes-here",
+                    "name" : "Earth"
+                },
+                ...
+            ]
+         }
     view_planet:
       arg-info:
         building_id: The unique id of this building.
@@ -1086,6 +1976,21 @@ TempleOfTheDrajilites:
         - building_id
         - planet_id
       desc: Returns a surface map identical in format to the one returned as an Inbox attachment.
+      returns: |-
+        {
+            "status" : { ... },
+            "map" : {
+                "surface_image" : "surface-p12",
+                "buildings" : [
+                    {
+                        "x" : 1,
+                        "y" : -2,
+                        "image" : "rockyoutcrop1"
+                    },
+                    ...
+                ]
+            }
+         }
 TerraformingLab:
   api-url: /terraforminglab
 TerraformingPlatform:
@@ -1116,6 +2021,16 @@ ThemePark:
         - session_id
         - building_id
       desc: This method is changed from the default because it adds a themepark element to the output.Consult the work block to see how long the Theme Park will remain in operation.
+      returns: |-
+        {
+            "building" : { ... },
+            "status" : { ... },
+            "themepark" : {
+                "food_type_count" : 12,
+                "can_operate" : 0,
+                "reason" : [1011, "This Theme Park was started with 12 types of food so you need at least 12 types of food to continue it's operation."]
+            }
+         }
 Trade:
   api-url: /trade
   methods:
@@ -1133,6 +2048,7 @@ Trade:
         - captcha_guid
         - captcha_solution
       desc: Accept a trade offer from the list of available trades. See view_market.
+      returns: "{\n    \"status\" : { ... }\n }"
     add_to_market:
       arg-info:
         ask: An integer representing the amount of essentia you are asking for in this trade. Must be between 1 and 99.
@@ -1147,6 +2063,17 @@ Trade:
         - ask
         - options
       desc: 'Queues a trade for others to see. Returns:'
+      returns: |-
+        [
+            {
+               "type" : "bauxite",
+               "quantity" : 10000
+            },
+            {
+               "type" : "prisoner",
+               "prisoner_id" : "id-goes-here"
+            }
+         ]
     get_glyphs:
       arg-info:
         building_id: The unique id of this building.
@@ -1155,6 +2082,18 @@ Trade:
         - session_id
         - building_id
       desc: Returns a list of glyphs that may be traded. Used with the add_trade method.
+      returns: |-
+        {
+            "glyphs" : [
+                {
+                    "id" : "id-goes-here",
+                    "type" : "bauxite"
+                },
+                ...
+            ],
+            "cargo_space_used_each" : 100,
+            "status" : { ... }
+         }
     get_plans:
       arg-info:
         building_id: The unique id of this building.
@@ -1163,6 +2102,20 @@ Trade:
         - session_id
         - building_id
       desc: Returns a list of plans that may be traded. Used with the add_trade method.
+      returns: |-
+        {
+            "plans" : [
+                {
+                    "id" : "id-goes-here",
+                    "name" : "Intelligence Ministry",
+                    "level" : "7",
+                    "extra_build_level" : "0"        # some special plans will build a building from their level all the way to this number
+                },
+                ...
+            ],
+            "cargo_space_used_each" : 100,
+            "status" : { ... }
+         }
     get_prisoners:
       arg-info:
         building_id: The unique id of this building.
@@ -1171,6 +2124,19 @@ Trade:
         - session_id
         - building_id
       desc: Returns a list of prisoners that may be traded. Used with the add_trade method.
+      returns: |-
+        {
+            "prisoners" : [
+                {
+                    "id" : "id-goes-here",
+                    "name" : "Jack Bauer",
+                    "level" : "5"
+                },
+                ...
+            ],
+            "cargo_space_used_each" : 100,
+            "status" : { ... }
+         }
     get_ships:
       arg-info:
         building_id: The unique id of this building.
@@ -1179,6 +2145,21 @@ Trade:
         - session_id
         - building_id
       desc: Returns a list of ships that may be traded. Used with the add_trade method.
+      returns: |-
+        {
+            "ships" : [
+                {
+                    "id" : "id-goes-here",
+                    "name" : "Enterprise",
+                    "type" : "probe",
+                    "hold_size" : 0,
+                    "speed" : 3900
+                },
+                ...
+            ],
+            "cargo_space_used_each" : 10000,
+            "status" : { ... }
+         }
     get_stored_resources:
       arg-info:
         building_id: The unique id of this building.
@@ -1187,6 +2168,18 @@ Trade:
         - session_id
         - building_id
       desc: Returns a list of the resources you have stored to make it easier to identify what you want to trade.
+      returns: |-
+        {
+            "status" : { ... },
+            "cargo_space_used_each" : 1,
+            "resources" : {
+                    "water" : 14000,
+                    "waste" : 393,
+                    "bauxite" : 47,
+                    "cheese" : 1193,
+                    ...
+            }
+         }
     get_trade_ships:
       arg-info:
         building_id: The unique id of the trade ministry.
@@ -1197,6 +2190,20 @@ Trade:
         - building_id
         - '[ target_body_id ]'
       desc: Returns a list of the ships that could be used to do a trade.
+      returns: |-
+        {
+            "status" : { ... },
+            "ships" : [
+                {
+                   "id" : "id-goes-here",
+                   "type" : "cargo_ship",
+                   "name" : "SS Minnow",
+                   "estimated_travel_time" : 3600, # in seconds, one way
+                   ...
+                },
+                ...
+            ]
+         }
     push_items:
       arg-info:
         building_id: The unique id of this building.
@@ -1211,6 +2218,17 @@ Trade:
         - items
         - options
       desc: Allows you to push items between your colonies.
+      returns: |-
+        [
+            {
+               "type" : "bauxite",
+               "quantity" : 10000
+            },
+            {
+               "type" : "prisoner",
+               "prisoner_id" : "id-goes-here"
+            }
+         ]
     report_abuse:
       arg-info:
         building_id: The unique id of this building.
@@ -1221,6 +2239,7 @@ Trade:
         - building_id
         - trade_id
       desc: Report a trade that you think is abusing the trade system.
+      returns: "{\n    \"status\" : { ... }\n }"
     view_market:
       arg-info:
         building_id: The unique id of this building.
@@ -1233,6 +2252,36 @@ Trade:
         - '[ page_number'
         - 'filter ]'
       desc: Displays a list of trades available at the present time.
+      returns: |-
+        {
+            "trades" : [
+                {
+                    "date_offered" : "01 31 2010 13:09:05 +0600",
+                    "id" : "id-goes-here",
+                    "ask" : 25,     # essentia
+                    "offer" : [
+                        "Level 21 spy named Jack Bauer (prisoner)",
+                        "4,000 bauxite",
+                        "gold glyph"
+                    ],
+                    "body" : {
+                        "id" : "id-goes-here"         # use with get_trade_ships() to determine travel time
+                    },
+                    "empire" : {
+                        "id" : "id-goes-here",
+                        "name" : "Earthlings"
+                    }
+                },
+                ...
+            ],
+            "trade_count" : 1047,
+            "page_number" : 1,
+            "captcha" : {
+                "guid" : "id-goes-here",
+                "url" : "https://url.to.image.goes.here/captcha.png"
+            },
+            "status" : { ... }
+         }
     view_my_market:
       arg-info:
         building_id: The unique id of this building.
@@ -1243,6 +2292,25 @@ Trade:
         - building_id
         - '[ page_number ]'
       desc: Displays a list of trades the current user has posted.
+      returns: |-
+        {
+            "trades" : [
+                {
+                    "date_offered" : "01 31 2010 13:09:05 +0600",
+                    "id" : "id-goes-here",
+                    "ask" : 25,     # essentia
+                    "offer" : [
+                        "Level 21 spy named Jack Bauer (prisoner)",
+                        "4,000 bauxite",
+                        "gold glyph"
+                    ]
+                },
+                ...
+            ],
+            "trade_count" : 17,
+            "page_number" : 1,
+            "status" : { ... }
+         }
     withdraw_from_market:
       arg-info:
         building_id: The unique id of this building.
@@ -1253,6 +2321,7 @@ Trade:
         - building_id
         - trade_id
       desc: Remove a trade that you have offered and collect the items up for trade.
+      returns: "{\n    \"status\" : { ... }\n }"
 Transporter:
   api-url: /transporter
   methods:
@@ -1270,6 +2339,7 @@ Transporter:
         - captcha_guid
         - captcha_solution
       desc: 'Accept a trade offer from the list of available trades. In addition to paying whatever the asking price is, the subspace transporter uses 1 essentia to complete the transaction. See view_market.'
+      returns: "{\n    \"status\" : { ... }\n }"
     add_to_market:
       arg-info:
         ask: An integer which represents how much essentia you are asking for in this trade. Must be between 1 and 99.
@@ -1282,6 +2352,17 @@ Transporter:
         - offer
         - ask
       desc: 'Queues a trade for others to see. In addition to anything offered in your trade, setting up the trade will cost you 1 essentia. Returns:'
+      returns: |-
+        [
+            {
+               "type" : "bauxite",
+               "quantity" : 10000
+            },
+            {
+               "type" : "prisoner",
+               "prisoner_id" : "id-goes-here"
+            }
+         ]
     get_glyphs:
       arg-info:
         building_id: The unique id of this building.
@@ -1290,6 +2371,18 @@ Transporter:
         - session_id
         - building_id
       desc: Returns a list of glyphs that may be traded. Used with the add_trade method.
+      returns: |-
+        {
+            "glyphs" : [
+                {
+                    "id" : "id-goes-here",
+                    "type" : "bauxite"
+                },
+                ...
+            ],
+            "cargo_space_used_each" : 100,
+            "status" : { ... }
+         }
     get_plans:
       arg-info:
         building_id: The unique id of this building.
@@ -1298,6 +2391,20 @@ Transporter:
         - session_id
         - building_id
       desc: Returns a list of plans that may be traded. Used with the add_trade method.
+      returns: |-
+        {
+            "plans" : [
+                {
+                    "id" : "id-goes-here",
+                    "name" : "Intelligence Ministry",
+                    "level" : "7",
+                    "extra_build_level" : "0"        # some special plans will build a building from their level all the way to this number
+                },
+                ...
+            ],
+            "cargo_space_used_each" : 100,
+            "status" : { ... }
+         }
     get_prisoners:
       arg-info:
         building_id: The unique id of this building.
@@ -1306,6 +2413,19 @@ Transporter:
         - session_id
         - building_id
       desc: Returns a list of prisoners that may be traded. Used with the add_trade method.
+      returns: |-
+        {
+            "prisoners" : [
+                {
+                    "id" : "id-goes-here",
+                    "name" : "Jack Bauer",
+                    "level" : "5"
+                },
+                ...
+            ],
+            "cargo_space_used_each" : 100,
+            "status" : { ... }
+         }
     get_ships:
       arg-info:
         building_id: The unique id of this building.
@@ -1314,6 +2434,21 @@ Transporter:
         - session_id
         - building_id
       desc: Returns a list of ships that may be traded. Used with the add_trade method.
+      returns: |-
+        {
+            "ships" : [
+                {
+                    "id" : "id-goes-here",
+                    "name" : "Enterprise",
+                    "type" : "probe",
+                    "hold_size" : 0,
+                    "speed" : 3900
+                },
+                ...
+            ],
+            "cargo_space_used_each" : 10000,
+            "status" : { ... }
+         }
     get_stored_resources:
       arg-info:
         building_id: The unique id of this building.
@@ -1322,6 +2457,18 @@ Transporter:
         - session_id
         - building_id
       desc: Returns a list of the resources you have stored to make it easier to identify what you want to trade.
+      returns: |-
+        {
+            "status" : { ... },
+            "cargo_space_used_each" : 100,
+            "resources" : {
+                    "water" : 14000,
+                    "waste" : 393,
+                    "bauxite" : 47,
+                    "cheese" : 1193,
+                    ...
+            }
+         }
     push_items:
       arg-info:
         building_id: The unique id of this building.
@@ -1333,6 +2480,17 @@ Transporter:
         - building_id
         - target_id
         - items
+      returns: |-
+        [
+            {
+               "type" : "bauxite",
+               "quantity" : 10000
+            },
+            {
+               "type" : "prisoner",
+               "prisoner_id" : "id-goes-here"
+            }
+         ]
     report_abuse:
       arg-info:
         building_id: The unique id of this building.
@@ -1343,6 +2501,7 @@ Transporter:
         - building_id
         - trade_id
       desc: Report a trade that you think is abusing the trade system.
+      returns: "{\n    \"status\" : { ... }\n }"
     trade_one_for_one:
       arg-info:
         building_id: The unique id of this building.
@@ -1357,10 +2516,19 @@ Transporter:
         - want
         - quantity
       desc: Lacuna Expanse Corp will do one for one trades of any resource in exchange for 3 essentia.
+      returns: "{\n    \"status\" : { ... }\n }"
     view:
       arg-order:
         - session_id
         - building_id
+      returns: |-
+        {
+           "building" : { ... },
+           "status" : { ... },
+           "transport" : {
+             "max" : 2500
+           }
+         }
     view_market:
       arg-info:
         building_id: The unique id of this building.
@@ -1373,6 +2541,33 @@ Transporter:
         - '[ page_number'
         - 'filter ]'
       desc: Displays a list of trades available at the present time.
+      returns: |-
+        {
+            "trades" : [
+                {
+                    "date_offered" : "01 31 2010 13:09:05 +0600",
+                    "id" : "id-goes-here",
+                    "ask" : 25,     # essentia
+                    "offer" : [
+                        "Level 21 spy named Jack Bauer (prisoner)",
+                        "4,000 bauxite",
+                        "gold glyph"
+                    ],
+                    "empire" : {
+                        "id" : "id-goes-here",
+                        "name" : "Earthlings"
+                    }
+                },
+                ...
+            ],
+            "trade_count" : 1047,
+            "page_number" : 1,
+            "captcha" : {
+                "guid" : "id-goes-here",
+                "url" : "https://url.to.image.goes.here/captcha.png"
+            },
+            "status" : { ... }
+         }
     view_my_market:
       arg-info:
         building_id: The unique id of this building.
@@ -1383,6 +2578,25 @@ Transporter:
         - building_id
         - '[ page_number ]'
       desc: Displays a list of trades the current user has posted.
+      returns: |-
+        {
+            "trades" : [
+                {
+                    "date_offered" : "01 31 2010 13:09:05 +0600",
+                    "id" : "id-goes-here",
+                    "ask" : 25,     # essentia
+                    "offer" : [
+                        "Level 21 spy named Jack Bauer (prisoner)",
+                        "4,000 bauxite",
+                        "gold glyph"
+                    ]
+                },
+                ...
+            ],
+            "trade_count" : 17,
+            "page_number" : 1,
+            "status" : { ... }
+         }
     withdraw_from_market:
       arg-info:
         building_id: The unique id of this building.
@@ -1393,6 +2607,7 @@ Transporter:
         - building_id
         - trade_id
       desc: Remove a trade that you have offered and collect the items up for trade.
+      returns: "{\n    \"status\" : { ... }\n }"
 University:
   api-url: /university
 Volcano:
@@ -1438,6 +2653,20 @@ WasteRecycling:
       arg-order:
         - session_id
         - building_id
+      returns: |-
+        {
+            "status" : { ... },
+            "building" : { ... },
+            "recycle" : {
+                "seconds_remaining" : 0,
+                "can" : 1,
+                "seconds_per_resource" : "2.138", # to precalculate the time recycling will take
+                "max_recycle" : 12000,
+                "water" : 0,
+                "energy" : 0,
+                "ore" : 0
+            }
+         }
 WasteSequestration:
   api-url: /wastesequestration
 WasteTreatment:
@@ -1455,6 +2684,7 @@ WaterProduction:
         - building_id
         - amount
       desc: Converts water into waste.
+      returns: "{\n    \"status\" : { ... }\n }"
 WaterPurification:
   api-url: /waterpurification
 WaterReclamation:
@@ -1476,6 +2706,18 @@ common:
       - x
       - y
     desc: "Adds this building to the planet's build queue. Returns:"
+    returns: |-
+      {
+          "building" : {
+              "id" : "id-goes-here",
+              "pending_build" : {
+                  "seconds_remaining" : 430,
+                  "start" : "01 31 2010 13:09:05 +0600",
+                  "end" : "01 31 2010 18:09:05 +0600"
+              },
+              "level" : 0,
+          "status" : { ... }
+       }
     throws:
       - 1002
       - 1010
@@ -1489,6 +2731,7 @@ common:
       - session_id
       - building_id
     desc: "Allows you to instantly destroy a building.SPECIAL EXCEPTION: If the user downgrades a level 1 building, then the Client needs to eliminate that object from the user's view. This method will return the view of the level 1 building, because that's it's intended course of action, but the client needs to handle this gracefully for the user.The unique id of the building."
+    returns: "{\n    \"status\" : { ... }\n }"
     throws:
       - 1012
   downgrade:
@@ -1510,6 +2753,50 @@ common:
       - building_id
       - level
     desc: 'This method is for power users and script writers. It will return the projected stats of a building at a certain level. The building must already exist on the planet, because where it exists and who it is owned by affects the stats of the building. It returns'
+    returns: |-
+      {
+          "building" : {
+              "id" : "id-goes-here",
+              "name" : "Planetary Command",
+              "image" : "command6",
+              "level" : 6,
+              "food_hour" : 500,
+              "food_capacity" : 500,
+              "energy_hour" : -44,
+              "energy_capacity" : 500,
+              "ore_hour" : -310,
+              "ore_capacity" : 500,
+              "water_hour" : -100,
+              "water_capacity" : 500,
+              "waste_hour" : 33,
+              "waste_capacity" : 500,
+              "happiness_hour" : 0,
+              "upgrade" : {
+                  "cost" : {
+                      "food" : 500,
+                      "water" : 500,
+                      "energy" : 500,
+                      "waste" : 500,
+                      "ore" : 1000,
+                      "time" : 1200,
+                  },
+                  "production" : {
+                      "food_hour" : 1500,
+                      "food_capacity" : 500,
+                      "energy_hour" : -144,
+                      "energy_capacity" : 500,
+                      "ore_hour" : -1310,
+                      "ore_capacity" : 500,
+                      "water_hour" : -1100,
+                      "water_capacity" : 500,
+                      "waste_hour" : 133,
+                      "waste_capacity" : 500,
+                      "happiness_hour" : 0,
+                  },
+                  "image" : "command7"
+          },
+          "status" : { ... }
+       }
     throws:
       - 1009
   repair:
@@ -1528,6 +2815,18 @@ common:
       - session_id
       - building_id
     desc: 'Adds the requested upgrade to the build queue. Returns:'
+    returns: |-
+      {
+          "building" : {
+              "id" : "id-goes-here",
+              "pending_build" : {
+                  "seconds_remaining" : 430,
+                  "start" : "01 31 2010 13:09:05 +0600",
+                  "end" : "01 31 2010 18:09:05 +0600"
+              },
+              "level" : 1,
+          "status" : { ... }
+       }
     throws:
       - 1002
       - 1010
@@ -1542,6 +2841,71 @@ common:
       - session_id
       - building_id
     desc: Retrieves the properties of the building.
+    returns: |-
+      {
+          "building" : {
+              "id" : "id-goes-here",
+              "name" : "Planetary Command",
+              "image" : "command6",
+              "level" : 6,
+              "x" : 0,
+              "y", 0,
+              "food_hour" : 500,
+              "food_capacity" : 500,
+              "energy_hour" : -44,
+              "energy_capacity" : 500,
+              "ore_hour" : -310,
+              "ore_capacity" : 500,
+              "water_hour" : -100,
+              "water_capacity" : 500,
+              "waste_hour" : 33,
+              "waste_capacity" : 500,
+              "happiness_hour" : 0,
+              "efficiency" : 100,
+              "repair_costs" : {
+                  "food" : 0,
+                  "water" : 0,
+                  "energy" : 0,
+                  "ore" : 0
+              },
+              "pending_build" : {                            # only included when building is building/upgrading
+                  "seconds_remaining" : 430,
+                  "start" : "01 31 2010 13:09:05 +0600",
+                  "end" : "01 31 2010 18:09:05 +0600"
+              },
+              "work" : {                                     # only included when building is working (Parks, Waste Recycling, etc)
+                  "seconds_remaining" : 49,
+                  "start" : "01 31 2010 13:09:05 +0600",
+                  "end" : "01 31 2010 18:09:05 +0600"
+              },
+              "upgrade" : {
+                  "can" : 0,
+                  "reason" : [1011, "Note enough resources.", "food"],
+                  "cost" : {
+                      "food" : 500,
+                      "water" : 500,
+                      "energy" : 500,
+                      "waste" : 500,
+                      "ore" : 1000,
+                      "time" : 1200,
+                  },
+                  "production" : {
+                      "food_hour" : 1500,
+                      "food_capacity" : 500,
+                      "energy_hour" : -144,
+                      "energy_capacity" : 500,
+                      "ore_hour" : -1310,
+                      "ore_capacity" : 500,
+                      "water_hour" : -1100,
+                      "water_capacity" : 500,
+                      "waste_hour" : 133,
+                      "waste_capacity" : 500,
+                      "happiness_hour" : 0,
+                  },
+                  "image" : "command7"
+          },
+          "status" : { ... }
+       }
     throws:
       - 1002
       - 1010
