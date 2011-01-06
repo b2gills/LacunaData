@@ -160,6 +160,13 @@ sub _get_api_method_info{
           }
         }
       }
+      when( 'pre' ){
+        if( $method ){
+          $text =~ s/^\s*//;
+          $text =~ s/\s*$//;
+          $method{$method}{returns} = $text;
+        }
+      }
       when( 'h3' ){
         $arg = $text;
       }
