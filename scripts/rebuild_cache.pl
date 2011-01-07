@@ -18,7 +18,10 @@ while( readdir $dh ){
   next unless s/\.pm$//;
   my $module =  "LacunaData::Load::$_";
   say STDERR 'Loading ', $module;
-  eval "require $module" &&
-  $module->Cache;
+  if( eval "require $module" ){
+    if( $module->can('Cache')){
+      $module->Cache;
+    }
+  }
   print STDERR $@ if $@;
 }
