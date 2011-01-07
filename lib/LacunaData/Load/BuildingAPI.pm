@@ -19,6 +19,8 @@ use LacunaData::Sources (
 );
 use LacunaData::Load::API::HTML;
 
+use namespace::clean;
+
 sub Load{
   if( -e source_file ){
     return thaw( get_source_from_file );
@@ -26,6 +28,8 @@ sub Load{
     return _load();
   }
 }
+
+no namespace::clean;
 
 sub _load{
   my $listing = _get_api_listing();
@@ -56,6 +60,8 @@ sub _load{
   return \%building_data;
 }
 
+use namespace::clean;
+
 sub Cache{
   my $data = _load();
 
@@ -71,6 +77,8 @@ sub base_url{
   $base_url =~ s(:// [^/]+ \K .*){}x;
   return $base_url;
 }
+
+no namespace::clean;
 
 sub _get_api_listing{
   my %urls;
