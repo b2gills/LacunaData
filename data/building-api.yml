@@ -17,7 +17,7 @@ Archaeology:
         - session_id
         - building_id
         - ids
-      desc: 'Turns glyphs into rare ancient items. Returns:'
+      desc: Turns glyphs into rare ancient items.
       returns: |-
         {
             "status" : { ... },
@@ -149,7 +149,7 @@ Development:
       arg-order:
         - session_id
         - building_id
-      desc: 'Allows a player to instantly finish any buildings in their build queue. The cost is returned by the view method. Returns:'
+      desc: Allows a player to instantly finish any buildings in their build queue. The cost is returned by the view method.
       returns: |-
         {
             "status" : { ... },
@@ -728,7 +728,7 @@ Intelligence:
         - building_id
         - spy_id
         - name
-      desc: 'Set the name of the spy. Returns:'
+      desc: Set the name of the spy.
       returns: "{\n    \"status\" : { ... }\n }"
       throws:
         - 1002
@@ -2062,7 +2062,7 @@ Trade:
         - offer
         - ask
         - options
-      desc: 'Queues a trade for others to see. Returns:'
+      desc: Queues a trade for others to see.
       returns: |-
         [
             {
@@ -2351,7 +2351,7 @@ Transporter:
         - building_id
         - offer
         - ask
-      desc: 'Queues a trade for others to see. In addition to anything offered in your trade, setting up the trade will cost you 1 essentia. Returns:'
+      desc: 'Queues a trade for others to see. In addition to anything offered in your trade, setting up the trade will cost you 1 essentia.'
       returns: |-
         [
             {
@@ -2705,7 +2705,7 @@ common:
       - body_id
       - x
       - y
-    desc: "Adds this building to the planet's build queue. Returns:"
+    desc: Adds this building to the planet's build queue.
     returns: |-
       {
           "building" : {
@@ -2814,7 +2814,7 @@ common:
     arg-order:
       - session_id
       - building_id
-    desc: 'Adds the requested upgrade to the build queue. Returns:'
+    desc: Adds the requested upgrade to the build queue.
     returns: |-
       {
           "building" : {

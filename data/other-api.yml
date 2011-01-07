@@ -424,7 +424,7 @@ Empire:
         - empire_id
         - api_key
         - invite_code
-      desc: "Set up an empire on it's new home world. Once this method is called, the species can no longer be modified. Returns:The welcome_message_id is a message id for a message in the inbox, that starts the tutorial. This is provided so the user can be prompted to read that message right away."
+      desc: "Set up an empire on it's new home world. Once this method is called, the species can no longer be modified.The welcome_message_id is a message id for a message in the inbox, that starts the tutorial. This is provided so the user can be prompted to read that message right away."
       returns: |-
         {
             "session_id" : "id-goes-here",
@@ -761,7 +761,7 @@ Inbox:
       arg-order:
         - session_id
         - message_ids
-      desc: "Archives a list of messages. Returns:NOTE: You cannot archive sent messages. You'll get a failure if the message is either already archived, or it's a message that cannot be archived, like a message in your sent folder."
+      desc: "Archives a list of messages.NOTE: You cannot archive sent messages. You'll get a failure if the message is either already archived, or it's a message that cannot be archived, like a message in your sent folder."
       returns: |-
         {
             "success" : ["id-goes-here","id-goes-here"],
@@ -1143,7 +1143,7 @@ Stats:
         - session_id
         - sort_by
         - alliance_name
-      desc: 'Search for a particular alliance in the alliance_rank(). Returns:'
+      desc: Search for a particular alliance in the alliance_rank().
       returns: |-
         {
             "status" : { ... },
@@ -1165,7 +1165,7 @@ Stats:
         - session_id
         - sort_by
         - empire_name
-      desc: 'Search for a particular empire in the empire_rank(). Returns:'
+      desc: Search for a particular empire in the empire_rank().
       returns: |-
         {
             "status" : { ... },
