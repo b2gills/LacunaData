@@ -197,7 +197,7 @@ Embassy:
         - session_id
         - building_id
         - invite_id
-        - '[ message ]'
+        - message
       desc: Accept an invitation. Returns the same output as get_alliance_status.
     assign_alliance_leader:
       arg-info:
@@ -270,7 +270,7 @@ Embassy:
         - session_id
         - building_id
         - empire_id
-        - '[ message ]'
+        - message
       desc: Forcibly removes a member from an alliance. Returns the same thing as get_alliance_status. Can only be called by the alliance leader.
     get_alliance_status:
       arg-info:
@@ -348,7 +348,7 @@ Embassy:
       arg-order:
         - session_id
         - building_id
-        - '[ message ]'
+        - message
       desc: A member of an alliance revokes their own membership.
       returns: "{\n    \"status\" : { ... }\n }"
     reject_invite:
@@ -361,7 +361,7 @@ Embassy:
         - session_id
         - building_id
         - invite_id
-        - '[ message ]'
+        - message
       desc: Delete an invitation.
       returns: "{\n    \"status\" : { ... }\n }"
     send_invite:
@@ -374,7 +374,7 @@ Embassy:
         - session_id
         - building_id
         - invitee_id
-        - '[ message ]'
+        - message
       desc: Can only be called by alliance leader. Invite an empire to an alliance.
       returns: "{\n    \"status\" : { ... }\n }"
     update_alliance:
@@ -434,7 +434,7 @@ Embassy:
         - session_id
         - building_id
         - invite_id
-        - '[ message ]'
+        - message
       desc: Can only be called by alliance leader. Delete an invitation.
       returns: "{\n    \"status\" : { ... }\n }"
 EnergyReserve:
@@ -752,7 +752,7 @@ Intelligence:
       arg-order:
         - session_id
         - building_id
-        - '[ quantity ]'
+        - quantity
       desc: Allows you to train more spies.The only reason not_trained might be over 0 is if you specify training more spies than you have resources to spend.
       returns: |-
         {
@@ -793,7 +793,7 @@ Intelligence:
       arg-order:
         - session_id
         - building_id
-        - '[ page_number ]'
+        - page_number
       desc: 'Returns the list of spies you have on your roster.Take a look at the assign_spy method below for assignment descriptions.NOTE: If a spy is already recovering from a particular assignment, then possible_assignments will return only that one assignment and the recovery time will be however much recovery time is remaining.'
       returns: |-
         {
@@ -1146,7 +1146,7 @@ Observatory:
       arg-order:
         - session_id
         - building_id
-        - '[ page_number ]'
+        - page_number
       desc: Returns a list of the stars that have been probed by this planet.
       returns: |-
         {
@@ -1402,7 +1402,7 @@ Security:
       arg-order:
         - session_id
         - building_id
-        - '[ page_number ]'
+        - page_number
       desc: 'Displays a list of the spies that are on your planet, and have a level lower than your security ministry.'
       returns: |-
         {
@@ -1424,7 +1424,7 @@ Security:
       arg-order:
         - session_id
         - building_id
-        - '[ page_number ]'
+        - page_number
       desc: Displays a list of the spies that have been captured.
       returns: |-
         {
@@ -1463,7 +1463,7 @@ Shipyard:
       arg-order:
         - session_id
         - building_id
-        - '[ tag ]'
+        - tag
       desc: "Returns a list of buildable ships and their costs, and if they're not buildable, gives a reason why not in the form of an exception."
       returns: |-
         {
@@ -1510,7 +1510,7 @@ Shipyard:
       arg-order:
         - session_id
         - building_id
-        - '[page_number]'
+        - page_number
       desc: Retrieves what is already being built at this shipyard.
       returns: |-
         {
@@ -1814,7 +1814,7 @@ SpacePort:
       arg-order:
         - session_id
         - building_id
-        - '[ page_number ]'
+        - page_number
       desc: 'Returns a list of the ships that are travelling to or from this planet.NOTE: All inbound/outbound ships are shown regardless of which space port they will eventually land at.'
       returns: |-
         {
@@ -1953,7 +1953,7 @@ TempleOfTheDrajilites:
       arg-order:
         - session_id
         - building_id
-        - '[ star_id ]'
+        - star_id
       desc: Provides the list of the planets around a given star.
       returns: |-
         {
@@ -2188,7 +2188,7 @@ Trade:
       arg-order:
         - session_id
         - building_id
-        - '[ target_body_id ]'
+        - target_body_id
       desc: Returns a list of the ships that could be used to do a trade.
       returns: |-
         {
@@ -2249,8 +2249,8 @@ Trade:
       arg-order:
         - session_id
         - building_id
-        - '[ page_number'
-        - 'filter ]'
+        - page_number
+        - filter
       desc: Displays a list of trades available at the present time.
       returns: |-
         {
@@ -2290,7 +2290,7 @@ Trade:
       arg-order:
         - session_id
         - building_id
-        - '[ page_number ]'
+        - page_number
       desc: Displays a list of trades the current user has posted.
       returns: |-
         {
@@ -2538,8 +2538,8 @@ Transporter:
       arg-order:
         - session_id
         - building_id
-        - '[ page_number'
-        - 'filter ]'
+        - page_number
+        - filter
       desc: Displays a list of trades available at the present time.
       returns: |-
         {
@@ -2576,7 +2576,7 @@ Transporter:
       arg-order:
         - session_id
         - building_id
-        - '[ page_number ]'
+        - page_number
       desc: Displays a list of trades the current user has posted.
       returns: |-
         {
