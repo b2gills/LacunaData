@@ -17,6 +17,7 @@ use LacunaData::Sources (
     get_source_from_file
   )
 );
+use LacunaData::Load::API::HTML;
 
 sub Load{
   if( -e source_file ){
@@ -30,7 +31,7 @@ sub _load{
   my $listing = _get_api_listing();
   my %building_data;
 
-  my $common = _get_common_api_info();
+  my $common = LacunaData::Load::API::HTML->new(source_url)->method_data;
   
   use List::Util 'max';
   my $length = max map { length } keys %$listing;
@@ -38,7 +39,16 @@ sub _load{
   while( my($building,$url) = each %$listing ){
     my $pad = ' ' x ($length - length $building);
     print STDERR 'processing ', $building, $pad, "\r";
-    $building_data{$building} = _get_api_info($url);
+    
+    my $parser = LacunaData::Load::API::HTML->new($url);
+    my($methods,$api_url,$desc) = $parser->method_data;
+    
+    my %data;
+    $data{methods} = $methods if %$methods;
+    $data{'api-url'} = $api_url if $api_url;
+    $data{description} = $desc if $desc;
+    
+    $building_data{$building} = \%data;
   }
   print STDERR ' ' x $length, "\r";
 
@@ -77,103 +87,5 @@ sub _get_api_listing{
   }
 
   return \%urls;
-}
-
-sub _get_common_api_info{
-  my $tree = HTML::TreeBuilder->new();
-  $tree->parse_content( get_source_from_url );
-
-  my($method_head) = grep {
-    $_->as_text eq 'Building Methods'
-  } $tree->find('h1');
-
-  return _get_api_method_info($method_head->right);
-}
-
-sub _get_api_info{
-  my($url) = @_;
-
-  my %data;
-
-  my $tree = HTML::TreeBuilder->new();
-  require LWP::Simple;
-  my $content = LWP::Simple::get($url);
-  die unless $content;
-  $tree->parse_content($content);
-
-  $data{'api-url'} = $tree->find('code')->as_text;
-
-  my($head) = grep {
-    $_->as_text =~ /\bmethods \s* $/xi
-  } $tree->find('h1');
-  my(undef,@tail) = $head->right;
-  pop @tail;
-
-  while( @tail ){
-    last unless $tail[0]->tag eq 'p';
-
-    my $elem = shift @tail;
-    my $text = $elem->as_text;
-
-    unless( $text =~ /all buildings share./i ){
-      $data{description} = $text;
-    }
-  }
-
-  my $methods = _get_api_method_info(@tail);
-  $data{methods} = $methods if $methods;
-
-  return \%data;
-}
-
-sub _get_api_method_info{
-  my @tail = @_;
-
-  my %method;
-
-  my $method;
-  my $arg;
-  for my $elem ( @tail ){
-    my $tag  = $elem->tag;
-    my $text = $elem->as_text;
-    given( $tag ){
-      when( 'h1' ){ last }
-      when( 'h2' ){
-        my($name,$args) = $text =~ /(\w+) \s* \(\s* (.*?) \s*\)/x;
-        my @args = split ', ', $args;
-
-        $method{$name}{'arg-order'} = \@args;
-
-        $method = $name;
-        undef $arg;
-      }
-      when( 'p' ){
-        if( $arg and $method ){
-          $method{$method}{'arg-info'}{$arg} = $text;
-        }elsif( $method ){
-          if( $text =~ /^throw\D*(.*)/i ){
-            my @throws = sort {$a<=>$b} split /\D+/, $1;
-            $method{$method}{throws} = \@throws;
-          }else{
-            no warnings 'uninitialized';
-            $method{$method}{desc} .= $text;
-          }
-        }
-      }
-      when( 'pre' ){
-        if( $method ){
-          $text =~ s/^\s*//;
-          $text =~ s/\s*$//;
-          $method{$method}{returns} = $text;
-        }
-      }
-      when( 'h3' ){
-        $arg = $text;
-      }
-    }
-  }
-
-  return \%method if %method;
-  return;
 }
 1;
