@@ -13,3 +13,6 @@ glyph-data:
 building-api:
   file: ../../data/building-api.yml
   url: http://us1.lacunaexpanse.com/api/Buildings.html
+other-api:
+  file: ../../data/other-api.yml
+  url: http://us1.lacunaexpanse.com
