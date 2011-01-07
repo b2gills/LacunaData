@@ -109,9 +109,14 @@ sub _get_api_method_info{
       when( 'h1' ){ last }
       when( 'h2' ){
         my($name,$args) = $text =~ /(\w+) \s* \(\s* (.*?) \s*\)/x;
-        my @args = split ', ', $args;
+        my @args = map{
+          $a = "$_";
+          $a =~ s/^ \s* \[ \s*  //x;
+          $a =~ s/  \s* \] \s* $//x;
+          $a
+        } split ', ', $args;
 
-        $method{$name}{'arg-order'} = \@args;
+        $method{$name}{'arg-order'} = \@args if @args;
 
         $method = $name;
         undef $arg;
@@ -131,8 +136,8 @@ sub _get_api_method_info{
       }
       when( 'pre' ){
         if( $method ){
-          $text =~ s/^\s*//;
-          $text =~ s/\s*$//;
+          $text =~ s/^\s* ( [{\[0-9] )     /$1/x;
+          $text =~ s/     ( [}\]0-9] ) \s*$/$1/x;
           $method{$method}{returns} = $text;
         }
       }
