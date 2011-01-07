@@ -129,6 +129,7 @@ sub _get_api_method_info{
             my @throws = sort {$a<=>$b} split /\D+/, $1;
             $method{$method}{throws} = \@throws;
           }else{
+            $text =~ s/\s* (?: It\s*)? Returns:? \s* $//ix;
             no warnings 'uninitialized';
             $method{$method}{desc} .= $text;
           }
