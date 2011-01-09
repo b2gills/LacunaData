@@ -1,12 +1,5 @@
 ---
-Algae:
-  api-url: /algae
-AlgaePond:
-  api-url: /algaepond
-Apple:
-  api-url: /apple
 Archaeology:
-  api-url: /archaeology
   methods:
     assemble_glyphs:
       arg-info:
@@ -78,20 +71,7 @@ Archaeology:
       desc: Will spend 2 essentia to complete the current glyph search immediately. Returns view.
       throws:
         - 1011
-AtmosphericEvaporator:
-  api-url: /atmosphericevaporator
-Bean:
-  api-url: /bean
-Beeldeban:
-  api-url: /beeldeban
-BlackHoleGenerator:
-  api-url: /blackholegenerator
-Bread:
-  api-url: /bread
-Burger:
-  api-url: /burger
 Capitol:
-  api-url: /capitol
   methods:
     rename_empire:
       arg-info:
@@ -114,32 +94,7 @@ Capitol:
             "status" : { ... },
             "rename_empire_cost" : 29,
          }
-Cheese:
-  api-url: /cheese
-Chip:
-  api-url: /chip
-Cider:
-  api-url: /cider
-CitadelOfKnope:
-  api-url: /citadelofknope
-CloakingLab:
-  api-url: /cloakinglab
-Corn:
-  api-url: /corn
-CornMeal:
-  api-url: /cornmeal
-CrashedShipSite:
-  api-url: /crashedshipsite
-Crater:
-  api-url: /crater
-Dairy:
-  api-url: /dairy
-Denton:
-  api-url: /denton
-DeployedBleeder:
-  api-url: /deployedbleeder
 Development:
-  api-url: /development
   description: 'The higher the development ministry, the more builds you can put in your build queue.'
   methods:
     subsidize_build_queue:
@@ -185,7 +140,6 @@ Development:
             "subsidy_cost" : 8 # the essentia cost to subsidize the build queue
          }
 Embassy:
-  api-url: /embassy
   methods:
     accept_invite:
       arg-info:
@@ -438,7 +392,6 @@ Embassy:
       desc: Can only be called by alliance leader. Delete an invitation.
       returns: "{\n    \"status\" : { ... }\n }"
 EnergyReserve:
-  api-url: /energyreserve
   methods:
     dump:
       arg-info:
@@ -452,7 +405,6 @@ EnergyReserve:
       desc: Converts energy into waste.
       returns: "{\n    \"status\" : { ... }\n }"
 Entertainment:
-  api-url: /entertainment
   methods:
     duck_quack:
       arg-info:
@@ -491,14 +443,7 @@ Entertainment:
             "status" : { ... },
             "ducks_quacked" : 493
          }
-Espionage:
-  api-url: /espionage
-EssentiaVein:
-  api-url: /essentiavein
-Fission:
-  api-url: /fission
 FoodReserve:
-  api-url: /foodreserve
   description: The food reserve stores the excess food you produce.
   methods:
     dump:
@@ -530,14 +475,7 @@ FoodReserve:
                 ...
             }
          }
-Fusion:
-  api-url: /fusion
-GasGiantLab:
-  api-url: /gasgiantlab
-GasGiantPlatform:
-  api-url: /gasgiantplatform
 GeneticsLab:
-  api-url: /geneticslab
   methods:
     prepare_experiment:
       arg-info:
@@ -593,18 +531,7 @@ GeneticsLab:
             },
             # the rest is the same as prepare_experiment 
          }
-Geo:
-  api-url: /geo
-GeoThermalVent:
-  api-url: /geothermalvent
-GratchsGauntlet:
-  api-url: /gratchesgauntlet
-GreatBallOfJunk:
-  api-url: /greatballofjunk
-Grove:
-  api-url: /grove
 HallsOfVrbansk:
-  api-url: /hallsofvrbansk
   methods:
     get_upgradable_buildings:
       arg-info:
@@ -641,10 +568,7 @@ HallsOfVrbansk:
         - upgrade_building_id
       desc: 'Sacrifices a number of the Halls of Vrbansk to upgrade a building.NOTE: In all likelyhood the Halls of Vrbansk that the player is looking at when they call this method will be destroyed. The building will return a status, but then you should close whatever screen you have open for it and refresh the planet surface. The needs_surface_refresh flag will be set in the body status on the return. You should wait for the return to close the building though, in case of an exception.'
       returns: "{\n    \"status\" : { ... }\n }"
-Hydrocarbon:
-  api-url: /hydrocarbon
 Intelligence:
-  api-url: /intelligence
   description: The Intelligence Ministry is where you build and control your spies.
   methods:
     assign_spy:
@@ -838,22 +762,7 @@ Intelligence:
             ],
             "spy_count" : 12
          }
-InterDimensionalRift:
-  api-url: /interdimensionalrift
-JunkHengeSculpture:
-  api-url: /junkhengesculpture
-KalavianRuins:
-  api-url: /kalavianruins
-KasternsKeep:
-  api-url: /kasternskeep
-Lagoon:
-  api-url: /lagoon
-Lake:
-  api-url: /lake
-Lapis:
-  api-url: /lapis
 LibraryOfJith:
-  api-url: /libraryofjith
   methods:
     research_species:
       arg-info:
@@ -886,18 +795,7 @@ LibraryOfJith:
             },
             "status" : { ... }
          }
-LuxuryHousing:
-  api-url: /luxuryhousing
-Malcud:
-  api-url: /malcud
-MassadsHenge:
-  api-url: /massadshenge
-MetalJunkArches:
-  api-url: /metaljunkarches
-Mine:
-  api-url: /mine
 MiningMinistry:
-  api-url: /miningministry
   description: The Mining Ministry controls mining platform ships for harvesting the resources of asteroids.
   methods:
     abandon_platform:
@@ -1010,7 +908,6 @@ MiningMinistry:
             "status" : { ... }
          }
 MissionCommand:
-  api-url: /missioncommand
   methods:
     complete_mission:
       arg-info:
@@ -1064,12 +961,7 @@ MissionCommand:
         - mission_id
       desc: Skips a mission. This mission won't show up on the list of missions for this user for 30 days.
       returns: "{\n    \"status\" : { ... }\n }"
-MunitionsLab:
-  api-url: /munitionslab
-NaturalSpring:
-  api-url: /naturalspring
 Network19:
-  api-url: /network19
   description: "Network 19 is the news network covering the Expanse. Here you can learn all kinds of things about what's happening around you, without even leaving your planet. Every two levels you'll receive news from additional zones around you, up to 7 total zones."
   methods:
     restrict_coverage:
@@ -1118,7 +1010,6 @@ Network19:
             "status" : { ... }
          }
 Observatory:
-  api-url: /observatory
   description: The observatory controls stellar probes.
   methods:
     abandon_probe:
@@ -1166,7 +1057,6 @@ Observatory:
             "star_count" : 37
          }
 OracleOfAnid:
-  api-url: /oracleofanid
   methods:
     get_star:
       arg-info:
@@ -1194,10 +1084,7 @@ OracleOfAnid:
             }    
             "status" : { ... }
          }
-OreRefinery:
-  api-url: /orerefinery
 OreStorage:
-  api-url: /orestorage
   description: Ore Storage Tanks increase the amount of ore you can store on your planet.
   methods:
     dump:
@@ -1229,14 +1116,7 @@ OreStorage:
                 ...
             }
          }
-Oversight:
-  api-url: /oversight
-Pancake:
-  api-url: /pancake
-PantheonOfHagness:
-  api-url: /pantheonofhagness
 Park:
-  api-url: /park
   description: 'Parks are highly useful because they generate happiness for your planet. Just being able to use the park makes your citizens happy, but you can also throw parties for them, which will generate lots of happiness at the end of the party.'
   methods:
     subsidize_party:
@@ -1280,12 +1160,7 @@ Park:
                 "can_throw" : 0
             }
          }
-Pie:
-  api-url: /pie
-PilotTraining:
-  api-url: /pilottraining
 PlanetaryCommand:
-  api-url: /planetarycommand
   description: 'The Planetary Command Center (PCC), or just Command, is the hub of your empire on a planet. It gives you the resources and storage you need to get a foothold on a planet.'
   methods:
     view:
@@ -1356,20 +1231,7 @@ PlanetaryCommand:
                 ...
             ]
          }
-Potato:
-  api-url: /potato
-Propulsion:
-  api-url: /propulsion
-PyramidJunkSculpture:
-  api-url: /pyramidjunksculpture
-RockyOutcrop:
-  api-url: /rockyoutcrop
-SAW:
-  api-url: /saw
-Sand:
-  api-url: /sand
 Security:
-  api-url: /security
   description: Captured spies are detained at the security ministry.
   methods:
     execute_prisoner:
@@ -1439,10 +1301,7 @@ Security:
                 ...
             ]
          }
-Shake:
-  api-url: /shake
 Shipyard:
-  api-url: /shipyard
   description: "The shipyard is where you build ships. However, you'll need other building types to enable the different kinds of ships that are available. The higher the level of the shipyard, faster your ships will be built."
   methods:
     build_ship:
@@ -1525,14 +1384,7 @@ Shipyard:
                  ...
              ]
          }
-Singularity:
-  api-url: /singularity
-Soup:
-  api-url: /soup
-SpaceJunkPark:
-  api-url: /spacejunkpark
 SpacePort:
-  api-url: /spaceport
   description: The Space Port is where all the ships you build will be docked once they have been built from the Shipyard. You can dock twice as many ships as the level of the Space Port.
   methods:
     fetch_spies:
@@ -1840,10 +1692,7 @@ SpacePort:
                ...
             ]
          }
-Stockpile:
-  api-url: /stockpile
 SubspaceSupplyDepot:
-  api-url: /subspacesupplydepot
   methods:
     complete_build_queue:
       arg-info:
@@ -1940,10 +1789,7 @@ SubspaceSupplyDepot:
             },
             "status" : { ... }   
          }
-Syrup:
-  api-url: /syrup
 TempleOfTheDrajilites:
-  api-url: /templeofthedrajilites
   methods:
     list_planets:
       arg-info:
@@ -1991,14 +1837,7 @@ TempleOfTheDrajilites:
                 ]
             }
          }
-TerraformingLab:
-  api-url: /terraforminglab
-TerraformingPlatform:
-  api-url: /terraformingplatform
-TheDillonForge:
-  api-url: /thedillonforge
 ThemePark:
-  api-url: /themepark
   methods:
     operate:
       arg-info:
@@ -2032,7 +1871,6 @@ ThemePark:
             }
          }
 Trade:
-  api-url: /trade
   methods:
     accept_from_market:
       arg-info:
@@ -2323,7 +2161,6 @@ Trade:
       desc: Remove a trade that you have offered and collect the items up for trade.
       returns: "{\n    \"status\" : { ... }\n }"
 Transporter:
-  api-url: /transporter
   methods:
     accept_from_market:
       arg-info:
@@ -2608,16 +2445,7 @@ Transporter:
         - trade_id
       desc: Remove a trade that you have offered and collect the items up for trade.
       returns: "{\n    \"status\" : { ... }\n }"
-University:
-  api-url: /university
-Volcano:
-  api-url: /volcano
-WasteDigester:
-  api-url: /wastetreatment
-WasteEnergy:
-  api-url: /wasteenergy
 WasteRecycling:
-  api-url: /wasterecycling
   description: The Waste Recycling Center can be used to convert waste in storage into usable resources.
   methods:
     recycle:
@@ -2667,12 +2495,7 @@ WasteRecycling:
                 "ore" : 0
             }
          }
-WasteSequestration:
-  api-url: /wastesequestration
-WasteTreatment:
-  api-url: /wastetreatment
 WaterProduction:
-  api-url: /waterproduction
   methods:
     dump:
       arg-info:
@@ -2685,14 +2508,6 @@ WaterProduction:
         - amount
       desc: Converts water into waste.
       returns: "{\n    \"status\" : { ... }\n }"
-WaterPurification:
-  api-url: /waterpurification
-WaterReclamation:
-  api-url: /waterreclamation
-WaterStorage:
-  api-url: /waterstorage
-Wheat:
-  api-url: /wheat
 common:
   build:
     arg-info:
@@ -2752,7 +2567,7 @@ common:
       - session_id
       - building_id
       - level
-    desc: 'This method is for power users and script writers. It will return the projected stats of a building at a certain level. The building must already exist on the planet, because where it exists and who it is owned by affects the stats of the building. It returns'
+    desc: 'This method is for power users and script writers. It will return the projected stats of a building at a certain level. The building must already exist on the planet, because where it exists and who it is owned by affects the stats of the building.'
     returns: |-
       {
           "building" : {
@@ -2909,3 +2724,85 @@ common:
     throws:
       - 1002
       - 1010
+simple:
+  - Algae
+  - AlgaePond
+  - Apple
+  - AtmosphericEvaporator
+  - Bean
+  - Beeldeban
+  - BlackHoleGenerator
+  - Bread
+  - Burger
+  - Cheese
+  - Chip
+  - Cider
+  - CitadelOfKnope
+  - CloakingLab
+  - Corn
+  - CornMeal
+  - CrashedShipSite
+  - Crater
+  - Dairy
+  - Denton
+  - DeployedBleeder
+  - Espionage
+  - EssentiaVein
+  - Fission
+  - Fusion
+  - GasGiantLab
+  - GasGiantPlatform
+  - Geo
+  - GeoThermalVent
+  - GratchsGauntlet
+  - GreatBallOfJunk
+  - Grove
+  - Hydrocarbon
+  - InterDimensionalRift
+  - JunkHengeSculpture
+  - KalavianRuins
+  - KasternsKeep
+  - Lagoon
+  - Lake
+  - Lapis
+  - LapisForest
+  - LuxuryHousing
+  - Malcud
+  - MalcudField
+  - MassadsHenge
+  - MetalJunkArches
+  - Mine
+  - MunitionsLab
+  - NaturalSpring
+  - OreRefinery
+  - Oversight
+  - Pancake
+  - PantheonOfHagness
+  - Pie
+  - PilotTraining
+  - Potato
+  - Propulsion
+  - PyramidJunkSculpture
+  - Ravine
+  - RockyOutcrop
+  - SAW
+  - Sand
+  - Shake
+  - Singularity
+  - Soup
+  - SpaceJunkPark
+  - Stockpile
+  - Syrup
+  - TerraformingLab
+  - TerraformingPlatform
+  - TheDillonForge
+  - University
+  - Volcano
+  - WasteDigester
+  - WasteEnergy
+  - WasteSequestration
+  - WasteTreatment
+  - WaterPurification
+  - WaterReclamation
+  - WaterStorage
+  - Wheat
