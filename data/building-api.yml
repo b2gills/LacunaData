@@ -2495,7 +2495,7 @@ WasteRecycling:
                 "ore" : 0
             }
          }
-WaterProduction:
+WaterStorage:
   methods:
     dump:
       arg-info:
@@ -2802,7 +2802,7 @@ simple:
   - WasteEnergy
   - WasteSequestration
   - WasteTreatment
+  - WaterProduction
   - WaterPurification
   - WaterReclamation
-  - WaterStorage
   - Wheat
