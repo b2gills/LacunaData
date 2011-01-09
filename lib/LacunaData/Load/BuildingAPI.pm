@@ -34,6 +34,7 @@ no namespace::clean;
 sub _load{
   my $listing = _get_api_listing();
   my %building_data;
+  my @simple;
 
   my $common = LacunaData::Load::API::HTML->new(source_url)->method_data;
   
@@ -51,11 +52,17 @@ sub _load{
     $data{methods} = $methods if %$methods;
     $data{description} = $desc if $desc;
     
-    $building_data{$building} = \%data;
+    if( %data ){
+      $building_data{$building} = \%data;
+    }else{
+      push @simple, $building;
+    }
   }
   print STDERR ' ' x $length, "\r";
 
+  @simple = sort @simple;
   $building_data{common} = $common;
+  $building_data{simple} = \@simple;
   return \%building_data;
 }
 
