@@ -60,6 +60,7 @@ sub _load{
   }
   print STDERR ' ' x $length, "\r";
 
+  _override(\%building_data,\@simple);
   push @simple, _missing( @simple, keys %building_data);
   @simple = sort @simple;
 
@@ -127,4 +128,28 @@ sub _missing{
   return @missing if wantarray;
   return \@missing;
 }
+
+use LacunaData::Sources (
+  id => ['building-api.override'],
+  source_file          => { -as => 'override_file' },
+  get_source_from_file => { -as => 'override' },
+);
+
+sub _override{
+  my($data,$simple) = @_;
+  my $override = thaw( override );
+  
+  while( my($key, $value) = each %$override ){
+    if( defined $value ){
+      $data->{$key} = $value;
+      @$simple = grep{
+        $_ ne $key
+      } @$simple;
+    }else{
+      delete $data->{$key};
+      push @$simple, $key;
+    }
+  }
+}
+
 1;
