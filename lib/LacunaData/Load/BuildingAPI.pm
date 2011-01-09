@@ -60,7 +60,9 @@ sub _load{
   }
   print STDERR ' ' x $length, "\r";
 
+  push @simple, _missing( @simple, keys %building_data);
   @simple = sort @simple;
+
   $building_data{common} = $common;
   $building_data{simple} = \@simple;
   return \%building_data;
@@ -101,5 +103,28 @@ sub _get_api_listing{
   }
 
   return \%urls;
+}
+
+use LacunaData::Sources (
+  id => ['building-api.missing'],
+  source_file          => { -as => 'missing_file' },
+  get_source_from_file => { -as => 'missing' },
+);
+
+sub _missing{
+  my(@found) = @_;
+  
+  my @check = split '\n', missing;
+  my @missing = grep{
+    !($_ ~~ @found)
+  } @check;
+
+  if( @missing != @check ){
+    open my $fh, '>', missing_file;
+    say $fh $_ for sort @missing;
+    close $fh;
+  }
+  return @missing if wantarray;
+  return \@missing;
 }
 1;
