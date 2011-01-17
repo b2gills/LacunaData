@@ -99,6 +99,7 @@ Body:
                     "url" :"/wheat",
                     "build" : {
                         "can" : 1,
+                        "no_plot_use" : 0,
                         "cost" : {
                             "food" : 500,
                             "water" : 500,
@@ -239,7 +240,10 @@ Body:
                 "water_capacity" : 51050,
                 "incoming_foreign_ships" : [  # will only be included when foreign ships are coming to your planet, more detail at spaceport
                     {
-                        "date_arrives" : "01 31 2010 13:09:05 +0600"
+                        "id" : "id-goes-here",                          # not terribly useful, except for client caching of notices
+                        "date_arrives" : "01 31 2010 13:09:05 +0600",
+                        "is_own" : 1,                                   # is this from one of our own planets
+                        "is_ally" : 1                                   # is this from a planet within our alliance
                     },
                     ...
                 ]
@@ -476,6 +480,7 @@ Empire:
             "server" : { ... },
             "empire" : {
                 "id" : "xxxx",
+                "rpc_count" : 321, # the number of calls made to the server
                 "is_isolationist" : 1, # hasn't sent out probes or colony ships
                 "name" : "The Syndicate",
                 "status_message" : "A spy's work is never done.",

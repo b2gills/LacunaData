@@ -510,7 +510,8 @@ GeneticsLab:
             ],
             "survival_odds" : 31,
             "graft_odds" : 11,
-            "essentia_cost" : 2
+            "essentia_cost" : 2,
+            "can_experiment" : 1
          }
     run_experiment:
       arg-info:
@@ -731,14 +732,17 @@ Intelligence:
                         {
                             "task" : "Idle",
                             "recovery" : 0,
+                            "skill" : "none"
                         },
                         {
                             "task" : "Counter Espionage",
                             "recovery" : 0,
+                            "skill" : "*"
                         },
                         {
                             "task" : "Security Sweep",
                             "recovery" : 14400,        # in seconds
+                            "skill" : "intel"
                         },
                         ...
                     ],
@@ -752,6 +756,8 @@ Intelligence:
                     "assigned_to" : {
                         "body_id" : "id-goes-here",
                         "name" : "Earth",
+                        "x" : 40,
+                        "y" : -71
                     },
                     "is_available" : 1, # can be reassigned
                     "available_on" : "01 31 2010 13:09:05 +0600", # if can't be reassigned, this is when will be available
@@ -2792,6 +2798,7 @@ simple:
   - Soup
   - SpaceJunkPark
   - Stockpile
+  - SupplyPod
   - Syrup
   - TerraformingLab
   - TerraformingPlatform

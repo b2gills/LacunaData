@@ -390,6 +390,41 @@
 						{"name":"building_id", "type":"string", "optional":false}
 					],
 					"returns":{"type":"object"}
+				},
+				"duck_quack" : {
+					"description": "",
+					"parameters": [
+						{"name":"session_id", "type":"string", "optional":false},
+						{"name":"building_id", "type":"string", "optional":false}
+					],
+					"returns":{"type":"string"}
+				}
+			}
+		},
+		"GeneticsLab" : {
+			"SMDVersion":"2.0",
+			"description": "Genetics Lab",
+			"envelope":"JSON-RPC-2.0",
+			"transport":"POST",
+			"target":"/geneticslab",
+			"services": {
+				"prepare_experiment" : {
+					"description": "",
+					"parameters": [
+						{"name":"session_id", "type":"string", "optional":false},
+						{"name":"building_id", "type":"string", "optional":false}
+					],
+					"returns":{"type":"object"}
+				},
+				"run_experiment" : {
+					"description": "",
+					"parameters": [
+						{"name":"session_id", "type":"string", "optional":false},
+						{"name":"building_id", "type":"string", "optional":false},
+						{"name":"spy_id", "type":"string", "optional":false},
+						{"name":"affinity", "type":"string", "optional":false}
+					],
+					"returns":{"type":"object"}
 				}
 			}
 		},
@@ -984,6 +1019,23 @@
 						{"name":"building_id", "type":"string", "optional":false},
 						{"name":"planet_id", "type":"string", "optional":false}
 					]
+				}
+			}
+		},
+		"ThemePark" : {
+			"SMDVersion":"2.0",
+			"description": "Theme Park",
+			"envelope":"JSON-RPC-2.0",
+			"transport":"POST",
+			"target":"/themepark",
+			"services": {
+				"operate" : {
+					"description": "",
+					"parameters": [
+						{"name":"session_id", "type":"string", "optional":false},
+						{"name":"building_id", "type":"string", "optional":false}
+					],
+					"returns":{"type":"object"}
 				}
 			}
 		},
