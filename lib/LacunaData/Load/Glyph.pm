@@ -117,8 +117,8 @@ sub _load_building{
     my %recipe;
     my $index ='A';
     $recipe{$index++} = $_ for @p;
-   
-    $data->{$building}{recipe} = \%recipe;
+    
+    $data->{$building}{recipe} = \%recipe if %recipe;
   }
 }
 
