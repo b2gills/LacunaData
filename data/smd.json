@@ -712,6 +712,24 @@
 				}
 			}
 		},
+		"OracleOfAnid" : {
+			"SMDVersion":"2.0",
+			"description": "Oracle of Anid",
+			"envelope":"JSON-RPC-2.0",
+			"transport":"POST",
+			"target":"/oracleofanid",
+			"services": {
+				"get_star" : {
+					"description": "Retrieves a single star",
+					"parameters": [
+						{"name":"session_id", "type":"string", "optional":false},
+						{"name":"building_id", "type":"string", "optional":false},
+						{"name":"star_id", "type":"string", "optional":false}
+					],
+					"returns":{"type":"object"}
+				}
+			}
+		},
 		"OreStorage" : {
 			"SMDVersion":"2.0",
 			"description": "Ore Storage",
@@ -1368,7 +1386,7 @@
 					"returns":{"type":"object"}
 				}
 			}
-		},
+		}
 	},
 	"Chat" : {
 		"SMDVersion":"2.0",
@@ -1712,6 +1730,14 @@
 		"services": {
 			"check_star_for_incoming_probe" : {
 				"description": "Retrieves a chunk of the map and returns it as an array of hashes.",
+				"parameters": [
+					{"name":"session_id", "type":"string", "optional":false},
+					{"name":"star_id", "type":"string", "optional":false}
+				],
+				"returns":{"type":"object"}
+			},
+			"get_star" : {
+				"description": "Retrieves a single star",
 				"parameters": [
 					{"name":"session_id", "type":"string", "optional":false},
 					{"name":"star_id", "type":"string", "optional":false}
