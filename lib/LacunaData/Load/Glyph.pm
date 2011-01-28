@@ -54,8 +54,9 @@ sub Cache{
 {
   my @ore_list = ore_list;
   sub _only_png{
-    my $alt = lc $_->attr('alt');
+    my $alt = $_->attr('alt');
     return unless $alt;
+    $alt = lc $alt;
     return unless $alt =~ /(.*)\.png/;
     $alt = $1;
     return unless $alt ~~ @ore_list;
