@@ -148,6 +148,16 @@ sub _get_api_method_info{
     }
   }
 
+  while( my($method,$data) = each %method ){
+    my $order = delete $data->{'arg-order'};
+    my $info  = delete $data->{'arg-info'};
+    for my $name (@$order){
+      my %param = ( name => $name );
+      $param{description} = $info->{$name} if $info->{$name};
+      push @{$method{$method}{parameters}}, \%param;
+    }
+  }
+
   return \%method;
 }
 1;
