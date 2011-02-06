@@ -2,28 +2,26 @@
 Archaeology:
   methods:
     assemble_glyphs:
-      arg-info:
-        building_id: The unique id of the Archaeology Ministry.
-        ids: An array reference containing an ordered list of up to four glyph ids.
-        session_id: A session id.
-      arg-order:
-        - session_id
-        - building_id
-        - ids
       desc: Turns glyphs into rare ancient items.
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: The unique id of the Archaeology Ministry.
+          name: building_id
+        - description: An array reference containing an ordered list of up to four glyph ids.
+          name: ids
       returns: |-
         {
             "status" : { ... },
             "item_name" : "Volcano"
          }
     get_glyphs:
-      arg-info:
-        building_id: The unique id of the Archaeology Ministry.
-        session_id: A session id.
-      arg-order:
-        - session_id
-        - building_id
       desc: Returns a list of glyphs that have been found by this archaeology ministry.
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: The unique id of the Archaeology Ministry.
+          name: building_id
       returns: |-
         {
             "status" : { ... },
@@ -36,13 +34,12 @@ Archaeology:
             ]
          }
     get_ores_available_for_processing:
-      arg-info:
-        building_id: The unique id of the Archaeology Ministry.
-        session_id: A session id.
-      arg-order:
-        - session_id
-        - building_id
       desc: Returns a list of ore names that the user has enough of to process for glyphs.
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: The unique id of the Archaeology Ministry.
+          name: building_id
       returns: |-
         {
             "status" : { ... },
@@ -52,43 +49,40 @@ Archaeology:
                 }
          }
     search_for_glyph:
-      arg-info:
-        building_id: The unique id of the Archaeology Ministry.
-        ore_type: 'One of the 20 types of ore. Choose from: rutile, chromite, chalcopyrite, galena, gold, uraninite, bauxite, goethite, halite, gypsum, trona, kerogen, methane, anthracite, sulfur, zircon, monazite, fluorite, beryl, magnetite'
-        session_id: A session id.
-      arg-order:
-        - session_id
-        - building_id
-        - ore_type
       desc: 'Searches through ore looking for glyphs left behind by the ancient race. Takes 10,000 of one type of ore to search. Returns view.'
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: The unique id of the Archaeology Ministry.
+          name: building_id
+        - description: 'One of the 20 types of ore. Choose from: rutile, chromite, chalcopyrite, galena, gold, uraninite, bauxite, goethite, halite, gypsum, trona, kerogen, methane, anthracite, sulfur, zircon, monazite, fluorite, beryl, magnetite'
+          name: ore_type
     subsidize_search:
-      arg-info:
-        building_id: The unique id of the Archaeology Ministry.
-        session_id: A session id.
-      arg-order:
-        - session_id
-        - building_id
       desc: Will spend 2 essentia to complete the current glyph search immediately. Returns view.
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: The unique id of the Archaeology Ministry.
+          name: building_id
       throws:
         - 1011
 Capitol:
   methods:
     rename_empire:
-      arg-info:
-        building_id: The unique id of the building.
-        name: The new name of your empire.
-        session_id: A session id.
-      arg-order:
-        - session_id
-        - building_id
-        - name
       desc: Spend some essentia to rename your empire.
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: The unique id of the building.
+          name: building_id
+        - description: The new name of your empire.
+          name: name
       returns: "{\n    \"status\" : { ... }\n }"
     view:
-      arg-order:
-        - session_id
-        - building_id
       desc: 'Same as view in Buildings except:'
+      parameters:
+        - name: session_id
+        - name: building_id
       returns: |-
         {
             "status" : { ... },
@@ -98,23 +92,22 @@ Development:
   description: 'The higher the development ministry, the more builds you can put in your build queue.'
   methods:
     subsidize_build_queue:
-      arg-info:
-        building_id: The id of the development ministry.
-        session_id: A session id.
-      arg-order:
-        - session_id
-        - building_id
       desc: Allows a player to instantly finish any buildings in their build queue. The cost is returned by the view method.
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: The id of the development ministry.
+          name: building_id
       returns: |-
         {
             "status" : { ... },
             "essentia_spent" : 8
          }
     view:
-      arg-order:
-        - session
-        - building_id
       desc: This method is extended to include details about what's in your build queue.
+      parameters:
+        - name: session
+        - name: building_id
       returns: |-
         {
             "building" : { ... },
@@ -142,98 +135,90 @@ Development:
 Embassy:
   methods:
     accept_invite:
-      arg-info:
-        building_id: The unique id of the embassy.
-        invite_id: The unique id of an invitation. See get_my_invites for details.
-        message: Optional. A personalized message that will be sent to the alliance leader with your acceptance.
-        session_id: A session id.
-      arg-order:
-        - session_id
-        - building_id
-        - invite_id
-        - message
       desc: Accept an invitation. Returns the same output as get_alliance_status.
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: The unique id of the embassy.
+          name: building_id
+        - description: The unique id of an invitation. See get_my_invites for details.
+          name: invite_id
+        - description: Optional. A personalized message that will be sent to the alliance leader with your acceptance.
+          name: message
     assign_alliance_leader:
-      arg-info:
-        building_id: The unique id of the embassy.
-        new_leader_id: The unique id of an empire that will lead the alliance going forward. The empire must already be a member of the alliance.
-        session_id: A session id.
-      arg-order:
-        - session_id
-        - building_id
-        - new_leader_id
       desc: Sets a new empire to lead the alliance. Can only be called by the current alliance leader. Returns the same thing as get_alliance_status.
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: The unique id of the embassy.
+          name: building_id
+        - description: The unique id of an empire that will lead the alliance going forward. The empire must already be a member of the alliance.
+          name: new_leader_id
     create_alliance:
-      arg-info:
-        building_id: The unique id of the embassy.
-        name: 'A unique name for this alliance. Must be between 3 and 30 characters, cannot contain profanity or restricted characters.'
-        session_id: A session id.
-      arg-order:
-        - session_id
-        - building_id
-        - name
       desc: Create a new alliance. Returns the same output as get_alliance_status.
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: The unique id of the embassy.
+          name: building_id
+        - description: 'A unique name for this alliance. Must be between 3 and 30 characters, cannot contain profanity or restricted characters.'
+          name: name
     dissolve_alliance:
-      arg-info:
-        building_id: The unique id of the embassy.
-        session_id: A session id.
-      arg-order:
-        - session_id
-        - building_id
       desc: Can only be called by alliance leader. Disbands and existing alliance.
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: The unique id of the embassy.
+          name: building_id
       returns: "{\n    \"status\" : { ... }\n }"
     donate_to_stash:
-      arg-info:
-        building_id: The unique id of the embassy.
-        donation: 'NOTE: Cannot donate waste.'
-        session_id: A session id.
-      arg-order:
-        - session_id
-        - building_id
-        - donation
       desc: Returns view_stash
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: The unique id of the embassy.
+          name: building_id
+        - description: 'NOTE: Cannot donate waste.'
+          name: donation
       returns: |-
         {
             "water" : 4500,
             "bread" : 5000
          }
     exchange_with_stash:
-      arg-info:
-        building_id: The unique id of the embassy.
-        donation: 'NOTE: Cannot donate waste.'
-        request: 'NOTE: The total sum, must add up to the sum of the donation, but can be in different concentrations.'
-        session_id: A session id.
-      arg-order:
-        - session_id
-        - building_id
-        - donation
-        - request
       desc: Returns view_stash
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: The unique id of the embassy.
+          name: building_id
+        - description: 'NOTE: Cannot donate waste.'
+          name: donation
+        - description: 'NOTE: The total sum, must add up to the sum of the donation, but can be in different concentrations.'
+          name: request
       returns: |-
         {
             "energy" : 2000,
             "meal" : 7500
          }
     expel_member:
-      arg-info:
-        building_id: The unique id of the embassy.
-        empire_id: The unique id of the empire to remove from the alliance.
-        message: An optional message about why you're removing them from the alliance. Cannot contain restricted characters or profanity.
-        session_id: A session id.
-      arg-order:
-        - session_id
-        - building_id
-        - empire_id
-        - message
       desc: Forcibly removes a member from an alliance. Returns the same thing as get_alliance_status. Can only be called by the alliance leader.
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: The unique id of the embassy.
+          name: building_id
+        - description: The unique id of the empire to remove from the alliance.
+          name: empire_id
+        - description: An optional message about why you're removing them from the alliance. Cannot contain restricted characters or profanity.
+          name: message
     get_alliance_status:
-      arg-info:
-        building_id: The unique id of the embassy.
-        session_id: A session id.
-      arg-order:
-        - session_id
-        - building_id
       desc: Returns everything about an alliance that members should know.
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: The unique id of the embassy.
+          name: building_id
       returns: |-
         {
             "status" : { ... },
@@ -255,13 +240,12 @@ Embassy:
              }
          }
     get_my_invites:
-      arg-info:
-        building_id: The unique id of the embassy.
-        session_id: A session id.
-      arg-order:
-        - session_id
-        - building_id
       desc: Returns a list of invitations that have been offered to this empire.
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: The unique id of the embassy.
+          name: building_id
       returns: |-
         {
             "status" : { ... },
@@ -275,13 +259,12 @@ Embassy:
             ]
          }
     get_pending_invites:
-      arg-info:
-        building_id: The unique id of the embassy.
-        session_id: A session id.
-      arg-order:
-        - session_id
-        - building_id
       desc: 'Can only be called by the alliance leader. Returns a list of invitations that have been sent out, but that have not been accepted, rejected, or withdrawn.'
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: The unique id of the embassy.
+          name: building_id
       returns: |-
         {
             "status" : { ... },
@@ -295,57 +278,53 @@ Embassy:
             ]
          }
     leave_alliance:
-      arg-info:
-        building_id: The unique id of the embassy.
-        message: An optional message about why you're leaving the alliance. Cannot contain restricted characters or profanity.
-        session_id: A session id.
-      arg-order:
-        - session_id
-        - building_id
-        - message
       desc: A member of an alliance revokes their own membership.
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: The unique id of the embassy.
+          name: building_id
+        - description: An optional message about why you're leaving the alliance. Cannot contain restricted characters or profanity.
+          name: message
       returns: "{\n    \"status\" : { ... }\n }"
     reject_invite:
-      arg-info:
-        building_id: The unique id of the embassy.
-        invite_id: The unique id of an invitation. See get_my_invites for details.
-        message: Optional. A personalized message that will be sent to the alliance leader along with your rejection.
-        session_id: A session id.
-      arg-order:
-        - session_id
-        - building_id
-        - invite_id
-        - message
       desc: Delete an invitation.
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: The unique id of the embassy.
+          name: building_id
+        - description: The unique id of an invitation. See get_my_invites for details.
+          name: invite_id
+        - description: Optional. A personalized message that will be sent to the alliance leader along with your rejection.
+          name: message
       returns: "{\n    \"status\" : { ... }\n }"
     send_invite:
-      arg-info:
-        building_id: The unique id of the embassy.
-        invitee_id: The unique id of an empire you'd like to invite to an alliance. See "search_empires" in Empire to look up empire ids.
-        message: Optional. A personalized welcome message that will be included in the invitation.
-        session_id: A session id.
-      arg-order:
-        - session_id
-        - building_id
-        - invitee_id
-        - message
       desc: Can only be called by alliance leader. Invite an empire to an alliance.
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: The unique id of the embassy.
+          name: building_id
+        - description: The unique id of an empire you'd like to invite to an alliance. See "search_empires" in Empire to look up empire ids.
+          name: invitee_id
+        - description: Optional. A personalized welcome message that will be included in the invitation.
+          name: message
       returns: "{\n    \"status\" : { ... }\n }"
     update_alliance:
-      arg-info:
-        building_id: The unique id of the embassy.
-        params: A hash reference of alliance properties. None of which can contain profanity or restricted characters. You can update any or all of these properties at the same time.
-        session_id: A session id.
-      arg-order:
-        - session_id
-        - building_id
-        - params
       desc: Updates the properties of an alliance. Returns the same thing as get_alliance_status. Can only be called by the alliance leader.
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: The unique id of the embassy.
+          name: building_id
+        - description: A hash reference of alliance properties. None of which can contain profanity or restricted characters. You can update any or all of these properties at the same time.
+          name: params
     view:
-      arg-order:
-        - session_id
-        - building_id
       desc: Same as view in Buildings except:We add an alliance_status block if this empire is in an alliance. It contains the same information as get_alliance_status
+      parameters:
+        - name: session_id
+        - name: building_id
       returns: |-
         {
             "status" : { ... },
@@ -353,13 +332,12 @@ Embassy:
             "alliance_status" : { get_alliance_status() }
          }
     view_stash:
-      arg-info:
-        building_id: The unique id of the embassy.
-        session_id: A session id.
-      arg-order:
-        - session_id
-        - building_id
       desc: 'Returns a list of what is in the current stash:'
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: The unique id of the embassy.
+          name: building_id
       returns: |-
         {
             "status" : { ... },
@@ -379,49 +357,45 @@ Embassy:
             "exchanges_remaining_today" : 1
          }
     withdraw_invite:
-      arg-info:
-        building_id: The unique id of the embassy.
-        invite_id: The unique id of an invitation. See get_pending_invites for details.
-        message: Optional. A personalized message that will be sent to the user about why their invitation has been withdrawn.
-        session_id: A session id.
-      arg-order:
-        - session_id
-        - building_id
-        - invite_id
-        - message
       desc: Can only be called by alliance leader. Delete an invitation.
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: The unique id of the embassy.
+          name: building_id
+        - description: The unique id of an invitation. See get_pending_invites for details.
+          name: invite_id
+        - description: Optional. A personalized message that will be sent to the user about why their invitation has been withdrawn.
+          name: message
       returns: "{\n    \"status\" : { ... }\n }"
 EnergyReserve:
   methods:
     dump:
-      arg-info:
-        amount: An integer representing the amount to dump.
-        building_id: The unique id of the building.
-        session_id: A session id.
-      arg-order:
-        - session_id
-        - building_id
-        - amount
       desc: Converts energy into waste.
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: The unique id of the building.
+          name: building_id
+        - description: An integer representing the amount to dump.
+          name: amount
       returns: "{\n    \"status\" : { ... }\n }"
 Entertainment:
   methods:
     duck_quack:
-      arg-info:
-        building_id: The unique id of this building.
-        session_id: A session id.
-      arg-order:
-        - session_id
-        - building_id
       desc: Returns a string that must retain its formatting (whitespace and carriage returns) when displayed to the user.
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: The unique id of this building.
+          name: building_id
     get_lottery_voting_options:
-      arg-info:
-        building_id: The unique id of the entertainment district.
-        session_id: A session id.
-      arg-order:
-        - session_id
-        - building_id
       desc: 'This is the starting point to a voting lottery system. The user can vote on a site once and only once per day and each vote enters him/her into a lottery. At the end of the day a lottery ticket will be drawn, and a winner will be chosen to receive 10 essentia. Every vote is equal, but the more votes you have the greater your odds of winning.Returns a list of sites that the user can vote on.NOTE: The URLs returned in the url parameter need to be opened into a new browser window so that the user can go vote on a remote site.Each url is usable only once every 24 hours. The server keeps track of this, but the client must remove the URL from the list after the user has clicked on it so they know not to click again.'
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: The unique id of the entertainment district.
+          name: building_id
       returns: |-
         {
             "options" : [
@@ -434,10 +408,10 @@ Entertainment:
             "status" : { ... }
          }
     view:
-      arg-order:
-        - session_id
-        - building_id
       desc: 'Same as view in Buildings except:'
+      parameters:
+        - name: session_id
+        - name: building_id
       returns: |-
         {
             "status" : { ... },
@@ -447,23 +421,22 @@ FoodReserve:
   description: The food reserve stores the excess food you produce.
   methods:
     dump:
-      arg-info:
-        amount: An integer representing the amount to dump.
-        building_id: The unique id of the building.
-        session_id: A session id.
-        type: 'Choose a type of food convert into waste. (apple, corn, burger, etc)'
-      arg-order:
-        - session_id
-        - building_id
-        - type
-        - amount
       desc: Converts food into waste.
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: The unique id of the building.
+          name: building_id
+        - description: 'Choose a type of food convert into waste. (apple, corn, burger, etc)'
+          name: type
+        - description: An integer representing the amount to dump.
+          name: amount
       returns: "{\n    \"status\" : { ... }\n }"
     view:
-      arg-order:
-        - session_id
-        - building_id
       desc: This method is extended to include details about what kind of food is stored.
+      parameters:
+        - name: session_id
+        - name: building_id
       returns: |-
         {
             "building" : { ... },
@@ -478,13 +451,12 @@ FoodReserve:
 GeneticsLab:
   methods:
     prepare_experiment:
-      arg-info:
-        building_id: The unique id of the genetics lab.
-        session_id: A session id.
-      arg-order:
-        - session_id
-        - building_id
       desc: Returns everything you need to set up an experiment.
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: The unique id of the genetics lab.
+          name: building_id
       returns: |-
         {
             "status" : { ... },
@@ -514,15 +486,14 @@ GeneticsLab:
             "can_experiment" : 1
          }
     run_experiment:
-      arg-info:
-        building_id: The unique id of the genetics lab.
-        session_id: A session id.
-      arg-order:
-        - session_id
-        - building_id
-        - spy_id
-        - affinity
       desc: Allows you to experiment on prisoners attempting to graft their genetic traits onto your own species.
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: The unique id of the genetics lab.
+          name: building_id
+        - name: spy_id
+        - name: affinity
       returns: |-
         {
             "experiment" : {
@@ -535,13 +506,12 @@ GeneticsLab:
 HallsOfVrbansk:
   methods:
     get_upgradable_buildings:
-      arg-info:
-        building_id: The unique id of the Halls of Vrbansk.
-        session_id: A session id.
-      arg-order:
-        - session_id
-        - building_id
       desc: Returns a list of buildings that can be upgraded by the Halls of Vrbansk.
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: The unique id of the Halls of Vrbansk.
+          name: building_id
       returns: |-
         {
             "status" : { ... },
@@ -559,31 +529,29 @@ HallsOfVrbansk:
             ]
          }
     sacrifice_to_upgrade:
-      arg-info:
-        building_id: The unique id of the Halls of Vrbansk.
-        session_id: A session id.
-        upgrade_building_id: The unique id of the building you wish to upgrade.
-      arg-order:
-        - session_id
-        - building_id
-        - upgrade_building_id
       desc: 'Sacrifices a number of the Halls of Vrbansk to upgrade a building.NOTE: In all likelyhood the Halls of Vrbansk that the player is looking at when they call this method will be destroyed. The building will return a status, but then you should close whatever screen you have open for it and refresh the planet surface. The needs_surface_refresh flag will be set in the body status on the return. You should wait for the return to close the building though, in case of an exception.'
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: The unique id of the Halls of Vrbansk.
+          name: building_id
+        - description: The unique id of the building you wish to upgrade.
+          name: upgrade_building_id
       returns: "{\n    \"status\" : { ... }\n }"
 Intelligence:
   description: The Intelligence Ministry is where you build and control your spies.
   methods:
     assign_spy:
-      arg-info:
-        assignment: 'NOTE: You can do bad things to allies using these assignments.'
-        building_id: The unique id of your Intelligence Ministry.
-        session_id: A session id.
-        spy_id: The unique id of the spy you wish to assign.
-      arg-order:
-        - session_id
-        - building_id
-        - spy_id
-        - assignment
       desc: 'Set a spy on a new task.The mission block allows you to give immediate feedback to the player. The result types that can be sent back are:The reason provides a message in sentence form about why a spy won or lost a mission. This message is related to the success or failure, not any outcome that results from that success or failure.The message_id refers to a message in the Inbox. Providing this ID allows you to pop open the inbox to a specific message to display to the user. The message will tell you what the outcome of the mission is if any. Not all missions will provide a message_id.'
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: The unique id of your Intelligence Ministry.
+          name: building_id
+        - description: The unique id of the spy you wish to assign.
+          name: spy_id
+        - description: 'NOTE: You can do bad things to allies using these assignments.'
+          name: assignment
       returns: |-
         {
             "status" : { ... },
@@ -632,53 +600,49 @@ Intelligence:
             }
          }
     burn_spy:
-      arg-info:
-        building_id: The unique id of your Intelligence Ministry.
-        session_id: A session id.
-        spy_id: The unique id of the spy you wish to burn.
-      arg-order:
-        - session_id
-        - building_id
-        - spy_id
       desc: Allows you to eliminate one of your spies from your payroll.
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: The unique id of your Intelligence Ministry.
+          name: building_id
+        - description: The unique id of the spy you wish to burn.
+          name: spy_id
       returns: "{\n    \"status\" : { ... }\n }"
     name_spy:
-      arg-info:
-        building_id: The unique id of the intelligence building.
-        name: "The name you'd like to set for the spy. The name cannot contain @, <, #, &, ; or profanity, and must be at least 1 character long."
-        session_id: A session id.
-        spy_id: The unique id of the spy you wish to train.
-      arg-order:
-        - session_id
-        - building_id
-        - spy_id
-        - name
       desc: Set the name of the spy.
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: The unique id of the intelligence building.
+          name: building_id
+        - description: The unique id of the spy you wish to train.
+          name: spy_id
+        - description: "The name you'd like to set for the spy. The name cannot contain @, <, #, &, ; or profanity, and must be at least 1 character long."
+          name: name
       returns: "{\n    \"status\" : { ... }\n }"
       throws:
         - 1002
         - 1005
         - 1013
     subsidize_training:
-      arg-info:
-        building_id: The unique id of the Intelligence Ministry.
-        session_id: A session id.
-      arg-order:
-        - session_id
-        - building_id
       desc: Will spend 1 essentia per spy to complete the training of all spies immediately. Returns view.
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: The unique id of the Intelligence Ministry.
+          name: building_id
       throws:
         - 1011
     train_spy:
-      arg-info:
-        building_id: The unique id of your Intelligence Ministry.
-        quantity: An integer between 1 and 5. Defaults to 1.
-        session_id: A session id.
-      arg-order:
-        - session_id
-        - building_id
-        - quantity
       desc: Allows you to train more spies.The only reason not_trained might be over 0 is if you specify training more spies than you have resources to spend.
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: The unique id of your Intelligence Ministry.
+          name: building_id
+        - description: An integer between 1 and 5. Defaults to 1.
+          name: quantity
       returns: |-
         {
             "status" : { ... },
@@ -689,9 +653,9 @@ Intelligence:
         - 1009
         - 1013
     view:
-      arg-order:
-        - session_id
-        - building_id
+      parameters:
+        - name: session_id
+        - name: building_id
       returns: |-
         {
             "status" : { ... },
@@ -711,15 +675,14 @@ Intelligence:
             },
          }
     view_spies:
-      arg-info:
-        building_id: The unique id of your Intelligence Ministry.
-        page_number: Defaults to 1. An integer representing which page to view. Shows 25 spies per page.
-        session_id: A session id.
-      arg-order:
-        - session_id
-        - building_id
-        - page_number
       desc: 'Returns the list of spies you have on your roster.Take a look at the assign_spy method below for assignment descriptions.NOTE: If a spy is already recovering from a particular assignment, then possible_assignments will return only that one assignment and the recovery time will be however much recovery time is remaining.'
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: The unique id of your Intelligence Ministry.
+          name: building_id
+        - description: Defaults to 1. An integer representing which page to view. Shows 25 spies per page.
+          name: page_number
       returns: |-
         {
             "status" : { ... },
@@ -771,15 +734,14 @@ Intelligence:
 LibraryOfJith:
   methods:
     research_species:
-      arg-info:
-        building_id: The unique id of this building.
-        empire_id: The unique id of an empire you'd like to know more about. See "find" in Empire to turn a name into an id.
-        session_id: A session id.
-      arg-order:
-        - session_id
-        - building_id
-        - empire_id
       desc: Returns a list of species stats for any species in the game.
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: The unique id of this building.
+          name: building_id
+        - description: The unique id of an empire you'd like to know more about. See "find" in Empire to turn a name into an id.
+          name: empire_id
       returns: |-
         {
             "species" : {
@@ -805,52 +767,48 @@ MiningMinistry:
   description: The Mining Ministry controls mining platform ships for harvesting the resources of asteroids.
   methods:
     abandon_platform:
-      arg-info:
-        building_id: The unique id of the mining ministry.
-        platform_id: The unique id of the platform you wish to abandon.
-        session_id: A session id.
-      arg-order:
-        - session_id
-        - building_id
-        - platform_id
       desc: Close down an existing mining platform.
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: The unique id of the mining ministry.
+          name: building_id
+        - description: The unique id of the platform you wish to abandon.
+          name: platform_id
       returns: "{\n    \"status\" : { ... }\n }"
       throws:
         - 1002
     add_cargo_ship_to_fleet:
-      arg-info:
-        building_id: The unique id of the mining ministry.
-        session_id: A session id.
-        ship_id: The unique id of the ship you want to add to the fleet.
-      arg-order:
-        - session_id
-        - building_id
-        - ship_id
       desc: Take a cargo ship from the space port and add it to the mining fleet.
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: The unique id of the mining ministry.
+          name: building_id
+        - description: The unique id of the ship you want to add to the fleet.
+          name: ship_id
       returns: "{\n    \"status\" : { ... }\n }"
       throws:
         - 1009
     remove_cargo_ship_from_fleet:
-      arg-info:
-        building_id: The unique id of the mining ministry.
-        session_id: A session id.
-        ship_id: The unique id of the ship you want to add.
-      arg-order:
-        - session_id
-        - building_id
-        - ship_id
       desc: Tell one of the cargo ships in the mining fleet to come home and park at the space port.
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: The unique id of the mining ministry.
+          name: building_id
+        - description: The unique id of the ship you want to add.
+          name: ship_id
       returns: "{\n    \"status\" : { ... }\n }"
       throws:
         - 1009
     view_platforms:
-      arg-info:
-        building_id: The unique id of the mining ministry.
-        session_id: A session id.
-      arg-order:
-        - session_id
-        - building_id
       desc: "Returns a list of the mining platforms currently controlled by this ministry.The shipping_capacity number is a percent which gives you an indication of your production vs shipping efficiency. If it's a -1 then you have no ships servicing the platforms. If it's at 0, then it means you have ships but no production. If it's 1 to 99 then you've got more shipping capacity than production. If it's at 100 then everything is in harmony. And if it's greater than 100 then you need to add ships because you're producing more than your ships can handle."
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: The unique id of the mining ministry.
+          name: building_id
       returns: |-
         {
             "status" : { ... },
@@ -892,13 +850,12 @@ MiningMinistry:
             ]
          }
     view_ships:
-      arg-info:
-        building_id: The unique id of the mining ministry.
-        session_id: A session id.
-      arg-order:
-        - session_id
-        - building_id
       desc: 'Shows you the ships that are working in the mining fleet, and available to work in the mining fleet.'
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: The unique id of the mining ministry.
+          name: building_id
       returns: |-
         {
             "ships" : [
@@ -916,24 +873,22 @@ MiningMinistry:
 MissionCommand:
   methods:
     complete_mission:
-      arg-info:
-        building_id: The unique id for the mission command building.
-        mission_id: The unique id of the mission you'd like to complete.
-        session_id: A session id.
-      arg-order:
-        - session_id
-        - building_id
-        - mission_id
       desc: 'Completes a mission. Will be rejected if you do not have all the objectives met. If you have met the objectives, then the rewards will be distributed to you.'
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: The unique id for the mission command building.
+          name: building_id
+        - description: The unique id of the mission you'd like to complete.
+          name: mission_id
       returns: "{\n    \"status\" : { ... }\n }"
     get_missions:
-      arg-info:
-        building_id: The unique id for the mission command building.
-        session_id: A session id.
-      arg-order:
-        - session_id
-        - building_id
       desc: "Returns a list of missions that you are eligible to complete in this zone.NOTE: This is not the complete list of missions in the zone. You cannot complete missions you've already completed, nor can you complete missions that are registered as being below your university level."
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: The unique id for the mission command building.
+          name: building_id
       returns: |-
         {
             "status" : { ... },
@@ -957,36 +912,34 @@ MissionCommand:
             ]
          }
     skip_mission:
-      arg-info:
-        building_id: The unique id for the mission command building.
-        mission_id: The unique id of the mission you'd like to skip.
-        session_id: A session id.
-      arg-order:
-        - session_id
-        - building_id
-        - mission_id
       desc: Skips a mission. This mission won't show up on the list of missions for this user for 30 days.
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: The unique id for the mission command building.
+          name: building_id
+        - description: The unique id of the mission you'd like to skip.
+          name: mission_id
       returns: "{\n    \"status\" : { ... }\n }"
 Network19:
   description: "Network 19 is the news network covering the Expanse. Here you can learn all kinds of things about what's happening around you, without even leaving your planet. Every two levels you'll receive news from additional zones around you, up to 7 total zones."
   methods:
     restrict_coverage:
-      arg-info:
-        building_id: The unique id of this Network 19 Affiliate.
-        onoff: 'A boolean indicating whether or not you have enacted a policy to restrict coverage. 1 to restrict, 0 to not restrict.'
-        session_id: A session id.
-      arg-order:
-        - session_id
-        - building_id
-        - onoff
       desc: You can enact or disband a policy to restrict what Network 19 covers about your planet. Restricting coverage does make your citizens unhappy.
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: The unique id of this Network 19 Affiliate.
+          name: building_id
+        - description: 'A boolean indicating whether or not you have enacted a policy to restrict coverage. 1 to restrict, 0 to not restrict.'
+          name: onoff
       returns: "{\n    \"status\" : { ... }\n }"
       throws:
         - 1009
     view:
-      arg-order:
-        - session_id
-        - building_id
+      parameters:
+        - name: session_id
+        - name: building_id
       returns: |-
         {
             "status" : { ... },
@@ -994,13 +947,12 @@ Network19:
             "restrict_coverage" : 1 # see restrict_coverage()
          }
     view_news:
-      arg-info:
-        building_id: The unique id of the Network 19 Affiliate.
-        session_id: A session id.
-      arg-order:
-        - session_id
-        - building_id
       desc: Get the top 100 headlines from your region of space (called a zone). It also returns a list of RSS feeds that can be used outside the game to see the same news in a given zone.
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: The unique id of the Network 19 Affiliate.
+          name: building_id
       returns: |-
         {
             "news" : [
@@ -1019,15 +971,14 @@ Observatory:
   description: The observatory controls stellar probes.
   methods:
     abandon_probe:
-      arg-info:
-        building_id: The unique id for the observatory.
-        session_id: A session id.
-        star_id: The unique id of the star the probe is attached to.
-      arg-order:
-        - session_id
-        - building_id
-        - star_id
       desc: 'The probe is deactivated, and allowed to burn up in the star.'
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: The unique id for the observatory.
+          name: building_id
+        - description: The unique id of the star the probe is attached to.
+          name: star_id
       returns: |-
         {
                 "status" : { ... }
@@ -1036,15 +987,13 @@ Observatory:
         - 1002
         - 1010
     get_probed_stars:
-      arg-info:
-        building_id: The unique id for the observatory.
-        page_number.: An integer representing which set of probes to return. Defaults to 1. Each page has up to 25 probes.
-        session_id: A session id.
-      arg-order:
-        - session_id
-        - building_id
-        - page_number
       desc: Returns a list of the stars that have been probed by this planet.
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: The unique id for the observatory.
+          name: building_id
+        - name: page_number
       returns: |-
         {
                 "status" : { ... },
@@ -1065,15 +1014,14 @@ Observatory:
 OracleOfAnid:
   methods:
     get_star:
-      arg-info:
-        building_id: The unique id of the Oracle.
-        session_id: A session id.
-        star_id: The unique id of the star.
-      arg-order:
-        - session_id
-        - building_id
-        - star_id
       desc: "Retrieves info on a single star. Works like \"get_star\" in Map except that you can see the bodies even if there is no probe there. Therefore the same displays that you would have for the star and these bodies in the star map should work from this interface. Send a scow to a star, attack a player, send a mining platform, etc.There is a range to the Oracle based upon it's level. A 10 map unit radius per level. A 1009 exception will be thrown if you request a star that its outside that range.NOTE: Use \"search_stars\" in Map to look up the id of a star by name."
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: The unique id of the Oracle.
+          name: building_id
+        - description: The unique id of the star.
+          name: star_id
       returns: |-
         { 
             "star" : {
@@ -1094,23 +1042,22 @@ OreStorage:
   description: Ore Storage Tanks increase the amount of ore you can store on your planet.
   methods:
     dump:
-      arg-info:
-        amount: An integer representing the amount to dump.
-        building_id: The unique id of the building.
-        session_id: A session id.
-        type: 'Choose a type of ore convert into waste. (gold, bauxite, galena, etc)'
-      arg-order:
-        - session_id
-        - building_id
-        - type
-        - amount
       desc: Converts ore into waste.
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: The unique id of the building.
+          name: building_id
+        - description: 'Choose a type of ore convert into waste. (gold, bauxite, galena, etc)'
+          name: type
+        - description: An integer representing the amount to dump.
+          name: amount
       returns: "{\n    \"status\" : { ... }\n }"
     view:
-      arg-order:
-        - session_id
-        - building_id
       desc: This method is extended to include details about what kinds of ore are stored.
+      parameters:
+        - name: session_id
+        - name: building_id
       returns: |-
         {
             "building" : { ... },
@@ -1126,36 +1073,33 @@ Park:
   description: 'Parks are highly useful because they generate happiness for your planet. Just being able to use the park makes your citizens happy, but you can also throw parties for them, which will generate lots of happiness at the end of the party.'
   methods:
     subsidize_party:
-      arg-info:
-        building_id: The unique id of the Park.
-        session_id: A session id.
-      arg-order:
-        - session_id
-        - building_id
       desc: Will spend 2 essentia to complete the current party immediately. Returns view.
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: The unique id of the Park.
+          name: building_id
       throws:
         - 1011
     throw_a_party:
-      arg-info:
-        building_id: The unique id of the park.
-        session_id: A session id.
-      arg-order:
-        - session_id
-        - building_id
       desc: "Initiates a party. It will cost you 10,000 food, and the party will last for a day. For 10,000 food you'll get 3,000 happiness. For each type of food available in quantities of 500 or more, you'll get a multiplier added to that. So if you have 4 types of food, you'll get 12,000 happiness. In addition, you get a 0.3 to your multiplier for each level of park that you have. Therefore a level 10 park is the same as adding three extra foods to your party!Returns view."
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: The unique id of the park.
+          name: building_id
       throws:
         - 1002
         - 1006
         - 1010
         - 1011
     view:
-      arg-info:
-        building_id: The unique id of the park.
-        session_id: A session id.
-      arg-order:
-        - session_id
-        - building_id
       desc: This method is changed from the default because it adds a party element to the output.If there's an ongoing party you'll be able to see how long it has left. And if there's not a party it will let you know whether you have the resources to throw one.
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: The unique id of the park.
+          name: building_id
       returns: |-
         {
             "building" : { ... },
@@ -1170,10 +1114,10 @@ PlanetaryCommand:
   description: 'The Planetary Command Center (PCC), or just Command, is the hub of your empire on a planet. It gives you the resources and storage you need to get a foothold on a planet.'
   methods:
     view:
-      arg-order:
-        - session_id
-        - building_id
       desc: Command extends the view method to include a planet section.
+      parameters:
+        - name: session_id
+        - name: building_id
       returns: |-
         {
             "building" : { ... },
@@ -1218,13 +1162,12 @@ PlanetaryCommand:
             }
          }
     view_plans:
-      arg-info:
-        building_id: The unique id of the PCC.
-        session_id: A session id.
-      arg-order:
-        - session_id
-        - building_id
       desc: "Returns a list of all the plans you've collected through various means.If the level is 1, and there is an extra_build_level, that means that the building will be built up to 1 plus the extra build level when complete. So in the example above, it would be a level 6 directly after being built."
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: The unique id of the PCC.
+          name: building_id
       returns: |-
         {
             "status" : { ... },
@@ -1241,37 +1184,34 @@ Security:
   description: Captured spies are detained at the security ministry.
   methods:
     execute_prisoner:
-      arg-info:
-        building_id: The unique id of the security ministry.
-        prisoner_id: The unique id of a prisoner you have captured. See view_prisoners for details.
-        session_id: A session id.
-      arg-order:
-        - session_id
-        - building_id
-        - prisoner_id
       desc: "You may choose to execute a prisoner rather than letting him serve his sentence and be released. However, that will cost you 10,000 times the prisoner's level in happiness from your planet. So a level 11 prisoner would cost you 110,000 happiness."
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: The unique id of the security ministry.
+          name: building_id
+        - description: The unique id of a prisoner you have captured. See view_prisoners for details.
+          name: prisoner_id
       returns: "{\n    \"status\" : { ... }\n }"
     release_prisoner:
-      arg-info:
-        building_id: The unique id of the security ministry.
-        prisoner_id: The unique id of a prisoner you have captured. See view_prisoners for details.
-        session_id: A session id.
-      arg-order:
-        - session_id
-        - building_id
-        - prisoner_id
       desc: You may choose to release a prisoner by calling this method.
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: The unique id of the security ministry.
+          name: building_id
+        - description: The unique id of a prisoner you have captured. See view_prisoners for details.
+          name: prisoner_id
       returns: "{\n    \"status\" : { ... }\n }"
     view_foreign_spies:
-      arg-info:
-        building_id: The unique id of the security ministry.
-        page_number: Defaults to 1. Each page contains 25 spies.
-        session_id: A session id.
-      arg-order:
-        - session_id
-        - building_id
-        - page_number
       desc: 'Displays a list of the spies that are on your planet, and have a level lower than your security ministry.'
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: The unique id of the security ministry.
+          name: building_id
+        - description: Defaults to 1. Each page contains 25 spies.
+          name: page_number
       returns: |-
         {
             "status" : { ... },
@@ -1285,15 +1225,14 @@ Security:
             ]
          }
     view_prisoners:
-      arg-info:
-        building_id: The unique id of the security ministry.
-        page_number: Defaults to 1. Each page contains 25 spies.
-        session_id: A session id.
-      arg-order:
-        - session_id
-        - building_id
-        - page_number
       desc: Displays a list of the spies that have been captured.
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: The unique id of the security ministry.
+          name: building_id
+        - description: Defaults to 1. Each page contains 25 spies.
+          name: page_number
       returns: |-
         {
             "status" : { ... },
@@ -1311,25 +1250,23 @@ Shipyard:
   description: "The shipyard is where you build ships. However, you'll need other building types to enable the different kinds of ships that are available. The higher the level of the shipyard, faster your ships will be built."
   methods:
     build_ship:
-      arg-info:
-        building_id: The unique id of the shipyard.
-        session_id: A session id.
-        type: A ship type. Get from get_buildable.
-      arg-order:
-        - session_id
-        - building_id
-        - type
       desc: Adds a ship to the build queue. Returns the same thing as view_build_queue().
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: The unique id of the shipyard.
+          name: building_id
+        - description: A ship type. Get from get_buildable.
+          name: type
     get_buildable:
-      arg-info:
-        building_id: The unique id of the shipyard.
-        session_id: A session id.
-        tag: 'An optional tag to limit the list of available ships to something shorter. If no tag is specified, then all ships will be displayed.'
-      arg-order:
-        - session_id
-        - building_id
-        - tag
       desc: "Returns a list of buildable ships and their costs, and if they're not buildable, gives a reason why not in the form of an exception."
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: The unique id of the shipyard.
+          name: building_id
+        - description: 'An optional tag to limit the list of available ships to something shorter. If no tag is specified, then all ships will be displayed.'
+          name: tag
       returns: |-
         {
             "buildable" : {
@@ -1358,25 +1295,22 @@ Shipyard:
             "status" : { ... },
          }
     subsidize_build_queue:
-      arg-info:
-        building_id: The unique id of the Shipyard.
-        session_id: A session id.
-      arg-order:
-        - session_id
-        - building_id
       desc: Will spend 1 essentia per ship to complete the current build queue immediately. Returns view.
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: The unique id of the Shipyard.
+          name: building_id
       throws:
         - 1011
     view_build_queue:
-      arg-info:
-        building_id: The unique id of this shipyard.
-        page_number.: Defaults to 1. An integer representing the page of data to view. There are 25 items per page.
-        session_id: A session id.
-      arg-order:
-        - session_id
-        - building_id
-        - page_number
       desc: Retrieves what is already being built at this shipyard.
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: The unique id of this shipyard.
+          name: building_id
+        - name: page_number
       returns: |-
         {
              "status" : { ... },
@@ -1394,19 +1328,18 @@ SpacePort:
   description: The Space Port is where all the ships you build will be docked once they have been built from the Shipyard. You can dock twice as many ships as the level of the Space Port.
   methods:
     fetch_spies:
-      arg-info:
-        on_body_id: The unique id of the planet that the spies are on.
-        session_id: A session id.
-        ship_id: The unique id of the ship to use to fetch the spies.
-        spy_ids: An array reference of spy ids to send.
-        to_body_id: 'The unique id of the planet that the spies should be sent to, and the ship will be dispatched from.'
-      arg-order:
-        - session_id
-        - on_body_id
-        - to_body_id
-        - ship_id
-        - spy_ids
       desc: 'Sends a specified ship to fetch specified spies from on_body_id, and bring them back to to_body_id. See also prepare_fetch_spies.NOTE: If the spies are not Idle when the ship arrives, they will not be picked up.'
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: The unique id of the planet that the spies are on.
+          name: on_body_id
+        - description: 'The unique id of the planet that the spies should be sent to, and the ship will be dispatched from.'
+          name: to_body_id
+        - description: The unique id of the ship to use to fetch the spies.
+          name: ship_id
+        - description: An array reference of spy ids to send.
+          name: spy_ids
       returns: |-
         {
              "ship" : {
@@ -1421,15 +1354,14 @@ SpacePort:
              "status" : { ... }
          }
     get_ships_for:
-      arg-info:
-        from_body_id: The unique id of the planet that should send the ship.
-        session_id: A session id.
-        target: 'A set of x,y coordinates to locate the star or body.'
-      arg-order:
-        - session_id
-        - from_body_id
-        - target
       desc: 'Provides a list of incoming ships and ships that are available to send to a specific target. Use with send_ship.The unavailable block tells you about ships that are docked, but are for some reason not available to be used. The mining_platforms block will be returned only if the target is an asteroid that has platforms on it.'
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: The unique id of the planet that should send the ship.
+          name: from_body_id
+        - description: 'A set of x,y coordinates to locate the star or body.'
+          name: target
       returns: |-
         { "body_name" : "Earth" }
          
@@ -1441,27 +1373,25 @@ SpacePort:
          
          { "x" : 4, "y" : -3 }
     name_ship:
-      arg-info:
-        building_id: The unique id for the space port.
-        name: The name you want to give the ship. 1 to 30 characters. No profanity. No funky characters.
-        session_id: A session id.
-        ship_id: The unique id of the ship you want to name.
-      arg-order:
-        - session_id
-        - building_id
-        - ship_id
-        - name
       desc: Set the name of a ship.
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: The unique id for the space port.
+          name: building_id
+        - description: The unique id of the ship you want to name.
+          name: ship_id
+        - description: The name you want to give the ship. 1 to 30 characters. No profanity. No funky characters.
+          name: name
     prepare_fetch_spies:
-      arg-info:
-        on_body_id: The unique id of the planet that the spies are on.
-        session_id: A session id.
-        to_body_id: 'The unique id of the planet that the spies should be sent to, and the ship will be dispatched from.'
-      arg-order:
-        - session_id
-        - on_body_id
-        - to_body_id
       desc: Gathers the information needed to call the fetch_spies method.
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: The unique id of the planet that the spies are on.
+          name: on_body_id
+        - description: 'The unique id of the planet that the spies should be sent to, and the ship will be dispatched from.'
+          name: to_body_id
       returns: |-
         {
             "status" : { ... },
@@ -1492,15 +1422,14 @@ SpacePort:
             ]
          }
     prepare_send_spies:
-      arg-info:
-        on_body_id: The unique id of the planet that the spies are on and ship will be dispatched from.
-        session_id: A session id.
-        to_body_id: The unique id of the planet that the spies should be sent to.
-      arg-order:
-        - session_id
-        - on_body_id
-        - to_body_id
       desc: 'Gathers the information needed to call the send_spies method.NOTE: Only a certain number of spies can fit in each type of ship. Spy Pods can hold 1. Spy Shuttles can hold 4. And ships with a cargo hold can hold 1 for every 350 units of hold size.'
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: The unique id of the planet that the spies are on and ship will be dispatched from.
+          name: on_body_id
+        - description: The unique id of the planet that the spies should be sent to.
+          name: to_body_id
       returns: |-
         {
             "status" : { ... },
@@ -1531,25 +1460,23 @@ SpacePort:
             ]
          }
     scuttle_ship:
-      arg-info:
-        building_id: The unique id for the space port.
-        session_id: A session id.
-        ship_id: The unique id of the ship you want to destroy.
-      arg-order:
-        - session_id
-        - building_id
-        - ship_id
       desc: Destroy a ship that you no longer need. It must be docked to scuttle it.
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: The unique id for the space port.
+          name: building_id
+        - description: The unique id of the ship you want to destroy.
+          name: ship_id
     send_ship:
-      arg-info:
-        session_id: A session id.
-        ship_id: The unique id of a ship to send.
-        target: 'A set of x,y coordinates to locate the star or body.'
-      arg-order:
-        - session_id
-        - ship_id
-        - target
       desc: Sends a ship to a specified body or star. Use with get_ships_for.
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: The unique id of a ship to send.
+          name: ship_id
+        - description: 'A set of x,y coordinates to locate the star or body.'
+          name: target
       returns: |-
         { "body_name" : "Earth" }
          
@@ -1561,19 +1488,18 @@ SpacePort:
          
          { "x" : 4, "y" : -3 }
     send_spies:
-      arg-info:
-        on_body_id: The unique id of the planet that should send the ship and that has the spies.
-        session_id: A session id.
-        ship_id: The unique id of the ship to send.
-        spy_ids: An array reference of spy ids to send.
-        to_body_id: The unique id of the planet that the spies should be sent to.
-      arg-order:
-        - session_id
-        - on_body_id
-        - to_body_id
-        - ship_id
-        - spy_ids
       desc: Sends one or more of spies to a planet using a selected ship. See also prepare_send_spies.
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: The unique id of the planet that should send the ship and that has the spies.
+          name: on_body_id
+        - description: The unique id of the planet that the spies should be sent to.
+          name: to_body_id
+        - description: The unique id of the ship to send.
+          name: ship_id
+        - description: An array reference of spy ids to send.
+          name: spy_ids
       returns: |-
         {
              "ship" : {
@@ -1590,10 +1516,10 @@ SpacePort:
             "status" : { ... }
          }
     view:
-      arg-order:
-        - session_id
-        - building_id
       desc: This method is extended to include a list of docked ships.
+      parameters:
+        - name: session_id
+        - name: building_id
       returns: |-
         {
             "building" : { ... },
@@ -1613,15 +1539,14 @@ SpacePort:
             }
          }
     view_all_ships:
-      arg-info:
-        building_id: The unique id of the space port.
-        page_number: Defaults to page 1. Shows 25 at a time.
-        session_id: A session id.
-      arg-order:
-        - session_id
-        - building_id
-        - page_number
       desc: Shows you all your ships whatever they are doing.
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: The unique id of the space port.
+          name: building_id
+        - description: Defaults to page 1. Shows 25 at a time.
+          name: page_number
       returns: |-
         {
             "ships" : [
@@ -1654,26 +1579,24 @@ SpacePort:
             "status" : { ... }
          }
     view_foreign_ships:
-      arg-info:
-        building_id: The unique id of the space port.
-        page_number: Defaults to page 1. Shows 25 at a time.
-        session_id: A session id.
-      arg-order:
-        - session_id
-        - building_id
-        - page_number
       desc: "Shows you all the foreign ships that are incoming. However, the list is filtered by the stealth of the ship vs the level of the SpacePort. The formula is:If your SpacePort exceeds the Ship's Stealth, then you'll see it incoming. Otherwise you won't.The from block is only included if"
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: The unique id of the space port.
+          name: building_id
+        - description: Defaults to page 1. Shows 25 at a time.
+          name: page_number
       returns: 100 * SpacePort Level >= Ship Stealth
     view_ships_travelling:
-      arg-info:
-        building_id: The unique id of the space port.
-        page_number: Defaults to 1. An integer representing which page of ships travelling to view. Each page shows 25 ships.
-        session_id: A session id.
-      arg-order:
-        - session_id
-        - building_id
-        - page_number
       desc: 'Returns a list of the ships that are travelling to or from this planet.NOTE: All inbound/outbound ships are shown regardless of which space port they will eventually land at.'
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: The unique id of the space port.
+          name: building_id
+        - description: Defaults to 1. An integer representing which page of ships travelling to view. Each page shows 25 ships.
+          name: page_number
       returns: |-
         {
             "status" : { ... },
@@ -1701,13 +1624,12 @@ SpacePort:
 SubspaceSupplyDepot:
   methods:
     complete_build_queue:
-      arg-info:
-        building_id: A building id.
-        session_id: A session id.
-      arg-order:
-        - session_id
-        - building_id
       desc: Trade seconds for build queue time.
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: A building id.
+          name: building_id
       returns: |-
         {
             "building" : {
@@ -1720,13 +1642,12 @@ SubspaceSupplyDepot:
             "status" : { ... }   
          }
     transmit_energy:
-      arg-info:
-        building_id: A building id.
-        session_id: A session id.
-      arg-order:
-        - session_id
-        - building_id
       desc: Convert 3600 seconds into 3600 energy.
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: A building id.
+          name: building_id
       returns: |-
         {
             "building" : {
@@ -1739,13 +1660,12 @@ SubspaceSupplyDepot:
             "status" : { ... }   
          }
     transmit_food:
-      arg-info:
-        building_id: A building id.
-        session_id: A session id.
-      arg-order:
-        - session_id
-        - building_id
       desc: Convert 3600 seconds into 3600 food.
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: A building id.
+          name: building_id
       returns: |-
         {
             "building" : {
@@ -1758,13 +1678,12 @@ SubspaceSupplyDepot:
             "status" : { ... }   
          }
     transmit_ore:
-      arg-info:
-        building_id: A building id.
-        session_id: A session id.
-      arg-order:
-        - session_id
-        - building_id
       desc: Convert 3600 seconds into 3600 ore.
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: A building id.
+          name: building_id
       returns: |-
         {
             "building" : {
@@ -1777,13 +1696,12 @@ SubspaceSupplyDepot:
             "status" : { ... }   
          }
     transmit_water:
-      arg-info:
-        building_id: A building id.
-        session_id: A session id.
-      arg-order:
-        - session_id
-        - building_id
       desc: Convert 3600 seconds into 3600 water.
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: A building id.
+          name: building_id
       returns: |-
         {
             "building" : {
@@ -1798,15 +1716,13 @@ SubspaceSupplyDepot:
 TempleOfTheDrajilites:
   methods:
     list_planets:
-      arg-info:
-        building_id: The unique id of the building.
-        session_d: A session id.
-        star_id: Optionally pass in a star id. Defaults to the star that the building is built on. See "search_stars" in Map to see how you can get a star id by name.
-      arg-order:
-        - session_id
-        - building_id
-        - star_id
       desc: Provides the list of the planets around a given star.
+      parameters:
+        - name: session_id
+        - description: The unique id of the building.
+          name: building_id
+        - description: Optionally pass in a star id. Defaults to the star that the building is built on. See "search_stars" in Map to see how you can get a star id by name.
+          name: star_id
       returns: |-
         {
             "status" : { ... },
@@ -1819,15 +1735,14 @@ TempleOfTheDrajilites:
             ]
          }
     view_planet:
-      arg-info:
-        building_id: The unique id of this building.
-        planet_id: "The unique id of a planet you want to view. Note that this must be a planet id and not a body id. It won't work for an asteroid for example. Also, the planet must be in range. You get 10 star map units per level of the Temple."
-        session_id: A session id.
-      arg-order:
-        - session_id
-        - building_id
-        - planet_id
       desc: Returns a surface map identical in format to the one returned as an Inbox attachment.
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: The unique id of this building.
+          name: building_id
+        - description: "The unique id of a planet you want to view. Note that this must be a planet id and not a body id. It won't work for an asteroid for example. Also, the planet must be in range. You get 10 star map units per level of the Temple."
+          name: planet_id
       returns: |-
         {
             "status" : { ... },
@@ -1846,26 +1761,24 @@ TempleOfTheDrajilites:
 ThemePark:
   methods:
     operate:
-      arg-info:
-        building_id: The unique id of the theme park.
-        session_id: A session id.
-      arg-order:
-        - session_id
-        - building_id
       desc: 'Initiates operation of the Theme Park. You need at least 1,000 of each of 5 food types to start the Theme Park for one hour. Once the Theme Park starts it will start using a lot more resources, but it will also start outputting large amounts of happiness. The amount of happiness generated is directly proportional to the number of food types used to start the Theme Park, and is also expontentially increased with each level of the Theme Park.While the Theme Park is operating, you can call this method again to spend more food and increase the duration of operation of the Theme Park. However, you must be able to spend at least as much food as you did when this method was last called.Returns view.'
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: The unique id of the theme park.
+          name: building_id
       throws:
         - 1002
         - 1006
         - 1010
         - 1011
     view:
-      arg-info:
-        building_id: The unique id of the park.
-        session_id: A session id.
-      arg-order:
-        - session_id
-        - building_id
       desc: This method is changed from the default because it adds a themepark element to the output.Consult the work block to see how long the Theme Park will remain in operation.
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: The unique id of the park.
+          name: building_id
       returns: |-
         {
             "building" : { ... },
@@ -1879,34 +1792,32 @@ ThemePark:
 Trade:
   methods:
     accept_from_market:
-      arg-info:
-        building_id: The unique id of this building.
-        captcha_guid: The view_market list also includes a captcha guid. That string must be passed along with the trade. The guid used must be the most recent one returned (if you're caching the list of trades in some UI).
-        captcha_solution: The captcha described by view_market will require the user to solve a simple puzzle to prove their humanity. The answer to that puzzle must be provided here.
-        session_id: A session id.
-        trade_id: The unique id of the trade.
-      arg-order:
-        - session_id
-        - building_id
-        - trade_id
-        - captcha_guid
-        - captcha_solution
       desc: Accept a trade offer from the list of available trades. See view_market.
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: The unique id of this building.
+          name: building_id
+        - description: The unique id of the trade.
+          name: trade_id
+        - description: The view_market list also includes a captcha guid. That string must be passed along with the trade. The guid used must be the most recent one returned (if you're caching the list of trades in some UI).
+          name: captcha_guid
+        - description: The captcha described by view_market will require the user to solve a simple puzzle to prove their humanity. The answer to that puzzle must be provided here.
+          name: captcha_solution
       returns: "{\n    \"status\" : { ... }\n }"
     add_to_market:
-      arg-info:
-        ask: An integer representing the amount of essentia you are asking for in this trade. Must be between 1 and 99.
-        building_id: The unique id of the trade ministry.
-        offer: 'An array reference of hash references of items you wish to trade. There are five types of items that can be traded via this mechanism. They are resources, glyphs, plans, prisoners, and ships.'
-        options: A hash reference of options to modify the trade.
-        session_id: A session id.
-      arg-order:
-        - session_id
-        - building_id
-        - offer
-        - ask
-        - options
       desc: Queues a trade for others to see.
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: The unique id of the trade ministry.
+          name: building_id
+        - description: 'An array reference of hash references of items you wish to trade. There are five types of items that can be traded via this mechanism. They are resources, glyphs, plans, prisoners, and ships.'
+          name: offer
+        - description: An integer representing the amount of essentia you are asking for in this trade. Must be between 1 and 99.
+          name: ask
+        - description: A hash reference of options to modify the trade.
+          name: options
       returns: |-
         [
             {
@@ -1919,13 +1830,12 @@ Trade:
             }
          ]
     get_glyphs:
-      arg-info:
-        building_id: The unique id of this building.
-        session_id: A session id.
-      arg-order:
-        - session_id
-        - building_id
       desc: Returns a list of glyphs that may be traded. Used with the add_trade method.
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: The unique id of this building.
+          name: building_id
       returns: |-
         {
             "glyphs" : [
@@ -1939,13 +1849,12 @@ Trade:
             "status" : { ... }
          }
     get_plans:
-      arg-info:
-        building_id: The unique id of this building.
-        session_id: A session id.
-      arg-order:
-        - session_id
-        - building_id
       desc: Returns a list of plans that may be traded. Used with the add_trade method.
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: The unique id of this building.
+          name: building_id
       returns: |-
         {
             "plans" : [
@@ -1961,13 +1870,12 @@ Trade:
             "status" : { ... }
          }
     get_prisoners:
-      arg-info:
-        building_id: The unique id of this building.
-        session_id: A session id.
-      arg-order:
-        - session_id
-        - building_id
       desc: Returns a list of prisoners that may be traded. Used with the add_trade method.
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: The unique id of this building.
+          name: building_id
       returns: |-
         {
             "prisoners" : [
@@ -1982,13 +1890,12 @@ Trade:
             "status" : { ... }
          }
     get_ships:
-      arg-info:
-        building_id: The unique id of this building.
-        session_id: A session id.
-      arg-order:
-        - session_id
-        - building_id
       desc: Returns a list of ships that may be traded. Used with the add_trade method.
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: The unique id of this building.
+          name: building_id
       returns: |-
         {
             "ships" : [
@@ -2005,13 +1912,12 @@ Trade:
             "status" : { ... }
          }
     get_stored_resources:
-      arg-info:
-        building_id: The unique id of this building.
-        session_id: A session id.
-      arg-order:
-        - session_id
-        - building_id
       desc: Returns a list of the resources you have stored to make it easier to identify what you want to trade.
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: The unique id of this building.
+          name: building_id
       returns: |-
         {
             "status" : { ... },
@@ -2025,15 +1931,14 @@ Trade:
             }
          }
     get_trade_ships:
-      arg-info:
-        building_id: The unique id of the trade ministry.
-        session_id: A session id.
-        target_body_id: The unique id of the body you'll be shipping to. Optional. If included it will calculate the estimated travel time of the ships to this body.
-      arg-order:
-        - session_id
-        - building_id
-        - target_body_id
       desc: Returns a list of the ships that could be used to do a trade.
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: The unique id of the trade ministry.
+          name: building_id
+        - description: The unique id of the body you'll be shipping to. Optional. If included it will calculate the estimated travel time of the ships to this body.
+          name: target_body_id
       returns: |-
         {
             "status" : { ... },
@@ -2049,19 +1954,18 @@ Trade:
             ]
          }
     push_items:
-      arg-info:
-        building_id: The unique id of this building.
-        items: 'An array reference of hash references of items you wish to ship to the target planet. There are five types of items that can be shipped via this mechanism. They are resources, glyphs, plans, prisoners, and ships.'
-        options: A hash reference of options to modify the trade.
-        session_id: A session id.
-        target_id: 'NOTE: The list of your planets comes back with every empire status message.'
-      arg-order:
-        - session_id
-        - building_id
-        - target_id
-        - items
-        - options
       desc: Allows you to push items between your colonies.
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: The unique id of this building.
+          name: building_id
+        - description: 'NOTE: The list of your planets comes back with every empire status message.'
+          name: target_id
+        - description: 'An array reference of hash references of items you wish to ship to the target planet. There are five types of items that can be shipped via this mechanism. They are resources, glyphs, plans, prisoners, and ships.'
+          name: items
+        - description: A hash reference of options to modify the trade.
+          name: options
       returns: |-
         [
             {
@@ -2074,28 +1978,26 @@ Trade:
             }
          ]
     report_abuse:
-      arg-info:
-        building_id: The unique id of this building.
-        session_id: A session id.
-        trade_id: The unique id of the trade.
-      arg-order:
-        - session_id
-        - building_id
-        - trade_id
       desc: Report a trade that you think is abusing the trade system.
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: The unique id of this building.
+          name: building_id
+        - description: The unique id of the trade.
+          name: trade_id
       returns: "{\n    \"status\" : { ... }\n }"
     view_market:
-      arg-info:
-        building_id: The unique id of this building.
-        filter: 'Optional. A string which will narrow the offered trades to those who are offering a specific kind of object, such as ships. Filter options include: food ore water waste energy glyph prisoner ship plan'
-        page_number: Optional. An integer representing the page of trades (25 per page) to return. Defaults to 1.
-        session_id: A session id.
-      arg-order:
-        - session_id
-        - building_id
-        - page_number
-        - filter
       desc: Displays a list of trades available at the present time.
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: The unique id of this building.
+          name: building_id
+        - description: Optional. An integer representing the page of trades (25 per page) to return. Defaults to 1.
+          name: page_number
+        - description: 'Optional. A string which will narrow the offered trades to those who are offering a specific kind of object, such as ships. Filter options include: food ore water waste energy glyph prisoner ship plan'
+          name: filter
       returns: |-
         {
             "trades" : [
@@ -2127,15 +2029,14 @@ Trade:
             "status" : { ... }
          }
     view_my_market:
-      arg-info:
-        building_id: The unique id of this building.
-        page_number: An integer representing the page of trades (25 per page) to return. Defaults to 1.
-        session_id: A session id.
-      arg-order:
-        - session_id
-        - building_id
-        - page_number
       desc: Displays a list of trades the current user has posted.
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: The unique id of this building.
+          name: building_id
+        - description: An integer representing the page of trades (25 per page) to return. Defaults to 1.
+          name: page_number
       returns: |-
         {
             "trades" : [
@@ -2156,45 +2057,41 @@ Trade:
             "status" : { ... }
          }
     withdraw_from_market:
-      arg-info:
-        building_id: The unique id of this building.
-        session_id: A session id.
-        trade_id: The unique id of the trade.
-      arg-order:
-        - session_id
-        - building_id
-        - trade_id
       desc: Remove a trade that you have offered and collect the items up for trade.
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: The unique id of this building.
+          name: building_id
+        - description: The unique id of the trade.
+          name: trade_id
       returns: "{\n    \"status\" : { ... }\n }"
 Transporter:
   methods:
     accept_from_market:
-      arg-info:
-        building_id: The unique id of this building.
-        captcha_guid: The view_market list also includes a captcha guid. That string must be passed along with the trade. The guid used must be the most recent one returned (if you're caching the list of trades in some UI).
-        captcha_solution: The captcha described by view_market will require the user to solve a simple puzzle to prove their humanity. The answer to that puzzle must be provided here.
-        session_id: A session id.
-        trade_id: The unique id of the trade.
-      arg-order:
-        - session_id
-        - building_id
-        - trade_id
-        - captcha_guid
-        - captcha_solution
       desc: 'Accept a trade offer from the list of available trades. In addition to paying whatever the asking price is, the subspace transporter uses 1 essentia to complete the transaction. See view_market.'
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: The unique id of this building.
+          name: building_id
+        - description: The unique id of the trade.
+          name: trade_id
+        - description: The view_market list also includes a captcha guid. That string must be passed along with the trade. The guid used must be the most recent one returned (if you're caching the list of trades in some UI).
+          name: captcha_guid
+        - description: The captcha described by view_market will require the user to solve a simple puzzle to prove their humanity. The answer to that puzzle must be provided here.
+          name: captcha_solution
       returns: "{\n    \"status\" : { ... }\n }"
     add_to_market:
-      arg-info:
-        ask: An integer which represents how much essentia you are asking for in this trade. Must be between 1 and 99.
-        building_id: The unique id of the subspace transporter.
-        items: 'An array reference of hash references of items you wish to trade. There are five types of items that can be traded via this mechanism. They are resources, glyphs, plans, prisoners, and ships.'
-        session_id: A session id.
-      arg-order:
-        - session_id
-        - building_id
-        - offer
-        - ask
       desc: 'Queues a trade for others to see. In addition to anything offered in your trade, setting up the trade will cost you 1 essentia.'
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: The unique id of the subspace transporter.
+          name: building_id
+        - name: offer
+        - description: An integer which represents how much essentia you are asking for in this trade. Must be between 1 and 99.
+          name: ask
       returns: |-
         [
             {
@@ -2207,13 +2104,12 @@ Transporter:
             }
          ]
     get_glyphs:
-      arg-info:
-        building_id: The unique id of this building.
-        session_id: A session id.
-      arg-order:
-        - session_id
-        - building_id
       desc: Returns a list of glyphs that may be traded. Used with the add_trade method.
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: The unique id of this building.
+          name: building_id
       returns: |-
         {
             "glyphs" : [
@@ -2227,13 +2123,12 @@ Transporter:
             "status" : { ... }
          }
     get_plans:
-      arg-info:
-        building_id: The unique id of this building.
-        session_id: A session id.
-      arg-order:
-        - session_id
-        - building_id
       desc: Returns a list of plans that may be traded. Used with the add_trade method.
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: The unique id of this building.
+          name: building_id
       returns: |-
         {
             "plans" : [
@@ -2249,13 +2144,12 @@ Transporter:
             "status" : { ... }
          }
     get_prisoners:
-      arg-info:
-        building_id: The unique id of this building.
-        session_id: A session id.
-      arg-order:
-        - session_id
-        - building_id
       desc: Returns a list of prisoners that may be traded. Used with the add_trade method.
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: The unique id of this building.
+          name: building_id
       returns: |-
         {
             "prisoners" : [
@@ -2270,13 +2164,12 @@ Transporter:
             "status" : { ... }
          }
     get_ships:
-      arg-info:
-        building_id: The unique id of this building.
-        session_id: A session id.
-      arg-order:
-        - session_id
-        - building_id
       desc: Returns a list of ships that may be traded. Used with the add_trade method.
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: The unique id of this building.
+          name: building_id
       returns: |-
         {
             "ships" : [
@@ -2293,13 +2186,12 @@ Transporter:
             "status" : { ... }
          }
     get_stored_resources:
-      arg-info:
-        building_id: The unique id of this building.
-        session_id: A session id.
-      arg-order:
-        - session_id
-        - building_id
       desc: Returns a list of the resources you have stored to make it easier to identify what you want to trade.
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: The unique id of this building.
+          name: building_id
       returns: |-
         {
             "status" : { ... },
@@ -2313,16 +2205,15 @@ Transporter:
             }
          }
     push_items:
-      arg-info:
-        building_id: The unique id of this building.
-        items: 'An array reference of hash references of items you wish to ship to the target planet. There are five types of items that can be shipped via this mechanism. They are resources, glyphs, plans, prisoners, and ships.'
-        session_id: A session id.
-        target_id: 'NOTE: The list of your planets comes back with every empire status message.'
-      arg-order:
-        - session_id
-        - building_id
-        - target_id
-        - items
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: The unique id of this building.
+          name: building_id
+        - description: 'NOTE: The list of your planets comes back with every empire status message.'
+          name: target_id
+        - description: 'An array reference of hash references of items you wish to ship to the target planet. There are five types of items that can be shipped via this mechanism. They are resources, glyphs, plans, prisoners, and ships.'
+          name: items
       returns: |-
         [
             {
@@ -2335,35 +2226,33 @@ Transporter:
             }
          ]
     report_abuse:
-      arg-info:
-        building_id: The unique id of this building.
-        session_id: A session id.
-        trade_id: The unique id of the trade.
-      arg-order:
-        - session_id
-        - building_id
-        - trade_id
       desc: Report a trade that you think is abusing the trade system.
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: The unique id of this building.
+          name: building_id
+        - description: The unique id of the trade.
+          name: trade_id
       returns: "{\n    \"status\" : { ... }\n }"
     trade_one_for_one:
-      arg-info:
-        building_id: The unique id of this building.
-        have: The name of the resource you have. See get_stored_resources to see what you have.
-        quantity: The amount of resources that will be traded one for one.
-        session_id: A session id.
-        want: The name of any resource you want.
-      arg-order:
-        - session_id
-        - building_id
-        - have
-        - want
-        - quantity
       desc: Lacuna Expanse Corp will do one for one trades of any resource in exchange for 3 essentia.
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: The unique id of this building.
+          name: building_id
+        - description: The name of the resource you have. See get_stored_resources to see what you have.
+          name: have
+        - description: The name of any resource you want.
+          name: want
+        - description: The amount of resources that will be traded one for one.
+          name: quantity
       returns: "{\n    \"status\" : { ... }\n }"
     view:
-      arg-order:
-        - session_id
-        - building_id
+      parameters:
+        - name: session_id
+        - name: building_id
       returns: |-
         {
            "building" : { ... },
@@ -2373,17 +2262,16 @@ Transporter:
            }
          }
     view_market:
-      arg-info:
-        building_id: The unique id of this building.
-        filter: 'Optional. A string which will narrow the offered trades to those who are offering a specific kind of object, such as ships. Filter options include: food ore water waste energy glyph prisoner ship plan'
-        page_number: Optional. An integer representing the page of trades (25 per page) to return. Defaults to 1.
-        session_id: A session id.
-      arg-order:
-        - session_id
-        - building_id
-        - page_number
-        - filter
       desc: Displays a list of trades available at the present time.
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: The unique id of this building.
+          name: building_id
+        - description: Optional. An integer representing the page of trades (25 per page) to return. Defaults to 1.
+          name: page_number
+        - description: 'Optional. A string which will narrow the offered trades to those who are offering a specific kind of object, such as ships. Filter options include: food ore water waste energy glyph prisoner ship plan'
+          name: filter
       returns: |-
         {
             "trades" : [
@@ -2412,15 +2300,14 @@ Transporter:
             "status" : { ... }
          }
     view_my_market:
-      arg-info:
-        building_id: The unique id of this building.
-        page_number: An integer representing the page of trades (25 per page) to return. Defaults to 1.
-        session_id: A session id.
-      arg-order:
-        - session_id
-        - building_id
-        - page_number
       desc: Displays a list of trades the current user has posted.
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: The unique id of this building.
+          name: building_id
+        - description: An integer representing the page of trades (25 per page) to return. Defaults to 1.
+          name: page_number
       returns: |-
         {
             "trades" : [
@@ -2441,52 +2328,48 @@ Transporter:
             "status" : { ... }
          }
     withdraw_from_market:
-      arg-info:
-        building_id: The unique id of this building.
-        session_id: A session id.
-        trade_id: The unique id of the trade.
-      arg-order:
-        - session_id
-        - building_id
-        - trade_id
       desc: Remove a trade that you have offered and collect the items up for trade.
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: The unique id of this building.
+          name: building_id
+        - description: The unique id of the trade.
+          name: trade_id
       returns: "{\n    \"status\" : { ... }\n }"
 WasteRecycling:
   description: The Waste Recycling Center can be used to convert waste in storage into usable resources.
   methods:
     recycle:
-      arg-info:
-        building_id: The unique id of the Waste Recycling Center.
-        energy: An integer representing the amount of energy you want.
-        ore: An integer representing the amount of ore you want.
-        session_id: A session id.
-        use_essentia.: 'Defaults to 0. A boolean indicating that you wish to spend 2 essentia, to have the recycling operation completed immediately.'
-        water: An integer representing the amount of water you want.
-      arg-order:
-        - session_id
-        - building_id
-        - water
-        - ore
-        - energy
-        - use_essentia
       desc: 'Converts waste into water, ore, and energy. You can choose which amounts of each you want, so long as their total does not go over the amount of waste you have on hand. For each unit of waste converted, the recycling center will take 10 seconds to complete the recycling process. However, the amount of time is reduced a bit by the level of the Recycling Center. Returns view.'
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: The unique id of the Waste Recycling Center.
+          name: building_id
+        - description: An integer representing the amount of water you want.
+          name: water
+        - description: An integer representing the amount of ore you want.
+          name: ore
+        - description: An integer representing the amount of energy you want.
+          name: energy
+        - name: use_essentia
       throws:
         - 1010
         - 1011
     subsidize_recycling:
-      arg-info:
-        building_id: The unique id of the waste recycling building.
-        session_id: A session id.
-      arg-order:
-        - session_id
-        - building_id
       desc: Will spend 2 essentia to complete the current recycling job immediately. Returns view.
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: The unique id of the waste recycling building.
+          name: building_id
       throws:
         - 1011
     view:
-      arg-order:
-        - session_id
-        - building_id
+      parameters:
+        - name: session_id
+        - name: building_id
       returns: |-
         {
             "status" : { ... },
@@ -2504,29 +2387,26 @@ WasteRecycling:
 WaterStorage:
   methods:
     dump:
-      arg-info:
-        amount: An integer representing the amount to dump.
-        building_id: The unique id of the building.
-        session_id: A session id.
-      arg-order:
-        - session_id
-        - building_id
-        - amount
       desc: Converts water into waste.
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: The unique id of the building.
+          name: building_id
+        - description: An integer representing the amount to dump.
+          name: amount
       returns: "{\n    \"status\" : { ... }\n }"
 common:
   build:
-    arg-info:
-      planet_id: The id of the planet you wish to build on.
-      session_id: A session id.
-      x: The x axis of the area on the planet you wish to place the building. Valid values are between -5 and 5 inclusive.
-      y: The y axis of the area on the planet you wish to place the building. Valid values are between -5 and 5 inclusive.
-    arg-order:
-      - session_id
-      - body_id
-      - x
-      - y
     desc: Adds this building to the planet's build queue.
+    parameters:
+      - description: A session id.
+        name: session_id
+      - name: body_id
+      - description: The x axis of the area on the planet you wish to place the building. Valid values are between -5 and 5 inclusive.
+        name: x
+      - description: The y axis of the area on the planet you wish to place the building. Valid values are between -5 and 5 inclusive.
+        name: y
     returns: |-
       {
           "building" : {
@@ -2546,34 +2426,31 @@ common:
       - 1012
       - 1013
   demolish:
-    arg-info:
-      session_id: A session id.
-    arg-order:
-      - session_id
-      - building_id
     desc: "Allows you to instantly destroy a building.SPECIAL EXCEPTION: If the user downgrades a level 1 building, then the Client needs to eliminate that object from the user's view. This method will return the view of the level 1 building, because that's it's intended course of action, but the client needs to handle this gracefully for the user.The unique id of the building."
+    parameters:
+      - description: A session id.
+        name: session_id
+      - name: building_id
     returns: "{\n    \"status\" : { ... }\n }"
     throws:
       - 1012
   downgrade:
-    arg-info:
-      session_id: A session id.
-    arg-order:
-      - session_id
-      - building_id
     desc: Downgrades a building by one level and then returns view.The unique id of the building.
+    parameters:
+      - description: A session id.
+        name: session_id
+      - name: building_id
     throws:
       - 1012
   get_stats_for_level:
-    arg-info:
-      building_id: The unique id of the building you want to get the stats for.
-      level: An integer between 1 and 100. This represents the stats that you want to see for the building.
-      session_id: A session id.
-    arg-order:
-      - session_id
-      - building_id
-      - level
     desc: 'This method is for power users and script writers. It will return the projected stats of a building at a certain level. The building must already exist on the planet, because where it exists and who it is owned by affects the stats of the building.'
+    parameters:
+      - description: A session id.
+        name: session_id
+      - description: The unique id of the building you want to get the stats for.
+        name: building_id
+      - description: An integer between 1 and 100. This represents the stats that you want to see for the building.
+        name: level
     returns: |-
       {
           "building" : {
@@ -2621,21 +2498,19 @@ common:
     throws:
       - 1009
   repair:
-    arg-info:
-      building_id: The unique id of the building.
-      session_id: A session id.
-    arg-order:
-      - session_id
-      - building_id
     desc: Restores a building's efficiency to 100%. See the repair_costs section of the view method to see how many resources will be spent in this process. Returns view.
+    parameters:
+      - description: A session id.
+        name: session_id
+      - description: The unique id of the building.
+        name: building_id
   upgrade:
-    arg-info:
-      building_id: The id of the building you wish to retrieve.
-      session_id: A session id.
-    arg-order:
-      - session_id
-      - building_id
     desc: Adds the requested upgrade to the build queue.
+    parameters:
+      - description: A session id.
+        name: session_id
+      - description: The id of the building you wish to retrieve.
+        name: building_id
     returns: |-
       {
           "building" : {
@@ -2655,13 +2530,12 @@ common:
       - 1012
       - 1013
   view:
-    arg-info:
-      building_id: The id of the building you wish to retrieve.
-      session_id: A session id.
-    arg-order:
-      - session_id
-      - building_id
     desc: Retrieves the properties of the building.
+    parameters:
+      - description: A session id.
+        name: session_id
+      - description: The id of the building you wish to retrieve.
+        name: building_id
     returns: |-
       {
           "building" : {

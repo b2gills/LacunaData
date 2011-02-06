@@ -3,13 +3,12 @@ WaterProduction: ~
 WaterStorage:
   methods:
     dump:
-      arg-info:
-        amount: An integer representing the amount to dump.
-        building_id: The unique id of the building.
-        session_id: A session id.
-      arg-order:
-        - session_id
-        - building_id
-        - amount
       desc: Converts water into waste.
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: The unique id of the building.
+          name: building_id
+        - description: An integer representing the amount to dump.
+          name: amount
       returns: "{\n    \"status\" : { ... }\n }"
