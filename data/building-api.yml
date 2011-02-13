@@ -369,6 +369,7 @@ Embassy:
           name: message
       returns: "{\n    \"status\" : { ... }\n }"
 EnergyReserve:
+  description: Energy Reserves increase the amount of energy you can store on your planet.
   methods:
     dump:
       desc: Converts energy into waste.
