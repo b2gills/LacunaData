@@ -1,6 +1,6 @@
 ---
 Archaeology:
-  methods:
+  services:
     assemble_glyphs:
       desc: Turns glyphs into rare ancient items.
       parameters:
@@ -67,7 +67,7 @@ Archaeology:
       throws:
         - 1011
 Capitol:
-  methods:
+  services:
     rename_empire:
       desc: Spend some essentia to rename your empire.
       parameters:
@@ -90,7 +90,7 @@ Capitol:
          }
 Development:
   description: 'The higher the development ministry, the more builds you can put in your build queue.'
-  methods:
+  services:
     subsidize_build_queue:
       desc: Allows a player to instantly finish any buildings in their build queue. The cost is returned by the view method.
       parameters:
@@ -133,7 +133,7 @@ Development:
             "subsidy_cost" : 8 # the essentia cost to subsidize the build queue
          }
 Embassy:
-  methods:
+  services:
     accept_invite:
       desc: Accept an invitation. Returns the same output as get_alliance_status.
       parameters:
@@ -370,7 +370,7 @@ Embassy:
       returns: "{\n    \"status\" : { ... }\n }"
 EnergyReserve:
   description: Energy Reserves increase the amount of energy you can store on your planet.
-  methods:
+  services:
     dump:
       desc: Converts energy into waste.
       parameters:
@@ -382,7 +382,7 @@ EnergyReserve:
           name: amount
       returns: "{\n    \"status\" : { ... }\n }"
 Entertainment:
-  methods:
+  services:
     duck_quack:
       desc: Returns a string that must retain its formatting (whitespace and carriage returns) when displayed to the user.
       parameters:
@@ -420,7 +420,7 @@ Entertainment:
          }
 FoodReserve:
   description: The food reserve stores the excess food you produce.
-  methods:
+  services:
     dump:
       desc: Converts food into waste.
       parameters:
@@ -450,7 +450,7 @@ FoodReserve:
             }
          }
 GeneticsLab:
-  methods:
+  services:
     prepare_experiment:
       desc: Returns everything you need to set up an experiment.
       parameters:
@@ -505,7 +505,7 @@ GeneticsLab:
             # the rest is the same as prepare_experiment 
          }
 HallsOfVrbansk:
-  methods:
+  services:
     get_upgradable_buildings:
       desc: Returns a list of buildings that can be upgraded by the Halls of Vrbansk.
       parameters:
@@ -541,7 +541,7 @@ HallsOfVrbansk:
       returns: "{\n    \"status\" : { ... }\n }"
 Intelligence:
   description: The Intelligence Ministry is where you build and control your spies.
-  methods:
+  services:
     assign_spy:
       desc: 'Set a spy on a new task.The mission block allows you to give immediate feedback to the player. The result types that can be sent back are:The reason provides a message in sentence form about why a spy won or lost a mission. This message is related to the success or failure, not any outcome that results from that success or failure.The message_id refers to a message in the Inbox. Providing this ID allows you to pop open the inbox to a specific message to display to the user. The message will tell you what the outcome of the mission is if any. Not all missions will provide a message_id.'
       parameters:
@@ -733,7 +733,7 @@ Intelligence:
             "spy_count" : 12
          }
 LibraryOfJith:
-  methods:
+  services:
     research_species:
       desc: Returns a list of species stats for any species in the game.
       parameters:
@@ -766,7 +766,7 @@ LibraryOfJith:
          }
 MiningMinistry:
   description: The Mining Ministry controls mining platform ships for harvesting the resources of asteroids.
-  methods:
+  services:
     abandon_platform:
       desc: Close down an existing mining platform.
       parameters:
@@ -872,7 +872,7 @@ MiningMinistry:
             "status" : { ... }
          }
 MissionCommand:
-  methods:
+  services:
     complete_mission:
       desc: 'Completes a mission. Will be rejected if you do not have all the objectives met. If you have met the objectives, then the rewards will be distributed to you.'
       parameters:
@@ -924,7 +924,7 @@ MissionCommand:
       returns: "{\n    \"status\" : { ... }\n }"
 Network19:
   description: "Network 19 is the news network covering the Expanse. Here you can learn all kinds of things about what's happening around you, without even leaving your planet. Every two levels you'll receive news from additional zones around you, up to 7 total zones."
-  methods:
+  services:
     restrict_coverage:
       desc: You can enact or disband a policy to restrict what Network 19 covers about your planet. Restricting coverage does make your citizens unhappy.
       parameters:
@@ -970,7 +970,7 @@ Network19:
          }
 Observatory:
   description: The observatory controls stellar probes.
-  methods:
+  services:
     abandon_probe:
       desc: 'The probe is deactivated, and allowed to burn up in the star.'
       parameters:
@@ -1013,7 +1013,7 @@ Observatory:
             "star_count" : 37
          }
 OracleOfAnid:
-  methods:
+  services:
     get_star:
       desc: "Retrieves info on a single star. Works like \"get_star\" in Map except that you can see the bodies even if there is no probe there. Therefore the same displays that you would have for the star and these bodies in the star map should work from this interface. Send a scow to a star, attack a player, send a mining platform, etc.There is a range to the Oracle based upon it's level. A 10 map unit radius per level. A 1009 exception will be thrown if you request a star that its outside that range.NOTE: Use \"search_stars\" in Map to look up the id of a star by name."
       parameters:
@@ -1041,7 +1041,7 @@ OracleOfAnid:
          }
 OreStorage:
   description: Ore Storage Tanks increase the amount of ore you can store on your planet.
-  methods:
+  services:
     dump:
       desc: Converts ore into waste.
       parameters:
@@ -1072,7 +1072,7 @@ OreStorage:
          }
 Park:
   description: 'Parks are highly useful because they generate happiness for your planet. Just being able to use the park makes your citizens happy, but you can also throw parties for them, which will generate lots of happiness at the end of the party.'
-  methods:
+  services:
     subsidize_party:
       desc: Will spend 2 essentia to complete the current party immediately. Returns view.
       parameters:
@@ -1113,7 +1113,7 @@ Park:
          }
 PlanetaryCommand:
   description: 'The Planetary Command Center (PCC), or just Command, is the hub of your empire on a planet. It gives you the resources and storage you need to get a foothold on a planet.'
-  methods:
+  services:
     view:
       desc: Command extends the view method to include a planet section.
       parameters:
@@ -1183,7 +1183,7 @@ PlanetaryCommand:
          }
 Security:
   description: Captured spies are detained at the security ministry.
-  methods:
+  services:
     execute_prisoner:
       desc: "You may choose to execute a prisoner rather than letting him serve his sentence and be released. However, that will cost you 10,000 times the prisoner's level in happiness from your planet. So a level 11 prisoner would cost you 110,000 happiness."
       parameters:
@@ -1249,7 +1249,7 @@ Security:
          }
 Shipyard:
   description: "The shipyard is where you build ships. However, you'll need other building types to enable the different kinds of ships that are available. The higher the level of the shipyard, faster your ships will be built."
-  methods:
+  services:
     build_ship:
       desc: Adds a ship to the build queue. Returns the same thing as view_build_queue().
       parameters:
@@ -1327,7 +1327,7 @@ Shipyard:
          }
 SpacePort:
   description: The Space Port is where all the ships you build will be docked once they have been built from the Shipyard. You can dock twice as many ships as the level of the Space Port.
-  methods:
+  services:
     fetch_spies:
       desc: 'Sends a specified ship to fetch specified spies from on_body_id, and bring them back to to_body_id. See also prepare_fetch_spies.NOTE: If the spies are not Idle when the ship arrives, they will not be picked up.'
       parameters:
@@ -1623,7 +1623,7 @@ SpacePort:
             ]
          }
 SubspaceSupplyDepot:
-  methods:
+  services:
     complete_build_queue:
       desc: Trade seconds for build queue time.
       parameters:
@@ -1715,7 +1715,7 @@ SubspaceSupplyDepot:
             "status" : { ... }   
          }
 TempleOfTheDrajilites:
-  methods:
+  services:
     list_planets:
       desc: Provides the list of the planets around a given star.
       parameters:
@@ -1760,7 +1760,7 @@ TempleOfTheDrajilites:
             }
          }
 ThemePark:
-  methods:
+  services:
     operate:
       desc: 'Initiates operation of the Theme Park. You need at least 1,000 of each of 5 food types to start the Theme Park for one hour. Once the Theme Park starts it will start using a lot more resources, but it will also start outputting large amounts of happiness. The amount of happiness generated is directly proportional to the number of food types used to start the Theme Park, and is also expontentially increased with each level of the Theme Park.While the Theme Park is operating, you can call this method again to spend more food and increase the duration of operation of the Theme Park. However, you must be able to spend at least as much food as you did when this method was last called.Returns view.'
       parameters:
@@ -1791,7 +1791,7 @@ ThemePark:
             }
          }
 Trade:
-  methods:
+  services:
     accept_from_market:
       desc: Accept a trade offer from the list of available trades. See view_market.
       parameters:
@@ -2068,7 +2068,7 @@ Trade:
           name: trade_id
       returns: "{\n    \"status\" : { ... }\n }"
 Transporter:
-  methods:
+  services:
     accept_from_market:
       desc: 'Accept a trade offer from the list of available trades. In addition to paying whatever the asking price is, the subspace transporter uses 1 essentia to complete the transaction. See view_market.'
       parameters:
@@ -2340,7 +2340,7 @@ Transporter:
       returns: "{\n    \"status\" : { ... }\n }"
 WasteRecycling:
   description: The Waste Recycling Center can be used to convert waste in storage into usable resources.
-  methods:
+  services:
     recycle:
       desc: 'Converts waste into water, ore, and energy. You can choose which amounts of each you want, so long as their total does not go over the amount of waste you have on hand. For each unit of waste converted, the recycling center will take 10 seconds to complete the recycling process. However, the amount of time is reduced a bit by the level of the Recycling Center. Returns view.'
       parameters:

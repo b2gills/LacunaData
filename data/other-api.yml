@@ -1,7 +1,7 @@
 ---
 Alliance:
   api-url: /alliance
-  methods:
+  services:
     find:
       desc: 'Find an alliance by name. Returns a hash reference containing alliance ids and alliance names. So if you searched for "Lacuna" you might get back a result set that looks like this:'
       parameters:
@@ -62,7 +62,7 @@ Alliance:
         - 1002
 Body:
   api-url: /body
-  methods:
+  services:
     abandon:
       desc: "Abandon's a colony, and destroys everything on the planet. Returns a status block."
       parameters:
@@ -258,7 +258,7 @@ Body:
         - 1010
 Empire:
   api-url: /empire
-  methods:
+  services:
     boost_energy:
       desc: 'Spends 5 essentia, and boosts energy production on all planets for 7 days. If a boost is already underway, calling again will add 7 more days.'
       parameters:
@@ -722,7 +722,7 @@ Empire:
          }
 Inbox:
   api-url: /inbox
-  methods:
+  services:
     archive_messages:
       desc: "Archives a list of messages.NOTE: You cannot archive sent messages. You'll get a failure if the message is either already archived, or it's a message that cannot be archived, like a message in your sent folder."
       parameters:
@@ -852,7 +852,7 @@ Inbox:
         - name: options
 Map:
   api-url: /map
-  methods:
+  services:
     check_star_for_incoming_probe:
       desc: 'If the star has a status of "unprobed", call this method to find out if there is an incoming probe from this empire.'
       parameters:
@@ -990,7 +990,7 @@ Map:
          }
 Stats:
   api-url: /stats
-  methods:
+  services:
     alliance_rank:
       desc: Returns a sorted list of alliance ranked according to various stats.
       parameters:
