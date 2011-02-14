@@ -131,7 +131,7 @@ sub _get_api_method_info{
           }else{
             $text =~ s/\s* (?: It\s*)? Returns:? \s* $//ix;
             no warnings 'uninitialized';
-            $method{$method}{desc} .= $text;
+            $method{$method}{description} .= $text;
           }
         }
       }
