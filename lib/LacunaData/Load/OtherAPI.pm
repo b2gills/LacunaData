@@ -46,7 +46,6 @@ sub _load{
     
     my %data;
     $data{services} = $services if %$services;
-    $data{'api-url'} = $api_url if $api_url;
     $data{description} = $desc if $desc;
     
     $building_data{$building} = \%data;
