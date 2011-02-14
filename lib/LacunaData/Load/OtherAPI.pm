@@ -42,10 +42,10 @@ sub _load{
     print STDERR 'processing ', $building, $pad, "\r";
     
     my $parser = LacunaData::Load::API::HTML->new($url);
-    my($methods,$api_url,$desc) = $parser->method_data;
+    my($services,$api_url,$desc) = $parser->method_data;
     
     my %data;
-    $data{methods} = $methods if %$methods;
+    $data{services} = $services if %$services;
     $data{'api-url'} = $api_url if $api_url;
     $data{description} = $desc if $desc;
     
