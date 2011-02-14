@@ -3,7 +3,7 @@ Alliance:
   api-url: /alliance
   services:
     find:
-      desc: 'Find an alliance by name. Returns a hash reference containing alliance ids and alliance names. So if you searched for "Lacuna" you might get back a result set that looks like this:'
+      description: 'Find an alliance by name. Returns a hash reference containing alliance ids and alliance names. So if you searched for "Lacuna" you might get back a result set that looks like this:'
       parameters:
         - description: A session id.
           name: session_id
@@ -24,7 +24,7 @@ Alliance:
             "status" : { ... }
          }
     view_profile:
-      desc: Provides a list of the data that's publicly known about this alliance.
+      description: Provides a list of the data that's publicly known about this alliance.
       parameters:
         - description: A session id.
           name: session_id
@@ -64,14 +64,14 @@ Body:
   api-url: /body
   services:
     abandon:
-      desc: "Abandon's a colony, and destroys everything on the planet. Returns a status block."
+      description: "Abandon's a colony, and destroys everything on the planet. Returns a status block."
       parameters:
         - description: A session id.
           name: session_id
         - description: The unique id of the body you wish to abandon. You cannot abandon your home planet.
           name: body_id
     get_buildable:
-      desc: 'Provides a list of all the building types that are available to be built on a given space on a planet that are within a specific tag.The reason section provides a little detail about why a building can or cannot be built. It is formatted the same way an exception would be formatted (an array ref of error code, error message, and error data).The tags section can be used to display the buildable buildings in a way that makes sense to the end user. The tags available are as follows:'
+      description: 'Provides a list of all the building types that are available to be built on a given space on a planet that are within a specific tag.The reason section provides a little detail about why a building can or cannot be built. It is formatted the same way an exception would be formatted (an array ref of error code, error message, and error data).The tags section can be used to display the buildable buildings in a way that makes sense to the end user. The tags available are as follows:'
       parameters:
         - description: A session id.
           name: session_id
@@ -129,7 +129,7 @@ Body:
         - 1012
         - 1013
     get_buildings:
-      desc: "Retrieves a list of the buildings on a planet. The surface of all planet's is made up of an 11x11 tile grid stretching from -5 to 5 in both an x and y axis. The planetary command building is always built at 0,0.The get_body method (among others) will give you size and building_count. A planet's size is the number of buildings that can be built on it. The building count is the number of buildings you have built so far. The maximum size of any planet is 121 (11x11=121), however just because there are spots remaining doesn't mean you can fill them. Also, sometimes permanent structures such as lakes will occupy a tile space, and can artificially lower the number of buildings you can place on a planet.The list of building's retreived by this method should be placed on the 11x11 grid, and the extra space should be filled in by blank ground tiles."
+      description: "Retrieves a list of the buildings on a planet. The surface of all planet's is made up of an 11x11 tile grid stretching from -5 to 5 in both an x and y axis. The planetary command building is always built at 0,0.The get_body method (among others) will give you size and building_count. A planet's size is the number of buildings that can be built on it. The building count is the number of buildings you have built so far. The maximum size of any planet is 121 (11x11=121), however just because there are spots remaining doesn't mean you can fill them. Also, sometimes permanent structures such as lakes will occupy a tile space, and can artificially lower the number of buildings you can place on a planet.The list of building's retreived by this method should be placed on the 11x11 grid, and the extra space should be filled in by blank ground tiles."
       parameters:
         - description: A session id.
           name: session_id
@@ -176,7 +176,7 @@ Body:
         - 1002
         - 1010
     get_status:
-      desc: 'Returns detailed statistics about a planet.NOTE: You should probably never call this method directly, as it is a wasted call since the data it returns comes back in the status block of every relevant request. See "Status" in Intro for details.'
+      description: 'Returns detailed statistics about a planet.NOTE: You should probably never call this method directly, as it is a wasted call since the data it returns comes back in the status block of every relevant request. See "Status" in Intro for details.'
       parameters:
         - description: A session id.
           name: session_id
@@ -244,7 +244,7 @@ Body:
             }
          }
     rename:
-      desc: 'Renames a body, provided the empire attached to the session owns the body. Returns a 1 on success.'
+      description: 'Renames a body, provided the empire attached to the session owns the body. Returns a 1 on success.'
       parameters:
         - description: A session id.
           name: session_id
@@ -260,7 +260,7 @@ Empire:
   api-url: /empire
   services:
     boost_energy:
-      desc: 'Spends 5 essentia, and boosts energy production on all planets for 7 days. If a boost is already underway, calling again will add 7 more days.'
+      description: 'Spends 5 essentia, and boosts energy production on all planets for 7 days. If a boost is already underway, calling again will add 7 more days.'
       parameters:
         - description: A session id.
           name: session_id
@@ -272,7 +272,7 @@ Empire:
       throws:
         - 1011
     boost_food:
-      desc: 'Spends 5 essentia, and boosts food production on all planets for 7 days. If a boost is already underway, calling again will add 7 more days.'
+      description: 'Spends 5 essentia, and boosts food production on all planets for 7 days. If a boost is already underway, calling again will add 7 more days.'
       parameters:
         - description: A session id.
           name: session_id
@@ -284,7 +284,7 @@ Empire:
       throws:
         - 1011
     boost_happiness:
-      desc: 'Spends 5 essentia, and boosts happiness production on all planets for 7 days. If a boost is already underway, calling again will add 7 more days.'
+      description: 'Spends 5 essentia, and boosts happiness production on all planets for 7 days. If a boost is already underway, calling again will add 7 more days.'
       parameters:
         - description: A session id.
           name: session_id
@@ -296,7 +296,7 @@ Empire:
       throws:
         - 1011
     boost_ore:
-      desc: 'Spends 5 essentia, and boosts ore production on all planets for 7 days. If a boost is already underway, calling again will add 7 more days.'
+      description: 'Spends 5 essentia, and boosts ore production on all planets for 7 days. If a boost is already underway, calling again will add 7 more days.'
       parameters:
         - description: A session id.
           name: session_id
@@ -308,7 +308,7 @@ Empire:
       throws:
         - 1011
     boost_storage:
-      desc: 'Spends 5 essentia, and boosts storage (all 5 types) on all planets for 7 days. If a boost is already underway, calling again will add 7 more days.'
+      description: 'Spends 5 essentia, and boosts storage (all 5 types) on all planets for 7 days. If a boost is already underway, calling again will add 7 more days.'
       parameters:
         - description: A session id.
           name: session_id
@@ -320,7 +320,7 @@ Empire:
       throws:
         - 1011
     boost_water:
-      desc: 'Spends 5 essentia, and boosts water production on all planets for 7 days. If a boost is already underway, calling again will add 7 more days.'
+      description: 'Spends 5 essentia, and boosts water production on all planets for 7 days. If a boost is already underway, calling again will add 7 more days.'
       parameters:
         - description: A session id.
           name: session_id
@@ -332,7 +332,7 @@ Empire:
       throws:
         - 1011
     change_password:
-      desc: Change the empire password.
+      description: Change the empire password.
       parameters:
         - description: A session id.
           name: session_id
@@ -341,7 +341,7 @@ Empire:
         - description: Retyping the password again. This must match password1 to succeed.
           name: password2
     create:
-      desc: "Creates a new empire and then returns an empire_id.This is not the end of the story though. Now you must either create a update_species for this empire and then found it, or just skip the species part and found the empire.NOTE: If either captcha_guid or captcha_solution don't match what the server is expecting it will throw a 1014 error, and the data portion of the error message will contain new captcha information. You must use this. A captcha cannot be used more than once."
+      description: "Creates a new empire and then returns an empire_id.This is not the end of the story though. Now you must either create a update_species for this empire and then found it, or just skip the species part and found the empire.NOTE: If either captcha_guid or captcha_solution don't match what the server is expecting it will throw a 1014 error, and the data portion of the error message will contain new captcha information. You must use this. A captcha cannot be used more than once."
       parameters:
         - description: 'A 36 character code that was sent to the user by a friend. It is usable only once, and will ensure that their friend gets a home planet that is in relatively close proximity to their home planet.'
           name: params
@@ -351,13 +351,13 @@ Empire:
         - 1002
         - 1014
     disable_self_destruct:
-      desc: Disables the self distruction countdown.
+      description: Disables the self distruction countdown.
       parameters:
         - description: A session id.
           name: session_id
       returns: "{\n    \"status\" : { ... }\n }"
     edit_profile:
-      desc: Edits properties of an empire. Returns the view_profile method. See also the view_profile and view_public_profile methods.
+      description: Edits properties of an empire. Returns the view_profile method. See also the view_profile and view_public_profile methods.
       parameters:
         - description: A session id.
           name: session_id
@@ -367,20 +367,20 @@ Empire:
         - 1005
         - 1009
     enable_self_destruct:
-      desc: 'Enables a destruction countdown of 24 hours. Sometime after the timer runs out, the empire will vaporize.'
+      description: 'Enables a destruction countdown of 24 hours. Sometime after the timer runs out, the empire will vaporize.'
       parameters:
         - description: A session id.
           name: session_id
       returns: "{\n    \"status\" : { ... }\n }"
     fetch_captcha:
-      desc: Retrieves a captcha that is required in order to call the create method. Display the resulting captcha in your creation form and then call create with the user's response.
+      description: Retrieves a captcha that is required in order to call the create method. Display the resulting captcha in your creation form and then call create with the user's response.
       returns: |-
         {
             "guid" : "id-goes-here",
             "url" : "'https://extras.lacunaexpanse.com.s3.amazonaws.com/captcha/id/id-goes-here.png" 
          }
     find:
-      desc: 'Find an empire by name. Returns a hash reference containing empire ids and empire names. So if you searched for "Lacuna" you might get back a result set that looks like this:'
+      description: 'Find an empire by name. Returns a hash reference containing empire ids and empire names. So if you searched for "Lacuna" you might get back a result set that looks like this:'
       parameters:
         - description: A session id.
           name: session_id
@@ -401,7 +401,7 @@ Empire:
             "status" : { ... }
          }
     found:
-      desc: "Set up an empire on it's new home world. Once this method is called, the species can no longer be modified.The welcome_message_id is a message id for a message in the inbox, that starts the tutorial. This is provided so the user can be prompted to read that message right away."
+      description: "Set up an empire on it's new home world. Once this method is called, the species can no longer be modified.The welcome_message_id is a message id for a message in the inbox, that starts the tutorial. This is provided so the user can be prompted to read that message right away."
       parameters:
         - description: The empire to found.
           name: empire_id
@@ -416,7 +416,7 @@ Empire:
             "status" : { ... }
          }
     get_invite_friend_url:
-      desc: 'Returns a URL that can be pasted into a blog, forum, or whatever to invite friends.'
+      description: 'Returns a URL that can be pasted into a blog, forum, or whatever to invite friends.'
       parameters:
         - description: A session id.
           name: session_id
@@ -426,7 +426,7 @@ Empire:
             "referral_url" : "http://servername.lacunaexpanse.com/#referral=XXXX"
          }
     get_species_templates:
-      desc: Returns an array ref of species templates that can be used to help the user populate the form for update_species.
+      description: Returns an array ref of species templates that can be used to help the user populate the form for update_species.
       returns: |-
         [
             {
@@ -449,7 +449,7 @@ Empire:
             ...
          ]
     get_status:
-      desc: 'Returns information about the current state of the empire.NOTE: You should probably never call this method directly, as it is a wasted call since the data it returns comes back in the status block of every relevant request. See "Status" in Intro for details.'
+      description: 'Returns information about the current state of the empire.NOTE: You should probably never call this method directly, as it is a wasted call since the data it returns comes back in the status block of every relevant request. See "Status" in Intro for details.'
       parameters:
         - description: A session id.
           name: session_id
@@ -479,7 +479,7 @@ Empire:
       throws:
         - 1002
     invite_friend:
-      desc: Send an invitation code to a friend so that they can start in the same zone as your empire.
+      description: Send an invitation code to a friend so that they can start in the same zone as your empire.
       parameters:
         - description: A session id.
           name: session_id
@@ -489,14 +489,14 @@ Empire:
           name: custom_message
       returns: " I'm having a great time with this new game called Lacuna Expanse. Come play with me."
     is_name_available:
-      desc: 'Returns a 1 if the name is available, or a throws an exception if it is not.'
+      description: 'Returns a 1 if the name is available, or a throws an exception if it is not.'
       parameters:
         - description: The name of the empire to search for.
           name: name
       throws:
         - 1000
     login:
-      desc: 'Returns a hash like the following after confirming the password matches the empire.NOTE: Once established, this session will stick around for up to 2 hours of inactivity. Therefore, you need not login again if you still have a valid session.'
+      description: 'Returns a hash like the following after confirming the password matches the empire.NOTE: Once established, this session will stick around for up to 2 hours of inactivity. Therefore, you need not login again if you still have a valid session.'
       parameters:
         - description: The name of the empire.
           name: name
@@ -513,14 +513,14 @@ Empire:
         - 1004
         - 1005
     logout:
-      desc: Ends a session. Returns 1.
+      description: Ends a session. Returns 1.
       parameters:
         - description: A session id.
           name: session_id
       throws:
         - 1006
     redeem_essentia_code:
-      desc: Redeems an essentia code and applies the essentia to the empire's balance.
+      description: Redeems an essentia code and applies the essentia to the empire's balance.
       parameters:
         - description: A session id.
           name: session_id
@@ -528,7 +528,7 @@ Empire:
           name: code
       returns: "{\n    \"status\" : { ... }\n }"
     redefine_species:
-      desc: 'Allows a user to spend essentia and redefine their species affinities, name, and description. This can only be used after the empire has been founded. If you want to redefine the species during empire creation then see update_species.See also redefine_species_limits.WARNING: Once this is done it cannot be redone for 1 month, so make sure the user is aware of this and prompt them appropriately before submitting the request.'
+      description: 'Allows a user to spend essentia and redefine their species affinities, name, and description. This can only be used after the empire has been founded. If you want to redefine the species during empire creation then see update_species.See also redefine_species_limits.WARNING: Once this is done it cannot be redone for 1 month, so make sure the user is aware of this and prompt them appropriately before submitting the request.'
       parameters:
         - description: A ssession id.
           name: session_id
@@ -536,7 +536,7 @@ Empire:
           name: params
       returns: "{\n    \"status\" : { ... }\n }"
     redefine_species_limits:
-      desc: Defines the extra limits placed upon a user that want's to redefine their species.
+      description: Defines the extra limits placed upon a user that want's to redefine their species.
       parameters:
         - description: A session id.
           name: session_id
@@ -551,7 +551,7 @@ Empire:
             "reason" : "You have already redefined your species in the past 30 days."
          }
     reset_password:
-      desc: Change the empire password that has been forgotten.
+      description: Change the empire password that has been forgotten.
       parameters:
         - description: A key that was emailed to the user via the send_password_reset_message method.
           name: reset_key
@@ -567,19 +567,19 @@ Empire:
            "status" : { ... }
          }
     send_password_reset_message:
-      desc: Starts a password recovery process by sending an email with a recovery key.
+      description: Starts a password recovery process by sending an email with a recovery key.
       parameters:
         - description: The email address associated with an empire.
           name: params
     set_status_message:
-      desc: 'Sets the empire status message. Similar to what you might put on your Facebook wall, or in a tweet, but about your empire.'
+      description: 'Sets the empire status message. Similar to what you might put on your Facebook wall, or in a tweet, but about your empire.'
       parameters:
         - description: A session id.
           name: session_id
         - description: "A message to indicate what you're doing, how you're feeling, or other status indicator. Limited to 100 characters, cannot be blank, and cannot contain @, &, <, >, or ;."
           name: message
     update_species:
-      desc: "Updates the empire's species and returns 1. Can only be called after create has been called and before found has been called. Before or after that will throw an exception. If you have already founded your empire then use redefine_species.See also: get_species_templates"
+      description: "Updates the empire's species and returns 1. Can only be called after create has been called and before found has been called. Before or after that will throw an exception. If you have already founded your empire then use redefine_species.See also: get_species_templates"
       parameters:
         - description: The id of the empire you wish to update a species for.
           name: empire_id
@@ -594,7 +594,7 @@ Empire:
         - 1009
         - 1010
     view_boosts:
-      desc: Shows the dates at which boosts have expired or will expire. Boosts are subsidies applied to various resources using essentia.
+      description: Shows the dates at which boosts have expired or will expire. Boosts are subsidies applied to various resources using essentia.
       parameters:
         - description: A session id.
           name: session_id
@@ -611,7 +611,7 @@ Empire:
             }
          }
     view_profile:
-      desc: Provides a list of the editable properties of the current empire's profile. See also the edit_profile and view_public_profile methods.
+      description: Provides a list of the editable properties of the current empire's profile. See also the edit_profile and view_public_profile methods.
       parameters:
         - description: A session id.
           name: session_id
@@ -646,7 +646,7 @@ Empire:
             "status" : { ... }
          }
     view_public_profile:
-      desc: Provides a list of the data that's publicly known about this empire.
+      description: Provides a list of the data that's publicly known about this empire.
       parameters:
         - description: A session id.
           name: session_id
@@ -696,7 +696,7 @@ Empire:
       throws:
         - 1002
     view_species_stats:
-      desc: Returns a list of the stats associated with an empire's species as it was originally created. An empire can only view it's own species stats through this method.
+      description: Returns a list of the stats associated with an empire's species as it was originally created. An empire can only view it's own species stats through this method.
       parameters:
         - name: session_id
       returns: |-
@@ -724,7 +724,7 @@ Inbox:
   api-url: /inbox
   services:
     archive_messages:
-      desc: "Archives a list of messages.NOTE: You cannot archive sent messages. You'll get a failure if the message is either already archived, or it's a message that cannot be archived, like a message in your sent folder."
+      description: "Archives a list of messages.NOTE: You cannot archive sent messages. You'll get a failure if the message is either already archived, or it's a message that cannot be archived, like a message in your sent folder."
       parameters:
         - description: A session id.
           name: session_id
@@ -737,7 +737,7 @@ Inbox:
             "status" : { ... }
          }
     read_message:
-      desc: "Retrieves a message. Marks it read if it hasn't been already.recipients is the complete list of users who received the message, whereas to is the user that owns this particular copy of the message."
+      description: "Retrieves a message. Marks it read if it hasn't been already.recipients is the complete list of users who received the message, whereas to is the user that owns this particular copy of the message."
       parameters:
         - description: A session id.
           name: session_id
@@ -794,7 +794,7 @@ Inbox:
         - 1006
         - 1010
     send_message:
-      desc: Sends a message to other players.
+      description: Sends a message to other players.
       parameters:
         - description: A session id.
           name: session_id
@@ -811,12 +811,12 @@ Inbox:
         - 1005
         - 1006
     view_archived:
-      desc: Exactly the same as view_inbox except that it shows archived messages instead.
+      description: Exactly the same as view_inbox except that it shows archived messages instead.
       parameters:
         - name: session_id
         - name: options
     view_inbox:
-      desc: "Displays a list of the messages in the empire's inbox. Displays 25 messages per page, sorted newest to oldest.The tags section allows the user to filter the messages. You can do this either client side or server side. Available tags are:"
+      description: "Displays a list of the messages in the empire's inbox. Displays 25 messages per page, sorted newest to oldest.The tags section allows the user to filter the messages. You can do this either client side or server side. Available tags are:"
       parameters:
         - description: A session id.
           name: session_id
@@ -846,7 +846,7 @@ Inbox:
         - 1002
         - 1006
     view_sent:
-      desc: Exactly the same as view_inbox except that it shows sent messages instead.
+      description: Exactly the same as view_inbox except that it shows sent messages instead.
       parameters:
         - name: session_id
         - name: options
@@ -854,7 +854,7 @@ Map:
   api-url: /map
   services:
     check_star_for_incoming_probe:
-      desc: 'If the star has a status of "unprobed", call this method to find out if there is an incoming probe from this empire.'
+      description: 'If the star has a status of "unprobed", call this method to find out if there is an incoming probe from this empire.'
       parameters:
         - description: A session id.
           name: session_id
@@ -866,7 +866,7 @@ Map:
             "incoming_probe" : "01 31 2010 13:09:05 +0600" # date of arrival will be present if there is an incoming probe
          }
     get_star:
-      desc: Retrieves info on a single star.
+      description: Retrieves info on a single star.
       parameters:
         - description: A session id.
           name: session_id
@@ -889,7 +889,7 @@ Map:
             "status" : { ... }
          }
     get_star_by_name:
-      desc: Retrieves info on a single star.
+      description: Retrieves info on a single star.
       parameters:
         - description: A session id.
           name: session_id
@@ -912,7 +912,7 @@ Map:
             "status" : { ... }
          }
     get_star_by_xy:
-      desc: Retrieves info on a single star.
+      description: Retrieves info on a single star.
       parameters:
         - description: A session id.
           name: session_id
@@ -937,7 +937,7 @@ Map:
             "status" : { ... }
          }
     get_stars:
-      desc: 'Retrieves a chunk of the map and returns it as an array of hashes. Note: Coordinates without a star will not be returned in the results.The data you retrieve will allow you to draw a standard cartesian plane like the following.The requested area can be no larger than 900 spaces (30x30). Throws 1003 when the area is too large.'
+      description: 'Retrieves a chunk of the map and returns it as an array of hashes. Note: Coordinates without a star will not be returned in the results.The data you retrieve will allow you to draw a standard cartesian plane like the following.The requested area can be no larger than 900 spaces (30x30). Throws 1003 when the area is too large.'
       parameters:
         - description: A session id.
           name: session_id
@@ -964,7 +964,7 @@ Map:
         
                      -y
     search_stars:
-      desc: If you know a partial name of a star you can search for it. Returns up to 25 results. No body data is returned with this search.
+      description: If you know a partial name of a star you can search for it. Returns up to 25 results. No body data is returned with this search.
       parameters:
         - description: A session id.
           name: session_id
@@ -992,7 +992,7 @@ Stats:
   api-url: /stats
   services:
     alliance_rank:
-      desc: Returns a sorted list of alliance ranked according to various stats.
+      description: Returns a sorted list of alliance ranked according to various stats.
       parameters:
         - description: A session id.
           name: session_id
@@ -1025,7 +1025,7 @@ Stats:
            "page_number" : 3
          }
     colony_rank:
-      desc: Returns a sorted list of planets ranked according to various stats.
+      description: Returns a sorted list of planets ranked according to various stats.
       parameters:
         - description: A session id.
           name: session_id
@@ -1049,7 +1049,7 @@ Stats:
             ]
          }
     credits:
-      desc: Retrieves a list of the game credits. It is an array of hashes of arrays.
+      description: Retrieves a list of the game credits. It is an array of hashes of arrays.
       returns: |-
         [
             { "Game Server" : ["JT Smith"]},
@@ -1059,7 +1059,7 @@ Stats:
             ...
          ]
     empire_rank:
-      desc: Returns a sorted list of empires ranked according to various stats.
+      description: Returns a sorted list of empires ranked according to various stats.
       parameters:
         - description: A session id.
           name: session_id
@@ -1091,7 +1091,7 @@ Stats:
            "page_number" : 3
          }
     find_alliance_rank:
-      desc: Search for a particular alliance in the alliance_rank().
+      description: Search for a particular alliance in the alliance_rank().
       parameters:
         - description: A session id.
           name: session_id
@@ -1112,7 +1112,7 @@ Stats:
             ]
          }
     find_empire_rank:
-      desc: Search for a particular empire in the empire_rank().
+      description: Search for a particular empire in the empire_rank().
       parameters:
         - description: A session id.
           name: session_id
@@ -1133,7 +1133,7 @@ Stats:
             ]
          }
     spy_rank:
-      desc: Returns a sorted list of the top spies in the game ranked according to various stats.
+      description: Returns a sorted list of the top spies in the game ranked according to various stats.
       parameters:
         - description: A session id.
           name: session_id
@@ -1157,7 +1157,7 @@ Stats:
             ]
          }
     weekly_medal_winners:
-      desc: Returns a list of the empires who won this week's weekly medals.
+      description: Returns a list of the empires who won this week's weekly medals.
       parameters:
         - description: A session id.
           name: session_id
