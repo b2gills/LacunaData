@@ -20,6 +20,16 @@ use LacunaData::Load::API::HTML;
 
 use namespace::clean;
 
+=head1 NAME
+
+LacunaData::Load::OtherAPI
+
+=head2 C<Load>
+
+Returns information about the Lacuna Expanse API, excluding the buildings.
+
+=cut
+
 sub Load{
   if( -e source_file ){
     return thaw( get_source_from_file );
@@ -57,6 +67,16 @@ sub _load{
 
 use namespace::clean;
 
+=head2 C<Cache>
+
+Generate information about the Lacuna Expanse API, excluding the buildings.
+
+It does this by looking over the web pages for the API.
+
+It then saves a copy of this data.
+
+=cut
+
 sub Cache{
   my $data = _load();
 
@@ -67,13 +87,13 @@ sub Cache{
   return $data;
 }
 
+no namespace::clean;
+
 sub base_url{
   my $base_url = source_url;
   $base_url =~ s(:// [^/]+ \K .*){}x;
   return $base_url;
 }
-
-no namespace::clean;
 
 sub _get_api_listing{
   my %urls = map{
@@ -82,4 +102,7 @@ sub _get_api_listing{
 
   return \%urls;
 }
+
+use namespace::clean;
+
 1;

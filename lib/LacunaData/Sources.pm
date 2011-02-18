@@ -37,6 +37,19 @@ BEGIN{
   $global_config = LoadFile($config_file);
 }
 
+=head1 NAME
+
+LacunaData::Sources
+
+=head2 FUNCTIONS
+
+=over 4
+
+=item source
+
+returns the name of the local file if it exists, the url otherwise
+
+=cut
 
 sub source{
   my($source) = @_;
@@ -75,6 +88,12 @@ sub _source_from{
   die qq[Unable to find the source of "$source" at $filename line:$line\n];
 }
 
+=item source_file
+
+returns the name of the local file
+
+=cut
+
 sub source_file{
   my($source) = @_;
 
@@ -84,6 +103,12 @@ sub source_file{
   my($package, $filename, $line) = caller;
   die qq[Unable to find the file for "$source" at $filename line:$line\n];
 }
+
+=item source_url
+
+returns the url
+
+=cut
 
 sub source_url{
   my($source) = @_;
@@ -104,6 +129,16 @@ sub _read_file{
   return $contents;
 }
 
+=item get_source_from_file
+
+returns the contents of the local storage file
+
+=item get_source_from_url
+
+returns the contents from the url
+
+=cut
+
 sub get_source_from_file{
   _read_file( source_file( $_[0] ) );
 }
@@ -121,6 +156,13 @@ sub get_source_from_url{
   }
   die;
 }
+
+=item get_source
+
+returns the entire contents of the local file if it exists,
+otherwise it returns the contents from the url
+
+=cut
 
 sub get_source{
   my($source, $type) = @_;

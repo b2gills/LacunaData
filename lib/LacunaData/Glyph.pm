@@ -10,12 +10,30 @@ use Scalar::Util qw'reftype';
 use List::MoreUtils qw'uniq';
 use 5.12.2;
 
+use namespace::clean;
+
+=head1 NAME
+
+LacunaData::Glyph
+
+=head2 METHODS
+
+=over 4
+
+=item C<new>
+
+creates a new LacunaData::Glyph object
+
+=cut
+
 sub new{
   my($class) = @_;
   my $self = LacunaData::Load::Glyph->Load;
   bless $self, $class;
   return $self;
 }
+
+no namespace::clean;
 
 sub _mixed_sort{
   my $common;
@@ -37,11 +55,25 @@ sub mixed_sort{
   sort {_mixed_sort} @_
 }
 
+use namespace::clean;
+
+=item C<building_list>
+
+returns list of glyph buildings with known receipes
+
+=cut
+
 sub building_list{
   my($self) = @_;
  
   return mixed_sort keys %$self;
 }
+
+=item C<functional>
+
+returns list of glyph buildings which are more than decorations
+
+=cut
 
 sub functional{
   my($self) = @_;
@@ -51,6 +83,12 @@ sub functional{
   return @functional;
 }
 
+=item C<decorative>
+
+returns list of glyph buildings which are just decorative
+
+=cut
+
 sub decorative{
   my($self) = @_;
   my @functional = mixed_sort grep{
@@ -58,6 +96,16 @@ sub decorative{
   } keys %$self;
   return @functional;
 }
+
+=item C<loop( &code )>
+
+Runs through the sorted list of known recipes.
+
+Calls C<&code> with an object representing the current recipe.
+
+Returns a list of the return values of the called C<&code>.
+
+=cut
 
 sub loop{
   my($self,$code) = @_;
@@ -81,6 +129,9 @@ sub loop{
   }
   return @$opaque;
 }
+
+no namespace::clean;
+
 sub _loop{
   my($data,$name,$code,$opaque) = @_;
   my $elem = LacunaData::Glyph::Building->new($data,$name);
@@ -88,6 +139,33 @@ sub _loop{
   my @return = $code->($elem);
   push @$opaque, @return;
 }
+
+use namespace::clean;
+
+=pod
+
+The recipe object has these methods:
+
+=over 4
+
+=item C<type>
+
+Returns the type of the building this recipe is for.
+
+one of C<functional> or C<decorative>
+
+=item C<name>
+
+Returns the name of the building this recipe is for.
+
+If there is more than one recipe for a given building,
+this will return the B<same> name for each recipe.
+
+=item C<recipe>
+
+Returns a list of the glyphs for this recipe, in the required order.
+
+=cut
 
 {
   package LacunaData::Glyph::Building;

@@ -29,6 +29,22 @@ sub _clean_up{
   return $js
 }
 
+use namespace::clean;
+
+=head1 NAME
+
+LacunaData::Load::SMD
+
+=head2 C<Load>
+
+Returns the SMD data for the Lacuna Expanse API.
+
+=head2 C<Cache>
+
+Stores a cleaned up local copy of the SMD data.
+
+=cut
+
 sub Load{
   if( -e source_file ){
     return decode_json  get_source_from_file;

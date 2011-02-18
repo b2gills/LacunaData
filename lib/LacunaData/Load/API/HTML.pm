@@ -9,6 +9,18 @@ use autodie qw':default get';
 
 use namespace::clean;
 
+=head1 NAME
+
+LacunaData::Load::API::HTML
+
+=head1 METHODS
+
+=over 4
+
+=item C<new>
+
+=cut
+
 sub new{
   my($class,$url) = @_;
   
@@ -24,6 +36,14 @@ sub new{
   return $self;
 }
 
+=item C<html_tree>
+
+Returns the associated HTML::TreeBuilder object.
+
+For internal use only.
+
+=cut
+
 sub html_tree{
   my($self) = @_;
   return $self->{tree} if $self->{tree};
@@ -36,6 +56,12 @@ sub html_tree{
   return $tree;
 }
 
+=item C<methods>
+
+Returns a list of methods listed on the given page.
+
+=cut
+
 sub methods{
   my($self) = @_;
   my @methods = keys %{ $self->method_data };
@@ -43,6 +69,12 @@ sub methods{
   return @methods if wantarray;
   return \@methods;
 }
+
+=item C<method_data>
+
+Returns the raw data of the given methods.
+
+=cut
 
 sub method_data{
   my($self) = @_;
@@ -160,4 +192,7 @@ sub _get_api_method_info{
 
   return \%method;
 }
+
+use namespace::clean;
+
 1;

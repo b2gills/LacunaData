@@ -19,6 +19,18 @@ use YAML qw'thaw';
 use List::Util qw'max';
 use 5.12.2;
 
+use namespace::clean;
+
+=head1 NAME
+
+LacunaData::Load::Glyph
+
+=head2 C<Load>
+
+Returns the collected data for the Lacuna Expanse glyph buildings.
+
+=cut
+
 sub Load{
   if( -e source_file ){
     return thaw get_source_from_file;
@@ -26,6 +38,8 @@ sub Load{
     return _load();
   }
 }
+
+no namespace::clean;
 
 sub _load{
   my $data = _load_list();
@@ -42,6 +56,15 @@ sub _load{
   return $data;
 }
 
+use namespace::clean;
+
+=head2 C<Cache>
+
+Generates data of glyph buildings from available sources,
+and stores a local copy.
+
+=cut
+
 sub Cache{
   my $data = _load();
   
@@ -50,6 +73,8 @@ sub Cache{
   
   return $data;
 }
+
+no namespace::clean;
 
 {
   my @ore_list = ore_list;
