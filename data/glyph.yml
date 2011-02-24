@@ -110,7 +110,7 @@ Citadel of Knope:
   type: functional
   wiki: http://community.lacunaexpanse.com/wiki/citadel-of-knope
 Crashed Ship Site:
-  desc: 'The Crashed Ship Site allows you to add 5% to each of the stats of each of your newly built ships per level of the Crashed Ship Site. And it does this without any additional cost to your ships, by allowing you to harvest alien technology from the crashed ship.'
+  desc: 'The Crashed Ship Site allows you to add 5% to each of the stats / bonuses of each of your newly built ships per level of the Crashed Ship Site. And it does this without any additional cost to your ships, by allowing you to harvest alien technology from the crashed ship.'
   recipe:
     - monazite
     - trona

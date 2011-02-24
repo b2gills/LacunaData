@@ -1460,6 +1460,45 @@ SpacePort:
                 ...
             ]
          }
+    recall_ship:
+      description: Recalls a ship from allied defense ('Defend' task) to the body of origin.
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: The unique id for the space port.
+          name: building_id
+        - description: The unique id of a ship to recall.
+          name: ship_id
+      returns: |-
+        {
+            "status" : { ... },
+            "ship" : {
+                "id" : "id-goes-here",
+                "name" : "F13",
+                "type_human" : "Fighter",
+                "type" : "fighter",
+                "task" : "Travelling",
+                "speed" : "2000",
+                "stealth" : "0",
+                "hold_size" : "0",
+                "date_started" : "01 31 2010 13:09:05 +0600",
+                "date_available" : "02 01 2010 10:08:33 +0600",
+                "date_arrives" : "02 01 2010 10:08:33 +0600",
+                "from" : {
+                   "id" : "id-goes-here",
+                   "type" : "body",
+                   "name" : "Earth"
+                },
+                "to" : {
+                   "id" : "id-goes-here",
+                   "type" : "star",
+                   "name" : "Sol"
+                }
+            }
+         }
+      throws:
+        - 1002
+        - 1010
     scuttle_ship:
       description: Destroy a ship that you no longer need. It must be docked to scuttle it.
       parameters:
