@@ -20,3 +20,6 @@ building-api.override:
 other-api:
   file: ../../data/other-api.yml
   url: http://us1.lacunaexpanse.com
+error-codes:
+  file: ../../data/error-codes.yml
+  url: http://us1.lacunaexpanse.com/api/ErrorCodes.html
