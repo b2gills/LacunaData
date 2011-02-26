@@ -122,6 +122,8 @@ sub _get_api_listing{
     $info_url = base_url().$info_url->attr('href');
     $urls{$name} = $info_url;
   }
+  
+  $tree->delete;
 
   return \%urls;
 }

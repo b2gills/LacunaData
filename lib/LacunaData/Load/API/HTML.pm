@@ -193,6 +193,13 @@ sub _get_api_method_info{
   return \%method;
 }
 
+sub DESTROY{
+  my($self) = @_;
+  if( $self->{tree} ){
+    $self->{tree}->delete;
+  }
+}
+
 use namespace::clean;
 
 1;

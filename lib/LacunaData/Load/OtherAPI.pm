@@ -6,8 +6,6 @@ use autodie;
 
 use YAML qw'freeze thaw';
 
-use HTML::TreeBuilder;
-
 use LacunaData::Sources (
   id => ['other-api'],
   qw(
