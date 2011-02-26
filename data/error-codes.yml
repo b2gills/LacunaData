@@ -1,0 +1,58 @@
+---
+1000:
+  name: Name not available.
+  reason: "Perhaps it already exists, or it's blank, or it contains unusable characters."
+1001:
+  name: Invalid password.
+  reason: Passwords cannot be empty and they must be at least 6 characters long.
+1002:
+  name: Object does not exist.
+  reason: The object you've requested by id doesn't exist.
+1003:
+  name: Too much information.
+  reason: You've requested too much information from the server at once.
+1004:
+  name: Password incorrect.
+  reason: "The user mistyped the password, or doesn't know it."
+1005:
+  name: Contains invalid characters.
+  reason: Thrown when a text field contains invalid characters.
+1006:
+  name: Session expired.
+  reason: "A basic authorization denied error, because the session you're trying to connect with doesn't exist or has expired."
+1007:
+  name: Overspend.
+  reason: You have tried to spend more resources than you have.
+1008:
+  name: Underspend.
+  reason: You need to spend more resources than you have spent.
+1009:
+  name: Invalid range.
+  reason: "The items in the range don't fit the rules for the range. For example, habitable stellar orbits must be consecutive, so a range of 1,3,5 would trigger this error."
+1010:
+  name: Insufficient privileges.
+  reason: The authenticated empire doesn't have the privileges to complete the requested action.
+1011:
+  name: Not enough resources in storage.
+  reason: The empire/planet/station doesn't have enough resources in storage to complete the requested action. Build more wealth to fix the problem.
+1012:
+  name: Not enough resources in production.
+  reason: The empire/planet/station isn't producing enough resources to keep up with the demands of this action. If the action were allowed to complete it would bankrupt the empire.
+1013:
+  name: Missing prerequisites.
+  reason: The empire/planet/station hasn't completed building the prerequisite buildings in order to build something new.
+1014:
+  name: Captcha not valid.
+  reason: A captcha was required for this request and it was not valid. The data portion will contain new captcha information to try again.
+1015:
+  name: Restricted for sitter logins.
+  reason: The function you were attempting to access is not valid for sitter accounts.
+1100:
+  name: Empire not founded.
+  reason: You're trying to log in to an empire that is part way through the creation process. The data portion will tell you the empire id so that they can update the species and found the empire.
+1101:
+  name: 'Empire not founded, and you tried to create it, but had the wrong password.'
+  reason: "This message will only occur if a user tries to create an empire with a name that already exists, but has not yet been founded, and the user doesn't enter the same password as they did when they first created the empire."
+1200:
+  name: Game Over.
+  reason: This game has come to an end. The data section of this exception will contain a URI to a web page that shows the final stats.
