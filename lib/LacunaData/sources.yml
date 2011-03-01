@@ -23,3 +23,5 @@ other-api:
 error-codes:
   file: ../../data/error-codes.yml
   url: http://us1.lacunaexpanse.com/api/ErrorCodes.html
+error-code-id:
+  file: ../../data/error-code-id.yml

@@ -17,6 +17,10 @@ use LacunaData::Sources (
     get_source_from_url
   )
 );
+use LacunaData::Sources (
+  id => ['error-code-id'],
+  get_source_from_file => { -as => 'error_code_id' },
+);
 
 use namespace::clean;
 
@@ -64,6 +68,10 @@ sub _load{
   }
   
   $tree->delete();
+  my $ids = thaw error_code_id;
+  while( my($num,$id) = each %$ids ){
+    $error{$num}{id} = $id;
+  }
   
   return \%error;
 }
