@@ -155,6 +155,18 @@ sub services_list{
   return \@services;
 }
 
+=item C<common_services>
+
+=cut
+
+sub common_services{
+  my($self) = @_;
+  
+  my @common = sort keys %{$self->{_common}};
+  return @common if wantarray;
+  return \@common;
+}
+
 =item C<building( $building )>
 
 Returns L<building|LacunaData::API::Building> by the name of C<$building>
