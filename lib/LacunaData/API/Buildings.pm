@@ -115,7 +115,7 @@ sub services_map{
   
   my %services;
   
-  for my $name( keys %$self ){
+  for my $name( $self->list_all ){
     next if substr($name, 0, 1) eq '_';
     
     my $data = $self->building($name);
