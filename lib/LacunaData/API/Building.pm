@@ -48,6 +48,7 @@ sub service{
   
   if( my $common = delete $self->{_common}{$service} ){
     unless( blessed $common ){
+      $common->{_is_common} = 1;
       $common = LacunaData::API::Service->new($service,$common)
     }
     $services->{$service} = $common;

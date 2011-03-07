@@ -28,4 +28,9 @@ sub name{
   return $self->{name};
 }
 
+sub is_common{
+  my($self) = @_;
+  return !! $self->{_is_common};
+}
+
 1;
