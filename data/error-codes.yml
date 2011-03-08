@@ -63,6 +63,9 @@
   id: sitter_restricted
   name: Restricted for sitter logins.
   reason: The function you were attempting to access is not valid for sitter accounts.
+1016:
+  name: Needs to solve a captcha.
+  reason: The old captcha has expired. A new captcha is needed.
 1100:
   id: not_founded
   name: Empire not founded.

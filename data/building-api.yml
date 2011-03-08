@@ -132,6 +132,65 @@ Development:
             ],
             "subsidy_cost" : 8 # the essentia cost to subsidize the build queue
          }
+DistributionCenter:
+  services:
+    release_reserve:
+      description: Returns the resources held in reserve back to the planet.
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: The unique id of the distribution center.
+          name: building_id
+    reserve:
+      description: Reserves resources so they don't get automatically spent. Resources will be held until the timer expires or manually released. Returns view.
+      parameters:
+        - description: A session id.
+          name: session_id
+        - description: The unique id of the distribution center.
+          name: building_id
+        - description: An array of objects of resources you wish to reserve.
+          name: resources
+      returns: |-
+        [
+             {
+                 "type" : "apples",
+                 "quanity" : 2000
+             },
+             {
+                 "type" : "chromite",
+                 "quantity" : 5000
+             }
+         ]
+      throws:
+        - 1009
+        - 1010
+        - 1011
+    view:
+      description: 'Same as view in Buildings except:'
+      parameters:
+        - name: session_id
+        - name: building_id
+      returns: |-
+        {
+            "status" : { ... },
+            "building" : { ... },
+            "reserve" : {
+                "seconds_remaining" : 0, # time until reserved resources will automatically be released
+                "can" : 1,
+                "max_reserve_duration" : "7200", # max length resources can be kept in reserve
+                "max_reserve_size" : 100000, # max amount of resources that can be reserved
+                "resources" : [         # resources currently in reserve
+                    {
+                        "type" : "water",
+                        "quanity" : 2000
+                    }
+                    {
+                        "type" : "apples",
+                        "quanity" : 2000
+                    }
+                ]
+            }
+         }
 Embassy:
   services:
     accept_invite:
@@ -1355,7 +1414,7 @@ SpacePort:
              "status" : { ... }
          }
     get_ships_for:
-      description: 'Provides a list of incoming ships and ships that are available to send to a specific target. Use with send_ship.The unavailable block tells you about ships that are docked, but are for some reason not available to be used. The mining_platforms block will be returned only if the target is an asteroid that has platforms on it.'
+      description: 'Provides a list of incoming ships and ships that are available to send to a specific target. Use with send_ship.The unavailable block tells you about ships that are docked, but are for some reason not available to be used. The recallable block will be returned only if the target is body and tells you about fighters that are defending and can be recalled. The mining_platforms block will be returned only if the target is an asteroid that has platforms on it.'
       parameters:
         - description: A session id.
           name: session_id
@@ -1579,7 +1638,7 @@ SpacePort:
             }
          }
     view_all_ships:
-      description: Shows you all your ships whatever they are doing.
+      description: Shows you all your ships whatever they are doing.Travelling ships will have a from and to block. Defending fighters will have a from and orbiting block.
       parameters:
         - description: A session id.
           name: session_id
@@ -1613,6 +1672,32 @@ SpacePort:
                        "name" : "Mars"
                     }
                 },
+                        {
+                                "id" : "id-goes-here",
+                    "name" : "F13",
+                    "type_human" : "Fighter",
+                    "type" : "fighter",
+                    "task" : "Defend",
+                    "speed" : "2000",
+                    "stealth" : "0",
+                    "hold_size" : "0",
+                    "date_started" : "01 31 2010 13:09:05 +0600",
+                    "date_available" : "02 01 2010 10:08:33 +0600",
+                    "date_arrives" : "02 01 2010 10:08:33 +0600",
+                    "from" : {
+                       "id" : "id-goes-here",
+                       "type" : "body",
+                       "name" : "Earth"
+                    },
+                    "orbiting" : {
+                       "id" : "id-goes-here",
+                       "type" : "body",
+                       "name" : "Mars",
+                                   "x" : 4,
+                                   "y" : -3
+                    }
+        
+                        },
                 ...
             ],
             "number_of_ships" : 13,
@@ -1840,11 +1925,9 @@ Trade:
           name: building_id
         - description: The unique id of the trade.
           name: trade_id
-        - description: The view_market list also includes a captcha guid. That string must be passed along with the trade. The guid used must be the most recent one returned (if you're caching the list of trades in some UI).
-          name: captcha_guid
-        - description: The captcha described by view_market will require the user to solve a simple puzzle to prove their humanity. The answer to that puzzle must be provided here.
-          name: captcha_solution
       returns: "{\n    \"status\" : { ... }\n }"
+      throws:
+        - 1016
     add_to_market:
       description: Queues a trade for others to see.
       parameters:
@@ -2062,10 +2145,6 @@ Trade:
             ],
             "trade_count" : 1047,
             "page_number" : 1,
-            "captcha" : {
-                "guid" : "id-goes-here",
-                "url" : "https://url.to.image.goes.here/captcha.png"
-            },
             "status" : { ... }
          }
     view_my_market:
@@ -2117,11 +2196,9 @@ Transporter:
           name: building_id
         - description: The unique id of the trade.
           name: trade_id
-        - description: The view_market list also includes a captcha guid. That string must be passed along with the trade. The guid used must be the most recent one returned (if you're caching the list of trades in some UI).
-          name: captcha_guid
-        - description: The captcha described by view_market will require the user to solve a simple puzzle to prove their humanity. The answer to that puzzle must be provided here.
-          name: captcha_solution
       returns: "{\n    \"status\" : { ... }\n }"
+      throws:
+        - 1016
     add_to_market:
       description: 'Queues a trade for others to see. In addition to anything offered in your trade, setting up the trade will cost you 1 essentia.'
       parameters:
@@ -2333,10 +2410,6 @@ Transporter:
             ],
             "trade_count" : 1047,
             "page_number" : 1,
-            "captcha" : {
-                "guid" : "id-goes-here",
-                "url" : "https://url.to.image.goes.here/captcha.png"
-            },
             "status" : { ... }
          }
     view_my_market:
