@@ -1,7 +1,7 @@
 ---
 WaterProduction: ~
 WaterStorage:
-  methods:
+  services:
     dump:
       desc: Converts water into waste.
       parameters:
