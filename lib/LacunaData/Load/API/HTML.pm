@@ -131,7 +131,7 @@ sub _get_api_method_info{
 
   my %method;
 
-  my($method,$arg);
+  my($method,$arg,$arg2);
   
   for my $elem ( @tail ){
     my $tag  = $elem->tag;
@@ -148,14 +148,25 @@ sub _get_api_method_info{
           $a
         } split ', ', $args;
 
-        $method{$name}{'arg-order'} = \@args if @args;
+        if( @args && $args[0] ne 'params' ){
+          $method{$name}{'arg-order'} = \@args;
+        }
 
         $method = $name;
         undef $arg;
       }
       when( 'p' ){
         if( $arg and $method ){
-          $method{$method}{'arg-info'}{$arg} = $text;
+          if($arg2){
+            unless(ref $method{$method}{'arg-info'}{$arg} ){
+              $method{$method}{'arg-info'}{$arg} = {
+                _description => $method{$method}{'arg-info'}{$arg}
+              }
+            }
+            $method{$method}{'arg-info'}{$arg}{$arg2}{description} = $text;
+          }else{
+            $method{$method}{'arg-info'}{$arg} = $text;
+          }
         }elsif( $method ){
           if( $text =~ /^throw\D*(.*)/i ){
             my @throws = sort {$a<=>$b} split /\D+/, $1;
@@ -176,6 +187,10 @@ sub _get_api_method_info{
       }
       when( 'h3' ){
         $arg = $text;
+        undef $arg2;
+      }
+      when( 'h4' ){
+        $arg2 = $text;
       }
     }
   }
@@ -183,10 +198,24 @@ sub _get_api_method_info{
   while( my($method,$data) = each %method ){
     my $order = delete $data->{'arg-order'};
     my $info  = delete $data->{'arg-info'};
-    for my $name (@$order){
-      my %param = ( name => $name );
-      $param{description} = $info->{$name} if $info->{$name};
-      push @{$method{$method}{parameters}}, \%param;
+    if( $order ){
+      for my $name (@$order){
+        my %param = ( name => $name );
+        if( $info->{$name} ){
+          if( ref $info->{$name} ){
+            $param{type} = 'object';
+            $param{object} = $info->{$name};
+            $param{description} = delete $info->{$name}{_description};
+          }else{
+            $param{type} = 'string';
+            $param{description} = $info->{$name};
+          }
+        }
+        push @{$method{$method}{parameters}}, \%param;
+      }
+    }elsif( $info->{params} ){
+      delete $info->{params}{_description} if ref $info->{params};
+      $method{$method}{parameters} = $info->{params};
     }
   }
 
