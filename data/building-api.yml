@@ -6,10 +6,13 @@ Archaeology:
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: The unique id of the Archaeology Ministry.
           name: building_id
+          type: string
         - description: An array reference containing an ordered list of up to four glyph ids.
           name: ids
+          type: string
       returns: |-
         {
             "status" : { ... },
@@ -20,8 +23,10 @@ Archaeology:
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: The unique id of the Archaeology Ministry.
           name: building_id
+          type: string
       returns: |-
         {
             "status" : { ... },
@@ -38,8 +43,10 @@ Archaeology:
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: The unique id of the Archaeology Ministry.
           name: building_id
+          type: string
       returns: |-
         {
             "status" : { ... },
@@ -53,17 +60,22 @@ Archaeology:
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: The unique id of the Archaeology Ministry.
           name: building_id
+          type: string
         - description: 'One of the 20 types of ore. Choose from: rutile, chromite, chalcopyrite, galena, gold, uraninite, bauxite, goethite, halite, gypsum, trona, kerogen, methane, anthracite, sulfur, zircon, monazite, fluorite, beryl, magnetite'
           name: ore_type
+          type: string
     subsidize_search:
       description: Will spend 2 essentia to complete the current glyph search immediately. Returns view.
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: The unique id of the Archaeology Ministry.
           name: building_id
+          type: string
       throws:
         - 1011
 Capitol:
@@ -73,10 +85,13 @@ Capitol:
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: The unique id of the building.
           name: building_id
+          type: string
         - description: The new name of your empire.
           name: name
+          type: string
       returns: "{\n    \"status\" : { ... }\n }"
     view:
       description: 'Same as view in Buildings except:'
@@ -96,8 +111,10 @@ Development:
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: The id of the development ministry.
           name: building_id
+          type: string
       returns: |-
         {
             "status" : { ... },
@@ -139,17 +156,22 @@ DistributionCenter:
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: The unique id of the distribution center.
           name: building_id
+          type: string
     reserve:
       description: Reserves resources so they don't get automatically spent. Resources will be held until the timer expires or manually released. Returns view.
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: The unique id of the distribution center.
           name: building_id
+          type: string
         - description: An array of objects of resources you wish to reserve.
           name: resources
+          type: string
       returns: |-
         [
              {
@@ -198,47 +220,62 @@ Embassy:
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: The unique id of the embassy.
           name: building_id
+          type: string
         - description: The unique id of an invitation. See get_my_invites for details.
           name: invite_id
+          type: string
         - description: Optional. A personalized message that will be sent to the alliance leader with your acceptance.
           name: message
+          type: string
     assign_alliance_leader:
       description: Sets a new empire to lead the alliance. Can only be called by the current alliance leader. Returns the same thing as get_alliance_status.
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: The unique id of the embassy.
           name: building_id
+          type: string
         - description: The unique id of an empire that will lead the alliance going forward. The empire must already be a member of the alliance.
           name: new_leader_id
+          type: string
     create_alliance:
       description: Create a new alliance. Returns the same output as get_alliance_status.
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: The unique id of the embassy.
           name: building_id
+          type: string
         - description: 'A unique name for this alliance. Must be between 3 and 30 characters, cannot contain profanity or restricted characters.'
           name: name
+          type: string
     dissolve_alliance:
       description: Can only be called by alliance leader. Disbands and existing alliance.
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: The unique id of the embassy.
           name: building_id
+          type: string
       returns: "{\n    \"status\" : { ... }\n }"
     donate_to_stash:
       description: Returns view_stash
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: The unique id of the embassy.
           name: building_id
+          type: string
         - description: 'NOTE: Cannot donate waste.'
           name: donation
+          type: string
       returns: |-
         {
             "water" : 4500,
@@ -249,12 +286,16 @@ Embassy:
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: The unique id of the embassy.
           name: building_id
+          type: string
         - description: 'NOTE: Cannot donate waste.'
           name: donation
+          type: string
         - description: 'NOTE: The total sum, must add up to the sum of the donation, but can be in different concentrations.'
           name: request
+          type: string
       returns: |-
         {
             "energy" : 2000,
@@ -265,19 +306,25 @@ Embassy:
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: The unique id of the embassy.
           name: building_id
+          type: string
         - description: The unique id of the empire to remove from the alliance.
           name: empire_id
+          type: string
         - description: An optional message about why you're removing them from the alliance. Cannot contain restricted characters or profanity.
           name: message
+          type: string
     get_alliance_status:
       description: Returns everything about an alliance that members should know.
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: The unique id of the embassy.
           name: building_id
+          type: string
       returns: |-
         {
             "status" : { ... },
@@ -303,8 +350,10 @@ Embassy:
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: The unique id of the embassy.
           name: building_id
+          type: string
       returns: |-
         {
             "status" : { ... },
@@ -322,8 +371,10 @@ Embassy:
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: The unique id of the embassy.
           name: building_id
+          type: string
       returns: |-
         {
             "status" : { ... },
@@ -341,44 +392,58 @@ Embassy:
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: The unique id of the embassy.
           name: building_id
+          type: string
         - description: An optional message about why you're leaving the alliance. Cannot contain restricted characters or profanity.
           name: message
+          type: string
       returns: "{\n    \"status\" : { ... }\n }"
     reject_invite:
       description: Delete an invitation.
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: The unique id of the embassy.
           name: building_id
+          type: string
         - description: The unique id of an invitation. See get_my_invites for details.
           name: invite_id
+          type: string
         - description: Optional. A personalized message that will be sent to the alliance leader along with your rejection.
           name: message
+          type: string
       returns: "{\n    \"status\" : { ... }\n }"
     send_invite:
       description: Can only be called by alliance leader. Invite an empire to an alliance.
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: The unique id of the embassy.
           name: building_id
+          type: string
         - description: The unique id of an empire you'd like to invite to an alliance. See "search_empires" in Empire to look up empire ids.
           name: invitee_id
+          type: string
         - description: Optional. A personalized welcome message that will be included in the invitation.
           name: message
+          type: string
       returns: "{\n    \"status\" : { ... }\n }"
     update_alliance:
       description: Updates the properties of an alliance. Returns the same thing as get_alliance_status. Can only be called by the alliance leader.
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: The unique id of the embassy.
           name: building_id
+          type: string
         - description: A hash reference of alliance properties. None of which can contain profanity or restricted characters. You can update any or all of these properties at the same time.
           name: params
+          type: string
     view:
       description: Same as view in Buildings except:We add an alliance_status block if this empire is in an alliance. It contains the same information as get_alliance_status
       parameters:
@@ -395,8 +460,10 @@ Embassy:
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: The unique id of the embassy.
           name: building_id
+          type: string
       returns: |-
         {
             "status" : { ... },
@@ -420,12 +487,16 @@ Embassy:
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: The unique id of the embassy.
           name: building_id
+          type: string
         - description: The unique id of an invitation. See get_pending_invites for details.
           name: invite_id
+          type: string
         - description: Optional. A personalized message that will be sent to the user about why their invitation has been withdrawn.
           name: message
+          type: string
       returns: "{\n    \"status\" : { ... }\n }"
 EnergyReserve:
   description: Energy Reserves increase the amount of energy you can store on your planet.
@@ -435,10 +506,13 @@ EnergyReserve:
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: The unique id of the building.
           name: building_id
+          type: string
         - description: An integer representing the amount to dump.
           name: amount
+          type: string
       returns: "{\n    \"status\" : { ... }\n }"
 Entertainment:
   services:
@@ -447,15 +521,19 @@ Entertainment:
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: The unique id of this building.
           name: building_id
+          type: string
     get_lottery_voting_options:
       description: 'This is the starting point to a voting lottery system. The user can vote on a site once and only once per day and each vote enters him/her into a lottery. At the end of the day a lottery ticket will be drawn, and a winner will be chosen to receive 10 essentia. Every vote is equal, but the more votes you have the greater your odds of winning.Returns a list of sites that the user can vote on.NOTE: The URLs returned in the url parameter need to be opened into a new browser window so that the user can go vote on a remote site.Each url is usable only once every 24 hours. The server keeps track of this, but the client must remove the URL from the list after the user has clicked on it so they know not to click again.'
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: The unique id of the entertainment district.
           name: building_id
+          type: string
       returns: |-
         {
             "options" : [
@@ -485,12 +563,16 @@ FoodReserve:
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: The unique id of the building.
           name: building_id
+          type: string
         - description: 'Choose a type of food convert into waste. (apple, corn, burger, etc)'
           name: type
+          type: string
         - description: An integer representing the amount to dump.
           name: amount
+          type: string
       returns: "{\n    \"status\" : { ... }\n }"
     view:
       description: This method is extended to include details about what kind of food is stored.
@@ -515,8 +597,10 @@ GeneticsLab:
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: The unique id of the genetics lab.
           name: building_id
+          type: string
       returns: |-
         {
             "status" : { ... },
@@ -550,8 +634,10 @@ GeneticsLab:
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: The unique id of the genetics lab.
           name: building_id
+          type: string
         - name: spy_id
         - name: affinity
       returns: |-
@@ -570,8 +656,10 @@ HallsOfVrbansk:
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: The unique id of the Halls of Vrbansk.
           name: building_id
+          type: string
       returns: |-
         {
             "status" : { ... },
@@ -593,10 +681,13 @@ HallsOfVrbansk:
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: The unique id of the Halls of Vrbansk.
           name: building_id
+          type: string
         - description: The unique id of the building you wish to upgrade.
           name: upgrade_building_id
+          type: string
       returns: "{\n    \"status\" : { ... }\n }"
 Intelligence:
   description: The Intelligence Ministry is where you build and control your spies.
@@ -606,12 +697,16 @@ Intelligence:
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: The unique id of your Intelligence Ministry.
           name: building_id
+          type: string
         - description: The unique id of the spy you wish to assign.
           name: spy_id
+          type: string
         - description: 'NOTE: You can do bad things to allies using these assignments.'
           name: assignment
+          type: string
       returns: |-
         {
             "status" : { ... },
@@ -664,22 +759,29 @@ Intelligence:
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: The unique id of your Intelligence Ministry.
           name: building_id
+          type: string
         - description: The unique id of the spy you wish to burn.
           name: spy_id
+          type: string
       returns: "{\n    \"status\" : { ... }\n }"
     name_spy:
       description: Set the name of the spy.
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: The unique id of the intelligence building.
           name: building_id
+          type: string
         - description: The unique id of the spy you wish to train.
           name: spy_id
+          type: string
         - description: "The name you'd like to set for the spy. The name cannot contain @, <, #, &, ; or profanity, and must be at least 1 character long."
           name: name
+          type: string
       returns: "{\n    \"status\" : { ... }\n }"
       throws:
         - 1002
@@ -690,8 +792,10 @@ Intelligence:
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: The unique id of the Intelligence Ministry.
           name: building_id
+          type: string
       throws:
         - 1011
     train_spy:
@@ -699,10 +803,13 @@ Intelligence:
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: The unique id of your Intelligence Ministry.
           name: building_id
+          type: string
         - description: An integer between 1 and 5. Defaults to 1.
           name: quantity
+          type: string
       returns: |-
         {
             "status" : { ... },
@@ -739,10 +846,13 @@ Intelligence:
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: The unique id of your Intelligence Ministry.
           name: building_id
+          type: string
         - description: Defaults to 1. An integer representing which page to view. Shows 25 spies per page.
           name: page_number
+          type: string
       returns: |-
         {
             "status" : { ... },
@@ -798,10 +908,13 @@ LibraryOfJith:
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: The unique id of this building.
           name: building_id
+          type: string
         - description: The unique id of an empire you'd like to know more about. See "find" in Empire to turn a name into an id.
           name: empire_id
+          type: string
       returns: |-
         {
             "species" : {
@@ -831,10 +944,13 @@ MiningMinistry:
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: The unique id of the mining ministry.
           name: building_id
+          type: string
         - description: The unique id of the platform you wish to abandon.
           name: platform_id
+          type: string
       returns: "{\n    \"status\" : { ... }\n }"
       throws:
         - 1002
@@ -843,10 +959,13 @@ MiningMinistry:
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: The unique id of the mining ministry.
           name: building_id
+          type: string
         - description: The unique id of the ship you want to add to the fleet.
           name: ship_id
+          type: string
       returns: "{\n    \"status\" : { ... }\n }"
       throws:
         - 1009
@@ -855,10 +974,13 @@ MiningMinistry:
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: The unique id of the mining ministry.
           name: building_id
+          type: string
         - description: The unique id of the ship you want to add.
           name: ship_id
+          type: string
       returns: "{\n    \"status\" : { ... }\n }"
       throws:
         - 1009
@@ -867,8 +989,10 @@ MiningMinistry:
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: The unique id of the mining ministry.
           name: building_id
+          type: string
       returns: |-
         {
             "status" : { ... },
@@ -914,8 +1038,10 @@ MiningMinistry:
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: The unique id of the mining ministry.
           name: building_id
+          type: string
       returns: |-
         {
             "ships" : [
@@ -937,18 +1063,23 @@ MissionCommand:
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: The unique id for the mission command building.
           name: building_id
+          type: string
         - description: The unique id of the mission you'd like to complete.
           name: mission_id
+          type: string
       returns: "{\n    \"status\" : { ... }\n }"
     get_missions:
       description: "Returns a list of missions that you are eligible to complete in this zone.NOTE: This is not the complete list of missions in the zone. You cannot complete missions you've already completed, nor can you complete missions that are registered as being below your university level."
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: The unique id for the mission command building.
           name: building_id
+          type: string
       returns: |-
         {
             "status" : { ... },
@@ -976,10 +1107,13 @@ MissionCommand:
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: The unique id for the mission command building.
           name: building_id
+          type: string
         - description: The unique id of the mission you'd like to skip.
           name: mission_id
+          type: string
       returns: "{\n    \"status\" : { ... }\n }"
 Network19:
   description: "Network 19 is the news network covering the Expanse. Here you can learn all kinds of things about what's happening around you, without even leaving your planet. Every two levels you'll receive news from additional zones around you, up to 7 total zones."
@@ -989,10 +1123,13 @@ Network19:
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: The unique id of this Network 19 Affiliate.
           name: building_id
+          type: string
         - description: 'A boolean indicating whether or not you have enacted a policy to restrict coverage. 1 to restrict, 0 to not restrict.'
           name: onoff
+          type: string
       returns: "{\n    \"status\" : { ... }\n }"
       throws:
         - 1009
@@ -1011,8 +1148,10 @@ Network19:
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: The unique id of the Network 19 Affiliate.
           name: building_id
+          type: string
       returns: |-
         {
             "news" : [
@@ -1035,10 +1174,13 @@ Observatory:
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: The unique id for the observatory.
           name: building_id
+          type: string
         - description: The unique id of the star the probe is attached to.
           name: star_id
+          type: string
       returns: |-
         {
                 "status" : { ... }
@@ -1051,8 +1193,10 @@ Observatory:
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: The unique id for the observatory.
           name: building_id
+          type: string
         - name: page_number
       returns: |-
         {
@@ -1078,10 +1222,13 @@ OracleOfAnid:
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: The unique id of the Oracle.
           name: building_id
+          type: string
         - description: The unique id of the star.
           name: star_id
+          type: string
       returns: |-
         { 
             "star" : {
@@ -1106,12 +1253,16 @@ OreStorage:
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: The unique id of the building.
           name: building_id
+          type: string
         - description: 'Choose a type of ore convert into waste. (gold, bauxite, galena, etc)'
           name: type
+          type: string
         - description: An integer representing the amount to dump.
           name: amount
+          type: string
       returns: "{\n    \"status\" : { ... }\n }"
     view:
       description: This method is extended to include details about what kinds of ore are stored.
@@ -1137,8 +1288,10 @@ Park:
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: The unique id of the Park.
           name: building_id
+          type: string
       throws:
         - 1011
     throw_a_party:
@@ -1146,8 +1299,10 @@ Park:
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: The unique id of the park.
           name: building_id
+          type: string
       throws:
         - 1002
         - 1006
@@ -1158,8 +1313,10 @@ Park:
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: The unique id of the park.
           name: building_id
+          type: string
       returns: |-
         {
             "building" : { ... },
@@ -1226,8 +1383,10 @@ PlanetaryCommand:
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: The unique id of the PCC.
           name: building_id
+          type: string
       returns: |-
         {
             "status" : { ... },
@@ -1248,30 +1407,39 @@ Security:
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: The unique id of the security ministry.
           name: building_id
+          type: string
         - description: The unique id of a prisoner you have captured. See view_prisoners for details.
           name: prisoner_id
+          type: string
       returns: "{\n    \"status\" : { ... }\n }"
     release_prisoner:
       description: You may choose to release a prisoner by calling this method.
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: The unique id of the security ministry.
           name: building_id
+          type: string
         - description: The unique id of a prisoner you have captured. See view_prisoners for details.
           name: prisoner_id
+          type: string
       returns: "{\n    \"status\" : { ... }\n }"
     view_foreign_spies:
       description: 'Displays a list of the spies that are on your planet, and have a level lower than your security ministry.'
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: The unique id of the security ministry.
           name: building_id
+          type: string
         - description: Defaults to 1. Each page contains 25 spies.
           name: page_number
+          type: string
       returns: |-
         {
             "status" : { ... },
@@ -1289,10 +1457,13 @@ Security:
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: The unique id of the security ministry.
           name: building_id
+          type: string
         - description: Defaults to 1. Each page contains 25 spies.
           name: page_number
+          type: string
       returns: |-
         {
             "status" : { ... },
@@ -1314,19 +1485,25 @@ Shipyard:
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: The unique id of the shipyard.
           name: building_id
+          type: string
         - description: A ship type. Get from get_buildable.
           name: type
+          type: string
     get_buildable:
       description: "Returns a list of buildable ships and their costs, and if they're not buildable, gives a reason why not in the form of an exception."
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: The unique id of the shipyard.
           name: building_id
+          type: string
         - description: 'An optional tag to limit the list of available ships to something shorter. If no tag is specified, then all ships will be displayed.'
           name: tag
+          type: string
       returns: |-
         {
             "buildable" : {
@@ -1359,8 +1536,10 @@ Shipyard:
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: The unique id of the Shipyard.
           name: building_id
+          type: string
       throws:
         - 1011
     view_build_queue:
@@ -1368,8 +1547,10 @@ Shipyard:
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: The unique id of this shipyard.
           name: building_id
+          type: string
         - name: page_number
       returns: |-
         {
@@ -1392,14 +1573,19 @@ SpacePort:
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: The unique id of the planet that the spies are on.
           name: on_body_id
+          type: string
         - description: 'The unique id of the planet that the spies should be sent to, and the ship will be dispatched from.'
           name: to_body_id
+          type: string
         - description: The unique id of the ship to use to fetch the spies.
           name: ship_id
+          type: string
         - description: An array reference of spy ids to send.
           name: spy_ids
+          type: string
       returns: |-
         {
              "ship" : {
@@ -1418,10 +1604,24 @@ SpacePort:
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: The unique id of the planet that should send the ship.
           name: from_body_id
-        - description: 'A set of x,y coordinates to locate the star or body.'
+          type: string
+        - description: A hash reference that can contain one of five items to identify a star or body.
           name: target
+          object:
+            body_id:
+              description: The unique id of the body.
+            body_name:
+              description: "A string with the body's name. Case insensitive, but will throw an exception for misspelling."
+            star_id:
+              description: The unique id of the star.
+            star_name:
+              description: "A string with the star's name. Case insensitive, but will throw an exception for misspelling."
+            x | y:
+              description: 'A set of x,y coordinates to locate the star or body.'
+          type: object
       returns: |-
         { "body_name" : "Earth" }
          
@@ -1437,21 +1637,28 @@ SpacePort:
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: The unique id for the space port.
           name: building_id
+          type: string
         - description: The unique id of the ship you want to name.
           name: ship_id
+          type: string
         - description: The name you want to give the ship. 1 to 30 characters. No profanity. No funky characters.
           name: name
+          type: string
     prepare_fetch_spies:
       description: Gathers the information needed to call the fetch_spies method.
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: The unique id of the planet that the spies are on.
           name: on_body_id
+          type: string
         - description: 'The unique id of the planet that the spies should be sent to, and the ship will be dispatched from.'
           name: to_body_id
+          type: string
       returns: |-
         {
             "status" : { ... },
@@ -1486,10 +1693,13 @@ SpacePort:
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: The unique id of the planet that the spies are on and ship will be dispatched from.
           name: on_body_id
+          type: string
         - description: The unique id of the planet that the spies should be sent to.
           name: to_body_id
+          type: string
       returns: |-
         {
             "status" : { ... },
@@ -1524,10 +1734,13 @@ SpacePort:
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: The unique id for the space port.
           name: building_id
+          type: string
         - description: The unique id of a ship to recall.
           name: ship_id
+          type: string
       returns: |-
         {
             "status" : { ... },
@@ -1563,19 +1776,36 @@ SpacePort:
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: The unique id for the space port.
           name: building_id
+          type: string
         - description: The unique id of the ship you want to destroy.
           name: ship_id
+          type: string
     send_ship:
       description: Sends a ship to a specified body or star. Use with get_ships_for.
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: The unique id of a ship to send.
           name: ship_id
-        - description: 'A set of x,y coordinates to locate the star or body.'
+          type: string
+        - description: A hash reference that can contain one of five items to identify a star or body.
           name: target
+          object:
+            body_id:
+              description: The unique id of the body.
+            body_name:
+              description: "A string with the body's name. Case insensitive, but will throw an exception for misspelling."
+            star_id:
+              description: The unique id of the star.
+            star_name:
+              description: "A string with the star's name. Case insensitive, but will throw an exception for misspelling."
+            x | y:
+              description: 'A set of x,y coordinates to locate the star or body.'
+          type: object
       returns: |-
         { "body_name" : "Earth" }
          
@@ -1591,14 +1821,19 @@ SpacePort:
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: The unique id of the planet that should send the ship and that has the spies.
           name: on_body_id
+          type: string
         - description: The unique id of the planet that the spies should be sent to.
           name: to_body_id
+          type: string
         - description: The unique id of the ship to send.
           name: ship_id
+          type: string
         - description: An array reference of spy ids to send.
           name: spy_ids
+          type: string
       returns: |-
         {
              "ship" : {
@@ -1642,10 +1877,13 @@ SpacePort:
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: The unique id of the space port.
           name: building_id
+          type: string
         - description: Defaults to page 1. Shows 25 at a time.
           name: page_number
+          type: string
       returns: |-
         {
             "ships" : [
@@ -1708,20 +1946,26 @@ SpacePort:
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: The unique id of the space port.
           name: building_id
+          type: string
         - description: Defaults to page 1. Shows 25 at a time.
           name: page_number
+          type: string
       returns: 100 * SpacePort Level >= Ship Stealth
     view_ships_travelling:
       description: 'Returns a list of the ships that are travelling to or from this planet.NOTE: All inbound/outbound ships are shown regardless of which space port they will eventually land at.'
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: The unique id of the space port.
           name: building_id
+          type: string
         - description: Defaults to 1. An integer representing which page of ships travelling to view. Each page shows 25 ships.
           name: page_number
+          type: string
       returns: |-
         {
             "status" : { ... },
@@ -1753,8 +1997,10 @@ SubspaceSupplyDepot:
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: A building id.
           name: building_id
+          type: string
       returns: |-
         {
             "building" : {
@@ -1771,8 +2017,10 @@ SubspaceSupplyDepot:
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: A building id.
           name: building_id
+          type: string
       returns: |-
         {
             "building" : {
@@ -1789,8 +2037,10 @@ SubspaceSupplyDepot:
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: A building id.
           name: building_id
+          type: string
       returns: |-
         {
             "building" : {
@@ -1807,8 +2057,10 @@ SubspaceSupplyDepot:
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: A building id.
           name: building_id
+          type: string
       returns: |-
         {
             "building" : {
@@ -1825,8 +2077,10 @@ SubspaceSupplyDepot:
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: A building id.
           name: building_id
+          type: string
       returns: |-
         {
             "building" : {
@@ -1846,8 +2100,10 @@ TempleOfTheDrajilites:
         - name: session_id
         - description: The unique id of the building.
           name: building_id
+          type: string
         - description: Optionally pass in a star id. Defaults to the star that the building is built on. See "search_stars" in Map to see how you can get a star id by name.
           name: star_id
+          type: string
       returns: |-
         {
             "status" : { ... },
@@ -1864,10 +2120,13 @@ TempleOfTheDrajilites:
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: The unique id of this building.
           name: building_id
+          type: string
         - description: "The unique id of a planet you want to view. Note that this must be a planet id and not a body id. It won't work for an asteroid for example. Also, the planet must be in range. You get 10 star map units per level of the Temple."
           name: planet_id
+          type: string
       returns: |-
         {
             "status" : { ... },
@@ -1890,8 +2149,10 @@ ThemePark:
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: The unique id of the theme park.
           name: building_id
+          type: string
       throws:
         - 1002
         - 1006
@@ -1902,8 +2163,10 @@ ThemePark:
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: The unique id of the park.
           name: building_id
+          type: string
       returns: |-
         {
             "building" : { ... },
@@ -1921,10 +2184,13 @@ Trade:
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: The unique id of this building.
           name: building_id
+          type: string
         - description: The unique id of the trade.
           name: trade_id
+          type: string
       returns: "{\n    \"status\" : { ... }\n }"
       throws:
         - 1016
@@ -1933,14 +2199,19 @@ Trade:
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: The unique id of the trade ministry.
           name: building_id
+          type: string
         - description: 'An array reference of hash references of items you wish to trade. There are five types of items that can be traded via this mechanism. They are resources, glyphs, plans, prisoners, and ships.'
           name: offer
+          type: string
         - description: An integer representing the amount of essentia you are asking for in this trade. Must be between 1 and 99.
           name: ask
+          type: string
         - description: A hash reference of options to modify the trade.
           name: options
+          type: string
       returns: |-
         [
             {
@@ -1957,8 +2228,10 @@ Trade:
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: The unique id of this building.
           name: building_id
+          type: string
       returns: |-
         {
             "glyphs" : [
@@ -1976,8 +2249,10 @@ Trade:
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: The unique id of this building.
           name: building_id
+          type: string
       returns: |-
         {
             "plans" : [
@@ -1997,8 +2272,10 @@ Trade:
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: The unique id of this building.
           name: building_id
+          type: string
       returns: |-
         {
             "prisoners" : [
@@ -2017,8 +2294,10 @@ Trade:
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: The unique id of this building.
           name: building_id
+          type: string
       returns: |-
         {
             "ships" : [
@@ -2039,8 +2318,10 @@ Trade:
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: The unique id of this building.
           name: building_id
+          type: string
       returns: |-
         {
             "status" : { ... },
@@ -2058,10 +2339,13 @@ Trade:
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: The unique id of the trade ministry.
           name: building_id
+          type: string
         - description: The unique id of the body you'll be shipping to. Optional. If included it will calculate the estimated travel time of the ships to this body.
           name: target_body_id
+          type: string
       returns: |-
         {
             "status" : { ... },
@@ -2081,14 +2365,19 @@ Trade:
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: The unique id of this building.
           name: building_id
+          type: string
         - description: 'NOTE: The list of your planets comes back with every empire status message.'
           name: target_id
+          type: string
         - description: 'An array reference of hash references of items you wish to ship to the target planet. There are five types of items that can be shipped via this mechanism. They are resources, glyphs, plans, prisoners, and ships.'
           name: items
+          type: string
         - description: A hash reference of options to modify the trade.
           name: options
+          type: string
       returns: |-
         [
             {
@@ -2105,22 +2394,29 @@ Trade:
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: The unique id of this building.
           name: building_id
+          type: string
         - description: The unique id of the trade.
           name: trade_id
+          type: string
       returns: "{\n    \"status\" : { ... }\n }"
     view_market:
       description: Displays a list of trades available at the present time.
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: The unique id of this building.
           name: building_id
+          type: string
         - description: Optional. An integer representing the page of trades (25 per page) to return. Defaults to 1.
           name: page_number
+          type: string
         - description: 'Optional. A string which will narrow the offered trades to those who are offering a specific kind of object, such as ships. Filter options include: food ore water waste energy glyph prisoner ship plan'
           name: filter
+          type: string
       returns: |-
         {
             "trades" : [
@@ -2152,10 +2448,13 @@ Trade:
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: The unique id of this building.
           name: building_id
+          type: string
         - description: An integer representing the page of trades (25 per page) to return. Defaults to 1.
           name: page_number
+          type: string
       returns: |-
         {
             "trades" : [
@@ -2180,10 +2479,13 @@ Trade:
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: The unique id of this building.
           name: building_id
+          type: string
         - description: The unique id of the trade.
           name: trade_id
+          type: string
       returns: "{\n    \"status\" : { ... }\n }"
 Transporter:
   services:
@@ -2192,10 +2494,13 @@ Transporter:
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: The unique id of this building.
           name: building_id
+          type: string
         - description: The unique id of the trade.
           name: trade_id
+          type: string
       returns: "{\n    \"status\" : { ... }\n }"
       throws:
         - 1016
@@ -2204,11 +2509,14 @@ Transporter:
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: The unique id of the subspace transporter.
           name: building_id
+          type: string
         - name: offer
         - description: An integer which represents how much essentia you are asking for in this trade. Must be between 1 and 99.
           name: ask
+          type: string
       returns: |-
         [
             {
@@ -2225,8 +2533,10 @@ Transporter:
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: The unique id of this building.
           name: building_id
+          type: string
       returns: |-
         {
             "glyphs" : [
@@ -2244,8 +2554,10 @@ Transporter:
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: The unique id of this building.
           name: building_id
+          type: string
       returns: |-
         {
             "plans" : [
@@ -2265,8 +2577,10 @@ Transporter:
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: The unique id of this building.
           name: building_id
+          type: string
       returns: |-
         {
             "prisoners" : [
@@ -2285,8 +2599,10 @@ Transporter:
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: The unique id of this building.
           name: building_id
+          type: string
       returns: |-
         {
             "ships" : [
@@ -2307,8 +2623,10 @@ Transporter:
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: The unique id of this building.
           name: building_id
+          type: string
       returns: |-
         {
             "status" : { ... },
@@ -2325,12 +2643,16 @@ Transporter:
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: The unique id of this building.
           name: building_id
+          type: string
         - description: 'NOTE: The list of your planets comes back with every empire status message.'
           name: target_id
+          type: string
         - description: 'An array reference of hash references of items you wish to ship to the target planet. There are five types of items that can be shipped via this mechanism. They are resources, glyphs, plans, prisoners, and ships.'
           name: items
+          type: string
       returns: |-
         [
             {
@@ -2347,24 +2669,32 @@ Transporter:
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: The unique id of this building.
           name: building_id
+          type: string
         - description: The unique id of the trade.
           name: trade_id
+          type: string
       returns: "{\n    \"status\" : { ... }\n }"
     trade_one_for_one:
       description: Lacuna Expanse Corp will do one for one trades of any resource in exchange for 3 essentia.
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: The unique id of this building.
           name: building_id
+          type: string
         - description: The name of the resource you have. See get_stored_resources to see what you have.
           name: have
+          type: string
         - description: The name of any resource you want.
           name: want
+          type: string
         - description: The amount of resources that will be traded one for one.
           name: quantity
+          type: string
       returns: "{\n    \"status\" : { ... }\n }"
     view:
       parameters:
@@ -2383,12 +2713,16 @@ Transporter:
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: The unique id of this building.
           name: building_id
+          type: string
         - description: Optional. An integer representing the page of trades (25 per page) to return. Defaults to 1.
           name: page_number
+          type: string
         - description: 'Optional. A string which will narrow the offered trades to those who are offering a specific kind of object, such as ships. Filter options include: food ore water waste energy glyph prisoner ship plan'
           name: filter
+          type: string
       returns: |-
         {
             "trades" : [
@@ -2417,10 +2751,13 @@ Transporter:
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: The unique id of this building.
           name: building_id
+          type: string
         - description: An integer representing the page of trades (25 per page) to return. Defaults to 1.
           name: page_number
+          type: string
       returns: |-
         {
             "trades" : [
@@ -2445,10 +2782,13 @@ Transporter:
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: The unique id of this building.
           name: building_id
+          type: string
         - description: The unique id of the trade.
           name: trade_id
+          type: string
       returns: "{\n    \"status\" : { ... }\n }"
 WasteRecycling:
   description: The Waste Recycling Center can be used to convert waste in storage into usable resources.
@@ -2458,14 +2798,19 @@ WasteRecycling:
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: The unique id of the Waste Recycling Center.
           name: building_id
+          type: string
         - description: An integer representing the amount of water you want.
           name: water
+          type: string
         - description: An integer representing the amount of ore you want.
           name: ore
+          type: string
         - description: An integer representing the amount of energy you want.
           name: energy
+          type: string
         - name: use_essentia
       throws:
         - 1010
@@ -2475,8 +2820,10 @@ WasteRecycling:
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: The unique id of the waste recycling building.
           name: building_id
+          type: string
       throws:
         - 1011
     view:
@@ -2515,11 +2862,14 @@ common:
     parameters:
       - description: A session id.
         name: session_id
+        type: string
       - name: body_id
       - description: The x axis of the area on the planet you wish to place the building. Valid values are between -5 and 5 inclusive.
         name: x
+        type: string
       - description: The y axis of the area on the planet you wish to place the building. Valid values are between -5 and 5 inclusive.
         name: y
+        type: string
     returns: |-
       {
           "building" : {
@@ -2543,6 +2893,7 @@ common:
     parameters:
       - description: A session id.
         name: session_id
+        type: string
       - name: building_id
     returns: "{\n    \"status\" : { ... }\n }"
     throws:
@@ -2552,6 +2903,7 @@ common:
     parameters:
       - description: A session id.
         name: session_id
+        type: string
       - name: building_id
     throws:
       - 1012
@@ -2560,10 +2912,13 @@ common:
     parameters:
       - description: A session id.
         name: session_id
+        type: string
       - description: The unique id of the building you want to get the stats for.
         name: building_id
+        type: string
       - description: An integer between 1 and 100. This represents the stats that you want to see for the building.
         name: level
+        type: string
     returns: |-
       {
           "building" : {
@@ -2615,15 +2970,19 @@ common:
     parameters:
       - description: A session id.
         name: session_id
+        type: string
       - description: The unique id of the building.
         name: building_id
+        type: string
   upgrade:
     description: Adds the requested upgrade to the build queue.
     parameters:
       - description: A session id.
         name: session_id
+        type: string
       - description: The id of the building you wish to retrieve.
         name: building_id
+        type: string
     returns: |-
       {
           "building" : {
@@ -2647,8 +3006,10 @@ common:
     parameters:
       - description: A session id.
         name: session_id
+        type: string
       - description: The id of the building you wish to retrieve.
         name: building_id
+        type: string
     returns: |-
       {
           "building" : {
