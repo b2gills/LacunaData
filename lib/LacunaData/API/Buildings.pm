@@ -256,7 +256,7 @@ sub get_target{
     $self->{_target} = \%target;
   }
 
-  if( my $name = $self->{_target} ){
+  if( my $name = $self->{_target}{$target} ){
     return $self->building($name);
   }else{
     die;

@@ -265,7 +265,7 @@ returns an object based on it's target
 sub get_target{
   my($self,$target) = @_;
 
-  die unless substr $target, 0, 1 eq '/';
+  die $target unless substr( $target, 0, 1 ) eq '/';
 
   unless( $self->{_target} ){
     my %target;
@@ -283,7 +283,7 @@ sub get_target{
     $self->{_target} = \%target;
   }
 
-  if( my $name = $self->{_target} ){
+  if( my $name = $self->{_target}{$target} ){
     return $self->{$name};
   }elsif( my $ret = $self->buildings->get_target($target) ){
     return $ret;
