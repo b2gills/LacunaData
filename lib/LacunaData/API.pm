@@ -36,15 +36,15 @@ sub Load{
     require LacunaData::Load::OtherAPI;
     $opt{other} = LacunaData::Load::OtherAPI->Load;
   }
-  
+
   my $smd = clean_smd($opt{smd});
-  
+
   fix_smd($smd,$opt{api});
   add_smd($smd->{Buildings},$opt{api});
   add_smd($smd,$opt{other});
-  
+
   my $self = bless $smd, $class;
-  
+
   $self->{Buildings} = LacunaData::API::Buildings->new(
     $self->{Buildings}
   );
@@ -56,7 +56,7 @@ sub Load{
       %$v
     )
   }
-  
+
   return $self;
 }
 
@@ -70,7 +70,7 @@ my @smd_main_remove = qw{
 
 sub clean_smd{
   my($smd) = @_;
-  
+
   while( my($name,$data) = each %$smd ){
     if( $name eq 'Buildings' ){
       clean_smd($data);
@@ -79,7 +79,7 @@ sub clean_smd{
       next;
     }
     delete @$data{@smd_main_remove};
-    
+
     for( values %{ $data->{services} } ){
       delete $_->{returns};
     }
@@ -94,7 +94,7 @@ my %add_smd_jump = (
 
 sub _add_smd_h{
   my($acc,$add) = @_;
-  
+
   while( my ($name,$data) = each %$add ){
     my $acc_data = $acc->{$name};
     if( $acc_data ){
@@ -103,30 +103,30 @@ sub _add_smd_h{
       $acc->{$name} = $data
     }
   }
-  
+
   return $acc;
 }
 
 sub _add_smd_a{
   my($acc,$add) = @_;
-  
+
   for( my $i = 0; $i<@$add; $i++ ){
     my $add_data = $add->[$i];
     my $acc_data = $acc->[$i];
-    
+
     if( $acc_data ){
       add_smd($acc_data,$add_data);
     }else{
       $acc->[$i] = $add_data
     }
   }
-  
+
   return $acc;
 }
 
 sub add_smd{
   my($acc,$add) = @_;
-  
+
   my $reftype = reftype $add;
   return unless $reftype;
   return unless reftype $acc eq $reftype;
@@ -139,25 +139,25 @@ sub add_smd{
 sub fix_smd{
   my($smd,$building_api) = @_;
   my $buildings = $smd->{Buildings};
-  
+
   $building_api->{_common} = delete $building_api->{common};
   $building_api->{_simple} = delete $building_api->{simple};
   my %match = map { '/'.lc($_), $_ } keys %$building_api;
-  
+
   while( my($name,$data) = each %$buildings ){
     next if substr($name,0,1) eq '_';
     next if $name eq lc $name;
     my $reftype = reftype $data;
-    
+
     my $target = $data->{target};
     next unless $target;
-    
+
     my $match = $match{$target};
     die unless $match;
-    
+
     $data->{_smd_name} = $name;
     next if $match eq $name;
-    
+
     delete $buildings->{$name};
     $buildings->{$match} = $data;
   }
@@ -198,9 +198,9 @@ BEGIN{
     Body
     Stats
   };
-  
+
   my %map = map { lc($_), $_ } @keys;
-  
+
   while( my($subname,$origin) = each %map ){
     no strict 'refs';
     *$subname = sub{
@@ -237,19 +237,19 @@ e.g
 
 sub list_targets{
   my($self) = @_;
-  
+
   my @targets;
   for my $name( keys %$self ){
     my $lc = lc $name;
     my $data = $self->$lc;
-    
+
     if( $name eq 'Buildings' ){
       push @targets, $data->list_targets;
     }else{
       push @targets, $data->target;
     }
   }
-  
+
   @targets = sort @targets;
   return @targets if wantarray;
   return \@targets;
@@ -263,25 +263,25 @@ returns an object based on it's target
 
 sub get_target{
   my($self,$target) = @_;
-  
+
   die unless substr $target, 0, 1 eq '/';
-  
+
   unless( $self->{_target} ){
     my %target;
-    
+
     for my $name( keys %$self ){
       next if $name eq 'Buildings';
       next if substr $name, 0, 1 eq '_';
-      
+
       my $lc = lc $name;
       my $data = $self->$lc;
-      
+
       $target{ $data->target } = $name;
     }
-    
+
     $self->{_target} = \%target;
   }
-  
+
   if( my $name = $self->{_target} ){
     return $self->{$name};
   }elsif( my $ret = $self->buildings->get_target($target) ){
@@ -305,19 +305,19 @@ e.g.
 
 sub services_map{
   my($self) = @_;
-  
+
   my %services = $self->buildings->services_map;
-  
+
   for my $name( keys %$self ){
     next if $name eq 'Buildings';
     next if substr($name, 0, 1) eq '_';
-    
+
     my $lc = lc $name;
     my $data = $self->$lc;
-    
+
     $services{$data->target} = $data->list_services;
   }
-  
+
   return %services if wantarray;
   return \%services;
 }
@@ -335,17 +335,17 @@ e.g.
 
 sub services_list{
   my($self) = @_;
-  
+
   my @services;
-  
+
   my %map = $self->services_map;
-  
+
   while( my($target,$service) = each %map ){
     push @services, map{ "$target/$_" } @$service;
   }
-  
+
   @services = sort @services;
-  
+
   return @services if wantarray;
   return \@services;
 }
