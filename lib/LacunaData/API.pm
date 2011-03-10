@@ -45,7 +45,17 @@ sub Load{
   
   my $self = bless $smd, $class;
   
-  $self->{Buildings} = LacunaData::API::Buildings->new( $self->{Buildings} );
+  $self->{Buildings} = LacunaData::API::Buildings->new(
+    $self->{Buildings}
+  );
+
+  while( my($k,$v) = each %$self ){
+    next if blessed $v;
+    $self->{$k} = LacunaData::API::Basic->new(
+      name => $k,
+      %$v
+    )
+  }
   
   return $self;
 }
@@ -196,13 +206,8 @@ BEGIN{
     *$subname = sub{
       my($self) = @_;
       my $obj = $self->{$origin};
-      if( blessed $obj ){
-        return $obj;
-      }else{
-        $self->{$origin} = $obj =
-          LacunaData::API::Basic->new($origin,$obj);
-        return $obj;
-      }
+      return $obj if $obj;
+      return;
     };
   }
 }

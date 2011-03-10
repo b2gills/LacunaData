@@ -1,52 +1,90 @@
 package LacunaData::API::Buildings;
-use strict;
-use warnings;
-use 5.12.2;
 
-use Scalar::Util qw'blessed weaken reftype';
 use List::MoreUtils qw'uniq';
 
 require LacunaData::API::Service;
 require LacunaData::API::Building;
 
+use LacunaData::API::Types ':all';
+
 use namespace::clean;
+use Moose;
+use MooseX::AttributeHelpers;
 
-=head1 NAME
+has buildings => (
+  metaclass => 'Collection::Hash',
+  is => 'ro',
+  isa => BuildingList,
+  coerce => 1,
+  auto_deref => 1,
+  provides => {qw{
+    keys list_all
+    get  building
+  }},
+  required => 1,
+);
 
-LacunaData::API::Buildings
+has common_services => (
+  metaclass => 'Collection::Hash',
+  is => 'ro',
+  isa => ServiceList,
+  coerce => 1,
+  auto_deref => 1,
+  provides => {qw{
+    get  common_service
+    keys list_common_services
+  }},
+);
 
-=head1 METHODS
+around BUILDARGS => sub{
+  my($orig,$class,@args) = @_;
+  if( @args == 1 ){
+    my $arg = $args[0];
 
-=over 4
+    my %buildings;
 
-=item C<new( $data )>
+    my $common = delete $arg->{_common};
+    my %common;
+    while( my($k,$v) = each %$common ){
+      $common{$k} = LacunaData::API::Service->new(
+        name => $k,
+        %$v,
+        common => 1,
+      );
+    }
 
-=cut
+    my $simple = delete $arg->{_simple};
+    for my $building( @$simple ){
+      $buildings{$building} = LacunaData::API::Building->new(
+        name => $building,
+        simple => 1,
+        services => {%common},
+      );
+    }
 
-sub new{
-  my($class,$data) = @_;
-  
-  my $self = bless $data, $class;
-  
-  return $self;
-}
+    while( my($building,$data) = each %$arg ){
+      my %services;
+      while( my($service,$data) = each %{ $data->{services} } ){
+        $services{$service} = LacunaData::API::Service->new(
+          name => $service,
+          %$data
+        );
+      }
+      $buildings{$building} = LacunaData::API::Building->new(
+        name => $building,
+        %$data,
+        services => {%common,%services},
+      );
+    }
 
-=item C<list_all>
-
-Returns sorted list of all buildings.
-
-=cut
-
-sub list_all{
-  my($self) = @_;
-  my @list = grep { lc($_) ne $_ } keys %$self;
-  push @list, $self->list_simple;
-  
-  @list = uniq sort @list;
-  
-  return @list if wantarray;
-  return \@list;
-}
+    $class->$orig(
+      buildings => \%buildings,
+      common_services => \%common,
+    );
+  }else{
+    $class->$orig(@args);
+  }
+};
 
 =item C<list_simple>
 
@@ -56,11 +94,12 @@ Returns sorted list of buildings with only basic services.
 
 sub list_simple{
   my($self) = @_;
-  my $list = $self->{_simple};
-  # should already be sorted
+  my @list = sort grep{
+    $self->building($_)->is_simple
+  } $self->list_all;
   
-  return @$list if wantarray;
-  return [@$list];
+  return @list if wantarray;
+  return \@list;
 }
 
 =item C<list_complex>
@@ -72,12 +111,11 @@ Returns sorted list of buildings with additional services.
 sub list_complex{
   my($self) = @_;
   my $simple = $self->{_simple};
-  
+
   my @list = sort grep {
-    lc($_) ne $_ and
-    not $_ ~~ $simple
-  } keys %$self;
-  
+    not $self->building($_)->is_simple
+  } $self->list_all;
+
   return @list if wantarray;
   return \@list;
 }
@@ -93,7 +131,7 @@ sub list_targets{
   my @targets = map{
     $self->building($_)->target;
   } $self->list_all;
-  
+
   return @targets if wantarray;
   return \@targets;
 }
@@ -112,17 +150,37 @@ e.g.
 
 sub services_map{
   my($self) = @_;
-  
+
   my %services;
-  
+
   for my $name( $self->list_all ){
     next if substr($name, 0, 1) eq '_';
-    
+
     my $data = $self->building($name);
-    
-    $services{$data->target} = $data->list_services;
+
+    $services{$data->target} = [sort $data->list_services];
   }
-  
+
+  return %services if wantarray;
+  return \%services;
+}
+
+sub additional_services_map{
+  my($self) = @_;
+
+  my %services;
+
+  for my $name( $self->list_all ){
+    next if substr($name, 0, 1) eq '_';
+
+    my $data = $self->building($name);
+
+    my @exclusive = sort $data->list_additional_services;
+
+    next unless @exclusive;
+    $services{$data->target} = \@exclusive;
+  }
+
   return %services if wantarray;
   return \%services;
 }
@@ -140,31 +198,36 @@ e.g.
 
 sub services_list{
   my($self) = @_;
-  
+
   my @services;
-  
+
   my %map = $self->services_map;
-  
+
   while( my($target,$service) = each %map ){
     push @services, map{ "$target/$_" } @$service;
   }
-  
+
   @services = sort @services;
-  
+
   return @services if wantarray;
   return \@services;
 }
 
-=item C<common_services>
-
-=cut
-
-sub common_services{
+sub additional_services_list{
   my($self) = @_;
-  
-  my @common = sort keys %{$self->{_common}};
-  return @common if wantarray;
-  return \@common;
+
+  my @services;
+
+  my %map = $self->additional_services_map;
+
+  while( my($target,$service) = each %map ){
+    push @services, map{ "$target/$_" } @$service;
+  }
+
+  @services = sort @services;
+
+  return @services if wantarray;
+  return \@services;
 }
 
 =item C<building( $building )>
@@ -173,30 +236,6 @@ Returns L<building|LacunaData::API::Building> by the name of C<$building>
 
 =cut
 
-sub building{
-  my($self,$building) = @_;
-  
-  if( substr($building, 0, 1) eq '_' ){
-    die;
-  }
-  
-  my $common = $self->{_common};
-  
-  if( my $obj = $self->{$building} ){
-    unless( blessed $obj ){
-      die $building if reftype($obj) ne "HASH";
-      $self->{$building} = $obj =
-        LacunaData::API::Building->new($building,$obj,$common);
-    }
-    return $obj;
-  }elsif( $building ~~ $self->{_simple} ){
-    my $obj = LacunaData::API::Building->new($building,undef,$common);
-    $self->{$building} = $obj;
-    return $obj;
-  }else{
-    die;
-  }
-}
 
 =item C<get_target( $target )>
 
@@ -206,27 +245,17 @@ Returns L<building|LacunaData::API::Building> referred to by C<$target>.
 
 sub get_target{
   my($self,$target) = @_;
-  
+
   die unless substr($target, 0, 1) eq '/';
-  
-  unless( $self->{_target} ){
-    my %target;
-    
-    for my $name( keys %$self ){
-      next if substr($name, 0, 1) eq '_';
-      my $lc = lc $name;
-      my $data = $self->$lc;
-      
-      $target{ $data->target } = $name;
-    }
-    
-    for my $name( @{ $self->{_simple} } ){
-      $target{'/'.lc $name} = $name;
-    }
-    
+
+  unless( $self->{target} ){
+    my %target = map{
+      $self->building($_)->target, $_
+    } $self->list_all;
+
     $self->{_target} = \%target;
   }
-  
+
   if( my $name = $self->{_target} ){
     return $self->building($name);
   }else{

@@ -1,36 +1,64 @@
 package LacunaData::API::Service;
-use strict;
-use warnings;
-use 5.12.2;
 
-=head1 NAME
+use LacunaData::API::Types ':all';
+use MooseX::Types::Moose ':all';
 
-LacunaData::API::Service
+use namespace::clean;
+use Moose;
 
-=head1 MODULES
+has name => (
+  is => 'ro',
+  isa => Str,
+  required => 1,
+);
+has parameters => (
+  is => 'ro',
+  isa => ParamList,
+  coerce => 1,
+  default => sub{[]},
+);
+has description => (
+  is => 'rw',
+  isa => Str,
+);
+
+# only relevant to buildings
+has is_common => (
+  is => 'ro',
+  isa => Bool,
+  init_arg => 'common',
+);
+has returns => (
+  is => 'rw',
+  isa => Str,
+);
+has throws => (
+  is => 'rw',
+  isa => ArrayRef[Int],
+);
+
+no Moose;
+__PACKAGE__->meta->make_immutable;
+1;
+
+=head1 ATTRIBUTES
 
 =over 4
 
-=item C<new( $name, $data )>
-
 =item C<name>
 
+=item C<parameters>
+
+=item C<description>
+
+=item C<is_common>
+
+initial arg is C<common>
+
+=item C<returns>
+
+=item C<throws>
+
+=back
+
 =cut
-
-sub new{
-  my($class,$name,$data) = @_;
-  $data->{name} = $name;
-  bless $data, $class;
-}
-
-sub name{
-  my($self) = @_;
-  return $self->{name};
-}
-
-sub is_common{
-  my($self) = @_;
-  return !! $self->{_is_common};
-}
-
-1;
