@@ -191,6 +191,7 @@ BEGIN{
   my @keys = qw{
     Alliance
     Chat
+    Captcha
     Buildings
     Empire
     Inbox
