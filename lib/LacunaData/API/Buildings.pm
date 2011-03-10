@@ -110,8 +110,6 @@ Returns sorted list of buildings with additional services.
 
 sub list_complex{
   my($self) = @_;
-  my $simple = $self->{_simple};
-
   my @list = sort grep {
     not $self->building($_)->is_simple
   } $self->list_all;
