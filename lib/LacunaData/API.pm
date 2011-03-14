@@ -153,7 +153,7 @@ sub fix_smd{
     next unless $target;
 
     my $match = $match{$target};
-    die unless $match;
+    next unless $match;
 
     $data->{_smd_name} = $name;
     next if $match eq $name;
