@@ -895,7 +895,11 @@ Intelligence:
                     "is_available" : 1, # can be reassigned
                     "available_on" : "01 31 2010 13:09:05 +0600", # if can't be reassigned, this is when will be available
                     "started_assignment" : "01 31 2010 13:09:05 +0600",
-                    "seconds_remaining" : 45
+                    "seconds_remaining" : 45,
+                                "mission_count" : {
+                                        "offensive" : 149,
+                                        "defensive" : 149
+                                }
                 },
                 ...
             ],
@@ -1730,7 +1734,7 @@ SpacePort:
             ]
          }
     recall_ship:
-      description: Recalls a ship from allied defense ('Defend' task) to the body of origin.
+      description: Recalls a ship from allied defense ('Defend' task) to the body of origin.Recalls an orbiting Spy Shuttle ('Orbiting' task) and also fetches as many idle spies as will fit from the planet it was orbiting.
       parameters:
         - description: A session id.
           name: session_id
@@ -1743,34 +1747,21 @@ SpacePort:
           type: string
       returns: |-
         {
-            "status" : { ... },
-            "ship" : {
+             "ship" : {
                 "id" : "id-goes-here",
-                "name" : "F13",
-                "type_human" : "Fighter",
-                "type" : "fighter",
-                "task" : "Travelling",
-                "speed" : "2000",
-                "stealth" : "0",
-                "hold_size" : "0",
-                "date_started" : "01 31 2010 13:09:05 +0600",
-                "date_available" : "02 01 2010 10:08:33 +0600",
-                "date_arrives" : "02 01 2010 10:08:33 +0600",
-                "from" : {
-                   "id" : "id-goes-here",
-                   "type" : "body",
-                   "name" : "Earth"
-                },
-                "to" : {
-                   "id" : "id-goes-here",
-                   "type" : "star",
-                   "name" : "Sol"
-                }
-            }
+                "name" : "SS4",
+                "hold_size" : 0,
+                "speed" : 3400,
+                "type" : "spy_shuttle",
+                "date_arrives" : "01 31 2010 13:09:05 +0600",
+                ...
+             },
+             "status" : { ... }
          }
       throws:
         - 1002
         - 1010
+        - 1013
     scuttle_ship:
       description: Destroy a ship that you no longer need. It must be docked to scuttle it.
       parameters:
@@ -1783,6 +1774,51 @@ SpacePort:
         - description: The unique id of the ship you want to destroy.
           name: ship_id
           type: string
+    send_fleet:
+      description: Sends a fleet of ships to a specified body or star. Use with get_ships_for.
+      parameters:
+        - description: A session id.
+          name: session_id
+          type: string
+        - name: ship_ids
+        - description: A hash reference that can contain one of five items to identify a star or body. Same as send_ship.
+          name: target
+          type: string
+      returns: |-
+        {
+            "status" : { ... },
+                "fleet" : [
+                        "ship" : {
+                                "id" : "id-goes-here",
+                                "name" : "P13",
+                                "type_human" : "Probe",
+                                "type" : "probe",
+                                "task" : "Travelling",
+                                "speed" : "1200",
+                                "stealth" : "0",
+                                "hold_size" : "0",
+                                "date_started" : "01 31 2010 13:09:05 +0600",
+                                "date_available" : "02 01 2010 10:08:33 +0600",
+                                "date_arrives" : "02 01 2010 10:08:33 +0600",
+                                "from" : {
+                                   "id" : "id-goes-here",
+                                   "type" : "body",
+                                   "name" : "Earth"
+                                },
+                                "to" : {
+                                   "id" : "id-goes-here",
+                                   "type" : "star",
+                                   "name" : "Sol"
+                                }
+                        },
+                        ...
+            ]
+         }
+      throws:
+        - 1002
+        - 1009
+        - 1010
+        - 1016
     send_ship:
       description: Sends a ship to a specified body or star. Use with get_ships_for.
       parameters:
@@ -1881,66 +1917,37 @@ SpacePort:
         - description: The unique id of the space port.
           name: building_id
           type: string
-        - description: Defaults to page 1. Shows 25 at a time.
-          name: page_number
+        - description: 'Optional. A hash reference that contains the paging criteria. Valid paging option keys include page_number, items_per page and no_paging.'
+          name: paging
+          object:
+            items_per_page:
+              description: Optional. An integer representing the number of items per page to return. Defaults to 25.
+            no_paging:
+              description: 'Optional. If set to 1, all other paging options are ignored and all results will be retured.'
+            page_number:
+              description: Optional. An integer representing the page of ships to return. Defaults to 1.
+          type: object
+        - description: 'Optional. A hash reference that contains the filter criteria. Valid filter option keys include task, type and tag.'
+          name: filter
+          object:
+            tag:
+              description: 'Note: Tags will be converted to types prior to filtering and any types that were passed will be replaced.'
+            task:
+              description: 'Optional. An array reference or string with the task(s) to filter on. Valid tasks include Docked, Building, Mining, Travelling, and Defend.'
+            type:
+              description: Optional. An array reference or string with the type(s) to filter on. Valid types are the existing ship types.
+          type: object
+        - description: "Optional. A string with the column to sort on. Defaults to 'type'. (A second sort column, 'name', is added to your chosen sort column.) Valid columns to sort on include: combat, name, speed, stealth, task, and type."
+          name: sort
           type: string
       returns: |-
-        {
-            "ships" : [
-                {
-                    "id" : "id-goes-here",
-                    "name" : "CS3",
-                    "type_human" : "Cargo Ship",
-                    "type" : "cargo_ship",
-                    "task" : "Travelling",
-                    "speed" : "400",
-                    "stealth" : "0",
-                    "hold_size" : "1200",
-                    "date_started" : "01 31 2010 13:09:05 +0600",
-                    "date_available" : "02 01 2010 10:08:33 +0600",
-                    "date_arrives" : "02 01 2010 10:08:33 +0600",
-                    "from" : {
-                       "id" : "id-goes-here",
-                       "type" : "body",
-                       "name" : "Earth"
-                    },
-                    "to" : {
-                       "id" : "id-goes-here",
-                       "type" : "body",
-                       "name" : "Mars"
-                    }
-                },
-                        {
-                                "id" : "id-goes-here",
-                    "name" : "F13",
-                    "type_human" : "Fighter",
-                    "type" : "fighter",
-                    "task" : "Defend",
-                    "speed" : "2000",
-                    "stealth" : "0",
-                    "hold_size" : "0",
-                    "date_started" : "01 31 2010 13:09:05 +0600",
-                    "date_available" : "02 01 2010 10:08:33 +0600",
-                    "date_arrives" : "02 01 2010 10:08:33 +0600",
-                    "from" : {
-                       "id" : "id-goes-here",
-                       "type" : "body",
-                       "name" : "Earth"
-                    },
-                    "orbiting" : {
-                       "id" : "id-goes-here",
-                       "type" : "body",
-                       "name" : "Mars",
-                                   "x" : 4,
-                                   "y" : -3
-                    }
+        { "task" : "Defend" }
         
-                        },
-                ...
-            ],
-            "number_of_ships" : 13,
-            "status" : { ... }
-         }
+          { "tag" : "Mining" }
+        
+          { "task" : "Docked", "type" : "freighter" }
+        
+          { "tag" : [ "Colonization", "Exploration" ], "task" : "Travelling" }
     view_foreign_ships:
       description: "Shows you all the foreign ships that are incoming. However, the list is filtered by the stealth of the ship vs the level of the SpacePort. The formula is:If your SpacePort exceeds the Ship's Stealth, then you'll see it incoming. Otherwise you won't.The from block is only included if"
       parameters:
@@ -3146,6 +3153,7 @@ simple:
   - Singularity
   - Soup
   - SpaceJunkPark
+  - SpaceStationLab
   - Stockpile
   - SupplyPod
   - Syrup

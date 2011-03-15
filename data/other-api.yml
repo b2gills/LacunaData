@@ -66,7 +66,7 @@ Alliance:
 Body:
   services:
     abandon:
-      description: "Abandon's a colony, and destroys everything on the planet. Returns a status block."
+      description: "Abandon's a colony, and destroys everything on the planet. Returns a status block.NOTE: Calling abandon on a Space Station will result in an exception. Use Parliament instead."
       parameters:
         - description: A session id.
           name: session_id
@@ -75,7 +75,7 @@ Body:
           name: body_id
           type: string
     get_buildable:
-      description: 'Provides a list of all the building types that are available to be built on a given space on a planet that are within a specific tag.The reason section provides a little detail about why a building can or cannot be built. It is formatted the same way an exception would be formatted (an array ref of error code, error message, and error data).The tags section can be used to display the buildable buildings in a way that makes sense to the end user. The tags available are as follows:'
+      description: 'Provides a list of all the building types that are available to be built on a given space on a planet that are within a specific tag.NOTE: Calling get_buildable on a Space Station will result in an exception. Use Parliament instead.The reason section provides a little detail about why a building can or cannot be built. It is formatted the same way an exception would be formatted (an array ref of error code, error message, and error data).The tags section can be used to display the buildable buildings in a way that makes sense to the end user. The tags available are as follows:'
       parameters:
         - description: A session id.
           name: session_id
@@ -257,7 +257,7 @@ Body:
             }
          }
     rename:
-      description: 'Renames a body, provided the empire attached to the session owns the body. Returns a 1 on success.'
+      description: 'Renames a body, provided the empire attached to the session owns the body. Returns a 1 on success.NOTE: Calling rename on a Space Station will result in an exception. Use Parliament instead.'
       parameters:
         - description: A session id.
           name: session_id
