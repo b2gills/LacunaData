@@ -136,8 +136,10 @@ use LacunaData::Sources (
 
 sub _missing{
   my(@found) = @_;
-  
-  my @check = split '\n', missing;
+
+  # skip if the 'missing' file is not there
+  my $missing = eval{ missing } or return;
+  my @check = split '\n', $missing;
   my @missing = grep{
     !($_ ~~ @found)
   } @check;
