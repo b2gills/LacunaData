@@ -318,7 +318,7 @@ sub services_map{
     my $lc = lc $name;
     my $data = $self->$lc;
 
-    $services{$data->target} = $data->list_services;
+    $services{$data->target} = [sort $data->list_services];
   }
 
   return %services if wantarray;
