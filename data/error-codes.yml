@@ -56,7 +56,7 @@
   name: Missing prerequisites.
   reason: The empire/planet/station hasn't completed building the prerequisite buildings in order to build something new.
 1014:
-  id: invalid_capcha
+  id: invalid_captcha
   name: Captcha not valid.
   reason: A captcha was required for this request and it was not valid. The data portion will contain new captcha information to try again.
 1015:
@@ -64,6 +64,7 @@
   name: Restricted for sitter logins.
   reason: The function you were attempting to access is not valid for sitter accounts.
 1016:
+  id: solve_new_captcha
   name: Needs to solve a captcha.
   reason: The old captcha has expired. A new captcha is needed.
 1100:

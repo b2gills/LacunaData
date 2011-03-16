@@ -13,8 +13,9 @@
 1011: low_resource_storage
 1012: low_resource_production
 1013: prerequisites_missing
-1014: invalid_capcha
+1014: invalid_captcha
 1015: sitter_restricted
+1016: solve_new_captcha
 1100: not_founded
 1101: not_founded_password
 1200: end_of_game
