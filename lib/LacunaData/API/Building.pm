@@ -12,6 +12,20 @@ has is_simple => (
   init_arg => 'simple',
 );
 
+=over 4
+
+=item C<list_additional_services>
+
+Returns list of services exclusive to a given building.
+
+e.g.
+
+    assemble_glyphs, get_glyphs, search_for_glyph, ...
+
+=back
+
+=cut
+
 sub list_additional_services{
   my($self) = @_;
   my %services = $self->services;

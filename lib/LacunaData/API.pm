@@ -169,6 +169,8 @@ use namespace::clean;
 
 =item chat
 
+=item captcha
+
 =item empire
 
 =item inbox

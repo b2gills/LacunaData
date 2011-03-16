@@ -86,6 +86,8 @@ around BUILDARGS => sub{
   }
 };
 
+=over 4
+
 =item C<list_simple>
 
 Returns sorted list of buildings with only basic services.
@@ -163,6 +165,20 @@ sub services_map{
   return \%services;
 }
 
+=item C<additional_services_map>
+
+Returns list of services exclusive to each building.
+
+Skips buildings which don't have any exclusive services.
+
+e.g.
+
+    {
+      /archaeology => [ assemble_glyphs, get_glyphs, search_for_glyph, ... ],
+    }
+
+=cut
+
 sub additional_services_map{
   my($self) = @_;
 
@@ -210,6 +226,21 @@ sub services_list{
   return @services if wantarray;
   return \@services;
 }
+
+=item additional_services_list
+
+flattened list of services available only to a given building.
+
+doesn't list buildings which don't have any exclusive services.
+
+e.g.
+
+    /archaeology/assemble_glyphs
+    /archaeology/get_glyphs
+    /archaeology/search_for_glyph
+    ...
+
+=cut
 
 sub additional_services_list{
   my($self) = @_;
