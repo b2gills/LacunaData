@@ -1,14 +1,2 @@
 ---
 WaterProduction: ~
-WaterStorage:
-  services:
-    dump:
-      desc: Converts water into waste.
-      parameters:
-        - description: A session id.
-          name: session_id
-        - description: The unique id of the building.
-          name: building_id
-        - description: An integer representing the amount to dump.
-          name: amount
-      returns: "{\n    \"status\" : { ... }\n }"

@@ -151,6 +151,27 @@ Development:
          }
 DistributionCenter:
   services:
+    get_stored_resources:
+      description: Returns a list of the resources you have stored to make it easier to identify what you want to store.
+      parameters:
+        - description: A session id.
+          name: session_id
+          type: string
+        - description: The unique id of this building.
+          name: building_id
+          type: string
+      returns: |-
+        {
+            "status" : { ... },
+            "cargo_space_used_each" : 1,
+            "resources" : {
+                    "water" : 14000,
+                    "waste" : 393,
+                    "bauxite" : 47,
+                    "cheese" : 1193,
+                    ...
+            }
+         }
     release_reserve:
       description: Returns the resources held in reserve back to the planet.
       parameters:
@@ -1997,6 +2018,68 @@ SpacePort:
                ...
             ]
          }
+SpaceStationLab:
+  services:
+    make_plan:
+      description: Starts the plan creation process.Returns view.
+      parameters:
+        - description: A session id.
+          name: session_id
+          type: string
+        - description: The unique id of the space station lab.
+          name: building_id
+          type: string
+        - description: 'The key from the hash returned by the view method in make_plan > types. For example, ibs for "Interstellar Broadcast Station".'
+          name: type
+          type: string
+        - description: An integer between 1 and 30. The level from the array returned by the view method in make_plan > level_costs.
+          name: level
+          type: string
+    subsidize_plan:
+      description: Will spend essentia equal to the subsidy_cost returned by the view method to complete the current plan immediately. Returns view.
+      parameters:
+        - description: A session id.
+          name: session_id
+          type: string
+        - description: The unique id of the space station lab.
+          name: building_id
+          type: string
+      throws:
+        - 1011
+    view:
+      description: This method is changed from the default because it adds a make_plan element to the output.If there is a plan being made then the making element will be present.
+      parameters:
+        - description: A session id.
+          name: session_id
+          type: string
+        - description: The unique id of the space station lab.
+          name: building_id
+          type: string
+      returns: |-
+        {
+            "building" : { ... },
+            "status" : { ... },
+            "make_plan" : {
+                "types" : {
+                    "ibs" : "Interstellar Broadcast Station",
+                    ...
+                },
+                "level_costs" : [
+                    {
+                       level    => 1,
+                       food     => 10000,
+                       ore      => 10000,
+                       water    => 10000,
+                       energy   => 10000,
+                       waste    => 2500,
+                       time     => 1200
+                    },
+                    ...
+                ],
+                "subsidy_cost" : 2,
+                "making" : "Interstellar Broadcast Station (3+0)"
+            }
+         }
 SubspaceSupplyDepot:
   services:
     complete_build_queue:
@@ -2852,16 +2935,20 @@ WasteRecycling:
             }
          }
 WaterStorage:
+  description: Water Storage Tanks increase the amount of water you can store on your planet.
   services:
     dump:
-      desc: Converts water into waste.
+      description: Converts water into waste.
       parameters:
         - description: A session id.
           name: session_id
+          type: string
         - description: The unique id of the building.
           name: building_id
+          type: string
         - description: An integer representing the amount to dump.
           name: amount
+          type: string
       returns: "{\n    \"status\" : { ... }\n }"
 common:
   build:
@@ -3153,7 +3240,6 @@ simple:
   - Singularity
   - Soup
   - SpaceJunkPark
-  - SpaceStationLab
   - Stockpile
   - SupplyPod
   - Syrup
