@@ -6,6 +6,13 @@ Algae Pond:
     - methane
   type: functional
   wiki: http://community.lacunaexpanse.com/wiki/algae-pond
+Amalgus Meadow:
+  desc: 'A wild meadow filled with wild amalgus beans. Similar to the Amalgus Bean Plantation, the amalgus beans will only grow in orbit 4.'
+  recipe:
+    - beryl
+    - trona
+  type: functional
+  wiki: http://community.lacunaexpanse.com/wiki/amalgus-meadow
 Beach 1:
   desc: Create a lake or a beach front on your planet.
   recipe:
@@ -124,6 +131,13 @@ Crater:
     - rutile
   type: decorative
   wiki: http://community.lacunaexpanse.com/wiki/crater
+Denton Brambles:
+  desc: "A thorny patch of brambles, who's roots happen to be the delicious denton roots. Like the Denton Root Patch, these denton roots will only grow in orbit 5 and 6."
+  recipe:
+    - rutile
+    - goethite
+  type: functional
+  wiki: http://community.lacunaexpanse.com/wiki/denton-brambles
 Gas Giant Settlement Platform:
   desc: "The Gas Giant Settlement Platform allows settlement of a gas giant when this would otherwise not be possible. In order to upgrade platforms you'll need a good supply of structural minerals such as rutile, chromite, bauxite, magnetite, beryl, or goethite."
   recipe:
