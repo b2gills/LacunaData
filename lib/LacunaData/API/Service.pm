@@ -16,6 +16,10 @@ has parameters => (
   isa => ParamList,
   coerce => 1,
   default => sub{[]},
+  handles => {qw{
+    list_params list_names
+    get_param get
+  }},
 );
 has description => (
   is => 'rw',
