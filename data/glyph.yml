@@ -8,6 +8,8 @@ Algae Pond:
   wiki: http://community.lacunaexpanse.com/wiki/algae-pond
 Amalgus Meadow:
   desc: 'A wild meadow filled with wild amalgus beans. Similar to the Amalgus Bean Plantation, the amalgus beans will only grow in orbit 4.'
+  orbits:
+    - 4
   recipe:
     - beryl
     - trona
@@ -133,6 +135,9 @@ Crater:
   wiki: http://community.lacunaexpanse.com/wiki/crater
 Denton Brambles:
   desc: "A thorny patch of brambles, who's roots happen to be the delicious denton roots. Like the Denton Root Patch, these denton roots will only grow in orbit 5 and 6."
+  orbits:
+    - 5
+    - 6
   recipe:
     - rutile
     - goethite
@@ -219,6 +224,8 @@ Lake:
   wiki: http://community.lacunaexpanse.com/wiki/lake
 Lapis Forest:
   desc: 'The Lapis Forest is an excellent source of natural food for your citizens. Similar to the Lapis Orchard, the Lapis trees can only be grown in orbit 2.'
+  orbits:
+    - 2
   recipe:
     - halite
     - anthracite
