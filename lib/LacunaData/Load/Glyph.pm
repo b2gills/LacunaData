@@ -155,6 +155,8 @@ sub _load_building{
     
     $data->{$building}{recipe} = \%recipe if %recipe;
   }
+  $tree->delete;
+  return $data;
 }
 
 sub _load_list{
@@ -185,6 +187,7 @@ sub _load_list{
       };
     }
   }
+  $tree->delete;
   return \%info;
 }
 
