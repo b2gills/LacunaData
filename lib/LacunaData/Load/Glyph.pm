@@ -141,7 +141,7 @@ sub _load_building{
     $desc =~ s/^\s+ //x;
     $desc =~ s/ \s+$//x;
     my $data = $data->{$building};
-    $data->{desc} = $desc;
+    $data->{description} = $desc if $desc;
 
     # find any orbits listed
     if( $desc =~ /\b orbit \s+ ( (?:[1-8] \s* (?: and \s+ )? )+  )/x ){
