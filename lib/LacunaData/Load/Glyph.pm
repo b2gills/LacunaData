@@ -13,7 +13,7 @@ use LacunaData::Sources (
   )
 );
 
-use LacunaData::Resources 'ore_list';
+use LacunaData::Resources qw'ore_list all_food_list normalize_food';
 use HTML::TreeBuilder;
 use YAML qw'thaw';
 use List::Util qw'max';
@@ -88,6 +88,33 @@ no namespace::clean;
     return $alt;
   }
 }
+{
+  my $food_match = eval 'qr{('.join('|', all_food_list).')}i';
+  my %building_produces = (qw{
+    volcano ore
+    },
+    'geo thermal vent' => 'energy',
+    'kalavian ruins'   => 'happiness',
+    'natural spring'   => 'water',
+  );
+  sub _add_produces{
+    my($building,$data) = @_;
+    $building = lc $building;
+
+    if( my $produces = $building_produces{$building} ){
+      $data->{produces} = $produces;
+      return;
+    }
+
+    my $desc = $data->{desc} || $data->{description} || '';
+
+    my($food) = "$building $desc" =~ $food_match;
+    if( $food ){
+      $data->{produces} = normalize_food($food);
+    }
+    return;
+  }
+}
 
 sub _load_building{
   my($data,$building) = @_;
@@ -113,16 +140,18 @@ sub _load_building{
     my $desc = $body->find('p')->as_text;
     $desc =~ s/^\s+ //x;
     $desc =~ s/ \s+$//x;
-    $data->{$building}{desc} = $desc;
+    my $data = $data->{$building};
+    $data->{desc} = $desc;
 
     # find any orbits listed
     if( $desc =~ /\b orbit \s+ ( (?:[1-8] \s* (?: and \s+ )? )+  )/x ){
       my $orbits = $1;
       my @orbits = split /\s+(?:and\s*)?/, $orbits;
       if( @orbits ){
-        $data->{$building}{orbits} = \@orbits;
+        $data->{orbits} = \@orbits;
       }
     }
+    _add_produces($building,$data);
   }
 
   # ignore anything that can't be a glyph
