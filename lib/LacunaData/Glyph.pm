@@ -39,12 +39,12 @@ sub _mixed_sort{
   my $common;
   my $la = length $a;
   my $lb = length $b;
-  
+
   my $i = 1;
   for( ; $i < $la && $i < $lb; $i++ ){
     last unless substr($a,$i,1) eq substr($b,$i,1);
   }
-  
+
   if( substr($a,$i,1) ~~ ['0'..'9'] ){
     return substr($a,$i) <=> substr($b,$i);
   }
@@ -65,7 +65,7 @@ returns list of glyph buildings with known receipes
 
 sub building_list{
   my($self) = @_;
- 
+
   return mixed_sort keys %$self;
 }
 

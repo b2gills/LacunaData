@@ -43,16 +43,16 @@ no namespace::clean;
 
 sub _load{
   my $data = _load_list();
-  
+
   my $length = max map { length } keys %$data;
-  
+
   for my $building ( keys %$data ){
     my $pad = ' ' x ($length - length $building);
     print STDERR 'processing ', $building, $pad, "\r";
     _load_building($data,$building);
   }
   print STDERR ' ' x ($length + 11), "\r";
-  
+
   return $data;
 }
 
@@ -67,10 +67,10 @@ and stores a local copy.
 
 sub Cache{
   my $data = _load();
-  
+
   use YAML 'DumpFile';
   DumpFile( source_file, $data );
-  
+
   return $data;
 }
 
@@ -91,7 +91,7 @@ no namespace::clean;
 
 sub _load_building{
   my($data,$building) = @_;
- 
+
   my $tree = HTML::TreeBuilder->new();
   {
     my $url = $data->{$building}{wiki};
@@ -108,7 +108,7 @@ sub _load_building{
       $_[0]->attr('id') &&
       $_[0]->attr('id') eq 'wikipagecontent'
   })->content_list;
-  
+
   {
     my $desc = $body->find('p')->as_text;
     $desc =~ s/^\s+ //x;
@@ -124,35 +124,35 @@ sub _load_building{
       }
     }
   }
- 
+
   # ignore anything that can't be a glyph
   my @glyphs = map _only_png, $body->find('img');
- 
+
   if( @glyphs ){
     $data->{$building}{recipe} = \@glyphs;
   }else{
     # if the above didn't catch any recipe
     # then there must be more than one
-   
+
     # each recipe can be found in it's own
     # <p>
     my @p = $body->find('p');
-   
+
     # ignore any upto, and including, a line
     # that has the word recipe in it
     while( my $p = shift @p ){
       last if $p->as_text =~ /recipe/;
     }
-   
+
     @p = map{[
       split /\W+/, $_->as_text
     ]} @p;
-   
+
     # make it a hash instead of an array of arrays
     my %recipe;
     my $index ='A';
     $recipe{$index++} = $_ for @p;
-    
+
     $data->{$building}{recipe} = \%recipe if %recipe;
   }
   $tree->delete;
@@ -163,7 +163,7 @@ sub _load_list{
   my %info;
   my $tree = HTML::TreeBuilder->new();
   $tree->parse_content( get_source_from_url );
-  
+
   source_url =~ m(^( \w+ :// [^/]+ ))x;
   my $uri_root = $1;
 
@@ -172,12 +172,12 @@ sub _load_list{
   for my $table ( @tables ){
     my $recipe_type = lc $table->find('td')->as_text;
     $recipe_type =~ s/\s*recipes?\s*//i;
-   
+
     my @list;
     for my $a ( $table->find('a') ){
       my $link = $a->attr('href');
       my $name = $a->as_text;
-     
+
       if( substr($link,0,1) eq '/' ){
         $link = $uri_root.$link;
       }

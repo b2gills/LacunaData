@@ -23,16 +23,16 @@ LacunaData::Load::API::HTML
 
 sub new{
   my($class,$url) = @_;
-  
+
   unless( $url =~ m(^ \w+ :// )x ){
     my($package, $filename, $line) = caller;
     die "Not an url $url in call to ->new at $filename line $line\n";
   }
-  
+
   my $self = bless {
     url => $url
   }, $class;
-  
+
   return $self;
 }
 
@@ -47,12 +47,12 @@ For internal use only.
 sub html_tree{
   my($self) = @_;
   return $self->{tree} if $self->{tree};
-  
+
   my $content = get( $self->{url} );
   my $tree = HTML::TreeBuilder->new();
   $tree->parse_content($content);
   $self->{tree} = $tree;
-  
+
   return $tree;
 }
 
@@ -65,7 +65,7 @@ Returns a list of methods listed on the given page.
 sub methods{
   my($self) = @_;
   my @methods = keys %{ $self->method_data };
-  
+
   return @methods if wantarray;
   return \@methods;
 }
@@ -78,7 +78,7 @@ Returns the raw data of the given methods.
 
 sub method_data{
   my($self) = @_;
-  
+
   if( $self->{methods} ){
     if( wantarray ){
       return $self->{methods}, $self->{api_url}, $self->{method_text};
@@ -86,22 +86,22 @@ sub method_data{
       return $self->{methods};
     }
   }
-  
+
   my $tree = $self->html_tree;
 
   my($head) = grep {
     $_->as_text =~ /\bMethods \s* $/xi
   } $tree->find('h1');
-  
+
   my @tail = $head->right;
   pop @tail;
-  
+
   while( @tail ){
     last unless $tail[0]->tag eq 'p';
 
     my $elem = shift @tail;
     my $text = $elem->as_text;
-      
+
     my $code = $elem->find('code');
     if( ref $code ){
       $self->{api_url} = $code->as_text;
@@ -112,9 +112,9 @@ sub method_data{
       $self->{method_text} .= $text;
     }
   }
-  
+
   $self->{methods} = _get_api_method_info(@tail);
-  
+
   if( wantarray ){
     return $self->{methods}, $self->{api_url}, $self->{method_text};
   }else{
@@ -132,7 +132,7 @@ sub _get_api_method_info{
   my %method;
 
   my($method,$arg,$arg2);
-  
+
   for my $elem ( @tail ){
     my $tag  = $elem->tag;
     my $text = $elem->as_text;

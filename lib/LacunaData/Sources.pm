@@ -10,7 +10,7 @@ use File::Spec::Functions qw'splitpath rel2abs catfile catpath';
 sub _generator{
   my($arg) = @_;
   my $ref = \&{$arg->{name}};
-  
+
   my($id) = $arg->{arg}{id} || @{$arg->{col}{id}};
   if( $id ){
     return sub{ $ref->($id) };
@@ -144,7 +144,7 @@ sub get_source_from_file{
 }
 sub get_source_from_url{
   my $uri = source_url( $_[0] );
-  
+
   if( $uri =~ m(^(?: https? | ftp ):// )x ){
     require LWP::Simple;
     my $return = LWP::Simple::get( $uri );

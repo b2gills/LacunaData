@@ -46,9 +46,9 @@ no namespace::clean;
 
 sub _load{
   my $tree = HTML::TreeBuilder->new_from_content( get_source_from_url );
-  
+
   my $h1 = $tree->find('h1');
-  
+
   my $id;
   my %error;
   for my $elem ( $h1->right ){
@@ -66,13 +66,13 @@ sub _load{
       }
     }
   }
-  
+
   $tree->delete();
   my $ids = thaw error_code_id;
   while( my($num,$id) = each %$ids ){
     $error{$num}{id} = $id;
   }
-  
+
   return \%error;
 }
 
@@ -94,7 +94,7 @@ sub Cache{
   open my $fh, '>', source_file;
   print {$fh} freeze($data);
   close $fh;
-  
+
   return $data;
 }
 1;

@@ -56,11 +56,11 @@ sub Load{
 sub Cache{
   # cache a cleaned up copy
   my $clean = _clean_up get_source_from_url;
-  
+
   open my $fh, '>', source_file;
   print {$fh} $clean;
   close $fh;
-  
+
   # return the data structure unless called in void context
   if( defined wantarray ){
     return decode_json $clean;

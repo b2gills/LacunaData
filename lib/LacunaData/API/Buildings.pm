@@ -99,7 +99,7 @@ sub list_simple{
   my @list = sort grep{
     $self->building($_)->is_simple
   } $self->list_all;
-  
+
   return @list if wantarray;
   return \@list;
 }

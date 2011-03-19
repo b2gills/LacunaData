@@ -58,7 +58,7 @@ subtest "methods required by the role $package" => sub{
   plan tests => 2*2;
   ok !$hash->positional, ' Hash->positional == False';
   ok $array->positional, 'Array->positional == True';
-  
+
   is $hash->reftype,  'HASH',  ' Hash->reftype eq HASH';
   is $array->reftype, 'ARRAY', 'Array->reftype eq ARRAY';
 };
@@ -67,23 +67,23 @@ subtest 'ParamList->has_params' => sub{
   plan tests => 2 + 2*2;
   my $ehash  = new_ok $package_hash,  [ params => {} ], 'Empty Hash';
   my $earray = new_ok $package_array, [ params => [] ], 'Empty Array';
-  
+
   ok   $hash->has_params,  '       Hash->has_params == True';
   ok !$ehash->has_params,  'Empty  Hash->has_params == False';
-  
+
   ok   $array->has_params, '      Array->has_params == True';
   ok !$earray->has_params, 'Empty Array->has_params == False';
 };
 
 subtest 'Check the type for the params' => sub{
   my $tests = $array->count + $hash->count;
-  
+
   plan tests => $tests;
-  
+
   for( $hash->list_names ){
     isa_ok $hash->get($_), $package_param, "Hash $_";
   }
-  
+
   for( $array->list_names ){
     isa_ok $array->get($_), $package_param, "Array $_";
   }
@@ -98,7 +98,7 @@ subtest 'Check sorting of list method' => sub{
   );
   my $param_list = [qw'c b a'];
   my $array = new_ok $package_array, [ params => \@example ], 'Array';
-  
+
   is_deeply
     [$array->list_names],
     $param_list,
@@ -124,9 +124,9 @@ subtest 'Multi level params' => sub{
       object => [],
     },
   );
-  
+
   plan tests => 6*2;
-  
+
   note 'Testing multiple level hash';
   my $hash  = new_ok $package_hash,  [ params => \%example ], 'Hash';
   is $hash->get('a')->type, 'string', 'Hash->get(a)->type eq string';
@@ -134,7 +134,7 @@ subtest 'Multi level params' => sub{
   isa_ok $hash->get('b')->object, $package_hash, 'Hash->get(b)->object';
   is $hash->get('c')->type, 'array', 'Hash->get(c)->type eq array';
   isa_ok $hash->get('c')->object, $package_array, 'Hash->get(c)->object';
-  
+
   note 'Testing multiple level array';
   my $array = new_ok $package_array, [ params => \@example ], 'Array';
   is $array->get('a')->type, 'string', 'Array->get(a)->type eq string';

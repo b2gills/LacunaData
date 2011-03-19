@@ -47,21 +47,21 @@ sub _load{
   my @simple;
 
   my $common = LacunaData::Load::API::HTML->new(source_url)->method_data;
-  
+
   use List::Util 'max';
   my $length = max map { length } keys %$listing;
 
   while( my($building,$url) = each %$listing ){
     my $pad = ' ' x ($length - length $building);
     print STDERR 'processing ', $building, $pad, "\r";
-    
+
     my $parser = LacunaData::Load::API::HTML->new($url);
     my($services,$api_url,$desc) = $parser->method_data;
-    
+
     my %data;
     $data{services} = $services if %$services;
     $data{description} = $desc if $desc;
-    
+
     if( %data ){
       $building_data{$building} = \%data;
     }else{
@@ -97,7 +97,7 @@ sub Cache{
   open my $fh, '>', source_file;
   print {$fh} freeze($data);
   close $fh;
-  
+
   return $data;
 }
 
@@ -122,7 +122,7 @@ sub _get_api_listing{
     $info_url = base_url().$info_url->attr('href');
     $urls{$name} = $info_url;
   }
-  
+
   $tree->delete;
 
   return \%urls;
@@ -162,7 +162,7 @@ use LacunaData::Sources (
 sub _override{
   my($data,$simple) = @_;
   my $override = thaw( override );
-  
+
   while( my($key, $value) = each %$override ){
     if( defined $value ){
       $data->{$key} = $value;
