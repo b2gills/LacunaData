@@ -114,6 +114,15 @@ sub _load_building{
     $desc =~ s/^\s+ //x;
     $desc =~ s/ \s+$//x;
     $data->{$building}{desc} = $desc;
+
+    # find any orbits listed
+    if( $desc =~ /\b orbit \s+ ( (?:[1-8] \s* (?: and \s+ )? )+  )/x ){
+      my $orbits = $1;
+      my @orbits = split /\s+(?:and\s*)?/, $orbits;
+      if( @orbits ){
+        $data->{$building}{orbits} = \@orbits;
+      }
+    }
   }
  
   # ignore anything that can't be a glyph
