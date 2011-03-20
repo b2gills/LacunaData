@@ -17,6 +17,9 @@ building-api.missing:
   file: ../../data/building-api.missing
 building-api.override:
   file: ../../data/building-api.override
+space-station-api:
+  file: ../../data/space-station-api.yml
+  url: http://us1.lacunaexpanse.com/api/Modules.html
 other-api:
   file: ../../data/other-api.yml
   url: http://us1.lacunaexpanse.com

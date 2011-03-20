@@ -108,7 +108,7 @@ sub method_data{
       next;
     }
 
-    unless( $text =~ /all buildings share./i ){
+    unless( $text =~ /all \w+s share./i ){
       $self->{method_text} .= $text;
     }
   }
