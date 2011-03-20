@@ -21,7 +21,15 @@ sub _generator{
 
 use Sub::Exporter -setup => {
   exports => [
-    qw'source_file source source_url get_source get_source_from_url get_source_from_file'
+    qw{
+      simple_downloads
+      source_file
+      source
+      source_url
+      get_source
+      get_source_from_url
+      get_source_from_file
+    }
   ],
   collectors => [ qw'id' ],
   generator => \&_generator,
@@ -44,6 +52,18 @@ LacunaData::Sources
 =head2 FUNCTIONS
 
 =over 4
+
+=item simple_downloads
+
+returns list of simple downloads
+
+=cut
+
+sub simple_downloads{
+  my @simple = @{ $global_config->{'simple-download'} };
+  return @simple if wantarray;
+  return \@simple;
+}
 
 =item source
 

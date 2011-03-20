@@ -1,11 +1,19 @@
 ---
+simple-download:
+  - descriptions
+  - changes
+  - server-list
 descriptions:
   file: ../../data/resources.json
   url: http://us1.lacunaexpanse.com/resources.json
+changes:
+  file: ../../data/changes.txt
+  url: http://us1.lacunaexpanse.com/changes.txt
 smd:
   file: ../../data/smd.json
   url: https://github.com/plainblack/Lacuna-Web-Client/raw/master/smd.js
 server-list:
+  file: ../../data/servers.json
   url: http://www.lacunaexpanse.com/servers.json
 glyph-data:
   file: ../../data/glyph.yml
