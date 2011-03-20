@@ -1,0 +1,360 @@
+3.0100
+ - Add: The space station lab is now capable of producing some module plans.
+ - Rule: Deployed bleeders now require a captcha to be demolished.
+ - Rule: SAWs now spend water * 100 instead of efficiency (when possible) to prevent heat damage.
+ - Rule: Only ships that are performing hostile actions will trigger captchas.
+ - Rule: If an account has essentia after 21 days of inactivity, it will spend 1 essentia (if possible) rather than enabling self-destruct. This allows people to keep their accounts long-term even if they want to take a break for a while.
+ - API: Added get_stored_resources method to Distribution Center.
+ - Fix: "can" result in distribution center returned 0 always.
+ - Fix: All body resource attributes have been upgraded to support 9223372036854775807 instead of 2147483647.
+ - Fix: Space stations now count against your next colony cost while in transit.
+ - Fix: Added missing Malcud Field, Ravine, Lapis Forest, and Beeldeban Nest API docs.
+
+3.0001
+ - Add: Added Space Station Lab building, which will eventually allow building space station modules.
+ - Add: Added Station Command Center, Parliament, Warehouse, and IBS modules for space stations.
+ - Rule: Allow building space station hulls.
+ - Rule: Members of an alliance have alliance controlled stations added to their planet list.
+ - Rule: Waste Recyclers now add 400 waste storage at base.
+ - Rule: Archived messages will be purged thirty days after they were sent.
+ - Rule: Spy shuttles can be sent to orbit planets.
+ - Rule: Now allow 10,000 RPC per day, but rate limited to no more than 30 per minute.
+ - API: Sending ships that trigger defenses requires the new captchas.
+ - API: Sending spies requires the new captchas.
+ - API: Running spy missions require the new captchas.
+ - API: Added send_fleet() to spaceport to allow sending multiple ships to a single target at once. This requires a valid captcha.
+ - API: Added mission_count to spy status.
+ - API: Added filter and sort capability to the spaceport's view_all_ships() method.
+ - API: Expanded the spaceport's recall_ship() method to allow recalling an orbiting spy shuttle which also fetches as many idle spies as will fit.
+ - Fix: Formatting problem with trade accepted.
+
+2.4700
+ - Rule: Spies now have a minimum recovery time of 1 hour.
+ - Rule: Spies now retire after 150 offensive or defensive missions, which means they can perform 299 total missions if divided equally.
+ - Rule: Trade accepted message now tells you who accepted the trade.
+ - Rule: Defender shot down messages have been added.
+ - Rule: Distribution Center building adds new storage possibilities.
+ - API: The status for defending fighters will now include from and orbiting blocks (as returned by view_all_ships(), get_ships_for(), etc). The get_ships_for() now includes a recallable block when that lists the fighters that defending that body.
+ - API: Added /captcha RPC with methods fetch() and solve().
+ - API: Trade Ministry and Transporter's accept_from_market methods use the new captchas.
+ - Fix: Drones will once again defend properly
+ - Fix: Ships defending other planets won't attack their own empire
+ - Fix: Attacker shot down messages will once again show the proper Empire.
+ - Fix: Essentia veins higher than level 1 will properly produce essentia.
+ - Fix: Missions won't repeatedly run against the same spy
+ - Fix: Missions requiring multiple of the same glyph will no longer cause errors
+ - Fix: Hacking Network 19 will properly reduce happiness and will send correct messages.
+
+2.4600
+ - Add: "Allied Defense" as outlined below.
+ - Rule: Fighters' defensive capabilities have been expanded; they can now be sent to defend foreign bodies (planets and asteroids).
+ - Rule: Stakes now have a combat rating of 250 and trigger defenses.
+ - Rule: Colony Ships and Small Colony Ships now have a combat rating of 1000 and trigger defenses.
+ - Rule: Mining Platform Ships now have a combat rating of 600 and trigger defenses.
+ - Rule: Detonators now have a combat rating of 1850 and in addition to being able to detonate probes at a star, they can also be sent to asteroids to destroy all of their mining platforms.
+ - Rule: SAWs' defensive capabilities have been expanded; they now defend all asteroids in their system (in addition to the allied planets).
+ - Rule: Sweepers' offensive capabilities have been expanded; they can now be sent to asteroids as well as planets.
+ - API: Added recall_ship() to spaceport to recall fighters from their defensive task.
+
+2.4502
+ - Fix: The adjusted cost will be used when building buildings instead of the base cost.
+ - Fix: Offline buildings can now be demolished.
+ - Fix: Scows will now travel only to their intended destination.
+ - Fix: Defenders will no longer attack themselves (thuds were appearing to defeat sweepers).
+ - Fix: Another illegal division by zero on Planet.
+
+2.4501
+ - Fix: Cargo Ships from the Zyler Mining Strike mission have had their hold size increased from 85,000 to 100,000 and speed decreased from 100,000 to 2,500.
+ - Fix: Happiness limit increased from 2,147,483,647 to 9,223,372,036,854,775,807.
+ - Fix: Stolen Colony Ships & Short Range Colony Ships will no longer deduct happiness.
+ - Fix: Running a successful "Abduct Operatives" spy mission when there are no defenders will return a "No contact" message instead of "Narrow escape".
+ - Fix: Running a successful "Assassinate Operatives" spy mission will now return the correct message ID.
+ - Fix: The shipyard's get_buildable call will once again populute "reason" for ships that cannot be built.
+ - Fix: Spelling corrections in the API.
+ - Fix: Defenses (fighters, sweepers and SAWs) will no longer trigger again when ships arrive back home.
+ - Fix: Resource storage buildings no longer allow dumping negative waste. They will throw 1009 if you attempt it.
+ - Fix: Thuds don't get hung up if launched at a planet that is subsequently abandoned.
+ - Fix: Snarks will now select a random building from the list of least damaged buildings. 
+
+2.4500
+ - Rule: Essentia can now be divided into tenths.
+ - Rule: Essentia codes can now be used between servers (except the test server).
+ - Rule: The limit on plans per planet has been eliminated.
+ - Infrastructure: Centralized all assets on game.lacunaexpanse.com and d16cbq0l6kkf21.cloudfront.net for better caching between servers.
+ - Infrastructure: Added zones to separate the chat environment for each server.
+ - Infrastructure: Updated many of the ship images to provide more detail and color.
+ - Fix: Stats not updating.
+ - Fix: Illegal division by zero on Planet.
+ - Fix: Ship carrying spies arrives at uninhabited planet and throws an exception.
+
+2.4400
+ - Add: Configurable settings for Tournament Server play.
+ - Rule: Environmental affinity now adds 4% per level to waste and water storage capacity.
+ - Rule: Mining affinity now adds 4% per level to ore storage capacity.
+ - Rule: Farming affinity now adds 4% per level to food storage capacity.
+ - Rule: Science affinity now adds 4% per level to energy storage capacity.
+ - Rule: Farming affinity now increases food production 4% per level instead of 3%.
+ - Rule: Mining affinity now increases ore production 4% per level instead of 3%.
+ - Rule: Science affinity now increases energy production 4% per level instead of 3%.
+ - Rule: Environmental affinity now increases water production 4% per level instead of 3%.
+ - Rule: Environmental affinity now increases waste consumption 4% per level instead of 1%.
+ - Rule: Management affinity now reduces building build times by 5% per level instead of 3%.
+ - Rule: Manufacturing affinity now reduces ship build costs by 5% per level instead of 1%.
+ - Rule: Research affinity now reduces building build costs by 5% per level instead of 1%.
+ - Rule: Genetics lab now requires 1 level for each point you graft on to your species.
+ - Rule: SAW protects all allied planets in the same star system.
+ - Rule: Growth affinity now affects the cost of your next colony, rather than political affinity.
+ - Rule: Political affinity now increases happiness production by 10% per level rather than 6%.
+ - Rule: Growth affinity can now be changed as part of species respec.
+ - Fix: Abducted operatives didn't stay prisoners long enough.
+ - Fix: Farming affinity was being applied to manufactured foods instead of manufacturing affinity.
+ - Fix: Environmental/Science/Mining affinity was being applied to waste conversion buildings instead of manufacturing affinity.
+ - Fix: Stop ask of 0 essentia for trade/transporter by using fractions.
+ - Fix: Mining platforms were miscounting the number of platforms on an asteroid based upon how many were en route.
+ - Fix: Ore production calculation bug when mining ministries are used.
+ - Fix: Change in population not being tracked by stats, which caused fastest growing medal to be handed out incorrectly.
+ - Fix: Spy mission counts weren't being tallied correctly, which was affecting medals and stats.
+ - Fix: Messages coming from wrong spy to wrong empire for insurrection.
+
+2.4301
+ - Fixed counter intel reports being signed by wrong agent.
+ - API: Identifying buildings that don't use a plot in get_builable() by no_plot_use = 1.
+ - Can no longer downgrade your capitol if you still have a stockpile.
+ - Fixed instantly available spies when fetched from remote planet.
+ - Fixed counter spy tutorial message.
+ - Can no longer downgrade/demolish Terraforming Platforms or Gas Giant Settlement Platforms unless you have available plots.
+ - Fixed a bug where space port wouldn't be able to see a ship's path if it couldn't also see the type.
+ - Fixed a bug where Gas Giants didn't display properly the level of ore they were producing.
+ - Removed old trade system.
+ - Fixed "Security sweep kills my own spies on ally's planet".
+ - You now get a message if your planet captures a ship with spies.
+ - Fixed the regex documentation for mail formatting to work for negative ids.
+ - Snarks will no longer target craters.
+ - You can no longer push ships if there aren't enough docks on the remote planet.
+ - Spies no longer train in parallel.
+ - Can no longer use Trade Ministry or Transporter until it has been completely built to level 1.
+ - API: Added rpc_count to empire data and rpc_limit to server data on each response.
+ - Fix a problem with Trel attack.
+ - API: Now returning on body x,y with spy status in intelligence ministry.
+ - You can now upgrade glyph buildings using plans.
+ - Fixed spy theft mission messages.
+ - Fixed spy abduction.
+ - API: Exposed id, is_ally, is_own in the incoming ships list on the planet status.
+ - Fixed Bleeder weakness in AI.
+
+2.4300
+ - Added Trelvestian AI.
+ - Added supply pod.
+ - Rule Change: If your storage is ever lowered for any reason, excess resources will be dumped on the ground.
+ - Rule Change: Munitions Lab now available at University Level 9.
+ - Fixed documentation bug on spy listing in Intelligence Ministry.
+ - Fixed the bug where Citadel wasn't giving the ships it catches.
+ - Fixed the bug where ships would get stuck if the foreign body they were going to didn't have an owner.
+ - Fixed bug where "abducting operatives" would leave them in limbo on their own planet.
+
+2.4201
+ - Fixed the bug where if an invitee built multiple universities then the inviter would get the essentia reward for each university built.
+ - Fixed a bug where you could lower your growth affinity using the redefine species function.
+ - Fixed a bug where you could cheat the archaeology ministry.
+ - Fixed mission command crash bug.
+ - Fixed the bug where you could build the waste monuments even if you didn't have the waste needed.
+
+2.4200
+ - Added "Security Sweep" defensive spy assignment.
+ - Added "Insurrection" offensive spy assignment, but it cannot be run on empires ranked more than 50 below you.
+ - Added "Abduct Operatives" offensive spy assignment.
+ - You can now steal glyphs using the "Appropriate Resources" spy assignment.
+ - You can now steal plans using the "Appropriate Technology" spy assignment.
+ - All spy recovery times have been changed to better reflect mission difficulty.
+ - Defender's recovery time is now half attackers recovery time, rather than being a flat 5 hours.
+ - You can now destroy resources, glyphs and plans by running "Sabotage Resources".
+ - If you steal a building (not a plan) using the "Appropriate Technology" spy assignment, it reduces the level of the building by one.
+ - You can no longer run "Appropriate Technology" on empires that are ranked more than 50 below you.
+ - Changed XP earned for spy mission assignments. Now 10 for success, 6 for failure, and 2 for bounce.
+ - You can no longer burn a spy that has been captured.
+ - See "Spies" and "How Spying Works" in the wiki for details on all the spying changes.
+ - If you have ships heading to a body that becomes uninhabited while on route, the ships will now turn around and come home instead of falling dead.
+ - If you have spies on a body that becomes uninhabited while they are on the planet, they will teleport home.
+ - You can now only have 1 subspace transporter per planet. That's all that ever made sense anyway.
+ - Improved excavation chance by distance a bit more.
+ - Captured spies no longer show up in foreign spies on the security ministry.
+ - You can now send up to 3 stakes in a 24 hour period, and the happiness requirement has been lifted.
+ - Whenever you are returned a planet or a star via get_status() they now return their zone as well.
+ - Genetics Lab's run_experiment output now includes everything from prepare_experiment as well, so you can immediately run a second experiment without another call.
+ - Exposed "max_occupants" on shipyard.get_buildable().
+ - API now tells you exactly what assignments a spy can be given at the present time and how long the recovery time will be.
+ - Fixed a bug in the genetics ministry where killed spies didn't get killed.
+ - Fixed a crash bug with fleet movement missions.
+ - Fixed a formatting problem in the "Enemy Captured" email.
+ - Fixed a formatting problem on plans with extra build levels.
+ - Fixed quake message for Thuds.
+
+2.4102
+ - Fixed bleeders and thuds being added to the normal build queue on striking ground.
+
+2.4101
+ - Fixed the API docs for Trade Ministry and Transporter that were referring to deprecated methods.
+ - SAWs now attack before defensive ships.
+ - SAWs now have a cooldown time of 5 minutes, regardless of level.
+ - SAWs are now available at University level 8.
+ - You can now build Stakes at level 10 Observatory.
+ - Lowered the base speed and combat of the Sweeper by 400.
+ - The odds of finding better stuff with an excavator are now increased by the distance it travels from its home planet.
+ - Added another voting site to the Entertainment District.
+ - Lottery in the Entertainment District is now per zone rather than server-wide. You can still only vote on each link once per empire per day, but if you wanted to, you could vote on a different link in a different zone.
+ - Fixed genetics lab api error.
+ - Eliminated "In Transit" as a ship status, in favor of "Waiting on Trade". The incosistency was causing many problems.
+
+2.4100
+ - When looking at trades in the market they are now sorted by price.
+ - Added 5 new waste monuments: Great Ball of Junk, Junk Henge Sculpture, Space Junk Park, Pyramid Junk Sculpture, and Metal Junk Arches.
+ - Added Shield Against Weapons building. SAW is great for ripping enemy ships from the sky. 
+ - Added Atmospheric Evaporator water producer building. This is the tier 2 water building.
+ - Added Stake ship. This can be used to hold a target planet until your colony ship arrives.
+ - You can now only have 2 singularity plants per planet. Existing planets with more than 2 are grandfathered in.
+ - You can now only have 2 luxury housing buildings per planet. Existing planets with more than 2 are grandfathered in.
+ - Fixed: Was calculating efficiency wrong for security ministry and space port as far as detecting ships.
+ - Flipped Space Port's ability to see the type of ship vs the path of where it's coming from, because it's more realistic that way.
+ - Fixed reusable spy pods (not supposed to be reusable).
+ - Fixed corn meal grinder and cider bottler to work in any orbit.
+ - Fixed trade accepted email.
+ - Fixed sending too many spies.
+ - Fixed pushing brings everything back to source planet.
+
+2.4002
+ - Scanners had a typo that caused them to create crash bug upon arrival.
+ - Fixed a bug in the new market system.
+ - Fixed the crash bug with the mission system after the release of the new ship system.
+ - Fixed a bug where colony ships where spending the happiness for the colony after next, rather than the next colony.
+ - Fixed a bug where trades withdrawn didn't land the ships.
+ - Fixed a bug where pushing wouldn't deliver the goods.
+ - Fixed defenses not being triggered for scanners.
+
+2.4001
+ - Galleons had incorrect build time.
+ - Surveyors had incorrect speed.
+
+2.4000
+ - Fixed bug where some spy missions would return invalid JSON.
+ - Fixed: Halls of Vrbansk get_upgradable_buildings was returning wrong URLs.
+ - Added mission payout history to mission curator panel.
+ - Added missing "colony founded" message.
+ - Reorganized the prereqs for buildings and ships so you are told the unique prereqs first.
+ - Refactored ship classes.
+ - Scows are no longer expendable if used to dump waste into a star.
+ - Scows no longer have a 0 hold size if you have no Trade Ministry, however the Trade Ministry helps them greatly.
+ - Excavators now work on inhabited planets.
+ - All ships now return max_occupants in their status.
+ - Ships now have a combat rating, which is used in ship-to-ship combat calculations.
+ - Munitions lab gives a 5% bonus to combat rating, but increases ship cost by 3%.
+ - Deception and Science affinities each give a 3% bonus to combat rating.
+ - The Crashed Ship Site gives a 5% bonus to combat rating.
+ - All ships, except drones, can now survive ship-to-ship combat if their combat rating is higher than the ship going against them.
+ - Ships lose combat rating equal to the amount of the combat rating of the ships they fight.
+ - Fighters now die based upon their combat rating going to zero, rather than a random roll of the dice.
+ - Fighters no longer instantly reset after combat. Their speed determines how quickly they get back into a reset position.
+ - If you have existing fighters, and they had a speed lower than 2000, it is now 2000.
+ - The level of the Shipyard building the ship now adds a 1% bonus per level to all attributes of the ship, without raising its cost.
+ - Added Snark II, which has a splash damage radius of 1.
+ - Added Snark III, which has a splash damage radius of 2.
+ - Ship stealth has been refactored to be balanced and useful. All existing ships will keep their stealth, but new ones will have new values.
+ - If the Security Ministry level times 700 is over a ship's stealth carrying spies, then those spies will be apprehended. 
+ - If the Spaceport level times 450 is over the stealth of the ship, you will see the type of ship.
+ - If the Spaceport level times 350 is over the stealth of the ship, you will know where the ship is coming from.
+ - Diminished efficency diminishes the Security Ministry and Spaceport's effectiveness.
+ - Freighters can no longer fetch or deliver spies.
+ - Added Barge, Galleon, and Hulk trade ship classes.
+ - Added Placebo 1 thru 6, which are used to fake an attack.
+ - Added Bleeder attack ship.
+ - Added Surveyor reconnaissance ship.
+ - Added Sweeper attack ship. Sweepers can also be used to defend a planet.
+ - Added Thud attack ship.
+
+2.3902
+ - Halls of Vrbansk now also returns building URL.
+ - Fixed a problem where your resource buildings could exceed the stockpile limit.
+
+2.3901
+ - Fixed a bug with the management affinity calculation.
+ - Fixed a bug where Theme Park would return an error even though it worked.
+ - Fixed a bug with the Genetics Lab where it would return method not found on prepare_experiment().
+ - Oracle of Anid can now be found via excavator.
+ - Enabled happiness in missions.
+ - Fixed a crash bug with mining platforms.
+ - Fixed a bug where users weren't getting the 1 essentia credited back to their account on Transporter trades if they expired from inactivity.
+ - Fixed "can't locate ask_type" bug on SST.
+
+2.3900
+ - Exposed Theme Park methods.
+ - Fixed a problem with getting the upgradable building lists in the Halls of Vrbansk.
+ - Embassy stash wasn't decrementing exchanges remaining display value.
+ - Exposed recipies for Halls of Vrbansk.
+ - Exposed Genetics Lab methods.
+
+2.3801
+ - When stash is empty embassy.view_stash() will return {} instead of null for stash element.
+ - Fixed several bugs where assigning a spy would send back a JSON processing error message rather than the actual mission message.
+ - Fixed a search problem with the Halls of Vrbansk.
+ - Fixed a problem in the mission curator panel where curators weren't getting paid for their efforts.
+ - Fixed a pagination problem in the mission curator panel.
+ - Mistakenly set stash size to 5m rather than 500k. This has been fixed.
+ - Stash was letting you donate/exchange more than you had.
+
+2.3800
+ - Changed map.get_stars() to allow fetching of more stars at once.
+ - Exposed the API for the Oracle of Anid.
+ - Clarified captcha/guid API documentation for trades.
+ - Added distance exception for a star in the Temple of the Drajilites because users found it too confusing that you could fetch a star, but not necessarily view it's planets.
+ - Created a new "market" API to replace the existing trade system. New methods to trade and transporter are: add_to_market(), withdraw_from_market(), accept_from_market(), view_market(), view_my_market(), report_abuse()
+ - The following trade and transporter methods are now deprectated and will be removed as soon as the web client and iphone client have been updated: add_trade(), withdraw_trade(), accept_trade(), view_available_trades(), view_my_trades()
+ - Fixed embassy.donate_to_stash() causing an exception in RPC.
+ - Fixed a grammar issue in the spy sabotage report.
+ - Fixed problems with captcha where solution was 0.
+ - Fixed redefine species bug.
+
+2.3700
+ - Fixed pagination in mission curator panel.
+ - Exposed API for Halls of Vrbansk.
+ - Added fleet movement missions.
+ - Added mission stats download for mission curators.
+ - Fixed a typo in embassy.view_stash().
+ - Fixed a bug where happiness was not returned to the planet if a colony ship had to turn around.
+ - Fixed a bug where a spy could steal a level 0 building plan.
+
+2.3600
+ - Added alliance stash methods to the embassy.
+ - Added mission curator panel.
+ - Fixed plot size problem from SSD.
+
+2.3501
+ - Fixed "The Gift".
+
+2.3500
+ - Development ministry now immediately returns "needs_surface_refresh" on subsidize build queue.
+ - Scows can't launch unless there is enough waste to fill them.
+ - Added Subspace Supply Depot to the end of the tutorial.
+
+2.3400
+ - Fixed Archaeology Ministry to have a University prereq of 11 rather than 10.
+ - Added Mission Command to the tutorial.
+ - Some tweaks to existing missions that people complained about.
+ - Fixed bug where mining platform ship was counted twice as it arrived at an asteroid.
+ - Stop listing duplicate missions.
+ - Added more missions submitted by users.
+ - Separated mission files into their own git repo for the new curator position.
+ - Fixed bug where drones and fighters could be used even if they weren't Docked.
+ - Fixed ship as cargo bug.
+
+2.3300
+ - Started keeping a public change log.
+ - Added missioncommand.skip_mission().
+ - Fixed a bug where you'd get an overflow message before you should.
+ - Added entertainment.duck_quack() and modified .view().
+ - Added Subspace Supply Depot.
+ - Stopped combining items in mission objectives to make it easier to read.
+ - There is no longer a limit to the number of missions in a zone.
+ - Fixed a bug with plan matching for missions.
+ - Can no longer use scows for mining.
+ - Created stubs for Black Hole Generator, Gratch's Gauntlet, Halls of Vrbansk, Kastern's Keep, The Dillon Forge, and Theme Park.
+ - Fixed the bug that caused the Saben to instantly auto-recolonize planets after abandoning them.
+ - Added Library of Jith.

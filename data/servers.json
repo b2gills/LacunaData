@@ -1,0 +1,19 @@
+[
+ {
+  "name" : "US2",
+  "uri" : "https://us2.lacunaexpanse.com/",
+  "status" : "Open",
+  "location" : "New Jersey, United States",
+  "type" : "Tournament Server",
+  "description" : "Fast-paced and battle-oriented. The first alliance to capture and control all four Trelvestian colonies wins."
+ },
+ {
+  "name" : "US1",
+  "uri" : "https://us1.lacunaexpanse.com/",
+  "status" : "Open",
+  "location" : "Texas, United States",
+  "type" : "Empire Server",
+  "description" : "Long term empire building, with focus on exploration, trade, and malevolent AI. Server never expires."
+ }
+]
+
