@@ -68,9 +68,11 @@
   name: Needs to solve a captcha.
   reason: The old captcha has expired. A new captcha is needed.
 1017:
+  id: vote_pending
   name: Pending Parliamentary Vote
   reason: The action you tried to perform has been put on hold pending a parliamentary vote.
 1018:
+  id: already_voted
   name: Already Voted
   reason: You've already voted on this proposition.
 1100:

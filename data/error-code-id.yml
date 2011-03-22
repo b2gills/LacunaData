@@ -16,6 +16,8 @@
 1014: invalid_captcha
 1015: sitter_restricted
 1016: solve_new_captcha
+1017: vote_pending
+1018: already_voted
 1100: not_founded
 1101: not_founded_password
 1200: end_of_game
