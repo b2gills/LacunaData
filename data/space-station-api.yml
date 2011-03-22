@@ -1,4 +1,71 @@
 ---
+Parliament:
+  services:
+    cast_vote:
+      description: Casts a vote for or against a proposition. Cannot be voted on using a sitter password.
+      parameters:
+        - description: A session id.
+          name: session_id
+          type: string
+        - description: The unique id of the parliament.
+          name: building_id
+          type: string
+        - description: The id of the propostion your casting this vote for or against. See view_propositions for a list.
+          name: proposition_id
+          type: string
+        - description: A boolean indicating which way you wish to vote. 1 for yes. 0 for no. Default is 0.
+          name: vote
+          type: string
+      returns: |-
+        {
+            "status" : { ... },
+            "proposition" : {
+                "id" : "id-goes-here",
+                "name" : "Rename Station",
+                "description" : "Rename the station from 'Bri Prui 7' to 'Deep Space 1'.",
+                "votes_needed" : 7,
+                "votes_yes" : 2,
+                "votes_no" : 0,
+                "status" : "Pending",
+                "date_ends" : "01 31 2010 13:09:05 +0600",
+                "proposed_by" : {
+                     "id" : "id-goes-here",
+                     "name" : "Klingons",
+                },
+                "my_vote" : 0 # not present if they haven't voted
+            }
+         }
+    view_propositions:
+      description: Returns a list of the pending propositions.
+      parameters:
+        - description: A session id.
+          name: session_id
+          type: string
+        - description: The unique id of the parliament.
+          name: building_id
+          type: string
+      returns: |-
+        {
+            "status" : { ... },
+            "propositions" : [
+                {
+                   "id" : "id-goes-here",
+                   "name" : "Rename Station",
+                   "description" : "Rename the station from 'Bri Prui 7' to 'Deep Space 1'.",
+                   "votes_needed" : 7,
+                   "votes_yes" : 1,
+                   "votes_no" : 0,
+                   "status" : "Pending",
+                   "date_ends" : "01 31 2010 13:09:05 +0600",
+                   "proposed_by" : {
+                        "id" : "id-goes-here",
+                        "name" : "Klingons",
+                   },
+                   "my_vote" : 0 # not present if they haven't voted
+                },
+                ...
+            ]
+         }
 StationCommand:
   services:
     view:
@@ -78,5 +145,4 @@ common_minus:
   - upgrade
 simple:
   - IBS
-  - Parliament
   - Warehouse

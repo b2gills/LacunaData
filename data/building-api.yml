@@ -2060,10 +2060,15 @@ SpaceStationLab:
             "building" : { ... },
             "status" : { ... },
             "make_plan" : {
-                "types" : {
-                    "ibs" : "Interstellar Broadcast Station",
+                "types" : [
+                    {
+                        "type" : "ibs",
+                        "name" : "Interstellar Broadcast Station",
+                        "image" : "ibs",
+                        "url" : "/ibs"
+                    },
                     ...
-                },
+                ],
                 "level_costs" : [
                     {
                        level    => 1,
@@ -3175,6 +3180,7 @@ common:
 simple:
   - Algae
   - AlgaePond
+  - AmalgusMeadow
   - Apple
   - AtmosphericEvaporator
   - Bean
@@ -3194,6 +3200,7 @@ simple:
   - Crater
   - Dairy
   - Denton
+  - DentonBrambles
   - DeployedBleeder
   - Espionage
   - EssentiaVein
