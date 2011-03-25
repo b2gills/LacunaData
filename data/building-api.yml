@@ -961,6 +961,185 @@ LibraryOfJith:
             },
             "status" : { ... }
          }
+MercenariesGuild:
+  services:
+    accept_from_market:
+      description: Accept a trade offer from the list of available trades. See view_market.
+      parameters:
+        - description: A session id.
+          name: session_id
+          type: string
+        - description: The unique id of this building.
+          name: building_id
+          type: string
+        - description: The unique id of the trade.
+          name: trade_id
+          type: string
+      returns: "{\n    \"status\" : { ... }\n }"
+      throws:
+        - 1016
+    add_to_market:
+      description: Queues a trade for others to see.
+      parameters:
+        - description: A session id.
+          name: session_id
+          type: string
+        - description: The unique id of the mercenaries guild.
+          name: building_id
+          type: string
+        - description: 'A hash reference containing the item you wish to trade. There is one type of item that can be traded via this mechanism: spies.'
+          name: offer
+          type: string
+        - description: An integer representing the amount of essentia you are asking for in this trade. Must be between 1 and 99.
+          name: ask
+          type: string
+        - description: A hash reference of options to modify the trade.
+          name: options
+          type: string
+      returns: |-
+        {
+            "trade_id" : "id-goes-here",
+            "status" : { ... },
+         }
+    get_spies:
+      description: Returns a list of spies that may be traded. Used with the add_trade method.
+      parameters:
+        - description: A session id.
+          name: session_id
+          type: string
+        - description: The unique id of this building.
+          name: building_id
+          type: string
+      returns: |-
+        {
+            "spies" : [
+                {
+                    "id" : "id-goes-here",
+                    "name" : "Jack Bauer",
+                    "level" : "9"
+                },
+                ...
+            ],
+            "cargo_space_used_each" : 350,
+            "status" : { ... }
+         }
+    get_trade_ships:
+      description: Returns a list of the ships that could be used to do a trade.
+      parameters:
+        - description: A session id.
+          name: session_id
+          type: string
+        - description: The unique id of the trade ministry.
+          name: building_id
+          type: string
+        - description: The unique id of the body you'll be shipping to. Optional. If included it will calculate the estimated travel time of the ships to this body.
+          name: target_body_id
+          type: string
+      returns: |-
+        {
+            "status" : { ... },
+            "ships" : [
+                {
+                   "id" : "id-goes-here",
+                   "type" : "spy_pod",
+                   "name" : "Spy Pod 5",
+                   "estimated_travel_time" : 3600, # in seconds, one way
+                   ...
+                },
+                ...
+            ]
+         }
+    report_abuse:
+      description: Report a trade that you think is abusing the trade system.
+      parameters:
+        - description: A session id.
+          name: session_id
+          type: string
+        - description: The unique id of this building.
+          name: building_id
+          type: string
+        - description: The unique id of the trade.
+          name: trade_id
+          type: string
+      returns: "{\n    \"status\" : { ... }\n }"
+    view_market:
+      description: Displays a list of trades available at the present time.
+      parameters:
+        - description: A session id.
+          name: session_id
+          type: string
+        - description: The unique id of this building.
+          name: building_id
+          type: string
+        - description: Optional. An integer representing the page of trades (25 per page) to return. Defaults to 1.
+          name: page_number
+          type: string
+      returns: |-
+        {
+            "trades" : [
+                {
+                    "date_offered" : "01 31 2010 13:09:05 +0600",
+                    "id" : "id-goes-here",
+                    "ask" : 25,     # essentia
+                    "offer" : [
+                        "Level 9 spy named Jack Bauer (Mercenary Transport) Offense: 875, Defense: 875, Intel: 2, Mayhem: 0, Politics: 0, Theft: 0, Mission Count Offensive: 0 Defensive: 2)",
+                    ],
+                    "body" : {
+                        "id" : "id-goes-here"         # use with get_trade_ships() to determine travel time
+                    },
+                    "empire" : {
+                        "id" : "id-goes-here",
+                        "name" : "Earthlings"
+                    }
+                },
+                ...
+            ],
+            "trade_count" : 1047,
+            "page_number" : 1,
+            "status" : { ... }
+         }
+    view_my_market:
+      description: Displays a list of trades the current user has posted.
+      parameters:
+        - description: A session id.
+          name: session_id
+          type: string
+        - description: The unique id of this building.
+          name: building_id
+          type: string
+        - description: An integer representing the page of trades (25 per page) to return. Defaults to 1.
+          name: page_number
+          type: string
+      returns: |-
+        {
+            "trades" : [
+                {
+                    "date_offered" : "01 31 2010 13:09:05 +0600",
+                    "id" : "id-goes-here",
+                    "ask" : 25,     # essentia
+                    "offer" : [
+                        "Level 9 spy named Jack Bauer (Mercenary Transport) Offense: 875, Defense: 875, Intel: 2, Mayhem: 0, Politics: 0, Theft: 0, Mission Count Offensive: 0 Defensive: 2)",
+                    ]
+                },
+                ...
+            ],
+            "trade_count" : 17,
+            "page_number" : 1,
+            "status" : { ... }
+         }
+    withdraw_from_market:
+      description: Remove a trade that you have offered and collect the items up for trade.
+      parameters:
+        - description: A session id.
+          name: session_id
+          type: string
+        - description: The unique id of this building.
+          name: building_id
+          type: string
+        - description: The unique id of the trade.
+          name: trade_id
+          type: string
+      returns: "{\n    \"status\" : { ... }\n }"
 MiningMinistry:
   description: The Mining Ministry controls mining platform ships for harvesting the resources of asteroids.
   services:
@@ -1625,7 +1804,7 @@ SpacePort:
              "status" : { ... }
          }
     get_ships_for:
-      description: 'Provides a list of incoming ships and ships that are available to send to a specific target. Use with send_ship.The unavailable block tells you about ships that are docked, but are for some reason not available to be used. The recallable block will be returned only if the target is body and tells you about fighters that are defending and can be recalled. The mining_platforms block will be returned only if the target is an asteroid that has platforms on it.'
+      description: 'Provides a list of incoming ships and ships that are available to send to a specific target. Use with send_ship.The unavailable block tells you about ships that are docked, but are for some reason not available to be used. The orbiting block will be returned only if the target is body and tells you about fighters that are defending and can be recalled. The mining_platforms block will be returned only if the target is an asteroid that has platforms on it.'
       parameters:
         - description: A session id.
           name: session_id
@@ -1754,8 +1933,50 @@ SpacePort:
                 ...
             ]
          }
+    recall_all:
+      description: Recalls all of this planet's ships that are orbiting (task of 'Defend' or 'Orbiting') to their spaceport of origin. This behaves like recall_ship in all other aspects.
+      parameters:
+        - description: A session id.
+          name: session_id
+          type: string
+        - description: The unique id for the space port.
+          name: building_id
+          type: string
+      returns: |-
+        {
+            "status" : { ... },
+            "ships" : [
+                {
+                    "id" : "id-goes-here",
+                    "name" : "F13",
+                    "type_human" : "Fighter",
+                    "type" : "fighter",
+                    "task" : "Travelling",
+                    "speed" : "2000",
+                    "stealth" : "0",
+                    "hold_size" : "0",
+                    "date_started" : "01 31 2010 13:09:05 +0600",
+                    "date_available" : "02 01 2010 10:08:33 +0600",
+                    "date_arrives" : "02 01 2010 10:08:33 +0600",
+                    "from" : {
+                       "id" : "id-goes-here",
+                       "type" : "body",
+                       "name" : "Earth"
+                    },
+                    "to" : {
+                       "id" : "id-goes-here",
+                       "type" : "star",
+                       "name" : "Sol"
+                    }
+                },
+                ...
+            ],
+         }
+      throws:
+        - 1002
+        - 1010
     recall_ship:
-      description: Recalls a ship from allied defense ('Defend' task) to the body of origin.Recalls an orbiting Spy Shuttle ('Orbiting' task) and also fetches as many idle spies as will fit from the planet it was orbiting.
+      description: Recalls an orbiting ship (task of 'Defend' or 'Orbiting') to the body of origin.Recalling an orbiting Spy Shuttle also fetches as many idle spies as will fit from the planet it was orbiting.
       parameters:
         - description: A session id.
           name: session_id
@@ -1982,6 +2203,58 @@ SpacePort:
           name: page_number
           type: string
       returns: 100 * SpacePort Level >= Ship Stealth
+    view_ships_orbiting:
+      description: Returns a list of the ships from this planet that are orbiting.
+      parameters:
+        - description: A session id.
+          name: session_id
+          type: string
+        - description: The unique id of the space port.
+          name: building_id
+          type: string
+        - description: Defaults to 1. An integer representing which page of ships orbiting to view. Each page shows 25 ships.
+          name: page_number
+          type: string
+      returns: |-
+        {
+            "status" : { ... },
+            "number_of_ships_orbiting" : 30,
+            "ships_orbiting" : [
+               {
+                   "id" : "id-goes-here",
+                   "type" : "spy_shuttle",
+                   "type_human" : "Spy Shuttle",
+                   "task" : "Orbiting",
+                   "from" : {
+                       "id" : "id-goes-here",
+                       "type" : "body",
+                       "name" : "New Earth",
+                   },
+                   "to" : {
+                       "id" : "id-goes-here",
+                       "type" : "body",
+                       "name" : "Earth",
+                   }
+               },
+               {
+                   "id" : "id-goes-here",
+                   "type" : "fighter",
+                   "type_human" : "Fighter",
+                   "task" : "Defend",
+                   "from" : {
+                       "id" : "id-goes-here",
+                       "type" : "body",
+                       "name" : "New Earth",
+                   },
+                   "to" : {
+                       "id" : "id-goes-here",
+                       "type" : "body",
+                       "name" : "Earth",
+                   }
+               },
+               ...
+            ]
+         }
     view_ships_travelling:
       description: 'Returns a list of the ships that are travelling to or from this planet.NOTE: All inbound/outbound ships are shown regardless of which space port they will eventually land at.'
       parameters:
@@ -2381,7 +2654,7 @@ Trade:
                 },
                 ...
             ],
-            "cargo_space_used_each" : 100,
+            "cargo_space_used_each" : 350,
             "status" : { ... }
          }
     get_ships:
@@ -2686,7 +2959,7 @@ Transporter:
                 },
                 ...
             ],
-            "cargo_space_used_each" : 100,
+            "cargo_space_used_each" : 350,
             "status" : { ... }
          }
     get_ships:
