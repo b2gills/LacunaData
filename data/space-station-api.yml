@@ -35,6 +35,102 @@ Parliament:
                 "my_vote" : 0 # not present if they haven't voted
             }
          }
+    get_bodies_for_star_in_jurisdiction:
+      description: Returns a list of the bodies for a star in the jurisdiction of the space station.
+      parameters:
+        - description: A session id.
+          name: session_id
+          type: string
+        - description: The unique id of the parliament.
+          name: building_id
+          type: string
+        - description: The unique id of a star in jurisdiction. See c<get_stars_in_jurisdiction>.
+          name: star_id
+          type: string
+      returns: |-
+        {
+            "status" : { ... },
+            "bodies" : [
+                {
+                    same data as get_status() on /body
+                },
+                ...
+            ]
+         }
+    get_mining_platforms_for_asteroid_in_jurisdiction:
+      description: Returns a list of the platforms for an asteroid in the jurisdiction of the space station.
+      parameters:
+        - description: A session id.
+          name: session_id
+          type: string
+        - description: The unique id of the parliament.
+          name: building_id
+          type: string
+        - description: The unique id of an asteroid in jurisdiction. See c<get_bodies_for_star_in_jurisdiction>.
+          name: asteroid_id
+          type: string
+      returns: |-
+        {
+            "status" : { ... },
+            "platforms" : [
+                {
+                    "id" : "id-goes-here",
+                    "empire" : {
+                        "id" : "id-goes-here",
+                        "name" : "Klingons"
+                    }
+                },
+                ...
+            ]
+         }
+    get_stars_in_jurisdiction:
+      description: Returns a list of the stars in the jurisdiction of this space station.
+      parameters:
+        - description: A session id.
+          name: session_id
+          type: string
+        - description: The unique id of the parliament.
+          name: building_id
+          type: string
+      returns: |-
+        {
+            "status" : { ... },
+            "stars" : [
+                {
+                    "name"          : "Sol",
+                    "color"         : "yellow",
+                    "x"             : -41,
+                    "y"             : 27,
+                    "station" : { # only shows up if this star is under the influence of a space station
+                        "id" : "id-goes-here",
+                        "x" : 143,
+                        "y" : -27,
+                        "name" : "The Death Star"
+                    },
+                },
+                ...
+            ]
+         }
+    view_laws:
+      description: 'NOTE: Pass in a the id of the station, not the id of the parliament building. This is because anyone that wants to should be able to view the laws in this jurisdiction.Returns a list of the laws.'
+      parameters:
+        - description: A session id.
+          name: session_id
+          type: string
+        - name: body_id
+      returns: |-
+        {
+            "status" : { ... },
+            "laws" : [
+                {
+                    "id" : "id-goes-here",
+                    "name" : "Centure of Jamie Vrbsky",
+                    "description" : "Jamie Vrbsky is bad at playing Lacuna!",
+                    "date_enacted" : "01 31 2010 13:09:05 +0600"
+                },
+                ...
+            ]
+         }
     view_propositions:
       description: Returns a list of the pending propositions.
       parameters:
@@ -144,5 +240,8 @@ common_minus:
   - repair
   - upgrade
 simple:
+  - ArtMuseum
+  - CulinaryInstitute
   - IBS
+  - OperaHouse
   - Warehouse

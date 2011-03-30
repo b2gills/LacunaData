@@ -221,7 +221,13 @@ Body:
                     "name" : "Earthlings",
                     "alignment" : "ally",   # can be 'ally','self', or 'hostile'
                     "is_isolationist" : 1
-                }
+                },
+                "station" : { # only shows up if this planet is under the influence of a space station
+                    "id" : "id-goes-here",
+                    "x" : 143,
+                    "y" : -27,
+                    "name" : "The Death Star"
+                },
                 
                 --------- if you own the planet the data below will be included ---------
                 
@@ -253,7 +259,17 @@ Body:
                         "is_ally" : 1                                   # is this from a planet within our alliance
                     },
                     ...
-                ]
+                ],
+                
+                ----- if the body is a station the follwing information will be included
+                "alliance" : { 
+                    "id" : "id-goes-here",
+                    "name" : "Imperial Empire" 
+                },
+                "influence" : {
+                    "total" : 0,
+                    "spent" : 0
+                }
             }
          }
     rename:
@@ -572,7 +588,21 @@ Empire:
         - description: "After the message, the user's empire name in the game, the friend code, and URI to the server will be attached."
           name: custom_message
           type: string
-      returns: " I'm having a great time with this new game called Lacuna Expanse. Come play with me."
+      returns: |-
+        {
+            "status" : { ... },
+            "sent" : [
+              "you@there.com",
+              ...
+            ],
+            "not_sent" : [
+                {
+                    "address" : "joe@blow.com",
+                    "reason" : [ 1009, "Someone has already invited that user." ]
+                },
+               ...
+            ]
+         }
     is_name_available:
       description: 'Returns a 1 if the name is available, or a throws an exception if it is not.'
       parameters:
@@ -1124,20 +1154,36 @@ Map:
         - description: The bottom right y coord.
           name: y2
           type: string
-      returns: |-2
-                      y
-                      
-                      |
-                      |
-             (-3,3)   |  (3,3)
-                      |
-         -x ----------+---------- x
-                      |
-             (-3,-3)  |  (3,-3)
-                      |
-                      |
-        
-                     -y
+      returns: |-
+        { 
+            "stars" : [
+                {
+                    "name"          : "Sol",
+                    "color"         : "yellow",
+                    "x"             : -41,
+                    "y"             : 27,
+                    "station" : { # only shows up if this star is under the influence of a space station
+                        "id" : "id-goes-here",
+                        "x" : 143,
+                        "y" : -27,
+                        "name" : "The Death Star"
+                    },
+                    "bodies"        : [     # only added if a probe is present
+                        {
+                            same data as get_status() on /body
+                        },
+                        ...
+                    ]
+                },
+                {
+                    "name"          : "X143S",
+                    "color"         : "green",
+                    "x"             : -42,
+                    "y"             : 27
+                }
+             ],
+            "status" : { ... }
+         }
     search_stars:
       description: If you know a partial name of a star you can search for it. Returns up to 25 results. No body data is returned with this search.
       parameters:

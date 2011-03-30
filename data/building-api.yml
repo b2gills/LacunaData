@@ -987,14 +987,14 @@ MercenariesGuild:
         - description: The unique id of the mercenaries guild.
           name: building_id
           type: string
-        - description: 'A hash reference containing the item you wish to trade. There is one type of item that can be traded via this mechanism: spies.'
-          name: offer
+        - description: The unique id of the spy that you want to trade. See the get_spies method for a list of your spies.
+          name: spy_id
           type: string
         - description: An integer representing the amount of essentia you are asking for in this trade. Must be between 1 and 99.
           name: ask
           type: string
-        - description: A hash reference of options to modify the trade.
-          name: options
+        - description: Optional. The specific id of a ship you want to use for this trade. See get_trade_ships for details.
+          name: ship_id
           type: string
       returns: |-
         {
@@ -1603,6 +1603,84 @@ PlanetaryCommand:
                 ...
             ]
          }
+PoliceStation:
+  description: Captured spies are detained at the police station.
+  services:
+    execute_prisoner:
+      description: You may choose to execute a prisoner rather than letting him serve his sentence and be released.
+      parameters:
+        - description: A session id.
+          name: session_id
+          type: string
+        - description: The unique id of the police station.
+          name: building_id
+          type: string
+        - description: The unique id of a prisoner you have captured. See view_prisoners for details.
+          name: prisoner_id
+          type: string
+      returns: "{\n    \"status\" : { ... }\n }"
+    release_prisoner:
+      description: You may choose to release a prisoner by calling this method.
+      parameters:
+        - description: A session id.
+          name: session_id
+          type: string
+        - description: The unique id of the police station.
+          name: building_id
+          type: string
+        - description: The unique id of a prisoner you have captured. See view_prisoners for details.
+          name: prisoner_id
+          type: string
+      returns: "{\n    \"status\" : { ... }\n }"
+    view_foreign_spies:
+      description: 'Displays a list of the spies that are on your planet, and have a level lower than your police station.'
+      parameters:
+        - description: A session id.
+          name: session_id
+          type: string
+        - description: The unique id of the police station.
+          name: building_id
+          type: string
+        - description: Defaults to 1. Each page contains 25 spies.
+          name: page_number
+          type: string
+      returns: |-
+        {
+            "status" : { ... },
+            "spies" : [
+                {
+                    "name" : "James Bond",
+                    "level" : 11,
+                    "next_mission" : "01 31 2010 13:09:05 +0600"
+                },
+                ...
+            ]
+         }
+    view_prisoners:
+      description: Displays a list of the spies that have been captured.
+      parameters:
+        - description: A session id.
+          name: session_id
+          type: string
+        - description: The unique id of the police station.
+          name: building_id
+          type: string
+        - description: Defaults to 1. Each page contains 25 spies.
+          name: page_number
+          type: string
+      returns: |-
+        {
+            "status" : { ... },
+            "prisoners" : [
+                {
+                    "id" : "id-goes-here",
+                    "name" : "James Bond",
+                    "level" : "20",
+                    "sentence_expires" : "01 31 2010 13:09:05 +0600"
+                },
+                ...
+            ]
+         }
 Security:
   description: Captured spies are detained at the security ministry.
   services:
@@ -2202,9 +2280,31 @@ SpacePort:
         - description: Defaults to page 1. Shows 25 at a time.
           name: page_number
           type: string
-      returns: 100 * SpacePort Level >= Ship Stealth
+      returns: |-
+        {
+            "ships" : [
+                {
+                    "id" : "id-goes-here",
+                    "name" : "CS3",
+                    "type_human" : "Cargo Ship",
+                    "type" : "cargo_ship",
+                    "date_arrives" : "02 01 2010 10:08:33 +0600",
+                    "from" : {
+                        "id" : "id-goes-here",
+                        "name" : "Earth",
+                        "empire" : {
+                            "id" : "id-goes-here",
+                            "name" : "Earthlings"
+                        }
+                    }
+                },
+                ...
+            ],
+            "number_of_ships" : 13,
+            "status" : { ... }
+         }
     view_ships_orbiting:
-      description: Returns a list of the ships from this planet that are orbiting.
+      description: "Shows you all the foreign ships that are orbiting this planet. However, the list is filtered by the stealth of the ship vs the level of the SpacePort. The formula is:If your SpacePort exceeds the Ship's Stealth, then you'll see it orbiting. Otherwise you won't.The from block is only included if"
       parameters:
         - description: A session id.
           name: session_id
@@ -2212,48 +2312,45 @@ SpacePort:
         - description: The unique id of the space port.
           name: building_id
           type: string
-        - description: Defaults to 1. An integer representing which page of ships orbiting to view. Each page shows 25 ships.
+        - description: Defaults to page 1. Shows 25 at a time.
           name: page_number
           type: string
       returns: |-
         {
-            "status" : { ... },
-            "number_of_ships_orbiting" : 30,
-            "ships_orbiting" : [
+            "ships" : [
                {
                    "id" : "id-goes-here",
+                   "name" : "SS3",
                    "type" : "spy_shuttle",
                    "type_human" : "Spy Shuttle",
-                   "task" : "Orbiting",
+                   "date_arrives" : "02 01 2010 10:08:33 +0600",
                    "from" : {
                        "id" : "id-goes-here",
-                       "type" : "body",
-                       "name" : "New Earth",
-                   },
-                   "to" : {
-                       "id" : "id-goes-here",
-                       "type" : "body",
-                       "name" : "Earth",
+                       "name" : "Mars",
+                       "empire" : {
+                           "id" : "id-goes-here",
+                           "name" : "Martians"
+                       }
                    }
                },
                {
                    "id" : "id-goes-here",
+                   "name" : "F3",
                    "type" : "fighter",
                    "type_human" : "Fighter",
-                   "task" : "Defend",
                    "from" : {
                        "id" : "id-goes-here",
-                       "type" : "body",
-                       "name" : "New Earth",
-                   },
-                   "to" : {
-                       "id" : "id-goes-here",
-                       "type" : "body",
                        "name" : "Earth",
+                       "empire" : {
+                           "id" : "id-goes-here",
+                           "name" : "Earthlings"
+                       }
                    }
                },
-               ...
-            ]
+                ...
+            ],
+            "number_of_ships" : 13,
+            "status" : { ... }
          }
     view_ships_travelling:
       description: 'Returns a list of the ships that are travelling to or from this planet.NOTE: All inbound/outbound ships are shown regardless of which space port they will eventually land at.'
@@ -3495,6 +3592,7 @@ simple:
   - Lake
   - Lapis
   - LapisForest
+  - LostCityOfTyleon
   - LuxuryHousing
   - Malcud
   - MalcudField

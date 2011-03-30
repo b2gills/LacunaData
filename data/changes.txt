@@ -1,3 +1,42 @@
+3.0400
+ - Add: Added the Opera House, Art Museum, and Culinary Institute space station modules.
+ - Add: The Lost City of Tyleon.
+ - Add: Added Gratch's Gauntlet which adds 3 hours to infiltration time per level.
+ - Add: The Police Station space station module has been added.
+ - Rule: Security Ministry Seekers can also target Police Stations now.
+ - Rule: We now allow 20 ships per fleet.
+ - Rule: Allied spies no longer "infiltrate" on your planet.
+ - Rule: Security sweep can once again find infiltrating spies.
+ - Rule: Spies no longer bounce. There is either a success or a failure. They can still however not be able to complete a mission on success (try to steal a ship and there isn't one to steal, etc).
+ - Rule: Spies now have luck. A random number between -500 and 500.
+ - Rule: Security ministry is now more oppressive on happiness consumption.
+ - Rule: Defending spies now have home field advantage. Security ministry level * Security ministry efficiency / 2. So a level 10 at 50% efficiency is home field advantage is 250.
+ - Rule: Spy success is now calculated differently. power - toughness - home field advantage + luck, where >0 is success for the attacker.
+ - Rule: You can now incite rebellion and appropriate technology of empires 100 ranks from you instead of 50.
+ - Rule: Decorations now provide something besides beauty. Each one is different.
+ - Rule: SAWs now cost less in upkeep.
+ - Rule: Station modules cannot be upgraded past the station command level.
+ - Rule: If the IBS, Opera House, Art Museum, or Culinary institute are downgraded or demolished then the jurisdictional influence they exert is also repealed.
+ - Rule: The following plans are no longer findable via excavator: Library of Jith, Citadel of Knope, Crashed Ship Site, Oracle of Anid, Kalavian Ruins, Interdimensional Rift, Pantheon of Hagness, Temple of the Drajilites
+ - Rule: The following plans are now findable via excavator: Beach 1-13, Amalgus Meadow, Crater, Denton Brambles, Lake, Rocky Outcrop
+ - API: Added "station" element to the status of bodies and probed stars.
+ - API: Added "alliance" and "influence" elements to the status of bodies that are space stations.
+ - API: Added proposing enacting writs at Parliament level 4.
+ - API: Added repealing an existing law at Parliament level 5.
+ - API: Added transfering ownership of stations at Parliament level 6.
+ - API: Added seizing control of stars at Parliament level 7.
+ - API: Added renaming stars at Parliament level 8, along with a method to get the list of stars in the jurisdiction.
+ - API: Added broadcasting on Network 19 at parliament level 9.
+ - API: Added renaming asteroids at parliament level 12.
+ - API: Added members only mining rights at parliament level 13.
+ - API: Added evicting mining platforms at parliament level 14.
+ - API: Added proposing firing the station's BFG at Parliament level 25.
+ - API: Anyone can now view the laws passed by a space station, by simply calling view_laws() on the parliament.
+ - API: The stations list is now populated in the /alliance.view_profile() method.
+ - API: The Mercenaries Guild API has been corrected.
+ - API: The view_ships_orbiting() method of the SpacePort now correctly shows the foreign ships orbiting your planet as opposed to your ships that are orbiting foreign bodies.
+ - Fix: Space station propositions weren't all working properly when passed/failed.
+
 3.0301
  - Fixed the massive repeating resource warning messages.
 
