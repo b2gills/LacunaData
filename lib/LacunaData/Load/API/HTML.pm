@@ -180,6 +180,7 @@ sub _get_api_method_info{
       }
       when( 'pre' ){
         if( $method ){
+          next unless $text =~ /\s*[{]/;
           $text =~ s/^\s* ( [{\[0-9] )     /$1/x;
           $text =~ s/     ( [}\]0-9] ) \s*$/$1/x;
           $method{$method}{returns} = $text;
