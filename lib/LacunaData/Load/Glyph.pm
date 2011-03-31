@@ -210,10 +210,18 @@ sub _load_list{
       if( substr($link,0,1) eq '/' ){
         $link = $uri_root.$link;
       }
+
       $info{$name} = {
         wiki => $link,
         type => $recipe_type,
       };
+
+      my $next = $a->right;
+      $next = $next->as_text if ref $next;
+      next unless $next;
+      if( $next =~ /[(] \s* ([^()]+?) \s* [)]/x ){
+        $info{$name}{extra} = "$1";
+      }
     }
   }
   $tree->delete;
