@@ -17,6 +17,7 @@ use LacunaData::Resources qw'ore_list all_food_list normalize_food';
 use HTML::TreeBuilder;
 use YAML qw'thaw';
 use List::Util qw'max';
+use List::MoreUtils qw'uniq';
 use 5.12.2;
 
 use namespace::clean;
@@ -89,29 +90,24 @@ no namespace::clean;
   }
 }
 {
-  my $food_match = eval 'qr{('.join('|', all_food_list).')}i';
-  my %building_produces = (qw{
-    volcano ore
-    },
-    'geo thermal vent' => 'energy',
-    'kalavian ruins'   => 'happiness',
-    'natural spring'   => 'water',
-  );
+  my $food_match = eval 'qr{\b('.join('|', all_food_list).')\b}i';
+  my $basic_match = qr{\b(?:food|ore|water|energy|happiness)\b};
+
   sub _add_produces{
     my($building,$data) = @_;
     $building = lc $building;
 
-    if( my $produces = $building_produces{$building} ){
-      $data->{produces} = $produces;
-      return;
-    }
+    my $desc = $data->{description} || '';
 
-    my $desc = $data->{desc} || $data->{description} || '';
-
-    my($food) = "$building $desc" =~ $food_match;
-    if( $food ){
+    if( my($food) = "$building $desc" =~ $food_match ){
       $data->{produces} = normalize_food($food);
+
+    }elsif( my @resources = $desc =~ /$basic_match/g ){
+      @resources = uniq sort @resources;
+      $data->{produces} = \@resources;
+
     }
+
     return;
   }
 }
