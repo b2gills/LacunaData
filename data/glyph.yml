@@ -18,89 +18,155 @@ Amalgus Meadow:
   type: functional
   wiki: http://community.lacunaexpanse.com/wiki/amalgus-meadow
 Beach 1:
-  description: Create a lake or a beach front on your planet.
+  description: 'Create a lake or a beach front on your planet. As of server 3.0400 generates a small amount of food, ore, and water.'
+  extra: Land E
+  produces:
+    - food
+    - ore
+    - water
   recipe:
     - gypsum
   type: functional
   wiki: http://community.lacunaexpanse.com/wiki/beach-1
 Beach 10:
-  description: Create a lake or a beach front on your planet.
+  description: 'Create a lake or a beach front on your planet. As of server 3.0400 generates a small amount of food, ore, and water.'
+  extra: Sea SW
+  produces:
+    - food
+    - ore
+    - water
   recipe:
     - gypsum
     - methane
   type: functional
   wiki: http://community.lacunaexpanse.com/wiki/beach-10
 Beach 11:
-  description: Create a lake or a beach front on your planet.
+  description: 'Create a lake or a beach front on your planet. As of server 3.0400 generates a small amount of food, ore, and water.'
+  extra: Land S
+  produces:
+    - food
+    - ore
+    - water
   recipe:
     - gypsum
     - chromite
   type: functional
   wiki: http://community.lacunaexpanse.com/wiki/beach-11
 Beach 12:
-  description: Create a lake or a beach front on your planet.
+  description: 'Create a lake or a beach front on your planet. As of server 3.0400 generates a small amount of food, ore, and water.'
+  extra: Sea NE
+  produces:
+    - food
+    - ore
+    - water
   recipe:
     - gypsum
     - goethite
   type: functional
   wiki: http://community.lacunaexpanse.com/wiki/beach-12
 Beach 13:
-  description: Create a lake or a beach front on your planet.
+  description: 'Create a lake or a beach front on your planet. As of server 3.0400 generates a small amount of food, ore, and water.'
+  extra: Land W
+  produces:
+    - food
+    - ore
+    - water
   recipe:
     - gypsum
     - galena
   type: functional
   wiki: http://community.lacunaexpanse.com/wiki/beach-13
 Beach 2:
+  description: 'Create a lake or a beach front on your planet. As of server 3.0400 generates a small amount of food, ore, and water.'
+  extra: Land SW
+  produces:
+    - food
+    - ore
+    - water
   recipe:
     - gypsum
     - gypsum
   type: functional
   wiki: http://community.lacunaexpanse.com/wiki/beach-2
 Beach 3:
-  description: Create a lake or a beach front on your planet.
+  description: 'Create a lake or a beach front on your planet. As of server 3.0400 generates a small amount of food, ore, and water.'
+  extra: Land SE
+  produces:
+    - food
+    - ore
+    - water
   recipe:
     - gypsum
     - magnetite
   type: functional
   wiki: http://community.lacunaexpanse.com/wiki/beach-3
 Beach 4:
-  description: Create a lake or a beach front on your planet.
+  description: 'Create a lake or a beach front on your planet. As of server 3.0400 generates a small amount of food, ore, and water.'
+  extra: Sea NW
+  produces:
+    - food
+    - ore
+    - water
   recipe:
     - gypsum
     - uraninite
   type: functional
   wiki: http://community.lacunaexpanse.com/wiki/beach-4
 Beach 5:
-  description: Create a lake or a beach front on your planet.
+  description: 'Create a lake or a beach front on your planet. As of server 3.0400 generates a small amount of food, ore, and water.'
+  extra: Land N
+  produces:
+    - food
+    - ore
+    - water
   recipe:
     - gypsum
     - halite
   type: functional
   wiki: http://community.lacunaexpanse.com/wiki/beach-5
 Beach 6:
-  description: Create a lake or a beach front on your planet.
+  description: 'Create a lake or a beach front on your planet. As of server 3.0400 generates a small amount of food, ore, and water.'
+  extra: Land NW
+  produces:
+    - food
+    - ore
+    - water
   recipe:
     - gypsum
     - rutile
   type: functional
   wiki: http://community.lacunaexpanse.com/wiki/beach-6
 Beach 7:
-  description: Create a lake or a beach front on your planet.
+  description: 'Create a lake or a beach front on your planet. As of server 3.0400 generates a small amount of food, ore, and water.'
+  extra: Land NE
+  produces:
+    - food
+    - ore
+    - water
   recipe:
     - gypsum
     - chalcopyrite
   type: functional
   wiki: http://community.lacunaexpanse.com/wiki/beach-7
 Beach 8:
-  description: Create a lake or a beach front on your planet.
+  description: 'Create a lake or a beach front on your planet. As of server 3.0400 generates a small amount of food, ore, and water.'
+  extra: Sea SE
+  produces:
+    - food
+    - ore
+    - water
   recipe:
     - gypsum
     - sulfur
   type: functional
   wiki: http://community.lacunaexpanse.com/wiki/beach-8
 Beach 9:
-  description: Create a lake or a beach front on your planet.
+  description: 'Create a lake or a beach front on your planet. As of server 3.0400 generates a small amount of food, ore, and water.'
+  extra: Sea Only
+  produces:
+    - food
+    - ore
+    - water
   recipe:
     - gypsum
     - anthracite
@@ -157,14 +223,21 @@ Gas Giant Settlement Platform:
   wiki: http://community.lacunaexpanse.com/wiki/gas-giant-settlement-platform
 Geo Thermal Vent:
   description: The Geo Thermal Vent occurs naturally on some planets. It is a great source of clean energy that doesn't cost a plot.
-  produces: energy
+  produces:
+    - energy
   recipe:
     - chalcopyrite
     - sulfur
   type: functional
   wiki: http://community.lacunaexpanse.com/wiki/geo-thermal-vent
+Gratch's Gauntlet:
+  description: Thought to be one way the Great Race protected themselves from enemy agents.
+  type: functional
+  wiki: http://community.lacunaexpanse.com/wiki/gratch-s-gauntlet
 Grove of Trees:
-  description: 'A decoration for your planet, that displays a nice thick grove of trees.'
+  description: 'A decoration for your planet, that displays a nice thick grove of trees. As of server 3.0400 generates a small amount of energy.'
+  produces:
+    - energy
   recipe:
     - methane
   type: functional
@@ -209,14 +282,18 @@ Interdimensional Rift:
   wiki: http://community.lacunaexpanse.com/wiki/interdimensional-rift
 Kalavian Ruins:
   description: 'The Kalavian Ruins were left behind by the Great Race that once inhabited the Lacuna Expanse. Today they still hold great mystery and wonder, and attract tourists, and are a source of pride for local citizens. If you were to find the ruins on your planet, they would greatly increase the happiness of your citizens.'
-  produces: happiness
+  produces:
+    - happiness
   recipe:
     - galena
     - gold
   type: functional
   wiki: http://community.lacunaexpanse.com/wiki/kalavian-ruins
 Lagoon:
-  description: A cool beautiful location for a picnic to decorate your planet surface.
+  description: A cool beautiful location for a picnic to decorate your planet surface. As of server 3.0400 generates a small amount of food and water.
+  produces:
+    - food
+    - water
   recipe:
     - chalcopyrite
   type: functional
@@ -247,7 +324,8 @@ Malcud Field:
   wiki: http://community.lacunaexpanse.com/wiki/malcud-field2
 Natural Spring:
   description: "It's not only a beautiful addition to your planet surface, it's also a great source of clean water for your people."
-  produces: water
+  produces:
+    - water
   recipe:
     - magnetite
     - halite
@@ -263,7 +341,9 @@ Pantheon of Hagness:
   type: functional
   wiki: http://community.lacunaexpanse.com/wiki/pantheon-of-hagness
 Patch of Sand:
-  description: A sandy patch can be a nice way to decorate your planet surface.
+  description: A sandy patch can be a nice way to decorate your planet surface. As of server 3.0400 generates a small amount of ore.
+  produces:
+    - ore
   recipe:
     - bauxite
   type: functional
@@ -303,7 +383,8 @@ Terraforming Platform:
   wiki: http://community.lacunaexpanse.com/wiki/terraforming-platform
 Volcano:
   description: Volcanos naturally form on many planets. As they erupt they bring a steady source of ore from the planet's core up to the surface.
-  produces: ore
+  produces:
+    - ore
   recipe:
     - magnetite
     - uraninite
