@@ -1603,84 +1603,6 @@ PlanetaryCommand:
                 ...
             ]
          }
-PoliceStation:
-  description: Captured spies are detained at the police station.
-  services:
-    execute_prisoner:
-      description: You may choose to execute a prisoner rather than letting him serve his sentence and be released.
-      parameters:
-        - description: A session id.
-          name: session_id
-          type: string
-        - description: The unique id of the police station.
-          name: building_id
-          type: string
-        - description: The unique id of a prisoner you have captured. See view_prisoners for details.
-          name: prisoner_id
-          type: string
-      returns: "{\n    \"status\" : { ... }\n }"
-    release_prisoner:
-      description: You may choose to release a prisoner by calling this method.
-      parameters:
-        - description: A session id.
-          name: session_id
-          type: string
-        - description: The unique id of the police station.
-          name: building_id
-          type: string
-        - description: The unique id of a prisoner you have captured. See view_prisoners for details.
-          name: prisoner_id
-          type: string
-      returns: "{\n    \"status\" : { ... }\n }"
-    view_foreign_spies:
-      description: 'Displays a list of the spies that are on your planet, and have a level lower than your police station.'
-      parameters:
-        - description: A session id.
-          name: session_id
-          type: string
-        - description: The unique id of the police station.
-          name: building_id
-          type: string
-        - description: Defaults to 1. Each page contains 25 spies.
-          name: page_number
-          type: string
-      returns: |-
-        {
-            "status" : { ... },
-            "spies" : [
-                {
-                    "name" : "James Bond",
-                    "level" : 11,
-                    "next_mission" : "01 31 2010 13:09:05 +0600"
-                },
-                ...
-            ]
-         }
-    view_prisoners:
-      description: Displays a list of the spies that have been captured.
-      parameters:
-        - description: A session id.
-          name: session_id
-          type: string
-        - description: The unique id of the police station.
-          name: building_id
-          type: string
-        - description: Defaults to 1. Each page contains 25 spies.
-          name: page_number
-          type: string
-      returns: |-
-        {
-            "status" : { ... },
-            "prisoners" : [
-                {
-                    "id" : "id-goes-here",
-                    "name" : "James Bond",
-                    "level" : "20",
-                    "sentence_expires" : "01 31 2010 13:09:05 +0600"
-                },
-                ...
-            ]
-         }
 Security:
   description: Captured spies are detained at the security ministry.
   services:
@@ -2323,7 +2245,7 @@ SpacePort:
                    "name" : "SS3",
                    "type" : "spy_shuttle",
                    "type_human" : "Spy Shuttle",
-                   "date_arrives" : "02 01 2010 10:08:33 +0600",
+                   "date_arrived" : "02 01 2010 10:08:33 +0600",
                    "from" : {
                        "id" : "id-goes-here",
                        "name" : "Mars",
@@ -2639,7 +2561,7 @@ ThemePark:
             "themepark" : {
                 "food_type_count" : 12,
                 "can_operate" : 0,
-                "reason" : [1011, "This Theme Park was started with 12 types of food so you need at least 12 types of food to continue it's operation."]
+                "reason" : [1011, "This Theme Park was started with 12 types of food so you need at least 12 types of food to continue its operation."]
             }
          }
 Trade:
@@ -3553,6 +3475,7 @@ simple:
   - AmalgusMeadow
   - Apple
   - AtmosphericEvaporator
+  - Beach
   - Bean
   - Beeldeban
   - BeeldebanNest

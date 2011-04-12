@@ -1,3 +1,27 @@
+3.0501
+ - Fix: Denton Brambles now produce roots.
+
+3.0500
+ - API: Added proposing induction of new alliance members at Parliament level 10.
+ - API: Added proposing expulsion of alliance members at Parliament level 10.
+ - API: Added proposing election of a new alliance leader at Parliament level 11.
+ - API: Added proposing taxation at Parliament level 15.
+ - API: Added proposing sending foreign aid to planets at Parliament level 16.
+ - API: Added proposing renaming uninhabited planets at Parliament level 17.
+ - API: Added proposing members only colonization at Parliament level 18.
+ - API: Added view_taxes_collected to the Parliament module.
+ - Fix: Police Station docs now show up under Modules instead of Buildings.
+ - Fix: view_ships_orbiting will now return the ships that are orbiting your planet instead of just the count.
+ - Fix: Fighters will return home after defending (instead of doubling the travel time).
+ - Fix: Fix defender's home field advantage.
+ - Fix: Only one excavator is allowed in a send_fleet call.
+ - Fix: Failure of Appropriate Resources spy mission works again even if there wasn't a defender.
+ - Fix: A passing vote for the Abandon Station proposition no longer causes a server error.
+ - Fix: Added docs for Beaches.
+ - Fix: Corrected typo in Theme Park documentation.
+ - Fix: Sending scows with send_fleet will remove the proper amount of waste.
+ - Fix: Repeal law no longer causes a server error.
+
 3.0402
  - API: Changed parliament propositions and laws to use email formatting rules.
  - Rule: SAWs will now defend before allied ships

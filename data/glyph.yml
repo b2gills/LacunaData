@@ -202,7 +202,7 @@ Crater:
   type: functional
   wiki: http://community.lacunaexpanse.com/wiki/crater
 Denton Brambles:
-  description: "A thorny patch of brambles, who's roots happen to be the delicious denton roots. Like the Denton Root Patch, these denton roots will only grow in orbit 5 and 6."
+  description: 'A thorny patch of brambles, the roots of which happen to be the delicious Denton roots. Like the Denton Root Patch, these Denton roots will only grow in orbit 5 and 6.'
   orbits:
     - 5
     - 6
