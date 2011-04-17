@@ -273,7 +273,7 @@ Body:
             }
          }
     rename:
-      description: 'Renames a body, provided the empire attached to the session owns the body. Returns a 1 on success.NOTE: Calling rename on a Space Station will result in an exception. Use Parliament instead.'
+      description: 'Renames a body, provided the empire attached to the session owns the body. Returns a 1 on success.'
       parameters:
         - description: A session id.
           name: session_id
@@ -438,16 +438,28 @@ Empire:
               description: An array reference of medal ids that the user wishes to display in the public profile.
             sitter_password:
               description: A password that can be safely given to account sitters and alliance members. Must be between 6 and 30 characters.
+            skip_excavator_glyph:
+              description: Defaults to 0. Set to 1 if the user no longer wants to receive messages when excavators find glyphs.
+            skip_excavator_plan:
+              description: Defaults to 0. Set to 1 if the user no longer wants to receive messages when excavators find plans.
+            skip_excavator_resources:
+              description: Defaults to 0. Set to 1 if the user no longer wants to receive messages when excavators find resources.
             skip_facebook_wall_posts:
               description: Defaults to 0. Set to 1 if the user no longer wants messages to be posted to their Facebook wall.
+            skip_found_nothing:
+              description: Defaults to 0. Set to 1 if the user no longer wants to receive messages when excavators find nothing.
             skip_happiness_warnings:
               description: 'WARNING: These messages are there for your own protection. Turn off at your own risk.'
             skip_medal_messages:
               description: Defaults to 0. Set to 1 if the user no longer wants to receive messages about the medals they've earned.
             skip_pollution_warnings:
               description: 'WARNING: These messages are there for your own protection. Turn off at your own risk.'
+            skip_probe_detected:
+              description: Defaults to 0. Set to 1 if the user no longers wants to receive messages when a probe is detected.
             skip_resource_warnings:
               description: 'WARNING: These messages are there for your own protection. Turn off at your own risk.'
+            skip_spy_recovery:
+              description: Defaults to 0. Set to 1 if the user no longer wants to receive spy recovery messages. ("I'm ready to work. What do you need from me?")
             skype:
               description: 'An optional text string of the username this player uses on skype. Limited to 100 characters and cannot contain @, &, <, >, or ;'
             status_message:
@@ -810,6 +822,12 @@ Empire:
                "skip_pollution_warnings" : 0,
                "skip_medal_messages" : 0,
                "skip_facebook_wall_posts" : 0,
+               "skip_found_nothing
+               "skip_excavator_resources" : 0,
+               "skip_excavator_glyph" : 0,
+               "skip_excavator_plan" : 0,
+               "skip_spy_recovery" : 0,
+               "skip_probe_detected" : 0,
                "email" : "joe@example.com",
                "sitter_password" : "abcdefgh"                   # never give out your real password, use the sitter password
             },
@@ -895,7 +913,7 @@ Empire:
 Inbox:
   services:
     archive_messages:
-      description: "Archives a list of messages.NOTE: You cannot archive sent messages. You'll get a failure if the message is either already archived, or it's a message that cannot be archived, like a message in your sent folder."
+      description: "Archives a list of messages.Archived messages are marked as read.NOTE: You cannot archive sent messages. You'll get a failure if the message is either already archived, or it's a message that cannot be archived, like a message in your sent folder."
       parameters:
         - description: A session id.
           name: session_id
@@ -932,6 +950,7 @@ Inbox:
                 "has_read" : 1,
                 "has_replied" : 0,
                 "has_archived" : 0,
+                "has_trashed" : 0,
                 "in_reply_to" : "",
                 "recipients" : ["John Stewart"],
                 "tags" : ["Correspondence"],
@@ -995,6 +1014,21 @@ Inbox:
         - 1002
         - 1005
         - 1006
+    trash_messages:
+      description: "Trashed messages are marked as read.Trashes a list of messages.NOTE: You cannot trash sent messages. You'll get a failure if the message is either already trashed, or it's a message that cannot be trashed, like a message in your sent folder."
+      parameters:
+        - description: A session id.
+          name: session_id
+          type: string
+        - description: An array reference of message ids.
+          name: message_ids
+          type: string
+      returns: |-
+        {
+            "success" : ["id-goes-here","id-goes-here"],
+            "failure" : ["id-goes-here","id-goes-here"],
+            "status" : { ... }
+         }
     view_archived:
       description: Exactly the same as view_inbox except that it shows archived messages instead.
       parameters:
@@ -1039,6 +1073,11 @@ Inbox:
         - 1006
     view_sent:
       description: Exactly the same as view_inbox except that it shows sent messages instead.
+      parameters:
+        - name: session_id
+        - name: options
+    view_trashed:
+      description: Exactly the same as view_inbox except that it shows trashed messages instead.
       parameters:
         - name: session_id
         - name: options
