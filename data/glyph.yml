@@ -196,7 +196,7 @@ Crashed Ship Site:
   type: functional
   wiki: http://community.lacunaexpanse.com/wiki/crashed-ship-site
 Crater:
-  description: The remnants of a small asteroid impacting the planet. Be glad you weren't here when that happened. It also stores a tiny amount of waste.
+  description: The remnants of an object or an attack impacting the planet. Be glad you weren't here when that happened. It also stores a tiny amount of waste.
   recipe:
     - rutile
   type: functional
