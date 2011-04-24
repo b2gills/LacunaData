@@ -276,7 +276,7 @@ Embassy:
           name: name
           type: string
     dissolve_alliance:
-      description: Can only be called by alliance leader. Disbands and existing alliance.
+      description: 'Can only be called by alliance leader. Disbands an existing alliance.NOTE: All space stations associated with the alliance will be abandoned and converted to asteroids.'
       parameters:
         - description: A session id.
           name: session_id
@@ -2026,6 +2026,9 @@ SpacePort:
         - description: A hash reference that can contain one of five items to identify a star or body. Same as send_ship.
           name: target
           type: string
+        - description: An exception will be thrown if this is less than zero or exceeds the speed of the slowest ship in the fleet.
+          name: set_speed
+          type: string
       returns: |-
         {
             "status" : { ... },
@@ -2037,6 +2040,7 @@ SpacePort:
                                 "type" : "probe",
                                 "task" : "Travelling",
                                 "speed" : "1200",
+                    "fleet_speed" : "250",
                                 "stealth" : "0",
                                 "hold_size" : "0",
                                 "date_started" : "01 31 2010 13:09:05 +0600",
