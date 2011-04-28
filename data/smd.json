@@ -1742,6 +1742,13 @@
 				],
 				"returns":{"type":"object"}
 			},
+			"boost_rpc" : {
+				"description": "Spends 25 essentia, and boosts the number of RPC calls allowed per minute by 50% as well as doubling the total number RPC calls per day. If a boost is already underway, calling again will add 7 more days.",
+				"parameters": [
+					{"name":"session_id", "type":"string", "optional":false}
+				],
+				"returns":{"type":"object"}
+			},
 			"enable_self_destruct" : {
 				"description": "Enables a destruction countdown of 24 hours. Sometime after the timer runs out, the empire will vaporize.",
 				"parameters": [

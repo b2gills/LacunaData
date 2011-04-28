@@ -2673,7 +2673,8 @@ Trade:
                 {
                     "id" : "id-goes-here",
                     "name" : "Jack Bauer",
-                    "level" : "5"
+                    "level" : "5",
+                    "sentence_expires" : "01 31 2010 13:09:05 +0600"
                 },
                 ...
             ],
@@ -2979,6 +2980,7 @@ Transporter:
                     "id" : "id-goes-here",
                     "name" : "Jack Bauer",
                     "level" : "5"
+                    "sentence_expires" : "01 31 2010 13:09:05 +0600"
                 },
                 ...
             ],

@@ -342,6 +342,19 @@ Empire:
          }
       throws:
         - 1011
+    boost_rpc:
+      description: "Spends 25 essentia, and boosts the number of RPC calls allowed per minute by 50% as well as doubling the total number RPC calls per day. If a boost is already underway, calling again will add 7 more days.NOTE: The boost will not affect the 'rpc_limit' returned as a part of server status."
+      parameters:
+        - description: A session id.
+          name: session_id
+          type: string
+      returns: |-
+        {
+            "status" : { ... },
+            "rpc_boost" : "01 31 2010 13:09:05 +0600"
+         }
+      throws:
+        - 1011
     boost_storage:
       description: 'Spends 5 essentia, and boosts storage (all 5 types) on all planets for 7 days. If a boost is already underway, calling again will add 7 more days.'
       parameters:
@@ -789,6 +802,7 @@ Empire:
                 "water" : "01 31 2010 13:09:05 +0600",
                 "happiness" : "01 31 2010 13:09:05 +0600",
                 "storage" : "01 31 2010 13:09:05 +0600"
+                "rpc" : "01 31 2010 13:09:05 +0600"
             }
          }
     view_profile:
