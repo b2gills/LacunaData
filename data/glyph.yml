@@ -243,7 +243,7 @@ Grove of Trees:
   type: functional
   wiki: http://community.lacunaexpanse.com/wiki/grove-of-trees
 Halls of Vrbansk:
-  description: 'The Halls of Vrbansk are said to be the source of the ancient wisdom of the Great Race. You can use the Halls of Vrbansk to upgrade any permanent structure. Unlike many other glyph buildings you may build any number of Halls on your planet surface that you have room to build. To upgrade a permanent structure you will sacrifice a number of halls equal to the level upgrade. So to upgrade a level 3 Citadel of Knope to a level 4, you will need to sacrifice 4 Halls of Vrbansk.'
+  description: The Halls of Vrbansk are said to be the source of the ancient wisdom of the Great Race. You can use the Halls of Vrbansk to upgrade any permanent structure. Unlike many other glyph buildings you may build any number of Halls on your planet surface that you have room to build.
   recipe:
     A:
       - goethite
@@ -273,7 +273,7 @@ Halls of Vrbansk:
   type: functional
   wiki: http://community.lacunaexpanse.com/wiki/halls-of-vrbansk
 Interdimensional Rift:
-  description: "Long ago the Great Race learned how to master the space between space. They used it for travel and communication, but also for more mundane purposes, like storage. If you are lucky enough to uncover one of the Great Race's storage rifts, many of your storage needs will be covered."
+  description: "Long ago the Great Race learned how to master the subspace. They used it for travel and communication, but also for more mundane purposes, like storage. If you are lucky enough to uncover one of the Great Race's storage rifts, many of your storage needs will be covered."
   recipe:
     - methane
     - zircon
