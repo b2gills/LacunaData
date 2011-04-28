@@ -160,14 +160,8 @@ sub _load_building{
     # then there must be more than one
 
     # each recipe can be found in it's own
-    # <p>
-    my @p = $body->find('p');
-
-    # ignore any upto, and including, a line
-    # that has the word recipe in it
-    while( my $p = shift @p ){
-      last if $p->as_text =~ /recipe/;
-    }
+    # <li>
+    my @p = $body->find('li');
 
     @p = map{[
       split /\W+/, $_->as_text
