@@ -18,155 +18,116 @@ Amalgus Meadow:
   type: functional
   wiki: http://community.lacunaexpanse.com/wiki/amalgus-meadow
 Beach 1:
-  description: 'Create a lake or a beach front on your planet. As of server 3.0400 generates a small amount of food, ore, and water.'
+  description: 'Create a lake or a beach front on your planet. As of server 3.0400 generates a small amount of food (algae), ore (whatever kind a mine on the planet produces), and water.'
   extra: Land E
-  produces:
-    - food
-    - ore
-    - water
+  produces: algae
   recipe:
     - gypsum
   type: functional
   wiki: http://community.lacunaexpanse.com/wiki/beach-1
 Beach 10:
-  description: 'Create a lake or a beach front on your planet. As of server 3.0400 generates a small amount of food, ore, and water.'
+  description: 'Create a lake or a beach front on your planet. As of server 3.0400 generates a small amount of food (algae), ore (whatever kind a mine on the planet produces), and water.'
   extra: Sea SW
-  produces:
-    - food
-    - ore
-    - water
+  produces: algae
   recipe:
     - gypsum
     - methane
   type: functional
   wiki: http://community.lacunaexpanse.com/wiki/beach-10
 Beach 11:
-  description: 'Create a lake or a beach front on your planet. As of server 3.0400 generates a small amount of food, ore, and water.'
+  description: 'Create a lake or a beach front on your planet. As of server 3.0400 generates a small amount of food (algae), ore (whatever kind a mine on the planet produces), and water.'
   extra: Land S
-  produces:
-    - food
-    - ore
-    - water
+  produces: algae
   recipe:
     - gypsum
     - chromite
   type: functional
   wiki: http://community.lacunaexpanse.com/wiki/beach-11
 Beach 12:
-  description: 'Create a lake or a beach front on your planet. As of server 3.0400 generates a small amount of food, ore, and water.'
+  description: 'Create a lake or a beach front on your planet. As of server 3.0400 generates a small amount of food (algae), ore (whatever kind a mine on the planet produces), and water.'
   extra: Sea NE
-  produces:
-    - food
-    - ore
-    - water
+  produces: algae
   recipe:
     - gypsum
     - goethite
   type: functional
   wiki: http://community.lacunaexpanse.com/wiki/beach-12
 Beach 13:
-  description: 'Create a lake or a beach front on your planet. As of server 3.0400 generates a small amount of food, ore, and water.'
+  description: 'Create a lake or a beach front on your planet. As of server 3.0400 generates a small amount of food (algae), ore (whatever kind a mine on the planet produces), and water.'
   extra: Land W
-  produces:
-    - food
-    - ore
-    - water
+  produces: algae
   recipe:
     - gypsum
     - galena
   type: functional
   wiki: http://community.lacunaexpanse.com/wiki/beach-13
 Beach 2:
-  description: 'Create a lake or a beach front on your planet. As of server 3.0400 generates a small amount of food, ore, and water.'
+  description: 'Create a lake or a beach front on your planet. As of server 3.0400 generates a small amount of food (algae), ore (whatever kind a mine on the planet produces), and water.'
   extra: Land SW
-  produces:
-    - food
-    - ore
-    - water
+  produces: algae
   recipe:
     - gypsum
     - gypsum
   type: functional
   wiki: http://community.lacunaexpanse.com/wiki/beach-2
 Beach 3:
-  description: 'Create a lake or a beach front on your planet. As of server 3.0400 generates a small amount of food, ore, and water.'
+  description: 'Create a lake or a beach front on your planet. As of server 3.0400 generates a small amount of food (algae), ore (whatever kind a mine on the planet produces), and water.'
   extra: Land SE
-  produces:
-    - food
-    - ore
-    - water
+  produces: algae
   recipe:
     - gypsum
     - magnetite
   type: functional
   wiki: http://community.lacunaexpanse.com/wiki/beach-3
 Beach 4:
-  description: 'Create a lake or a beach front on your planet. As of server 3.0400 generates a small amount of food, ore, and water.'
+  description: 'Create a lake or a beach front on your planet. As of server 3.0400 generates a small amount of food (algae), ore (whatever kind a mine on the planet produces), and water.'
   extra: Sea NW
-  produces:
-    - food
-    - ore
-    - water
+  produces: algae
   recipe:
     - gypsum
     - uraninite
   type: functional
   wiki: http://community.lacunaexpanse.com/wiki/beach-4
 Beach 5:
-  description: 'Create a lake or a beach front on your planet. As of server 3.0400 generates a small amount of food, ore, and water.'
+  description: 'Create a lake or a beach front on your planet. As of server 3.0400 generates a small amount of food (algae), ore (whatever kind a mine on the planet produces), and water.'
   extra: Land N
-  produces:
-    - food
-    - ore
-    - water
+  produces: algae
   recipe:
     - gypsum
     - halite
   type: functional
   wiki: http://community.lacunaexpanse.com/wiki/beach-5
 Beach 6:
-  description: 'Create a lake or a beach front on your planet. As of server 3.0400 generates a small amount of food, ore, and water.'
+  description: 'Create a lake or a beach front on your planet. As of server 3.0400 generates a small amount of food (algae), ore (whatever kind a mine on the planet produces), and water.'
   extra: Land NW
-  produces:
-    - food
-    - ore
-    - water
+  produces: algae
   recipe:
     - gypsum
     - rutile
   type: functional
   wiki: http://community.lacunaexpanse.com/wiki/beach-6
 Beach 7:
-  description: 'Create a lake or a beach front on your planet. As of server 3.0400 generates a small amount of food, ore, and water.'
+  description: 'Create a lake or a beach front on your planet. As of server 3.0400 generates a small amount of food (algae), ore (whatever kind a mine on the planet produces), and water.'
   extra: Land NE
-  produces:
-    - food
-    - ore
-    - water
+  produces: algae
   recipe:
     - gypsum
     - chalcopyrite
   type: functional
   wiki: http://community.lacunaexpanse.com/wiki/beach-7
 Beach 8:
-  description: 'Create a lake or a beach front on your planet. As of server 3.0400 generates a small amount of food, ore, and water.'
+  description: 'Create a lake or a beach front on your planet. As of server 3.0400 generates a small amount of food (algae), ore (whatever kind a mine on the planet produces), and water.'
   extra: Sea SE
-  produces:
-    - food
-    - ore
-    - water
+  produces: algae
   recipe:
     - gypsum
     - sulfur
   type: functional
   wiki: http://community.lacunaexpanse.com/wiki/beach-8
 Beach 9:
-  description: 'Create a lake or a beach front on your planet. As of server 3.0400 generates a small amount of food, ore, and water.'
+  description: 'Create a lake or a beach front on your planet. As of server 3.0400 generates a small amount of food (algae), ore (whatever kind a mine on the planet produces), and water.'
   extra: Sea Only
-  produces:
-    - food
-    - ore
-    - water
+  produces: algae
   recipe:
     - gypsum
     - anthracite
@@ -290,19 +251,15 @@ Kalavian Ruins:
   type: functional
   wiki: http://community.lacunaexpanse.com/wiki/kalavian-ruins
 Lagoon:
-  description: 'A cool beautiful location for a picnic to decorate your planet surface. As of server 3.0400 generates a small amount of food and water, can be upgraded to increase this resource production.  You are only allowed 1 of these buildings per planet.'
-  produces:
-    - food
-    - water
+  description: 'A cool beautiful location for a picnic to decorate your planet surface. As of server 3.0400 generates a small amount of food (algae) and water, can be upgraded to increase this resource production.  You are only allowed 1 of these buildings per planet.'
+  produces: algae
   recipe:
     - chalcopyrite
   type: functional
   wiki: http://community.lacunaexpanse.com/wiki/lagoon
 Lake:
-  description: 'A small lake on an otherwise drab planet surface. As of server 3.0400 generates a small amount of food and water, but can not be upgraded.'
-  produces:
-    - food
-    - water
+  description: 'A small lake on an otherwise drab planet surface. As of server 3.0400 generates a small amount of food (algae) and water, but can not be upgraded.'
+  produces: algae
   recipe:
     - goethite
   type: functional
@@ -352,7 +309,7 @@ Pantheon of Hagness:
   type: functional
   wiki: http://community.lacunaexpanse.com/wiki/pantheon-of-hagness
 Patch of Sand:
-  description: 'A sandy patch can be a nice way to decorate your planet surface. As of server 3.0400 generates a small amount of ore, can be upgraded to increase this resource production.  You are only allowed 3 of these buildings per planet.'
+  description: 'A sandy patch can be a nice way to decorate your planet surface. As of server 3.0400 generates a small amount of ore (whatever kind a mine on the planet produces), can be upgraded to increase this resource production.  You are only allowed 3 of these buildings per planet.'
   produces:
     - ore
   recipe:
@@ -369,7 +326,7 @@ Ravine:
   type: functional
   wiki: http://community.lacunaexpanse.com/wiki/ravine
 Rocky Outcropping:
-  description: "A hard sharp bed of rock pokes out through your planet's surface. As of server 3.0400 generates a small amount of ore, but can not be upgraded."
+  description: "A hard sharp bed of rock pokes out through your planet's surface. As of server 3.0400 generates a small amount of ore (whatever kind a mine on the planet produces), but can not be upgraded."
   produces:
     - ore
   recipe:

@@ -788,6 +788,9 @@ Intelligence:
           name: spy_id
           type: string
       returns: "{\n    \"status\" : { ... }\n }"
+      throws:
+        - 1002
+        - 1010
     name_spy:
       description: Set the name of the spy.
       parameters:
