@@ -161,7 +161,10 @@ use LacunaData::Sources (
 
 sub _override{
   my($data,$simple) = @_;
-  my $override = thaw( override );
+  my $override = eval{
+    thaw( override );
+  };
+  return unless $override;
 
   while( my($key, $value) = each %$override ){
     if( defined $value ){
