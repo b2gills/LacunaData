@@ -3186,6 +3186,60 @@ Transporter:
           name: trade_id
           type: string
       returns: "{\n    \"status\" : { ... }\n }"
+WasteExchanger:
+  description: The Waste Exchanger can be used to convert waste in storage into usable resources.
+  services:
+    recycle:
+      description: 'Converts waste into water, ore, and energy. You can choose which amounts of each you want, so long as their total does not go over the amount of waste you have on hand. For each unit of waste converted, the recycling center will take 10 seconds to complete the recycling process. However, the amount of time is reduced a bit by the level of the Waster Exchanger. Returns view.'
+      parameters:
+        - description: A session id.
+          name: session_id
+          type: string
+        - description: The unique id of the Waste Exchanger.
+          name: building_id
+          type: string
+        - description: An integer representing the amount of water you want.
+          name: water
+          type: string
+        - description: An integer representing the amount of ore you want.
+          name: ore
+          type: string
+        - description: An integer representing the amount of energy you want.
+          name: energy
+          type: string
+        - name: use_essentia
+      throws:
+        - 1010
+        - 1011
+    subsidize_recycling:
+      description: Will spend 2 essentia to complete the current recycling job immediately. Returns view.
+      parameters:
+        - description: A session id.
+          name: session_id
+          type: string
+        - description: The unique id of the Waste Exchanger building.
+          name: building_id
+          type: string
+      throws:
+        - 1011
+    view:
+      parameters:
+        - name: session_id
+        - name: building_id
+      returns: |-
+        {
+            "status" : { ... },
+            "building" : { ... },
+            "recycle" : {
+                "seconds_remaining" : 0,
+                "can" : 1,
+                "seconds_per_resource" : "2.138", # to precalculate the time recycling will take
+                "max_recycle" : 12000,
+                "water" : 0,
+                "energy" : 0,
+                "ore" : 0
+            }
+         }
 WasteRecycling:
   description: The Waste Recycling Center can be used to convert waste in storage into usable resources.
   services:
