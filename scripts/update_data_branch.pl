@@ -73,7 +73,7 @@ sub commit_build {
 
   if(
     verify_rev_list($src,$branch)
-    and not $src->diff( { 'stat' => 1 }, $branch, '--', $tree )
+    and $src->diff( { 'stat' => 1 }, $branch, '--', $tree )
   ){
     return 'No difference detected';
   }
