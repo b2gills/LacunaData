@@ -317,7 +317,7 @@ Patch of Sand:
   type: functional
   wiki: http://community.lacunaexpanse.com/wiki/patch-of-sand
 Ravine:
-  description: 'The ravine acts as a natural waste sequestration well, which can store up to 100,000 waste at its first level.'
+  description: "A ravine is formed during movements of the planet's plante. It is too hot down there so it can only act as a natural waste sequestration well, which can store up to 100,000 waste at its first level."
   recipe:
     - zircon
     - methane
