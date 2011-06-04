@@ -23,7 +23,7 @@ Beach 1:
   produces: algae
   recipe:
     - gypsum
-  type: functional
+  type: decorative
   wiki: http://community.lacunaexpanse.com/wiki/beach-1
 Beach 10:
   description: 'Create a lake or a beach front on your planet. As of server 3.0400 generates a small amount of food (algae), ore (whatever kind a mine on the planet produces), and water.'
@@ -32,7 +32,7 @@ Beach 10:
   recipe:
     - gypsum
     - methane
-  type: functional
+  type: decorative
   wiki: http://community.lacunaexpanse.com/wiki/beach-10
 Beach 11:
   description: 'Create a lake or a beach front on your planet. As of server 3.0400 generates a small amount of food (algae), ore (whatever kind a mine on the planet produces), and water.'
@@ -41,7 +41,7 @@ Beach 11:
   recipe:
     - gypsum
     - chromite
-  type: functional
+  type: decorative
   wiki: http://community.lacunaexpanse.com/wiki/beach-11
 Beach 12:
   description: 'Create a lake or a beach front on your planet. As of server 3.0400 generates a small amount of food (algae), ore (whatever kind a mine on the planet produces), and water.'
@@ -50,7 +50,7 @@ Beach 12:
   recipe:
     - gypsum
     - goethite
-  type: functional
+  type: decorative
   wiki: http://community.lacunaexpanse.com/wiki/beach-12
 Beach 13:
   description: 'Create a lake or a beach front on your planet. As of server 3.0400 generates a small amount of food (algae), ore (whatever kind a mine on the planet produces), and water.'
@@ -59,7 +59,7 @@ Beach 13:
   recipe:
     - gypsum
     - galena
-  type: functional
+  type: decorative
   wiki: http://community.lacunaexpanse.com/wiki/beach-13
 Beach 2:
   description: 'Create a lake or a beach front on your planet. As of server 3.0400 generates a small amount of food (algae), ore (whatever kind a mine on the planet produces), and water.'
@@ -68,7 +68,7 @@ Beach 2:
   recipe:
     - gypsum
     - gypsum
-  type: functional
+  type: decorative
   wiki: http://community.lacunaexpanse.com/wiki/beach-2
 Beach 3:
   description: 'Create a lake or a beach front on your planet. As of server 3.0400 generates a small amount of food (algae), ore (whatever kind a mine on the planet produces), and water.'
@@ -77,7 +77,7 @@ Beach 3:
   recipe:
     - gypsum
     - magnetite
-  type: functional
+  type: decorative
   wiki: http://community.lacunaexpanse.com/wiki/beach-3
 Beach 4:
   description: 'Create a lake or a beach front on your planet. As of server 3.0400 generates a small amount of food (algae), ore (whatever kind a mine on the planet produces), and water.'
@@ -86,7 +86,7 @@ Beach 4:
   recipe:
     - gypsum
     - uraninite
-  type: functional
+  type: decorative
   wiki: http://community.lacunaexpanse.com/wiki/beach-4
 Beach 5:
   description: 'Create a lake or a beach front on your planet. As of server 3.0400 generates a small amount of food (algae), ore (whatever kind a mine on the planet produces), and water.'
@@ -95,7 +95,7 @@ Beach 5:
   recipe:
     - gypsum
     - halite
-  type: functional
+  type: decorative
   wiki: http://community.lacunaexpanse.com/wiki/beach-5
 Beach 6:
   description: 'Create a lake or a beach front on your planet. As of server 3.0400 generates a small amount of food (algae), ore (whatever kind a mine on the planet produces), and water.'
@@ -104,7 +104,7 @@ Beach 6:
   recipe:
     - gypsum
     - rutile
-  type: functional
+  type: decorative
   wiki: http://community.lacunaexpanse.com/wiki/beach-6
 Beach 7:
   description: 'Create a lake or a beach front on your planet. As of server 3.0400 generates a small amount of food (algae), ore (whatever kind a mine on the planet produces), and water.'
@@ -113,7 +113,7 @@ Beach 7:
   recipe:
     - gypsum
     - chalcopyrite
-  type: functional
+  type: decorative
   wiki: http://community.lacunaexpanse.com/wiki/beach-7
 Beach 8:
   description: 'Create a lake or a beach front on your planet. As of server 3.0400 generates a small amount of food (algae), ore (whatever kind a mine on the planet produces), and water.'
@@ -122,7 +122,7 @@ Beach 8:
   recipe:
     - gypsum
     - sulfur
-  type: functional
+  type: decorative
   wiki: http://community.lacunaexpanse.com/wiki/beach-8
 Beach 9:
   description: 'Create a lake or a beach front on your planet. As of server 3.0400 generates a small amount of food (algae), ore (whatever kind a mine on the planet produces), and water.'
@@ -131,7 +131,7 @@ Beach 9:
   recipe:
     - gypsum
     - anthracite
-  type: functional
+  type: decorative
   wiki: http://community.lacunaexpanse.com/wiki/beach-9
 Beeldeban Nest:
   description: A natural source of food.
@@ -160,7 +160,7 @@ Crater:
   description: The remnants of an object or an attack impacting the planet. Be glad you weren't here when that happened. It also stores a tiny amount of waste.
   recipe:
     - rutile
-  type: functional
+  type: decorative
   wiki: http://community.lacunaexpanse.com/wiki/crater
 Denton Brambles:
   description: 'A thorny patch of brambles, the roots of which happen to be the delicious Denton roots. Like the Denton Root Patch, these Denton roots will only grow in orbit 5 and 6.'
@@ -201,7 +201,7 @@ Grove of Trees:
     - energy
   recipe:
     - methane
-  type: functional
+  type: decorative
   wiki: http://community.lacunaexpanse.com/wiki/grove-of-trees
 Halls of Vrbansk:
   description: The Halls of Vrbansk are said to be the source of the ancient wisdom of the Great Race. You can use the Halls of Vrbansk to upgrade any permanent structure. Unlike many other glyph buildings you may build any number of Halls on your planet surface that you have room to build.
@@ -255,14 +255,14 @@ Lagoon:
   produces: algae
   recipe:
     - chalcopyrite
-  type: functional
+  type: decorative
   wiki: http://community.lacunaexpanse.com/wiki/lagoon
 Lake:
   description: 'A small lake on an otherwise drab planet surface. As of server 3.0400 generates a small amount of food (algae) and water, but can not be upgraded.'
   produces: algae
   recipe:
     - goethite
-  type: functional
+  type: decorative
   wiki: http://community.lacunaexpanse.com/wiki/lake
 Lapis Forest:
   description: 'The Lapis Forest is an excellent source of natural food for your citizens. Similar to the Lapis Orchard, the Lapis trees can only be grown in orbit 2.'
@@ -314,7 +314,7 @@ Patch of Sand:
     - ore
   recipe:
     - bauxite
-  type: functional
+  type: decorative
   wiki: http://community.lacunaexpanse.com/wiki/patch-of-sand
 Ravine:
   description: "A ravine is formed during movements of the planet's plates. It is too hot down there so it can only act as a natural waste sequestration well, which can store up to 100,000 waste at its first level."
@@ -331,7 +331,7 @@ Rocky Outcropping:
     - ore
   recipe:
     - trona
-  type: functional
+  type: decorative
   wiki: http://community.lacunaexpanse.com/wiki/rocky-outcropping
 Temple of the Drajilites:
   description: It is said that the ancient Drajilite clerics could see the heavens above them through their rituals. Tablets found around the Expanse hint that if one were to uncover the ancient Temple of the Drajilites then one would possess their power.
