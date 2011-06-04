@@ -193,7 +193,7 @@ sub _load_list{
     $recipe_type =~ s/\s*(?:recipe|plan)s?\s*//i;
 
     my @list;
-    for my $a ( $table->find('a') ){
+    for my $a ( $table->find('tbody')->find('a') ){
       my $link = $a->attr('href');
       my $name = $a->as_text;
 
