@@ -190,7 +190,7 @@ sub _load_list{
 
   for my $table ( @tables ){
     my $recipe_type = lc $table->find('td')->as_text;
-    $recipe_type =~ s/\s*recipes?\s*//i;
+    $recipe_type =~ s/\s*(?:recipe|plan)s?\s*//i;
 
     my @list;
     for my $a ( $table->find('a') ){
