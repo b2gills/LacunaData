@@ -650,6 +650,24 @@ GeneticsLab:
             "essentia_cost" : 2,
             "can_experiment" : 1
          }
+    rename_species:
+      description: "Updates the empire's species name and description.{ \"success\" : \"1\" }"
+      parameters:
+        - description: The id of the empire you wish to update a species for.
+          name: empire_id
+          type: string
+        - name: building_id
+        - description: A hash reference of parameters.
+          name: params
+          object:
+            description:
+              description: The species description. Limited to 1024 characters and cannot contain < or >.
+            name:
+              description: 'The name of the species. Limited to 30 characters, cannot be blank, and cannot contain @, &, <, >, or ;. Required.'
+          type: object
+      throws:
+        - 1000
+        - 1005
     run_experiment:
       description: Allows you to experiment on prisoners attempting to graft their genetic traits onto your own species.
       parameters:
@@ -710,6 +728,104 @@ HallsOfVrbansk:
           name: upgrade_building_id
           type: string
       returns: "{\n    \"status\" : { ... }\n }"
+IntelTraining:
+  description: The Intel Training Facility is where you train your spies in the ways of intelligence gathering.
+  services:
+    train_spy:
+      description: Allows you to train an idle spy in the ways of intelligence gathering.The trained spy will receive 1 intel per level of the building.The only reason not_trained might be over 0 is if you specify training more spies than you have resources to spend.
+      parameters:
+        - description: A session id.
+          name: session_id
+          type: string
+        - description: The unique id of your Intel Training Facility.
+          name: building_id
+          type: string
+        - description: The unique id of the spy to train.
+          name: spy_id
+          type: string
+      returns: |-
+        {
+            "status" : { ... },
+            "trained" : 1,
+            "not_trained" : 0
+         }
+      throws:
+        - 1009
+        - 1013
+    view:
+      parameters:
+        - name: session_id
+        - name: building_id
+      returns: |-
+        {
+            "status" : { ... },
+            "building" : { ... },
+            "spies" : {
+                "maximum" : 5,
+                "current" : 1,
+                "in_training" : 1,
+                "training_costs" : {
+                    "food" : 100,
+                    "water" : 120,
+                    "energy" : 20,
+                    "ore" : 5,
+                    "waste" : 10,
+                    "time" : [
+                        {
+                            "spy_id" : "1",
+                            "time" : "18720",
+                        },
+                        ...
+                    ],
+                }
+            },
+         }
+    view_spies:
+      description: Returns the list of spies you have on your roster that are present.
+      parameters:
+        - description: A session id.
+          name: session_id
+          type: string
+        - description: The unique id of your Intel Training Facility.
+          name: building_id
+          type: string
+        - description: Defaults to 1. An integer representing which page to view. Shows 25 spies per page.
+          name: page_number
+          type: string
+      returns: |-
+        {
+            "status" : { ... },
+            "spies" : [
+                {
+                    "id" : "id-goes-here",
+                    "name" : "Jason Bourne",
+                    "assignment" : "Idle",
+                    "level" : 9,
+                    "politics" : 0,                         # experience in handling happiness
+                    "mayhem" : 20,                          # experience in handling missions involving murder and destruction
+                    "theft" : 40,                           # experience in handling missions involving stealing items
+                    "intel" : 33,                           # experience in handling missions involving information and spies
+                    "offense_rating" : 570,
+                    "defense_rating" : 150,
+                    "assigned_to" : {
+                        "body_id" : "id-goes-here",
+                        "name" : "Earth",
+                        "x" : 40,
+                        "y" : -71
+                    },
+                    "is_available" : 1, # can be reassigned
+                    "available_on" : "01 31 2010 13:09:05 +0600", # if can't be reassigned, this is when will be available
+                    "started_assignment" : "01 31 2010 13:09:05 +0600",
+                    "seconds_remaining" : 45,
+                                "mission_count" : {
+                                        "offensive" : 149,
+                                        "defensive" : 149
+                                }
+                },
+                ...
+            ],
+            "spy_count" : 12
+         }
 Intelligence:
   description: The Intelligence Ministry is where you build and control your spies.
   services:
@@ -963,6 +1079,104 @@ LibraryOfJith:
                "growth_affinity" : 4
             },
             "status" : { ... }
+         }
+MayhemTraining:
+  description: The Mayhem Training Facility is where you train your spies in the art of destruction.
+  services:
+    train_spy:
+      description: Allows you to train an idle spy in the art of destruction.The trained spy will receive 1 mayhem per level of the building.The only reason not_trained might be over 0 is if you specify training more spies than you have resources to spend.
+      parameters:
+        - description: A session id.
+          name: session_id
+          type: string
+        - description: The unique id of your Mayhem Training Facility.
+          name: building_id
+          type: string
+        - description: The unique id of the spy to train.
+          name: spy_id
+          type: string
+      returns: |-
+        {
+            "status" : { ... },
+            "trained" : 1,
+            "not_trained" : 0
+         }
+      throws:
+        - 1009
+        - 1013
+    view:
+      parameters:
+        - name: session_id
+        - name: building_id
+      returns: |-
+        {
+            "status" : { ... },
+            "building" : { ... },
+            "spies" : {
+                "maximum" : 5,
+                "current" : 1,
+                "in_training" : 1,
+                "training_costs" : {
+                    "food" : 100,
+                    "water" : 120,
+                    "energy" : 20,
+                    "ore" : 5,
+                    "waste" : 10,
+                    "time" : [
+                        {
+                            "spy_id" : "1",
+                            "time" : "18720",
+                        },
+                        ...
+                    ],
+                }
+            },
+         }
+    view_spies:
+      description: Returns the list of spies you have on your roster that are present.
+      parameters:
+        - description: A session id.
+          name: session_id
+          type: string
+        - description: The unique id of your Mayhem Training Facility.
+          name: building_id
+          type: string
+        - description: Defaults to 1. An integer representing which page to view. Shows 25 spies per page.
+          name: page_number
+          type: string
+      returns: |-
+        {
+            "status" : { ... },
+            "spies" : [
+                {
+                    "id" : "id-goes-here",
+                    "name" : "Jason Bourne",
+                    "assignment" : "Idle",
+                    "level" : 9,
+                    "politics" : 0,                         # experience in handling happiness
+                    "mayhem" : 20,                          # experience in handling missions involving murder and destruction
+                    "theft" : 40,                           # experience in handling missions involving stealing items
+                    "intel" : 33,                           # experience in handling missions involving information and spies
+                    "offense_rating" : 570,
+                    "defense_rating" : 150,
+                    "assigned_to" : {
+                        "body_id" : "id-goes-here",
+                        "name" : "Earth",
+                        "x" : 40,
+                        "y" : -71
+                    },
+                    "is_available" : 1, # can be reassigned
+                    "available_on" : "01 31 2010 13:09:05 +0600", # if can't be reassigned, this is when will be available
+                    "started_assignment" : "01 31 2010 13:09:05 +0600",
+                    "seconds_remaining" : 45,
+                                "mission_count" : {
+                                        "offensive" : 149,
+                                        "defensive" : 149
+                                }
+                },
+                ...
+            ],
+            "spy_count" : 12
          }
 MercenariesGuild:
   services:
@@ -1606,6 +1820,104 @@ PlanetaryCommand:
                 ...
             ]
          }
+PoliticsTraining:
+  description: The Politics Training Facility is where you train your spies in the dark art of social engineering.
+  services:
+    train_spy:
+      description: Allows you to train an idle spy in the dark art of social engineering.The trained spy will receive 1 politics per level of the building.The only reason not_trained might be over 0 is if you specify training more spies than you have resources to spend.
+      parameters:
+        - description: A session id.
+          name: session_id
+          type: string
+        - description: The unique id of your Politics Training Facility.
+          name: building_id
+          type: string
+        - description: The unique id of the spy to train.
+          name: spy_id
+          type: string
+      returns: |-
+        {
+            "status" : { ... },
+            "trained" : 1,
+            "not_trained" : 0
+         }
+      throws:
+        - 1009
+        - 1013
+    view:
+      parameters:
+        - name: session_id
+        - name: building_id
+      returns: |-
+        {
+            "status" : { ... },
+            "building" : { ... },
+            "spies" : {
+                "maximum" : 5,
+                "current" : 1,
+                "in_training" : 1,
+                "training_costs" : {
+                    "food" : 100,
+                    "water" : 120,
+                    "energy" : 20,
+                    "ore" : 5,
+                    "waste" : 10,
+                    "time" : [
+                        {
+                            "spy_id" : "1",
+                            "time" : "18720",
+                        },
+                        ...
+                    ],
+                }
+            },
+         }
+    view_spies:
+      description: Returns the list of spies you have on your roster that are present.
+      parameters:
+        - description: A session id.
+          name: session_id
+          type: string
+        - description: The unique id of your Politics Training Facility.
+          name: building_id
+          type: string
+        - description: Defaults to 1. An integer representing which page to view. Shows 25 spies per page.
+          name: page_number
+          type: string
+      returns: |-
+        {
+            "status" : { ... },
+            "spies" : [
+                {
+                    "id" : "id-goes-here",
+                    "name" : "Jason Bourne",
+                    "assignment" : "Idle",
+                    "level" : 9,
+                    "politics" : 0,                         # experience in handling happiness
+                    "mayhem" : 20,                          # experience in handling missions involving murder and destruction
+                    "theft" : 40,                           # experience in handling missions involving stealing items
+                    "intel" : 33,                           # experience in handling missions involving information and spies
+                    "offense_rating" : 570,
+                    "defense_rating" : 150,
+                    "assigned_to" : {
+                        "body_id" : "id-goes-here",
+                        "name" : "Earth",
+                        "x" : 40,
+                        "y" : -71
+                    },
+                    "is_available" : 1, # can be reassigned
+                    "available_on" : "01 31 2010 13:09:05 +0600", # if can't be reassigned, this is when will be available
+                    "started_assignment" : "01 31 2010 13:09:05 +0600",
+                    "seconds_remaining" : 45,
+                                "mission_count" : {
+                                        "offensive" : 149,
+                                        "defensive" : 149
+                                }
+                },
+                ...
+            ],
+            "spy_count" : 12
+         }
 Security:
   description: Captured spies are detained at the security ministry.
   services:
@@ -1961,6 +2273,8 @@ SpacePort:
                     "date_started" : "01 31 2010 13:09:05 +0600",
                     "date_available" : "02 01 2010 10:08:33 +0600",
                     "date_arrives" : "02 01 2010 10:08:33 +0600",
+                    "can_recall" : "0",
+                    "can_scuttle" : "0",
                     "from" : {
                        "id" : "id-goes-here",
                        "type" : "body",
@@ -2049,6 +2363,8 @@ SpacePort:
                                 "date_started" : "01 31 2010 13:09:05 +0600",
                                 "date_available" : "02 01 2010 10:08:33 +0600",
                                 "date_arrives" : "02 01 2010 10:08:33 +0600",
+                    "can_recall" : "0",
+                    "can_scuttle" : "0",
                                 "from" : {
                                    "id" : "id-goes-here",
                                    "type" : "body",
@@ -2218,6 +2534,8 @@ SpacePort:
                     "type_human" : "Cargo Ship",
                     "type" : "cargo_ship",
                     "date_arrives" : "02 01 2010 10:08:33 +0600",
+                    "can_recall" : "0",
+                    "can_scuttle" : "0",
                     "from" : {
                         "id" : "id-goes-here",
                         "name" : "Earth",
@@ -2535,6 +2853,104 @@ TempleOfTheDrajilites:
                     ...
                 ]
             }
+         }
+TheftTraining:
+  description: The Theft Training Facility is where you train your spies in the art of appropriation.
+  services:
+    train_spy:
+      description: Allows you to train an idle spy in the art of appropriation.The trained spy will receive 1 theft per level of the building.The only reason not_trained might be over 0 is if you specify training more spies than you have resources to spend.
+      parameters:
+        - description: A session id.
+          name: session_id
+          type: string
+        - description: The unique id of your Theft Training Facility.
+          name: building_id
+          type: string
+        - description: The unique id of the spy to train.
+          name: spy_id
+          type: string
+      returns: |-
+        {
+            "status" : { ... },
+            "trained" : 1,
+            "not_trained" : 0
+         }
+      throws:
+        - 1009
+        - 1013
+    view:
+      parameters:
+        - name: session_id
+        - name: building_id
+      returns: |-
+        {
+            "status" : { ... },
+            "building" : { ... },
+            "spies" : {
+                "maximum" : 5,
+                "current" : 1,
+                "in_training" : 1,
+                "training_costs" : {
+                    "food" : 100,
+                    "water" : 120,
+                    "energy" : 20,
+                    "ore" : 5,
+                    "waste" : 10,
+                    "time" : [
+                        {
+                            "spy_id" : "1",
+                            "time" : "18720",
+                        },
+                        ...
+                    ],
+                }
+            },
+         }
+    view_spies:
+      description: Returns the list of spies you have on your roster that are present.
+      parameters:
+        - description: A session id.
+          name: session_id
+          type: string
+        - description: The unique id of your Theft Training Facility.
+          name: building_id
+          type: string
+        - description: Defaults to 1. An integer representing which page to view. Shows 25 spies per page.
+          name: page_number
+          type: string
+      returns: |-
+        {
+            "status" : { ... },
+            "spies" : [
+                {
+                    "id" : "id-goes-here",
+                    "name" : "Jason Bourne",
+                    "assignment" : "Idle",
+                    "level" : 9,
+                    "politics" : 0,                         # experience in handling happiness
+                    "mayhem" : 20,                          # experience in handling missions involving murder and destruction
+                    "theft" : 40,                           # experience in handling missions involving stealing items
+                    "intel" : 33,                           # experience in handling missions involving information and spies
+                    "offense_rating" : 570,
+                    "defense_rating" : 150,
+                    "assigned_to" : {
+                        "body_id" : "id-goes-here",
+                        "name" : "Earth",
+                        "x" : 40,
+                        "y" : -71
+                    },
+                    "is_available" : 1, # can be reassigned
+                    "available_on" : "01 31 2010 13:09:05 +0600", # if can't be reassigned, this is when will be available
+                    "started_assignment" : "01 31 2010 13:09:05 +0600",
+                    "seconds_remaining" : 45,
+                                "mission_count" : {
+                                        "offensive" : 149,
+                                        "defensive" : 149
+                                }
+                },
+                ...
+            ],
+            "spy_count" : 12
          }
 ThemePark:
   services:
