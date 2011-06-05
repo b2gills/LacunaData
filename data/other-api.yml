@@ -75,7 +75,7 @@ Body:
           name: body_id
           type: string
     get_buildable:
-      description: 'Provides a list of all the building types that are available to be built on a given space on a planet that are within a specific tag.The reason section provides a little detail about why a building can or cannot be built. It is formatted the same way an exception would be formatted (an array ref of error code, error message, and error data).The tags section can be used to display the buildable buildings in a way that makes sense to the end user. The tags available are as follows:'
+      description: 'Provides a list of all the building types that are available to be built on a given space on a planet that are within a specific tag.If there are multiple plans for a building, this will return the plan with the highest extra_build_level. The build time cost for 1+X plans will show the time for the +X level.The reason section provides a little detail about why a building can or cannot be built. It is formatted the same way an exception would be formatted (an array ref of error code, error message, and error data).The tags section can be used to display the buildable buildings in a way that makes sense to the end user. The tags available are as follows:'
       parameters:
         - description: A session id.
           name: session_id
