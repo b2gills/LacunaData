@@ -653,8 +653,8 @@ GeneticsLab:
     rename_species:
       description: "Updates the empire's species name and description.{ \"success\" : \"1\" }"
       parameters:
-        - description: The id of the empire you wish to update a species for.
-          name: empire_id
+        - description: A session id.
+          name: session_id
           type: string
         - name: building_id
         - description: A hash reference of parameters.
