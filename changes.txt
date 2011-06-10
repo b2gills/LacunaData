@@ -1,3 +1,9 @@
+3.0809
+ - Fix: Tax payments will be properly rotated.
+ - Fix: Transferring spies within your own empire using the Mercenary Guild now works.
+ - Fix: Added additional information about view_taxes_collected.
+ - Fix: Spies wised up. They will no longer steal levels from Bleeders.
+
 3.0808
  - API: Cleaned up the data returned by train_spy in the new spy training buildings.
  - API: Added spy name to the training costs section of the data returned by view in the new spy training buildings.
