@@ -1,19 +1,11 @@
 [
  {
-  "name" : "US2",
-  "uri" : "https://us2.lacunaexpanse.com/",
-  "status" : "Game Over",
-  "location" : "New Jersey, United States",
-  "type" : "Tournament Server",
-  "description" : "Fast-paced and battle-oriented. The first alliance to seize control of 25 star systems using a Space Station wins."
- },
- {
   "name" : "US1",
   "uri" : "https://us1.lacunaexpanse.com/",
   "status" : "Open",
   "location" : "Texas, United States",
   "type" : "Empire Server",
-  "description" : "Long term empire building, with focus on exploration, trade, and malevolent AI. Server never expires."
+  "description" : "Long term empire building, with focus on exploration, trade, malevolent AI, and regional tournaments. Server never expires."
  }
 ]
 
