@@ -139,7 +139,7 @@ Beeldeban Nest:
   type: functional
   wiki: http://community.lacunaexpanse.com/wiki/beeldeban-nest
 Citadel of Knope:
-  description: 'The Citadel of Knope protects your colony by redirecting damage of ships to itself. When it does this it loses a level. However, if it survives the impact it automatically creates a mirror replica of the ship that damaged it, thus giving the defender the ship that just attacked them.'
+  description: 'The Citadel of Knope protects your colony by redirecting damage of ships to itself whenever your defense force is unable to, meaning it is the last line of your defense. When it does this it loses a level. However, if it survives the impact it automatically creates a mirror replica of the ship that damaged it, thus giving the defender the ship that just attacked them.'
   recipe:
     - beryl
     - sulfur
