@@ -438,6 +438,8 @@ Empire:
               description: An array reference of medal ids that the user wishes to display in the public profile.
             sitter_password:
               description: A password that can be safely given to account sitters and alliance members. Must be between 6 and 30 characters.
+            skip_attack_messages:
+              description: Defaults to 0. Set to 1 if the user no longers wants to receive messages about attacks.
             skip_excavator_glyph:
               description: Defaults to 0. Set to 1 if the user no longer wants to receive messages when excavators find glyphs.
             skip_excavator_plan:
@@ -828,6 +830,7 @@ Empire:
                "skip_excavator_plan" : 0,
                "skip_spy_recovery" : 0,
                "skip_probe_detected" : 0,
+               "skip_attack_messages" : 0,
                "email" : "joe@example.com",
                "sitter_password" : "abcdefgh"                   # never give out your real password, use the sitter password
             },
