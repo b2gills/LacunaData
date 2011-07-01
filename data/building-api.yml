@@ -78,6 +78,16 @@ Archaeology:
           type: string
       throws:
         - 1011
+    view:
+      description: 'If a search is active, the work block will be included. In the work block, there is an additional item not included in other work blocks: searching. c<searching> will contain the name of the ore being searched.'
+      parameters:
+        - name: session_id
+        - name: building_id
+      returns: |-
+        {
+            "status" : { ... },
+            "building" : { ... },
+         }
 Capitol:
   services:
     rename_empire:
@@ -894,7 +904,7 @@ Intelligence:
       throws:
         - 1011
     train_spy:
-      description: Allows you to train more spies.The only reason not_trained might be over 0 is if you specify training more spies than you have resources to spend.
+      description: Allows you to train more spies.The only reason not_trained might be over 0 is if you specify training more spies than you have resources to spend in which case the reason_not_trained block will be included.
       parameters:
         - description: A session id.
           name: session_id
@@ -909,7 +919,11 @@ Intelligence:
         {
             "status" : { ... },
             "trained" : 3,
-            "not_trained" : 2
+            "not_trained" : 2,
+            "reason_not_trained" : {
+                "code" : 1011,
+                "message" : "Not enough food to train a spy.",
+            },
          }
       throws:
         - 1009
@@ -1984,7 +1998,7 @@ SpacePort:
              "status" : { ... }
          }
     get_ships_for:
-      description: 'Provides a list of incoming ships and ships that are available to send to a specific target. Use with send_ship.The unavailable block tells you about ships that are docked, but are for some reason not available to be used. The orbiting block will be returned only if the target is body and tells you about fighters that are defending and can be recalled. The mining_platforms block will be returned only if the target is an asteroid that has platforms on it.'
+      description: 'Provides a list of incoming ships and ships that are available to send to a specific target. Use with send_ship.The unavailable block tells you about ships that are docked, but are for some reason not available to be used. The orbiting block will be returned only if the target is body and tells you about fighters that are defending and can be recalled. The mining_platforms block will be returned only if the target is an asteroid that has platforms on it. The value of fleet_send_limit tells you how many ships can be included in a fleet.'
       parameters:
         - description: A session id.
           name: session_id
@@ -2378,6 +2392,36 @@ SpacePort:
           { "task" : "Docked", "type" : "freighter" }
         
           { "tag" : [ "Colonization", "Exploration" ], "task" : "Travelling" }
+    view_battle_logs:
+      description: Shows you the battle logs for your empire with the most recent action listed first. This data will be cleaned out every seven days.
+      parameters:
+        - description: A session id.
+          name: session_id
+          type: string
+        - description: The unique id of the space port.
+          name: building_id
+          type: string
+        - description: Defaults to 1. An integer representing which page of battle logs to view. Each page shows 25 entries.
+          name: page_number
+          type: string
+      returns: |-
+        {
+           "battle_log" : [
+             {
+               "date" : "06 21 2011 22:54:37 +0600",
+               "attacking_body" : "Romulus",
+               "attacking_empire" : "Romulans",
+               "attacking_unit" : "Sweeper 21",
+               "defending_body" : "Kronos",
+               "defending_empire" : "Klingons",
+               "defending_unit" : "Shield Against Weapons",
+               "victory_to" : "defender"
+             },
+             ...
+           ],
+           "number_of_logs" : 57,
+           "status" : { ... }
+         }
     view_foreign_ships:
       description: "Shows you all the foreign ships that are incoming. However, the list is filtered by the stealth of the ship vs the level of the SpacePort. The formula is:If your SpacePort exceeds the Ship's Stealth, then you'll see it incoming. Otherwise you won't.The from block is only included if"
       parameters:
