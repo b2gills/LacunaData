@@ -1,3 +1,15 @@
+3.0813
+ - Add: When one 20 Stars tournament ends, the next one should begin automatically.
+ - Fix: Fix an issue with skip attack messages and excavators.
+ - Fix: Fix an issue with tick planets.
+ - Fix: Water Purifiers and Atmospheric Evaporators will now receive the environmental affinity bonus.
+ - Fix: Fixed the regression bug involving snarks targetting craters.
+ - Fix: Trades are withdrawn when a planet is insurrected.
+ - Fix: Battle logs will only be retained for seven days.
+ - Fix: Ships owned by members of your alliance will no longer attack your ships.
+ - Fix: The correct message_id will be returned when running Incite Mutiny and a defender is recruited.
+ - Fix: The correct number of spies will now be sent via the SpacePort's send_spies.
+
 3.0812
  - Fix: Battle logs will be captured when sending a scanner or surveyor to an uninhabited body.
 
