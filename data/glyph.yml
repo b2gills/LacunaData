@@ -188,9 +188,9 @@ Beeldeban Nest:
     - 6
   produces: beetle
   recipe:
-    - Anthracite
-    - Trona
-    - Kerogen
+    - anthracite
+    - trona
+    - kerogen
   type: functional
   wiki: http://community.lacunaexpanse.com/wiki/beeldeban-nest
 Citadel of Knope:
@@ -288,6 +288,11 @@ Gratch's Gauntlet:
     Thought to be one way the Great Race protected themselves from enemy agents.
     Slows down infiltration time by 3 hours per level of the gauntlet. While spies are mired and spending time trying to find their way through the gauntlet, they cannot attack and are vulnerable to security sweeps. Because spies from allies don't "infiltrate", they are immune to Gratch's Gauntlet.
     You can build this at the archaeology ministry by combining chromite, bauxite, gold, and kerogen glyphs.
+  recipe:
+    - chromite
+    - bauxite
+    - gold
+    - kerogen
   type: functional
   wiki: http://community.lacunaexpanse.com/wiki/gratch-s-gauntlet
 Grove of Trees:
@@ -397,6 +402,11 @@ Library of Jith:
     It is said that the Great Race is also the first race. And that they constructed experiments to alter themselves to form a more perfect race. And the records of those experiments are contained in the Library of Jith.
     Lets you look up other empire species stats.
     You can build this building at the Archaeology ministry by combining the following glyphs: anthracite, bauxite, beryl, and chalcopyrite.
+  recipe:
+    - anthracite
+    - bauxite
+    - beryl
+    - chalcopyrite
   type: functional
   wiki: http://community.lacunaexpanse.com/wiki/library-of-jith
 Malcud Field:
@@ -425,6 +435,11 @@ Oracle of Anid:
     The all seeing eye of the Great Race, that allowed them to keep tabs on their enemies. It allows viewing of nearby star systems from a planet without the use of a probe, like a telescope.
     The range is 10 map units per level.
     You can build this in the Archaeology Ministry by combining these glyphs: gold, uraninite, bauxite, and goethite
+  recipe:
+    - gold
+    - uraninite
+    - bauxite
+    - goethite
   type: functional
   wiki: http://community.lacunaexpanse.com/wiki/oracle-of-anid
 Pantheon of Hagness:
