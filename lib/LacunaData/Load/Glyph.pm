@@ -133,9 +133,12 @@ sub _load_building{
   })->content_list;
 
   {
-    my $desc = $body->find('p')->as_text;
-    $desc =~ s/^\s+ //x;
-    $desc =~ s/ \s+$//x;
+    my $desc_div = $body->find('div');
+    my @p = grep { $_->tag eq 'p' } $desc_div->content_list;
+    my @desc = grep { /\S/ } map {$_->as_text} @p;
+    s/^\s+ //x, s/ \s+$//x for @desc;
+    my $desc = join "\n",  @desc;
+
     my $data = $data->{$building};
     $data->{description} = $desc if $desc;
 
