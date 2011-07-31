@@ -150,6 +150,15 @@ sub _load_building{
         $data->{orbits} = \@orbits;
       }
     }
+
+    # check for text recipes
+    my $ore_match = '(?:' . join('|',ore_list) . ')';
+    if( $desc =~ /glyph recipe(.*)/i ){
+      $1 =~ /((?:$ore_match \s+ . \s+)* $ore_match)/xi;
+      my @match = split /\s+.\s+/, $1;
+      $data->{recipe} = \@match;
+    }
+
     _add_produces($building,$data);
   }
 
