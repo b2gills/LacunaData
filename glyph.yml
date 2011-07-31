@@ -1,6 +1,8 @@
 ---
 Algae Pond:
-  description: The Algae Pond is a natural source of food for your planet.
+  description: |-
+    The Algae Pond is a natural source of food for your planet.
+    You can build an Algae Pond in the Archaeology Ministry by combining a uraninite glyph with a methane glyph.
   produces: algae
   recipe:
     - uraninite
@@ -8,7 +10,9 @@ Algae Pond:
   type: functional
   wiki: http://community.lacunaexpanse.com/wiki/algae-pond
 Amalgus Meadow:
-  description: 'A wild meadow filled with wild amalgus beans. Similar to the Amalgus Bean Plantation, the amalgus beans will only grow in orbit 4.'
+  description: |-
+    A wild meadow filled with wild amalgus beans. Similar to the Amalgus Bean Plantation, the amalgus beans will only grow in orbit 4.
+    You can build an Amalgus Meadow at the Archaeology Ministry by combining a beryl glyph with a trona glyph.
   orbits:
     - 4
   produces: bean
@@ -18,7 +22,10 @@ Amalgus Meadow:
   type: functional
   wiki: http://community.lacunaexpanse.com/wiki/amalgus-meadow
 Beach 1:
-  description: 'Create a lake or a beach front on your planet. As of server 3.0400 generates a small amount of food (algae), ore (whatever kind a mine on the planet produces), and water.'
+  description: |-
+    Create a lake or a beach front on your planet. As of server 3.0400 generates a small amount of food (algae), ore (whatever kind a mine on the planet produces), and water.
+    A complete set of beach tiles is given to anyone who sends out invitations and gets 10 or more people to sign up. Even if you don't particularly want a set of these tiles, they are a useful trade commodity.
+    This tile can be constructed at the Archaeology Ministry using a gypsum glyph.
   extra: Land E
   produces: algae
   recipe:
@@ -26,7 +33,10 @@ Beach 1:
   type: decorative
   wiki: http://community.lacunaexpanse.com/wiki/beach-1
 Beach 10:
-  description: 'Create a lake or a beach front on your planet. As of server 3.0400 generates a small amount of food (algae), ore (whatever kind a mine on the planet produces), and water.'
+  description: |-
+    Create a lake or a beach front on your planet. As of server 3.0400 generates a small amount of food (algae), ore (whatever kind a mine on the planet produces), and water.
+    A complete set of beach tiles is given to anyone who sends out invitations and gets 10 or more people to sign up. Even if you don't particularly want a set of these tiles, they are a useful trade commodity.
+    This tile can be constructed at the Archaeology Ministry using a gypsum glyph and a methane.
   extra: Sea SW
   produces: algae
   recipe:
@@ -35,7 +45,10 @@ Beach 10:
   type: decorative
   wiki: http://community.lacunaexpanse.com/wiki/beach-10
 Beach 11:
-  description: 'Create a lake or a beach front on your planet. As of server 3.0400 generates a small amount of food (algae), ore (whatever kind a mine on the planet produces), and water.'
+  description: |-
+    Create a lake or a beach front on your planet. As of server 3.0400 generates a small amount of food (algae), ore (whatever kind a mine on the planet produces), and water.
+    A complete set of beach tiles is given to anyone who sends out invitations and gets 10 or more people to sign up. Even if you don't particularly want a set of these tiles, they are a useful trade commodity.
+    This tile can be constructed at the Archaeology Ministry using a gypsum glyph and a chromite glyph.
   extra: Land S
   produces: algae
   recipe:
@@ -44,7 +57,10 @@ Beach 11:
   type: decorative
   wiki: http://community.lacunaexpanse.com/wiki/beach-11
 Beach 12:
-  description: 'Create a lake or a beach front on your planet. As of server 3.0400 generates a small amount of food (algae), ore (whatever kind a mine on the planet produces), and water.'
+  description: |-
+    Create a lake or a beach front on your planet. As of server 3.0400 generates a small amount of food (algae), ore (whatever kind a mine on the planet produces), and water.
+    A complete set of beach tiles is given to anyone who sends out invitations and gets 10 or more people to sign up. Even if you don't particularly want a set of these tiles, they are a useful trade commodity.
+    This tile can be constructed at the Archaeology Ministry using a gypsum glyph and a goethite.
   extra: Sea NE
   produces: algae
   recipe:
@@ -53,7 +69,10 @@ Beach 12:
   type: decorative
   wiki: http://community.lacunaexpanse.com/wiki/beach-12
 Beach 13:
-  description: 'Create a lake or a beach front on your planet. As of server 3.0400 generates a small amount of food (algae), ore (whatever kind a mine on the planet produces), and water.'
+  description: |-
+    Create a lake or a beach front on your planet. As of server 3.0400 generates a small amount of food (algae), ore (whatever kind a mine on the planet produces), and water.
+    A complete set of beach tiles is given to anyone who sends out invitations and gets 10 or more people to sign up. Even if you don't particularly want a set of these tiles, they are a useful trade commodity.
+    This tile can be constructed at the Archaeology Ministry using a gypsum glyph and a galena glyph.
   extra: Land W
   produces: algae
   recipe:
@@ -62,7 +81,11 @@ Beach 13:
   type: decorative
   wiki: http://community.lacunaexpanse.com/wiki/beach-13
 Beach 2:
-  description: 'Create a lake or a beach front on your planet. As of server 3.0400 generates a small amount of food (algae), ore (whatever kind a mine on the planet produces), and water.'
+  description: |-
+    Create a lake or a beach front on your planet. As of server 3.0400 generates a small amount of food (algae), ore (whatever kind a mine on the planet produces), and water.
+    A complete set of beach tiles is given to anyone who sends out invitations and gets 10 or more people to sign up.
+    Even if you don't particularly want a set of these tiles, they are a useful trade commodity.
+    This tile can be constructed at the Archaeology Ministry using two gypsum glyphs.
   extra: Land SW
   produces: algae
   recipe:
@@ -71,7 +94,11 @@ Beach 2:
   type: decorative
   wiki: http://community.lacunaexpanse.com/wiki/beach-2
 Beach 3:
-  description: 'Create a lake or a beach front on your planet. As of server 3.0400 generates a small amount of food (algae), ore (whatever kind a mine on the planet produces), and water.'
+  description: |-
+    Create a lake or a beach front on your planet. As of server 3.0400 generates a small amount of food (algae), ore (whatever kind a mine on the planet produces), and water.
+    A complete set of beach tiles is given to anyone who sends out invitations and gets 10 or more people to sign up.
+    Even if you don't particularly want a set of these tiles, they are a useful trade commodity.
+    This tile can be constructed at the Archaeology Ministry using a gypsum glyph and a magnetite glyph.
   extra: Land SE
   produces: algae
   recipe:
@@ -80,7 +107,10 @@ Beach 3:
   type: decorative
   wiki: http://community.lacunaexpanse.com/wiki/beach-3
 Beach 4:
-  description: 'Create a lake or a beach front on your planet. As of server 3.0400 generates a small amount of food (algae), ore (whatever kind a mine on the planet produces), and water.'
+  description: |-
+    Create a lake or a beach front on your planet. As of server 3.0400 generates a small amount of food (algae), ore (whatever kind a mine on the planet produces), and water.
+    A complete set of beach tiles is given to anyone who sends out invitations and gets 10 or more people to sign up. Even if you don't particularly want a set of these tiles, they are a useful trade commodity.
+    This tile can be constructed at the Archaeology Ministry using a gypsum glyph and a uraninite glyph.
   extra: Sea NW
   produces: algae
   recipe:
@@ -89,7 +119,10 @@ Beach 4:
   type: decorative
   wiki: http://community.lacunaexpanse.com/wiki/beach-4
 Beach 5:
-  description: 'Create a lake or a beach front on your planet. As of server 3.0400 generates a small amount of food (algae), ore (whatever kind a mine on the planet produces), and water.'
+  description: |-
+    Create a lake or a beach front on your planet. As of server 3.0400 generates a small amount of food (algae), ore (whatever kind a mine on the planet produces), and water.
+    A complete set of beach tiles is given to anyone who sends out invitations and gets 10 or more people to sign up. Even if you don't particularly want a set of these tiles, they are a useful trade commodity.
+    This tile can be constructed at the Archaeology Ministry using a gypsum glyph and a halite glyph.
   extra: Land N
   produces: algae
   recipe:
@@ -98,7 +131,10 @@ Beach 5:
   type: decorative
   wiki: http://community.lacunaexpanse.com/wiki/beach-5
 Beach 6:
-  description: 'Create a lake or a beach front on your planet. As of server 3.0400 generates a small amount of food (algae), ore (whatever kind a mine on the planet produces), and water.'
+  description: |-
+    Create a lake or a beach front on your planet. As of server 3.0400 generates a small amount of food (algae), ore (whatever kind a mine on the planet produces), and water.
+    A complete set of beach tiles is given to anyone who sends out invitations and gets 10 or more people to sign up. Even if you don't particularly want a set of these tiles, they are a useful trade commodity.
+    This tile can be constructed at the Archaeology Ministry using a gypsum glyph and a rutile glyph.
   extra: Land NW
   produces: algae
   recipe:
@@ -107,7 +143,10 @@ Beach 6:
   type: decorative
   wiki: http://community.lacunaexpanse.com/wiki/beach-6
 Beach 7:
-  description: 'Create a lake or a beach front on your planet. As of server 3.0400 generates a small amount of food (algae), ore (whatever kind a mine on the planet produces), and water.'
+  description: |-
+    Create a lake or a beach front on your planet. As of server 3.0400 generates a small amount of food (algae), ore (whatever kind a mine on the planet produces), and water.
+    A complete set of beach tiles is given to anyone who sends out invitations and gets 10 or more people to sign up. Even if you don't particularly want a set of these tiles, they are a useful trade commodity.
+    This tile can be constructed at the Archaeology Ministry using a gypsum glyph and a chalcopyrite glyph.
   extra: Land NE
   produces: algae
   recipe:
@@ -116,7 +155,10 @@ Beach 7:
   type: decorative
   wiki: http://community.lacunaexpanse.com/wiki/beach-7
 Beach 8:
-  description: 'Create a lake or a beach front on your planet. As of server 3.0400 generates a small amount of food (algae), ore (whatever kind a mine on the planet produces), and water.'
+  description: |-
+    Create a lake or a beach front on your planet. As of server 3.0400 generates a small amount of food (algae), ore (whatever kind a mine on the planet produces), and water.
+    A complete set of beach tiles is given to anyone who sends out invitations and gets 10 or more people to sign up. Even if you don't particularly want a set of these tiles, they are a useful trade commodity.
+    This tile can be constructed at the Archaeology Ministry using a gypsum glyph and a sulfur glyph.
   extra: Sea SE
   produces: algae
   recipe:
@@ -125,7 +167,10 @@ Beach 8:
   type: decorative
   wiki: http://community.lacunaexpanse.com/wiki/beach-8
 Beach 9:
-  description: 'Create a lake or a beach front on your planet. As of server 3.0400 generates a small amount of food (algae), ore (whatever kind a mine on the planet produces), and water.'
+  description: |-
+    Create a lake or a beach front on your planet. As of server 3.0400 generates a small amount of food (algae), ore (whatever kind a mine on the planet produces), and water.
+    A complete set of beach tiles is given to anyone who sends out invitations and gets 10 or more people to sign up. Even if you don't particularly want a set of these tiles, they are a useful trade commodity.
+    This tile can be constructed at the Archaeology Ministry using a gypsum glyph and an anthracite glyph.
   extra: Sea Only
   produces: algae
   recipe:
@@ -134,12 +179,25 @@ Beach 9:
   type: decorative
   wiki: http://community.lacunaexpanse.com/wiki/beach-9
 Beeldeban Nest:
-  description: A natural source of food.
+  description: |-
+    A natural source of food.
+    This building may only be built between orbits 5 and 6.
+    The Glyph Recipe for this building is Anthracite + Trona + Kerogen.
+  orbits:
+    - 5
+    - 6
   produces: beetle
+  recipe:
+    - anthracite
+    - trona
+    - kerogen
   type: functional
   wiki: http://community.lacunaexpanse.com/wiki/beeldeban-nest
 Citadel of Knope:
-  description: 'The Citadel of Knope protects your colony by redirecting damage of ships to itself whenever your defense force is unable to, meaning it is the last line of your defense. When it does this it loses a level. However, if it survives the impact it automatically creates a mirror replica of the ship that damaged it, thus giving the defender the ship that just attacked them.'
+  description: |-
+    The Citadel of Knope protects your colony by redirecting damage of ships to itself whenever your defense force is unable to, meaning it is the last line of your defense. When it does this it loses a level. However, if it survives the impact it automatically creates a mirror replica of the ship that damaged it, thus giving the defender the ship that just attacked them.
+    Playing Tip: This building is generally considered a waste to upgrade considering the high value of the Halls that are spent in the upgrade of it.  The few players that do have one of any significant level usually have one that was either stolen or inherrited from an AI planet.  The Saben are known to keep these on their planets.  They can also be found on random Diablotin planets.
+    The Citadel of Knope can be built in the Archaeology Ministry by combining beryl, sulfur, monazite, and galena glyphs.
   recipe:
     - beryl
     - sulfur
@@ -148,7 +206,11 @@ Citadel of Knope:
   type: functional
   wiki: http://community.lacunaexpanse.com/wiki/citadel-of-knope
 Crashed Ship Site:
-  description: 'The Crashed Ship Site allows you to add 5% to each of the stats / bonuses of each of your newly built ships per level of the Crashed Ship Site. And it does this without any additional cost to your ships, by allowing you to harvest alien technology from the crashed ship.'
+  description: |-
+    The Crashed Ship Site allows you to add 5% to each of the stats / bonuses of each of your newly built ships per level of the Crashed Ship Site. And it does this without any additional cost to your ships, by allowing you to harvest alien technology from the crashed ship.
+    Stats increased are: Speed, Hold Size, Stealth, and Combat
+    The Bonus is added (not multiplied) to all other bonuses and the sum of all bonuses is applied. For example: a level 3 crashed ship site (providing 15% to all ship related bonuses) combined with level 5 shipyard (provides 5% increase to ship speed) would result in a 20% increase to ship speed.
+    You can build a Crashed Ship Site by merging monazite, trona, gold, and bauxite glyphs in the Archaeology Ministry.
   recipe:
     - monazite
     - trona
@@ -157,13 +219,19 @@ Crashed Ship Site:
   type: functional
   wiki: http://community.lacunaexpanse.com/wiki/crashed-ship-site
 Crater:
-  description: The remnants of an object or an attack impacting the planet. Be glad you weren't here when that happened. It also stores a tiny amount of waste.
+  description: |-
+    The remnants of an object or an attack impacting the planet. Be glad you weren't here when that happened. It also stores a tiny amount of waste.
+    You'll get a free plan of this when your third friend invite gets accepted.
+    Compare with dent as well.
+    The crater can be constructed in the Archaeology Ministry using a rutile glyph.
   recipe:
     - rutile
   type: decorative
   wiki: http://community.lacunaexpanse.com/wiki/crater
 Denton Brambles:
-  description: 'A thorny patch of brambles, the roots of which happen to be the delicious Denton roots. Like the Denton Root Patch, these Denton roots will only grow in orbit 5 and 6.'
+  description: |-
+    A thorny patch of brambles, the roots of which happen to be the delicious Denton roots. Like the Denton Root Patch, these Denton roots will only grow in orbit 5 and 6.
+    You can build a patch of Denton Brambles at the Archaeology Ministry by combining a rutile glyph with a goethite glyph.
   orbits:
     - 5
     - 6
@@ -174,7 +242,29 @@ Denton Brambles:
   type: functional
   wiki: http://community.lacunaexpanse.com/wiki/denton-brambles
 Gas Giant Settlement Platform:
-  description: "The Gas Giant Settlement Platform allows settlement of a gas giant when this would otherwise not be possible. In order to upgrade platforms you'll need a good supply of structural minerals such as rutile, chromite, bauxite, magnetite, beryl, or goethite."
+  description: |-
+    The Gas Giant Settlement Platform allows settlement of a gas giant when this would otherwise not be possible. In order to upgrade platforms you'll need a good supply of structural minerals such as rutile, chromite, bauxite, magnetite, beryl, or goethite.
+    The Gas Giant Settlement Platform is a permanent structure, which means that it remains even after you abandon the gas giant colony, unless you specifically demolish it.
+    The gas giant settlement platform does not allow you to settle gas giants outside your normal range, for that you need a terraforming platform as well.
+    Note: You have to have University at Level 19 or above to be able to settle a Gas Giant, regardless of wether you have a platform or ship.
+    Each level of platform provides one usable plot on the target planet.
+    A Gas Giant Platform can not be demolished or downgraded if, by doing so, it would cause the number of plots available on your colony to go negative.
+    You may send as many platforms as you like to a target planet.
+    Other players (or your other colonies) can send platforms to your planets to assist your growth.
+    Like glyph buildings, while platforms take up a location on the surface, they do not take up a usable plot. Unlike glyph buildings, platforms may be upgraded with resources once deployed.  They start the level of the lab that built the platform ship plus one.
+    Warnings about Initial Build
+    The initial build time for a Gas Giant Settlement Platform may take days.
+    The build time that is shown on the plan is the actual build time based on the level of the lab on the planet that launched the platform ship plus one.
+    You cannot demolish a Gas Giant Settlement Platform during its initial build.
+    The plot count for a gas giant always starts at -1 because there must be a Planetary Command Center and the Gas Giant Settlement Platform, which is required to provide plots, hasn't been built yet. While demolishing the GGSP doesn't cause the plot count to go negative (since the GGSP itself doesn't take up a plot) it prevents the plot count from getting out of the negative.
+    How to Use a Settlement Platform
+    You can send a colony ship or platform first. The colony ship (or stake) reserves the planet, where the platform does not. Once you have the Gas Giant Settlement Ship built you can go to the star map and send it to a Gas Giant you would like to colonize.  One it arrives it will disapear from your SpacePort.  After you send a Colony Ship and the Gas Giant Settlement Platform, the platform will appear in Planetary Command Center (PCC) under Plans.
+    A high level Gas Giant Lab can leave you waiting a day or more if the level is high enough.  In addition the Gas Giant Settlement Platform does produce a fair amount of trash at higher levels so you will need to plan accordingly.  Building a set of glyph buildings is generally a smart idea as it will give you something you can work with that will not be detrimental to you colony.  Building a Spaceport and having a scow on the planet can also work for some short term trash management.
+    Also add some buildings to generate happiness.  Kalavian Ruins will give you about 5000 per hour happiness to begin with to counteract the trash.
+    Glyph Recipie
+    As an alternative to building a Gas Giant Settlement Ship at the shipyard, you can create a level one platform by combining sulfur, methane, galena, and anthracite glyphs at the Archaeology Ministry.
+  produces:
+    - happiness
   recipe:
     - sulfur
     - methane
@@ -183,7 +273,9 @@ Gas Giant Settlement Platform:
   type: functional
   wiki: http://community.lacunaexpanse.com/wiki/gas-giant-settlement-platform
 Geo Thermal Vent:
-  description: The Geo Thermal Vent occurs naturally on some planets. It is a great source of clean energy that doesn't cost a plot.
+  description: |-
+    The Geo Thermal Vent occurs naturally on some planets. It is a great source of clean energy that doesn't cost a plot.
+    It can be built at the Archaeology Ministry by using chalcopyrite glyph combined with a sulfur glyph.
   produces:
     - energy
   recipe:
@@ -192,11 +284,23 @@ Geo Thermal Vent:
   type: functional
   wiki: http://community.lacunaexpanse.com/wiki/geo-thermal-vent
 Gratch's Gauntlet:
-  description: Thought to be one way the Great Race protected themselves from enemy agents.
+  description: |-
+    Thought to be one way the Great Race protected themselves from enemy agents.
+    Slows down infiltration time by 3 hours per level of the gauntlet. While spies are mired and spending time trying to find their way through the gauntlet, they cannot attack and are vulnerable to security sweeps. Because spies from allies don't "infiltrate", they are immune to Gratch's Gauntlet.
+    You can build this at the archaeology ministry by combining chromite, bauxite, gold, and kerogen glyphs.
+  recipe:
+    - chromite
+    - bauxite
+    - gold
+    - kerogen
   type: functional
   wiki: http://community.lacunaexpanse.com/wiki/gratch-s-gauntlet
 Grove of Trees:
-  description: 'A decoration for your planet, that displays a nice thick grove of trees. As of server 3.0400 generates a small amount of energy, can be upgraded to increase this resource production.  You are only allowed 1 of these buildings per planet.'
+  description: |-
+    A decoration for your planet, that displays a nice thick grove of trees. As of server 3.0400 generates a small amount of energy, can be upgraded to increase this resource production.  You are only allowed 1 of these buildings per planet.
+    You'll get a free plan for this when your seventh friend accepts their invitation to the game using the in-game invitation system.
+    Playing Tip: Unlike most other glyph buildings this building is upgradeable using regular resources.  You can only upgrade this building 1 level above your university level via this mean to a maximum of level 30.
+    You can also build this in the Archaeology Ministry by using a single Methane glyph.
   produces:
     - energy
   recipe:
@@ -204,7 +308,12 @@ Grove of Trees:
   type: decorative
   wiki: http://community.lacunaexpanse.com/wiki/grove-of-trees
 Halls of Vrbansk:
-  description: The Halls of Vrbansk are said to be the source of the ancient wisdom of the Great Race. You can use the Halls of Vrbansk to upgrade any permanent structure. Unlike many other glyph buildings you may build any number of Halls on your planet surface that you have room to build.
+  description: |-
+    The Halls of Vrbansk are said to be the source of the ancient wisdom of the Great Race. You can use the Halls of Vrbansk to upgrade any permanent structure. Unlike many other glyph buildings you may build any number of Halls on your planet surface that you have room to build.
+    Glyph recipes: The Halls of Vrbansk can be built at the Archaeology Ministry using any of the following recipes.
+    Upgrading a glyph building: To upgrade a permanent structure you will sacrifice a number of halls equal to the level upgrade. So to upgrade a level 3 Citadel of Knope to a level 4, you will need to sacrifice 4 Halls of Vrbansk. There is no need to upgrade a Halls of Vrbansk.
+    Click on any of them and a list of all the glyph buildings on your planet able to be upgraded is displayed. Select a building you want to upgrade and the appropriate number of Halls of Vrbansk are destroyed. The selected glyph building will be added to the build queue.
+    Buildings upgraded in this manner are also limited to level 30.
   recipe:
     A:
       - goethite
@@ -234,7 +343,10 @@ Halls of Vrbansk:
   type: functional
   wiki: http://community.lacunaexpanse.com/wiki/halls-of-vrbansk
 Interdimensional Rift:
-  description: "Long ago the Great Race learned how to master the subspace. They used it for travel and communication, but also for more mundane purposes, like storage. If you are lucky enough to uncover one of the Great Race's storage rifts, many of your storage needs will be covered."
+  description: |-
+    Long ago the Great Race learned how to master the subspace. They used it for travel and communication, but also for more mundane purposes, like storage. If you are lucky enough to uncover one of the Great Race's storage rifts, many of your storage needs will be covered.
+    Storage Amounts by level (without boost)
+    You can construct an Interdimensional Rift at the Archaeology Ministry by combining  methane, zircon, and fluorite glyphs.
   recipe:
     - methane
     - zircon
@@ -242,7 +354,9 @@ Interdimensional Rift:
   type: functional
   wiki: http://community.lacunaexpanse.com/wiki/interdimensional-rift
 Kalavian Ruins:
-  description: 'The Kalavian Ruins were left behind by the Great Race that once inhabited the Lacuna Expanse. Today they still hold great mystery and wonder, and attract tourists, and are a source of pride for local citizens. If you were to find the ruins on your planet, they would greatly increase the happiness of your citizens.'
+  description: |-
+    The Kalavian Ruins were left behind by the Great Race that once inhabited the Lacuna Expanse. Today they still hold great mystery and wonder, and attract tourists, and are a source of pride for local citizens. If you were to find the ruins on your planet, they would greatly increase the happiness of your citizens.
+    You can construct the Kalavian Ruins in the Archaeology Ministry by combining a Galena glyph with a Gold glyph.
   produces:
     - happiness
   recipe:
@@ -251,21 +365,30 @@ Kalavian Ruins:
   type: functional
   wiki: http://community.lacunaexpanse.com/wiki/kalavian-ruins
 Lagoon:
-  description: 'A cool beautiful location for a picnic to decorate your planet surface. As of server 3.0400 generates a small amount of food (algae) and water, can be upgraded to increase this resource production.  You are only allowed 1 of these buildings per planet.'
+  description: |-
+    A cool beautiful location for a picnic to decorate your planet surface. As of server 3.0400 generates a small amount of food (algae) and water, can be upgraded to increase this resource production.  You are only allowed 1 of these buildings per planet.
+    You'll get a free plan for this when your eighth friend accepts their invitation to the game using the in-game invitation system.
+    Playing Tip: Unlike most other glyph buildings this building is upgradeable using regular resources.
+    You can build this in the Archaeology Ministry by using a single Chalcopyrite glyph.
   produces: algae
   recipe:
     - chalcopyrite
   type: decorative
   wiki: http://community.lacunaexpanse.com/wiki/lagoon
 Lake:
-  description: 'A small lake on an otherwise drab planet surface. As of server 3.0400 generates a small amount of food (algae) and water, but can not be upgraded.'
+  description: |-
+    A small lake on an otherwise drab planet surface. As of server 3.0400 generates a small amount of food (algae) and water, but can not be upgraded.
+    You'll get a free plan for this when your fifth friend accepts their invitation to the game using the in-game invitation system.
+    The lake can be constructed in the Archaeology Ministry using a goethite glyph.
   produces: algae
   recipe:
     - goethite
   type: decorative
   wiki: http://community.lacunaexpanse.com/wiki/lake
 Lapis Forest:
-  description: 'The Lapis Forest is an excellent source of natural food for your citizens. Similar to the Lapis Orchard, the Lapis trees can only be grown in orbit 2.'
+  description: |-
+    The Lapis Forest is an excellent source of natural food for your citizens. Similar to the Lapis Orchard, the Lapis trees can only be grown in orbit 2.
+    It can be built at the Archaeology Ministry by combining a halite glyph with an anthracite glyph.
   orbits:
     - 2
   produces: lapis
@@ -275,11 +398,21 @@ Lapis Forest:
   type: functional
   wiki: http://community.lacunaexpanse.com/wiki/lapis-forest2
 Library of Jith:
-  description: It is said that the Great Race is also the first race. And that they constructed experiments to alter themselves to form a more perfect race. And the records of those experiments are contained in the Library of Jith.
+  description: |-
+    It is said that the Great Race is also the first race. And that they constructed experiments to alter themselves to form a more perfect race. And the records of those experiments are contained in the Library of Jith.
+    Lets you look up other empire species stats.
+    You can build this building at the Archaeology ministry by combining the following glyphs: anthracite, bauxite, beryl, and chalcopyrite.
+  recipe:
+    - anthracite
+    - bauxite
+    - beryl
+    - chalcopyrite
   type: functional
   wiki: http://community.lacunaexpanse.com/wiki/library-of-jith
 Malcud Field:
-  description: Malcud grows in the wild in the Expanse and is a great source of easy to come by food for colonists.
+  description: |-
+    Malcud grows in the wild in the Expanse and is a great source of easy to come by food for colonists.
+    You can build a Malcud Field at the Archaeology Ministry by combining a fluorite glyph with a kerogen glyph.
   produces: fungus
   recipe:
     - fluorite
@@ -287,7 +420,9 @@ Malcud Field:
   type: functional
   wiki: http://community.lacunaexpanse.com/wiki/malcud-field2
 Natural Spring:
-  description: "It's not only a beautiful addition to your planet surface, it's also a great source of clean water for your people."
+  description: |-
+    It's not only a beautiful addition to your planet surface, it's also a great source of clean water for your people.
+    Though it forms naturally on some planets, you can build one in the Archaeology Ministry by combining a magnetite glyph with a halite glyph.
   produces:
     - water
   recipe:
@@ -296,11 +431,23 @@ Natural Spring:
   type: functional
   wiki: http://community.lacunaexpanse.com/wiki/natural-spring
 Oracle of Anid:
-  description: 'The all seeing eye of the Great Race, that allowed them to keep tabs on their enemies. It allows viewing of nearby star systems from a planet without the use of a probe, like a telescope.'
+  description: |-
+    The all seeing eye of the Great Race, that allowed them to keep tabs on their enemies. It allows viewing of nearby star systems from a planet without the use of a probe, like a telescope.
+    The range is 10 map units per level.
+    You can build this in the Archaeology Ministry by combining these glyphs: gold, uraninite, bauxite, and goethite
+  recipe:
+    - gold
+    - uraninite
+    - bauxite
+    - goethite
   type: functional
   wiki: http://community.lacunaexpanse.com/wiki/oracle-of-anid
 Pantheon of Hagness:
-  description: "The Pantheon of Hagness has the ability to generate a field that alters space. Though it won't increase the size of the planet it is attached to, it can increase the number of plots available on the planet. One extra plot for every level of the Pantheon."
+  description: |-
+    Investigation said The Pantheon of Hagness was a temple, which can move through subspace to anywhere on a planet, for The Great Race to rest under special power, refill their backpacks and refine their exploration power on the planet.
+    Today, the resource generating power is lost, but it has the ability to generate a field that alters space. Though it won't increase the size of the planet it is attached to, it can increase the number of plots available on the planet. One extra plot for every level of the Pantheon.
+    The Pantheon of Hagness was left behind by the Great Race, and therefore cannot be built through the normal tech tree. However, using the Archaeology Ministry you can build one by combining gypsum, trona, beryl, and anthracite glyphs.
+    Playing Note: This building is rarely upgraded beyond the low levels.  Most players consider the costs of upgrading this building not worth it when they can colonize Gas Giants instead.
   recipe:
     - gypsum
     - trona
@@ -309,7 +456,11 @@ Pantheon of Hagness:
   type: functional
   wiki: http://community.lacunaexpanse.com/wiki/pantheon-of-hagness
 Patch of Sand:
-  description: 'A sandy patch can be a nice way to decorate your planet surface. As of server 3.0400 generates a small amount of ore (whatever kind a mine on the planet produces), can be upgraded to increase this resource production.  You are only allowed 3 of these buildings per planet.'
+  description: |-
+    A sandy patch can be a nice way to decorate your planet surface. As of server 3.0400 generates a small amount of ore (whatever kind a mine on the planet produces), can be upgraded to increase this resource production.  You are only allowed 3 of these buildings per planet.
+    You'll get a free plan for this when your sixth friend accepts their invitation to the game using the in-game invitation system.
+    Playing Tip: Unlike most other glyph buildings this building is upgradeable using regular resources.
+    You can build this in the Archaeology Ministry by using a single Bauxite glyph.
   produces:
     - ore
   recipe:
@@ -317,7 +468,9 @@ Patch of Sand:
   type: decorative
   wiki: http://community.lacunaexpanse.com/wiki/patch-of-sand
 Ravine:
-  description: "A ravine is formed during movements of the planet's plates. It is too hot down there so it can only act as a natural waste sequestration well, which can store up to 100,000 waste at its first level."
+  description: |-
+    A ravine is formed during movements of the planet's plates. It is too hot down there so it can only act as a natural waste sequestration well, which can store up to 100,000 waste at its first level.
+    You can build a ravine at the Archaeology Ministry by combining zircon, methane, galena, and fluorite glyphs.
   recipe:
     - zircon
     - methane
@@ -326,7 +479,10 @@ Ravine:
   type: functional
   wiki: http://community.lacunaexpanse.com/wiki/ravine
 Rocky Outcropping:
-  description: "A hard sharp bed of rock pokes out through your planet's surface. As of server 3.0400 generates a small amount of ore (whatever kind a mine on the planet produces), but can not be upgraded."
+  description: |-
+    A hard sharp bed of rock pokes out through your planet's surface. As of server 3.0400 generates a small amount of ore (whatever kind a mine on the planet produces), but can not be upgraded.
+    You'll get a free plan for this when your fourth friend accepts their invitation to the game using the in-game invitation system.
+    The rocky outcropping can be constructed in the Archaeology Ministry using a trona glyph.
   produces:
     - ore
   recipe:
@@ -334,7 +490,11 @@ Rocky Outcropping:
   type: decorative
   wiki: http://community.lacunaexpanse.com/wiki/rocky-outcropping
 Temple of the Drajilites:
-  description: It is said that the ancient Drajilite clerics could see the heavens above them through their rituals. Tablets found around the Expanse hint that if one were to uncover the ancient Temple of the Drajilites then one would possess their power.
+  description: |-
+    It is said that the ancient Drajilite clerics could see the heavens above them through their rituals. Tablets found around the Expanse hint that if one were to uncover the ancient Temple of the Drajilites then one would possess their power.
+    Rumor has it this building gives you the ability to scan a remote planet (as one would with a Scanner) without being detected.
+    The scanning ability of this building is limited to 10 units per level of the Temple. There is no timer or restriction on how long it takes or how many times you want to scan the planets in the system.
+    You can build a temple by combining in the following order: kerogen, rutile, chromite, and chalcopyrite glyphs in the Archaeology Ministry.
   recipe:
     - kerogen
     - rutile
@@ -343,7 +503,9 @@ Temple of the Drajilites:
   type: functional
   wiki: http://community.lacunaexpanse.com/wiki/temple-of-the-drajilites
 Terraforming Platform:
-  description: The Terraforming Platform is deployed from a Terraforming Platform Ship.  Once deployed it allows you to inhabit planets that your species couldn't normally survive on.
+  description: |-
+    The Terraforming Platform is deployed from a Terraforming Platform Ship.  Once deployed it allows you to inhabit planets that your species couldn't normally survive on.
+    A Level 1 Terraforming Platform can be constructed in the Archaeology Ministry using methane, zircon, magnetite, and beryl glyphs.
   recipe:
     - methane
     - zircon
@@ -352,7 +514,9 @@ Terraforming Platform:
   type: functional
   wiki: http://community.lacunaexpanse.com/wiki/terraforming-platform
 Volcano:
-  description: Volcanos naturally form on many planets. As they erupt they bring a steady source of ore from the planet's core up to the surface.
+  description: |-
+    Volcanos naturally form on many planets. As they erupt they bring a steady source of ore from the planet's core up to the surface.
+    Volcanos can be constructed using glyphs. The sequence is: Magnetite, Uraninite
   produces:
     - ore
   recipe:
