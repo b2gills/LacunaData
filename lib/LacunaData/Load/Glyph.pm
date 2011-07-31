@@ -143,7 +143,7 @@ sub _load_building{
     $data->{description} = $desc if $desc;
 
     # find any orbits listed
-    if( $desc =~ /\b orbit \s+ ( (?:[1-8] \s* (?: and \s+ )? )+  )/x ){
+    if( $desc =~ /\b orbits? \s+ ( (?:[1-8] \s* (?: and \s+ )? )+  )/x ){
       my $orbits = $1;
       my @orbits = split /\s+(?:and\s*)?/, $orbits;
       if( @orbits ){
