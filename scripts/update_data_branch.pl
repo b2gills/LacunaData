@@ -56,7 +56,7 @@ sub commit_build {
     local $CWD = $build_dir;
 
     my $write_tree_repo = Git::Wrapper->new('.');
-    
+
     my @files;
     {
       opendir my($dh), $ENV{GIT_WORK_TREE};
