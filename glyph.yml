@@ -287,7 +287,7 @@ Gratch's Gauntlet:
   description: |-
     Thought to be one way the Great Race protected themselves from enemy agents.
     Slows down infiltration time by 3 hours per level of the gauntlet. While spies are mired and spending time trying to find their way through the gauntlet, they cannot attack and are vulnerable to security sweeps. Because spies from allies don't "infiltrate", they are immune to Gratch's Gauntlet.
-    Note: This building has been implemented in game but due to an unexpected bug in the last server patch this building no longer works as expected since spies currently either become imediately available or they go into infiltrating status immediately after being sent.  This is sometimes refered to as the instant travel bug.
+    Note: previously this building was in-effective, but since the zero-travel-time spy bug has been fixed Gratch's Gauntlet should now work correctly.
     You can build this at the archaeology ministry by combining chromite, bauxite, gold, and kerogen glyphs.
   recipe:
     - chromite

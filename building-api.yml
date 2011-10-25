@@ -2899,6 +2899,27 @@ Trade:
                "prisoner_id" : "id-goes-here"
             }
          ]
+    get_glyph_summary:
+      description: Returns a summary of all glyphs that may be traded. Used with the add_trade method.
+      parameters:
+        - description: A session id.
+          name: session_id
+          type: string
+        - description: The unique id of this building.
+          name: building_id
+          type: string
+      returns: |-
+        {
+            "glyphs" : [
+                {
+                    "type" : "bauxite",
+                    "quantity" : 2
+                },
+                ...
+            ],
+            "cargo_space_used_each" : 100,
+            "status" : { ... }
+         }
     get_glyphs:
       description: Returns a list of glyphs that may be traded. Used with the add_trade method.
       parameters:
@@ -2918,6 +2939,29 @@ Trade:
                 ...
             ],
             "cargo_space_used_each" : 100,
+            "status" : { ... }
+         }
+    get_plan_summary:
+      description: Returns a list of plans that may be traded in summary form. Used with the add_trade method.
+      parameters:
+        - description: A session id.
+          name: session_id
+          type: string
+        - description: The unique id of this building
+          name: building_id
+          type: string
+      returns: |-
+        {
+            "plans" : [
+                {
+                    "name" : "Intelligence Ministry",
+                    "level" : "7",
+                    "extra_build_level" : "0",
+                    "quantity" : "2"
+                },
+                ...
+            ],
+            "cargo_space_used_each" : 10000,
             "status" : { ... }
          }
     get_plans:
@@ -2940,7 +2984,7 @@ Trade:
                 },
                 ...
             ],
-            "cargo_space_used_each" : 100,
+            "cargo_space_used_each" : 10000,
             "status" : { ... }
          }
     get_prisoners:
@@ -3205,6 +3249,27 @@ Transporter:
                "prisoner_id" : "id-goes-here"
             }
          ]
+    get_glyph_summary:
+      description: Returns a summary of all glyphs that may be traded. Used with the add_trade method.
+      parameters:
+        - description: A session id.
+          name: session_id
+          type: string
+        - description: The unique id of this building.
+          name: building_id
+          type: string
+      returns: |-
+        {
+            "glyphs" : [
+                {
+                    "type" : "bauxite",
+                    "quantity" : 2
+                },
+                ...
+            ],
+            "cargo_space_used_each" : 100,
+            "status" : { ... }
+         }
     get_glyphs:
       description: Returns a list of glyphs that may be traded. Used with the add_trade method.
       parameters:
@@ -3224,6 +3289,29 @@ Transporter:
                 ...
             ],
             "cargo_space_used_each" : 100,
+            "status" : { ... }
+         }
+    get_plan_summary:
+      description: Returns a list of plans that may be traded in summary form. Used with the add_trade method.
+      parameters:
+        - description: A session id.
+          name: session_id
+          type: string
+        - description: The unique id of this building
+          name: building_id
+          type: string
+      returns: |-
+        {
+            "plans" : [
+                {
+                    "name" : "Intelligence Ministry",
+                    "level" : "7",
+                    "extra_build_level" : "0",
+                    "quantity" : "2"
+                },
+                ...
+            ],
+            "cargo_space_used_each" : 10000,
             "status" : { ... }
          }
     get_plans:
