@@ -196,6 +196,7 @@ Beeldeban Nest:
 Citadel of Knope:
   description: |-
     The Citadel of Knope protects your colony by redirecting damage of ships to itself whenever your defense force is unable to, meaning it is the last line of your defense. When it does this it loses a level. However, if it survives the impact it automatically creates a mirror replica of the ship that damaged it, thus giving the defender the ship that just attacked them.
+    The level of this building does not go below level 1.  Should the Citadel hit level 1 and still have incoming Snarks the Citadel will not be destroyed.  What exactly happens with the incoming Snarks is uncertain other than impacts still do occur and the now defenseless planet is bombed.
     Playing Tip: This building is generally considered a waste to upgrade considering the high value of the Halls that are spent in the upgrade of it.  The few players that do have one of any significant level usually have one that was either stolen or inherrited from an AI planet.  The Saben are known to keep these on their planets.  They can also be found on random Diablotin planets.
     The Citadel of Knope can be built in the Archaeology Ministry by combining beryl, sulfur, monazite, and galena glyphs.
   recipe:

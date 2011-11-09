@@ -88,6 +88,55 @@ Archaeology:
             "status" : { ... },
             "building" : { ... },
          }
+BlackHoleGenerator:
+  services:
+    generate_singularity:
+      description: Not all fields are used for every result or task.
+      parameters:
+        - description: A session id.
+          name: session_id
+          type: string
+        - description: The unique id of your Black Hole Generator.
+          name: building_id
+          type: string
+        - description: A hash reference that can contain one of three items to identify a body.
+          name: target
+          type: string
+        - description: One of the tasks available for the BHG. Make Asteroid Make Planet Increase Size Change Type
+          name: task_name
+          type: string
+        - name: params
+      returns: |-
+        { "body_name" : "Earth" }
+         
+         { "body_id" : "id-goes-here" }
+         
+         { "x" : 4, "y" : -3 }
+    view:
+      parameters:
+        - name: session_id
+        - name: building_id
+      returns: |-2
+         This method is extended to include the list of tasks.
+        
+         {
+            "status" : { ... },
+            "building" : { ... },
+            "tasks" : [
+               {
+                  "fail_chance" : 15,  #Note, range is not factored in.
+                  "min_level" : 10,
+                  "name" : "Make Asteroid",
+                  "occupied" : 0,
+                  "recovery" : 129600,
+                  "side_chance" : 10,
+                  "types" : [
+                     "habitable planet",
+                     "gas giant"
+                  ],
+                  "waste_cost" : 50000000
+                  "reason" : "You can only make an asteroid from a planet."
+               },...
 Capitol:
   services:
     rename_empire:
@@ -3917,7 +3966,6 @@ simple:
   - Bean
   - Beeldeban
   - BeeldebanNest
-  - BlackHoleGenerator
   - Bread
   - Burger
   - Cheese
