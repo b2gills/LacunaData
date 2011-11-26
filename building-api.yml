@@ -91,7 +91,7 @@ Archaeology:
 BlackHoleGenerator:
   services:
     generate_singularity:
-      description: Not all fields are used for every result or task.
+      description: 'Returns success, failure, and side effect results.Not all fields are used for every result or task.Failure rates for the Blackhole Generator increases with range.Side Effects happen fairly random, but occur more often the more difficult the task.'
       parameters:
         - description: A session id.
           name: session_id
@@ -101,25 +101,31 @@ BlackHoleGenerator:
           type: string
         - description: A hash reference that can contain one of three items to identify a body.
           name: target
+          object:
+            body_id:
+              description: The unique id of the body.
+            body_name:
+              description: "A string with the body's name. Case insensitive, but will throw an exception for misspelling."
+            x | y:
+              description: 'A set of x,y coordinates to locate the star or body.'
+          type: object
+        - name: task_name
+        - description: 'Optional hash reference only used for Change Type that looks like this:'
+          name: params
           type: string
-        - description: One of the tasks available for the BHG. Make Asteroid Make Planet Increase Size Change Type
-          name: task_name
-          type: string
-        - name: params
-      returns: |-
-        { "body_name" : "Earth" }
-         
-         { "body_id" : "id-goes-here" }
-         
-         { "x" : 4, "y" : -3 }
+      returns: '{ "newtype" : 20 }'
+      throws:
+        - 1002
+        - 1009
+        - 1010
+        - 1013
     view:
+      description: This method is extended to include the list of tasks.
       parameters:
         - name: session_id
         - name: building_id
-      returns: |-2
-         This method is extended to include the list of tasks.
-        
-         {
+      returns: |-
+        {
             "status" : { ... },
             "building" : { ... },
             "tasks" : [
@@ -137,6 +143,8 @@ BlackHoleGenerator:
                   "waste_cost" : 50000000
                   "reason" : "You can only make an asteroid from a planet."
                },...
+            ]
+         }
 Capitol:
   services:
     rename_empire:

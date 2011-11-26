@@ -479,13 +479,6 @@ Empire:
       throws:
         - 1005
         - 1009
-    enable_self_destruct:
-      description: 'Enables a destruction countdown of 24 hours. Sometime after the timer runs out, the empire will vaporize.'
-      parameters:
-        - description: A session id.
-          name: session_id
-          type: string
-      returns: "{\n    \"status\" : { ... }\n }"
     fetch_captcha:
       description: Retrieves a captcha that is required in order to call the create method. Display the resulting captcha in your creation form and then call create with the user's response.
       returns: |-

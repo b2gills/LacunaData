@@ -193,6 +193,17 @@ Beeldeban Nest:
     - kerogen
   type: functional
   wiki: http://community.lacunaexpanse.com/wiki/beeldeban-nest
+Black Hole Generator:
+  description: |-
+    An experimental singularity lab created by the Great Race.
+    The entire universe knows very little about this building yet, until recently only found on Saben planets.  The Lacuna BHG Research Organisation (BHGO) are still pressing the top Saben officals to reveal how to operate them.
+    A drawing published by BHGO of the Black Hole Generator, according to detection and spying reports.
+    The black hole generator is said to do a lot of crazy mind bending stuff. With the power of a singularity, it changes the universe by multiplying it with an alternate universe. Here are some edvidence-supported features:
+    When you try to start it you can select one of at least four options for what you want it to do; if it does not explode your choice will happen.  The options we know it will have at some point are listed below.  More options may be out there.
+    Possible Side Effects:
+    The black hole generator requires kerogen, beryl, anthracite, and monazite glyphs to be built. It cannot be found via excavator.
+  type: functional
+  wiki: http://community.lacunaexpanse.com/wiki/black-hole-generator
 Citadel of Knope:
   description: |-
     The Citadel of Knope protects your colony by redirecting damage of ships to itself whenever your defense force is unable to, meaning it is the last line of your defense. When it does this it loses a level. However, if it survives the impact it automatically creates a mirror replica of the ship that damaged it, thus giving the defender the ship that just attacked them.
@@ -520,7 +531,7 @@ Terraforming Platform:
   wiki: http://community.lacunaexpanse.com/wiki/terraforming-platform
 Volcano:
   description: |-
-    Volcanos naturally form on many planets. As they erupt they bring a steady source of ore from the planet's core up to the surface.
+    Volcanos naturally form on many planets. As they erupt they bring a steady source of ore from the planet's core up to the surface. The production of a Volcano can be boosted by an Ore Refinery.
     Volcanos can be constructed using glyphs. The sequence is: Magnetite, Uraninite
   produces:
     - ore
