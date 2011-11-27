@@ -153,7 +153,10 @@ sub _load_building{
 
     # check for text recipes
     my $ore_match = '(?:' . join('|',ore_list) . ')';
-    if( $desc =~ /(?:glyph recipe|combining)(\N*)/i ){
+    if( $desc =~ /requires\b(\N*?)\bglyphs/i ){
+      my @match = map{ lc $_ } $1 =~ /($ore_match)/xgi;
+      $data->{recipe} = \@match if @match;
+    }elsif( $desc =~ /(?:glyph recipe|combining)(\N*)/i ){
       my @match = map{ lc $_ } $1 =~ /($ore_match)/xgi;
       $data->{recipe} = \@match if @match;
     }
