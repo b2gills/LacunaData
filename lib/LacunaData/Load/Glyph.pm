@@ -161,29 +161,31 @@ sub _load_building{
     _add_produces($building,$data);
   }
 
-  # ignore anything that can't be a glyph
-  my @glyphs = map _only_png, $body->find('img');
+  unless( $data->{$building}{recipe} ){
+    # ignore anything that can't be a glyph
+    my @glyphs = map _only_png, $body->find('img');
 
-  if( @glyphs ){
-    $data->{$building}{recipe} = \@glyphs;
-  }else{
-    # if the above didn't catch any recipe
-    # then there must be more than one
+    if( @glyphs ){
+      $data->{$building}{recipe} = \@glyphs;
+    }else{
+      # if the above didn't catch any recipe
+      # then there must be more than one
 
-    # each recipe can be found in it's own
-    # <li>
-    my @p = $body->find('li');
+      # each recipe can be found in it's own
+      # <li>
+      my @p = $body->find('li');
 
-    @p = map{[
-      split /\W+/, $_->as_text
-    ]} @p;
+      @p = map{[
+        split /\W+/, $_->as_text
+      ]} @p;
 
-    # make it a hash instead of an array of arrays
-    my %recipe;
-    my $index ='A';
-    $recipe{$index++} = $_ for @p;
+      # make it a hash instead of an array of arrays
+      my %recipe;
+      my $index ='A';
+      $recipe{$index++} = $_ for @p;
 
-    $data->{$building}{recipe} = \%recipe if %recipe;
+      $data->{$building}{recipe} = \%recipe if %recipe;
+    }
   }
   $tree->delete;
   return $data;
