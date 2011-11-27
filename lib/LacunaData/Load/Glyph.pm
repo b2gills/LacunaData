@@ -155,7 +155,7 @@ sub _load_building{
     my $ore_match = '(?:' . join('|',ore_list) . ')';
     if( $desc =~ /(?:glyph recipe|combining)(\N*)/i ){
       my @match = map{ lc $_ } $1 =~ /($ore_match)/xgi;
-      $data->{recipe} = \@match;
+      $data->{recipe} = \@match if @match;
     }
 
     _add_produces($building,$data);
