@@ -202,6 +202,11 @@ Black Hole Generator:
     When you try to start it you can select one of at least four options for what you want it to do; if it does not explode your choice will happen.  The options we know it will have at some point are listed below.  More options may be out there.
     Possible Side Effects:
     The black hole generator requires kerogen, beryl, anthracite, and monazite glyphs to be built. It cannot be found via excavator.
+  recipe:
+    - kerogen
+    - beryl
+    - anthracite
+    - monazite
   type: functional
   wiki: http://community.lacunaexpanse.com/wiki/black-hole-generator
 Citadel of Knope:
