@@ -3,6 +3,7 @@ Algae Pond:
   description: |-
     The Algae Pond is a natural source of food for your planet.
     You can build an Algae Pond in the Archaeology Ministry by combining a uraninite glyph with a methane glyph.
+    At level 1 it provides 4000 food + 4% per farmer affinity point. Upgrades via halls.
   produces: algae
   recipe:
     - uraninite
@@ -293,6 +294,7 @@ Geo Thermal Vent:
   description: |-
     The Geo Thermal Vent occurs naturally on some planets. It is a great source of clean energy that doesn't cost a plot.
     It can be built at the Archaeology Ministry by using chalcopyrite glyph combined with a sulfur glyph.
+    At level 1 it provides 4000 energy + 4% per science affinity point.
   produces:
     - energy
   recipe:
@@ -315,7 +317,7 @@ Gratch's Gauntlet:
   wiki: http://community.lacunaexpanse.com/wiki/gratch-s-gauntlet
 Grove of Trees:
   description: |-
-    A decoration for your planet, that displays a nice thick grove of trees. As of server 3.0400 generates a small amount of energy, can be upgraded to increase this resource production.  You are only allowed 1 of these buildings per planet.
+    A decoration for your planet, that displays a nice thick grove of trees. As of server 3.0400 generates a small amount of energy, can be upgraded to increase this resource production.  You are allowed 9 of these buildings per planet.
     You'll get a free plan for this when your seventh friend accepts their invitation to the game using the in-game invitation system.
     Playing Tip: Unlike most other glyph buildings this building is upgradeable using regular resources.  You can only upgrade this building 1 level above your university level via this mean to a maximum of level 30.
     You can also build this in the Archaeology Ministry by using a single Methane glyph.
@@ -387,7 +389,7 @@ Kalavian Ruins:
   wiki: http://community.lacunaexpanse.com/wiki/kalavian-ruins
 Lagoon:
   description: |-
-    A cool beautiful location for a picnic to decorate your planet surface. As of server 3.0400 generates a small amount of food (algae) and water, can be upgraded to increase this resource production.  You are only allowed 1 of these buildings per planet.
+    A cool beautiful location for a picnic to decorate your planet surface. As of server 3.0400 generates a small amount of food (algae) and water, can be upgraded to increase this resource production.  You are allowed 9 of these buildings per planet.
     You'll get a free plan for this when your eighth friend accepts their invitation to the game using the in-game invitation system.
     Playing Tip: Unlike most other glyph buildings this building is upgradeable using regular resources.
     You can build this in the Archaeology Ministry by using a single Chalcopyrite glyph.
@@ -432,18 +434,20 @@ Library of Jith:
   wiki: http://community.lacunaexpanse.com/wiki/library-of-jith
 Malcud Field:
   description: |-
-    Malcud grows in the wild in the Expanse and is a great source of easy to come by food for colonists.
-    You can build a Malcud Field at the Archaeology Ministry by combining a fluorite glyph with a kerogen glyph.
+    The malcud field is a natural swampy area that forms on a planet and produces a natural source of the malcud fungus.
+    Malcud fields can be build by combining a fluorite glyph with a kerogen glyph in the Archaeology Ministry.
+    At level 1 it provides 4000 food + 4% per farmer affinity point. Upgrades via halls.
   produces: fungus
   recipe:
     - fluorite
     - kerogen
   type: functional
-  wiki: http://community.lacunaexpanse.com/wiki/malcud-field2
+  wiki: http://community.lacunaexpanse.com/wiki/malcud-field
 Natural Spring:
   description: |-
     It's not only a beautiful addition to your planet surface, it's also a great source of clean water for your people.
     Though it forms naturally on some planets, you can build one in the Archaeology Ministry by combining a magnetite glyph with a halite glyph.
+    At level 1 it provides 4000 water + 4% per Environmental affinity point. Upgrades via halls.
   produces:
     - water
   recipe:
@@ -478,7 +482,7 @@ Pantheon of Hagness:
   wiki: http://community.lacunaexpanse.com/wiki/pantheon-of-hagness
 Patch of Sand:
   description: |-
-    A sandy patch can be a nice way to decorate your planet surface. As of server 3.0400 generates a small amount of ore (whatever kind a mine on the planet produces), can be upgraded to increase this resource production.  You are only allowed 3 of these buildings per planet.
+    A sandy patch can be a nice way to decorate your planet surface. As of server 3.0400 generates a small amount of ore (whatever kind a mine on the planet produces), can be upgraded to increase this resource production.  You are allowed 9 of these buildings per planet.
     You'll get a free plan for this when your sixth friend accepts their invitation to the game using the in-game invitation system.
     Playing Tip: Unlike most other glyph buildings this building is upgradeable using regular resources.
     You can build this in the Archaeology Ministry by using a single Bauxite glyph.
