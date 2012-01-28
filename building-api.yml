@@ -2825,6 +2825,85 @@ TempleOfTheDrajilites:
                 ]
             }
          }
+TheDillonForge:
+  services:
+    make_plan:
+      parameters:
+        - description: A session id.
+          name: session_id
+          type: string
+        - description: The unique id of the Dillon Forge.
+          name: building_id
+          type: string
+        - description: 'The class of the plan, as returned in the view method'
+          name: plan_class
+          type: string
+        - description: The seconds_per_level is how long it will take to build a plan per level.
+          name: level
+          type: string
+    split_plan:
+      description: "Split a plan into it's constituant glyphs. The glyph types that can be returned depend upon the recipe to build that type of plan. The maximum number of glyphs that can be returned depend upon the number of glyphs in the recipe for a level 1+0 plan, the level of the plan being split and the extra build levels.The fail_chance given in the view method, determines the number of glyphs that are likely to be returned. For example, if a plan is 'worth' 4 glyphs then, on average, a 50% fail_chance will return 2 glyphs (chosen at random from all glyph types that make up the plan.The fail_chance is determined by the level of The Dillon Forge and is 3% per level of the building."
+      parameters:
+        - description: A session id.
+          name: session_id
+          type: string
+        - description: The unique id of the Dillon Forge.
+          name: building_id
+          type: string
+        - description: 'The class of the plan, as returned in the view method'
+          name: plan_class
+          type: string
+        - description: The level of the plan to be split.
+          name: level
+          type: string
+        - description: The extra build levels (if any) for that plan.
+          name: extra_build_level
+          type: string
+    subsidize:
+      description: Will spend 2 essentia to complete the current task immediately. Returns view
+      parameters:
+        - description: A session id.
+          name: session_id
+          type: string
+        - description: The unique id of the Dillon Forge.
+          name: building_id
+          type: string
+      throws:
+        - 1011
+    view:
+      description: This method is extended to include the list of tasks.
+      parameters:
+        - name: session_id
+        - name: building_id
+      returns: |-
+        {
+            "status " : { ... },
+            "building" : { ... },
+            "tasks" : {
+              "current_task" : "make_plan",
+              "seconds_remaining" : 120,
+              "can" : 0,
+        
+              "make_plan" : [
+                {
+                  "name" : "Algae",
+                  "max_level" : 10,
+                  "class" : "Food::Algae",
+                  "reset_sec_per_level" : 5000,
+                },...
+              ],
+              "split_plan" : [
+                {
+                  "name" : "Beach [10]",
+                  "class" : "Permanent::Beach10",
+                  "level" : 1,
+                  "extra_build_level" : 2,
+                  "fail_chance" : 50,
+                  "reset_seconds",
+                },...
+              ]
+            }
+         }
 TheftTraining:
   description: The Theft Training Facility is where you train your spies in the art of appropriation.
   services:
@@ -3211,11 +3290,14 @@ Trade:
                         "gold glyph"
                     ],
                     "body" : {
-                        "id" : "id-goes-here"         # use with get_trade_ships() to determine travel time
+                        "id" : "id-goes-here"
                     },
                     "empire" : {
                         "id" : "id-goes-here",
                         "name" : "Earthlings"
+                    },
+                    "delivery: : {
+                        "duration" : 3600,            # travel time in seconds
                     }
                 },
                 ...
@@ -4043,7 +4125,6 @@ simple:
   - Syrup
   - TerraformingLab
   - TerraformingPlatform
-  - TheDillonForge
   - University
   - Volcano
   - WasteDigester
