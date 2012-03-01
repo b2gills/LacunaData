@@ -282,7 +282,7 @@ Body:
             }
          }
     rearrange_buildings:
-      description: 'Rearranges all buildings to the coordinates supplied via the arrangment array of hashes.{ "moved" : [ { "id" : building_id, "name" : "Building Name", "x" : X coord, "y" : Y coord } ], "body" : { "surface_image" : "surface-e" }, "status" : { ... } }'
+      description: Rearranges all buildings to the coordinates supplied via the arrangment array of hashes.
       parameters:
         - description: A session id.
           name: session_id
@@ -293,6 +293,21 @@ Body:
         - description: 'All buildings being moved need to be supplied. PCC or Station Command need to be in position 0,0.'
           name: arrangement
           type: string
+      returns: |-
+        {
+            "moved" : [
+                {
+                  "id" : building_id,
+                  "name" : "Building Name",
+                  "x" : X coord,
+                  "y" : Y coord
+                }
+            ],
+            "body" : {
+                "surface_image" : "surface-e"
+            },
+            "status" : { ... }
+         }
       throws:
         - 1002
         - 1010
@@ -1143,6 +1158,14 @@ Map:
                 "color"         : "yellow",
                 "x"             : -41,
                 "y"             : 27,
+                "zone"          : "0|0",
+                "id"            : "99",
+                "station" : { # only shows up if this star is under the influence of a space station
+                   "id" : "id-goes-here",
+                   "x" : 143,
+                   "y" : -27,
+                   "name" : "The Death Star"
+                },
                 "bodies"        : [     # only added if a probe is present
                     {
                         same data as get_status() on /body
@@ -1168,6 +1191,14 @@ Map:
                 "color"         : "yellow",
                 "x"             : -41,
                 "y"             : 27,
+                "zone"          : "0|0",
+                "id"            : "99",
+                "station" : { # only shows up if this star is under the influence of a space station
+                   "id" : "id-goes-here",
+                   "x" : 143,
+                   "y" : -27,
+                   "name" : "The Death Star"
+                },
                 "bodies"        : [     # only added if a probe is present
                     {
                         same data as get_status() on /body
@@ -1196,6 +1227,14 @@ Map:
                 "color"         : "yellow",
                 "x"             : -41,
                 "y"             : 27,
+                "zone"          : "0|0",
+                "id"            : "99",
+                "station" : { # only shows up if this star is under the influence of a space station
+                   "id" : "id-goes-here",
+                   "x" : 143,
+                   "y" : -27,
+                   "name" : "The Death Star"
+                },
                 "bodies"        : [     # only added if a probe is present
                     {
                         same data as get_status() on /body
@@ -1231,6 +1270,8 @@ Map:
                     "color"         : "yellow",
                     "x"             : -41,
                     "y"             : 27,
+                    "zone"          : "0|0",
+                    "id"            : "99",
                     "station" : { # only shows up if this star is under the influence of a space station
                         "id" : "id-goes-here",
                         "x" : 143,
@@ -1249,6 +1290,9 @@ Map:
                     "color"         : "green",
                     "x"             : -42,
                     "y"             : 27
+                    "zone"          : "0|0",
+                    "id"            : "99",
+                    "station" : { ... }
                 }
              ],
             "status" : { ... }
