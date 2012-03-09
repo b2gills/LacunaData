@@ -263,7 +263,7 @@ Gas Giant Settlement Platform:
     The Gas Giant Settlement Platform allows settlement of a gas giant when this would otherwise not be possible. In order to upgrade platforms you'll need a good supply of structural minerals such as rutile, chromite, bauxite, magnetite, beryl, or goethite.
     The Gas Giant Settlement Platform is a permanent structure, which means that it remains even after you abandon the gas giant colony, unless you specifically demolish it.
     The gas giant settlement platform does not allow you to settle gas giants outside your normal range, for that you need a terraforming platform as well.
-    Note: You have to have University at Level 19 or above to be able to settle a Gas Giant, regardless of wether you have a platform or ship.
+    Note: You have to have University at Level 19 or above to be able to settle a Gas Giant, regardless of wether you have a platform or ship.  The game will not even allow you to launch a Colony Ship to a Gas Giant until you have reached the required University level.  However it is possible for a player with a lower University level to take control of a Gas Giant from another player via the Insurrection spy mission.  All existing Gas Giant Settlement Platforms in such a situation will continue to work however new platforms will not be able to be built until the player obtains the appropriate University Level.
     Each level of platform provides one usable plot on the target planet.
     A Gas Giant Platform can not be demolished or downgraded if, by doing so, it would cause the number of plots available on your colony to go negative.
     You may send as many platforms as you like to a target planet.
