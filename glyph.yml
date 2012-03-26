@@ -199,6 +199,8 @@ Black Hole Generator:
     An experimental singularity lab created by the Great Race.
     The entire universe knows very little about this building yet, until recently only found on Saben planets.  The Lacuna BHG Research Organisation (BHGO) are still pressing the top Saben officals to reveal how to operate them.
     A drawing published by BHGO of the Black Hole Generator, according to detection and spying reports.
+    Note: The webclient has a partialy built User Interface that only shows what it can do.  The code to actually make it perform the action does not work.  The BHG can only currently be used by another external tool such as the blackhole.pl script as can be found under clients.
+    This building has not been added to the iphone client.
     The black hole generator is said to do a lot of crazy mind bending stuff. With the power of a singularity, it changes the universe by multiplying it with an alternate universe. Here are some evidence-supported features:
     When you try to start it you can select one of at least five options for what you want it to do; if it does not fail on startup your choice will happen.  The options we know it will have at some point are listed below.  More options may be out there.
     Possible Side Effects:
@@ -305,6 +307,7 @@ Gratch's Gauntlet:
   description: |-
     Thought to be one way the Great Race protected themselves from enemy agents.
     Slows down infiltration time by 3 hours per level of the gauntlet. While spies are mired and spending time trying to find their way through the gauntlet, they cannot attack and are vulnerable to security sweeps. Because spies from allies don't "infiltrate", they are immune to Gratch's Gauntlet.
+    The actual practical usefullness of this glyph building is often highly debated.  Most arguements revolve around the fact that this building does not actualy catch incoming spies and just slows them down.  Still the player is actually required to run security sweeps to catch mirred down spies.  Othere debates tend to center around what level to build it to whether level 8 is suffiecent to keep spies mirred down for 24 hours, or to keep them mirred down for a full 90 hours.
     Note: previously this building was in-effective, but since the zero-travel-time spy bug has been fixed Gratch's Gauntlet should now work correctly.
     You can build this at the archaeology ministry by combining chromite, bauxite, gold, and kerogen glyphs.
   recipe:
@@ -422,6 +425,7 @@ Lapis Forest:
 Library of Jith:
   description: |-
     It is said that the Great Race is also the first race. And that they constructed experiments to alter themselves to form a more perfect race. And the records of those experiments are contained in the Library of Jith.
+    Note: There is little reason beyond bragging rights to upgrade this building beyond level 1.  This building will work exactly the same way no matter the level.
     Lets you look up other empire species stats.
     You can build this building at the Archaeology ministry by combining the following glyphs: anthracite, bauxite, beryl, and chalcopyrite.
   recipe:
