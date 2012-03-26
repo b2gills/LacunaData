@@ -1,6 +1,21 @@
 ---
 Archaeology:
   services:
+    abandon_excavator:
+      description: Close down an existing excavator site.
+      parameters:
+        - description: A session id.
+          name: session_id
+          type: string
+        - description: The unique id of the archaeology ministry.
+          name: building_id
+          type: string
+        - description: The unique id of the excavator site you wish to abandon.
+          name: site_id
+          type: string
+      returns: "{\n    \"status\" : { ... }\n }"
+      throws:
+        - 1002
     assemble_glyphs:
       description: Turns glyphs into rare ancient items.
       parameters:
@@ -87,6 +102,38 @@ Archaeology:
         {
             "status" : { ... },
             "building" : { ... },
+         }
+    view_excavators:
+      description: Returns a list of the excavator sites currently controlled by this ministry.The chances numbers give the chances out of 100 that a certain result is found by your excavator each hour.
+      parameters:
+        - description: A session id.
+          name: session_id
+          type: string
+        - description: The unique id of the archaeology ministry.
+          name: building_id
+          type: string
+      returns: |-
+        {
+            "status" : { ... },
+            "max_excavators" : 1,
+            "excavators" : [
+                {
+                    "id" : "id-goes-here",
+                    "body" : {
+                        "id" : "id-goes-here",
+                        "name" : "Kuiper",
+                        "x" : 0,
+                        "y" : -444,
+                        "image" : "a1-5",
+                        ...
+                    },
+                    "artifact" : 5,
+                    "glyph" : 30,
+                    "plan" : 7,
+                    "resource" : 53
+                },
+                ...
+            ]
          }
 BlackHoleGenerator:
   services:
