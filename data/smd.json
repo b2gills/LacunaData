@@ -200,6 +200,23 @@
 						{"name":"building_id", "type":"string", "optional":false}
 					],
 					"returns":{"type":"object"}
+				},
+				"view_excavators" : {
+					"description": "Returns a list of the excavators currently controlled by this ministry.",
+					"parameters": [
+						{"name":"session_id", "type":"string", "optional":false},
+						{"name":"building_id", "type":"string", "optional":false}
+					],
+					"returns":{"type":"object"}
+				},
+				"abandon_excavator" : {
+					"description": "Close down an existing excavator site.",
+					"parameters": [
+						{"name":"session_id", "type":"string", "optional":false},
+						{"name":"building_id", "type":"string", "optional":false},
+						{"name":"excavator_id", "type":"string", "optional":false}
+					],
+					"returns":{"type":"object"}
 				}
 			}
 		},
@@ -2382,6 +2399,23 @@
 					"returns":{"type":"object"}
 				},
 				"propose_evict_mining_platform" : {
+					"description": "",
+					"parameters": [
+						{"name":"session_id", "type":"string", "optional":false},
+						{"name":"building_id", "type":"string", "optional":false},
+						{"name":"platform_id", "type":"string", "optional":false}
+					],
+					"returns":{"type":"object"}
+				},
+				"propose_members_only_excavation" : {
+					"description": "",
+					"parameters": [
+						{"name":"session_id", "type":"string", "optional":false},
+						{"name":"building_id", "type":"string", "optional":false}
+					],
+					"returns":{"type":"object"}
+				},
+				"propose_evict_excavator" : {
 					"description": "",
 					"parameters": [
 						{"name":"session_id", "type":"string", "optional":false},
