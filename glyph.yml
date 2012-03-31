@@ -204,7 +204,9 @@ Black Hole Generator:
     The black hole generator is said to do a lot of crazy mind bending stuff. With the power of a singularity, it changes the universe by multiplying it with an alternate universe. Here are some evidence-supported features:
     When you try to start it you can select one of at least five options for what you want it to do; if it does not fail on startup your choice will happen.  The options we know it will have at some point are listed below.  More options may be out there.
     Possible Side Effects:
-    The black hole generator requires kerogen, beryl, anthracite, and monazite glyphs to be built. It cannot be found via excavator.
+    The black hole generator requires kerogen, beryl, anthracite, and monazite glyphs to be built.
+    Playing Tip: BHGs due to their multiple abilities can be used to customize empire growth and to be used offensively.
+    Strategies:
   recipe:
     - kerogen
     - beryl
