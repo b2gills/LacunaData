@@ -369,9 +369,10 @@ Halls of Vrbansk:
 Interdimensional Rift:
   description: |-
     Long ago the Great Race learned how to master the subspace. They used it for travel and communication, but also for more mundane purposes, like storage. If you are lucky enough to uncover one of the Great Race's storage rifts, many of your storage needs will be covered.
-    The Interdimensional Rift provides storage for all 4 basic resources and for waste.  While the base storage amount is the same for all 5 resources, the exact amount of each resource stored does vary based on affinities.  The chart below will give you a basic idea of its capacity.  The storage capacity increases like most other buildings in this game by 1.5 per level.
-    The Interdimensional Rift does not show the exact resources stored withing like the Ore Storage or Food Storage buildings do.  Neither does it allow you to dump resources.  Also it cannot reserve a specific resource from use like the Distribution Center does.
-    Storage Amounts by level (without boost, exact amounts depend on your affinities)
+    The Interdimensional Rift (or IDR) provides storage for all 4 basic resources and for waste.  While the base storage amount is the same for all 5 resources, the exact amount of each resource stored does vary based on affinities.  The chart below will give you a basic idea of its capacity.  Like most other things in The Lacuna, the stroage capacity increases by 1.55 per level.
+    Unlike the Ore Storage or Food Storage buildings do, Interdimensional Rift does not show the exact resources stored.  Neither does it allow you to dump resources.  Also it cannot reserve a specific resource from use like the Distribution Center does.
+    Storage Amounts by level:
+    (Numbers rounded off a little, figures shown are without boosts. Exact amounts depend on your affinities)
     Playing Tip: The Interdimensional Rift is the ultimate in high capacity storage and is highly favored for this by top players.  Sometimes is it used to replace all other storage on a planet.  If the Interdimensional Rift is of a high level it can make recovery from a heavy Snark assault very easy since it costs nothing to repair and provides very high amounts of storage.  When combined with other high level resource producing buildings in can be used to make a colony nearly impervious to assault by ships because all glyph buildings are free to repair and produce large amounts of resources.  This building would provide all the storage needed to repair the standard buildings.  It is due to this very reason that the Saben are such a difficult AI to take down.
     You can construct an Interdimensional Rift at the Archaeology Ministry by combining  methane, zircon, and fluorite glyphs.
   recipe:
