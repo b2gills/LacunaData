@@ -220,6 +220,34 @@
 				}
 			}
 		},
+                        "BlackHoleGenerator" : {
+			"SMDVersion":"2.0",
+			"description": "Black Hole Generator",
+			"envelope":"JSON-RPC-2.0",
+			"transport":"POST",
+			"target":"/blackholegenerator",
+			"services": {
+				"get_actions_for" : {
+					"description": "Provides a list of actions that the BHG can do. Use with generate_singularity.",
+					"parameters": [
+						{"name":"session_id", "type":"string", "optional":false},
+						{"name":"building_id", "type":"string", "optional":false},
+						{"name":"target", "type":"object", "optional":false}
+					],
+					"returns":{"type":"object"},
+				},
+				"generate_singularity" : {
+					"description": "Performs action on specified target.",
+					"parameters": [
+						{"name":"session_id", "type":"string", "optional":false},
+						{"name":"building_id", "type":"string", "optional":false},
+						{"name":"target", "type":"object", "optional":false},
+						{"name":"planet_type", "type":"number", "optional":true}
+					],
+					"returns":{"type":"object"},
+				}
+			}
+                        },
 		"Capitol" : {
 			"SMDVersion":"2.0",
 			"description": "Capitol",
