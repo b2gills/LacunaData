@@ -166,6 +166,38 @@ BlackHoleGenerator:
         - 1009
         - 1010
         - 1013
+    get_actions_for:
+      description: Returns status and task list with success percentage for defined target.Options are as described for generate_singularity
+      parameters:
+        - name: session_id
+        - name: building_id
+        - name: target
+      returns: |-
+        {
+            "status" : { ... },
+            "building" : { ... },
+            "tasks" : [
+               {
+                  "base_fail" : 15,
+                  "body_id" : 973213,
+                  "dist" : 134.40,
+                  "min_level" : 10,
+                  "name" : "Make Asteroid",
+                  "occupied" : 0,
+                  "range" : 150,
+                  "reason" : "You can only make an asteroid from a planet."
+                  "recovery" : 129600,
+                  "side_chance" : 25,
+                  "success" : 0,
+                  "throw" : 1009,
+                  "types" : [
+                     "habitable planet",
+                     "gas giant"
+                  ],
+                  "waste_cost" : 50000000
+               },...
+            ]
+         }
     view:
       description: This method is extended to include the list of tasks.
       parameters:
@@ -177,7 +209,7 @@ BlackHoleGenerator:
             "building" : { ... },
             "tasks" : [
                {
-                  "fail_chance" : 15,  #Note, range is not factored in.
+                  "base_fail" : 15,  #Note, range is not factored in.
                   "min_level" : 10,
                   "name" : "Make Asteroid",
                   "occupied" : 0,
