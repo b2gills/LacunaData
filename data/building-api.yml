@@ -3117,6 +3117,21 @@ Trade:
                "prisoner_id" : "id-goes-here"
             }
          ]
+    add_waste_ship_to_fleet:
+      description: Take a scow from your space port and add it to the ships servicing the waste pushes.
+      parameters:
+        - description: A Session ID.
+          name: session_id
+          type: string
+        - description: The unique ID of the Trade Ministry.
+          name: building_id
+          type: string
+        - description: The unique ID of the ship you want to add to the fleet.
+          name: ship_id
+          type: string
+      returns: "{\n   \"status\" : { ... },\n }"
+      throws:
+        - 1009
     get_glyph_summary:
       description: Returns a summary of all glyphs that may be traded. Used with the add_trade method.
       parameters:
@@ -3299,6 +3314,30 @@ Trade:
                 ...
             ]
          }
+    get_waste_ships:
+      description: Returns a list of the ships that are either working to transport waste or available.
+      parameters:
+        - description: A session id.
+          name: session_id
+          type: string
+        - description: The unique id of the trade ministry.
+          name: building_id
+          type: string
+      returns: |-
+        {
+            "status" : { ... },
+            "ships" : [
+                {
+                   "id" : "id-goes-here",
+                   "type" : "scow",
+                   "task" : "Docked",
+                   "name" : "Dumper Truck 1",
+                   "speed" : 600,
+                   "hold_size" : 1234800,
+                },
+                ...
+            ]
+         }
     push_items:
       description: Allows you to push items between your colonies.
       parameters:
@@ -3328,6 +3367,21 @@ Trade:
                "prisoner_id" : "id-goes-here"
             }
          ]
+    remove_waste_ship_from_fleet:
+      description: Remove a ship from servicing you waste management and tell it to return to the space port.
+      parameters:
+        - description: A Session ID.
+          name: session_id
+          type: string
+        - description: The unique ID of the Trade Ministry.
+          name: building_id
+          type: string
+        - description: The unique ID of the ship you want to remove from the fleet.
+          name: ship_id
+          type: string
+      returns: "{\n   \"status\" : { ... },\n }"
+      throws:
+        - 1009
     report_abuse:
       description: Report a trade that you think is abusing the trade system.
       parameters:
@@ -3341,6 +3395,13 @@ Trade:
           name: trade_id
           type: string
       returns: "{\n    \"status\" : { ... }\n }"
+    update_waste_chain:
+      description: "Change the waste_hour for the Waste Chain specified by waste_chain_idReturns the same as the call to view_waste_chainsNote, the percent_transferred may be modified as a result of changing the amount of waste_hour if you don't have enough ships to transfer the full amount of waste."
+      parameters:
+        - name: session_id
+        - name: building_id
+        - name: waste_chain_id
+        - name: waste_hour
     view_market:
       description: Displays a list of trades available at the present time.
       parameters:
@@ -3415,6 +3476,29 @@ Trade:
             "trade_count" : 17,
             "page_number" : 1,
             "status" : { ... }
+         }
+    view_waste_chains:
+      description: 'Returns a list of the waste chains currently controlled by this Trade MinistryThere should only be one waste-chain in action, to your local star. There is no point in setting up a waste-chain to any other star.The waste_hour is the amount of waste you wish to transfer per hour.The percent_transferred is the percentage of waste_hour that is actually transferred. This is based on the number of ships you have servicing the waste. If you have no ships then the percent_transferred will be zero. If it is below 100 then you need to add ships so that it is at or above 100. Above 100 and you have more ship capacity than you need, but you will still only transfer the specified waste_hour, it just means some ships will be idle or not fully filled.'
+      parameters:
+        - name: session_id
+        - name: building_id
+      returns: |-
+        {
+            "status" : { ... },
+            "waste_chain" : [
+              {
+                "id" : "id-goes-here",
+                "star" : {
+                  "id" : "id-goes-here",
+                  "name" : "Sol",
+                  "x" : 0,
+                  "y" : -123,
+                  ...
+                },
+                "waste_hour" : 10000000,
+                "percent_transferred" : 95,
+              }
+            ]
          }
     withdraw_from_market:
       description: Remove a trade that you have offered and collect the items up for trade.
