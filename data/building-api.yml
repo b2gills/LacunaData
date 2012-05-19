@@ -25,16 +25,19 @@ Archaeology:
         - description: The unique id of the Archaeology Ministry.
           name: building_id
           type: string
-        - description: An array reference containing an ordered list of up to four glyph ids.
-          name: ids
+        - description: An array reference containing an ordered list of up to four glyph ids or up to four glyph types.
+          name: glyphs
+          type: string
+        - description: 'An optional quantity; if left blank it defaults to 1, otherwise specify the number of times to assemble the indicated glyphs up to a maximum of 50. If greater than one, glyphs must specify types, not ids.'
+          name: quantity
           type: string
       returns: |-
         {
             "status" : { ... },
             "item_name" : "Volcano"
          }
-    get_glyphs:
-      description: Returns a list of glyphs that have been found by this archaeology ministry.
+    get_glyph_summary:
+      description: Returns a summary of all glyphs that may be assembled in this archaeology ministry. Used with the assemble_glyphs method.
       parameters:
         - description: A session id.
           name: session_id
@@ -42,6 +45,22 @@ Archaeology:
         - description: The unique id of the Archaeology Ministry.
           name: building_id
           type: string
+      returns: |-
+        {
+            "glyphs" : [
+                {
+                    "type" : "bauxite",
+                    "quantity" : 2
+                },
+                ...
+            ],
+            "status" : { ... }
+         }
+    get_glyphs:
+      description: Returns a list of glyphs that have been found by this archaeology ministry.
+      parameters:
+        - name: session_id
+        - name: building_id
       returns: |-
         {
             "status" : { ... },
@@ -2962,6 +2981,7 @@ TheDillonForge:
               "current_task" : "make_plan",
               "seconds_remaining" : 120,
               "can" : 0,
+              "subsidy_cost" : 2,
         
               "make_plan" : [
                 {
@@ -3088,6 +3108,21 @@ Trade:
       returns: "{\n    \"status\" : { ... }\n }"
       throws:
         - 1016
+    add_supply_ship_to_fleet:
+      description: Take a ship from your space port and add it to the ships servicing the supply chains.
+      parameters:
+        - description: A Session ID.
+          name: session_id
+          type: string
+        - description: The unique ID of the Trade Ministry.
+          name: building_id
+          type: string
+        - description: The unique ID of the ship you want to add to the fleet.
+          name: ship_id
+          type: string
+      returns: "{\n   \"status\" : { ... },\n }"
+      throws:
+        - 1009
     add_to_market:
       description: Queues a trade for others to see.
       parameters:
@@ -3132,6 +3167,20 @@ Trade:
       returns: "{\n   \"status\" : { ... },\n }"
       throws:
         - 1009
+    create_supply_chain:
+      description: "Create a new supply chain.target_id is the ID of the target planet (or space station).building_id is the identifier of the Trade Ministry building.resource_type is the resource you want to push, e.g. 'waste','water','gold','energy','apple'resource_hour is the amount of the resource you want to transfer each hour.Returns the same as the call to view_supply_chains"
+      parameters:
+        - name: session_id
+        - name: building_id
+        - name: target_id
+        - name: resource_type
+        - name: resource_hour
+    delete_supply_chain:
+      description: Delete the supply chain identified by the supply_chain_idReturns the same as the call to view_supply_chains
+      parameters:
+        - name: session_id
+        - name: building_id
+        - name: supply_chain_id
     get_glyph_summary:
       description: Returns a summary of all glyphs that may be traded. Used with the add_trade method.
       parameters:
@@ -3288,6 +3337,30 @@ Trade:
                     ...
             }
          }
+    get_supply_ships:
+      description: Returns a list of the ships that are either working to transport supplies or available.
+      parameters:
+        - description: A session id.
+          name: session_id
+          type: string
+        - description: The unique id of the trade ministry.
+          name: building_id
+          type: string
+      returns: |-
+        {
+            "status" : { ... },
+            "ships" : [
+                {
+                   "id" : "id-goes-here",
+                   "type" : "hulk",
+                   "task" : "Resource Chain",
+                   "name" : "Big Momma 1",
+                   "speed" : 1000,
+                   "hold_size" : 4000000,
+                },
+                ...
+            ]
+         }
     get_trade_ships:
       description: Returns a list of the ships that could be used to do a trade.
       parameters:
@@ -3367,6 +3440,21 @@ Trade:
                "prisoner_id" : "id-goes-here"
             }
          ]
+    remove_supply_ship_from_fleet:
+      description: Remove a ship from servicing your supply chains and tell it to return to the space port.
+      parameters:
+        - description: A Session ID.
+          name: session_id
+          type: string
+        - description: The unique ID of the Trade Ministry.
+          name: building_id
+          type: string
+        - description: The unique ID of the ship you want to remove from the fleet.
+          name: ship_id
+          type: string
+      returns: "{\n   \"status\" : { ... },\n }"
+      throws:
+        - 1009
     remove_waste_ship_from_fleet:
       description: Remove a ship from servicing you waste management and tell it to return to the space port.
       parameters:
@@ -3395,8 +3483,16 @@ Trade:
           name: trade_id
           type: string
       returns: "{\n    \"status\" : { ... }\n }"
+    update_supply_chain:
+      description: "Change the resource_type and resource_hour for the supply Chain specified by supply_chain_idReturns the same as the call to view_supply_chainsNote, the percent_transferred may drop below 100% as a result of changing the amount of resource_hour if you don't have enough ships to transfer the amount of resources in all supply chains.You may set the resource_hour to zero if you want to suspend the supply chain to the target planet.If you want to remove the supply chain totally then call delete_supply_chain"
+      parameters:
+        - name: session_id
+        - name: building_id
+        - name: supply_chain_id
+        - name: resource_type
+        - name: resource_hour
     update_waste_chain:
-      description: "Change the waste_hour for the Waste Chain specified by waste_chain_idReturns the same as the call to view_waste_chainsNote, the percent_transferred may be modified as a result of changing the amount of waste_hour if you don't have enough ships to transfer the full amount of waste."
+      description: "Change the waste_hour for the Waste Chain specified by waste_chain_idReturns the same as the call to view_waste_chainsNote, the percent_transferred may drop below 100% as a result of changing the amount of waste_hour if you don't have enough ships to transfer the full amount of waste.Note, there is no create_waste_chain because all planets have a waste chain by default.You may set the waste_hour to zero if you want to stop transferring waste."
       parameters:
         - name: session_id
         - name: building_id
@@ -3477,8 +3573,34 @@ Trade:
             "page_number" : 1,
             "status" : { ... }
          }
+    view_supply_chains:
+      description: "Returns a list of the supply chains currently controlled by this Trade MinistryEach supply-chain can transfer any amount of any one resource (food type, ore type energy, waste or water). max_supply_chains shows you how many Supply Chains your Trade Ministry can handle.The building_id is the identifier for the Trade Ministry that is the source of the supply chain.The resource_type is the name of the resource you wish to transfer (e.g. 'Gold');The resource_hour is the amount of that resource you wish to transfer each hour.The percent_transferred is the percentage of resource_hour that is actually transferred. This is based on the number of ships you have servicing the chain. If you have no ships then the percent_transferred will be zero. If it is below 100 then you need to add ships so that it is at or above 100. Above 100 and you have more ship capacity than you need, but you will still only transfer the specified resource_hour, it just means some ships will be idle or not fully filled."
+      parameters:
+        - name: session_id
+        - name: building_id
+      returns: |-
+        {
+            "status" : { ... },
+            "supply_chains" : [
+              {
+                "id" : "id-goes-here",
+                "body" : {
+                  "id" : "id-goes-here",
+                  "name" : "Mars",
+                  "x" : 0,
+                  "y" : -123,
+                  ...
+                },
+                "building_id" : 1234567,
+                "resource_hour" : 10000000,
+                "resource_type" : 'water',
+                "percent_transferred" : 95,
+              }
+            ],
+            "max_supply_chains" : 30
+         }
     view_waste_chains:
-      description: 'Returns a list of the waste chains currently controlled by this Trade MinistryThere should only be one waste-chain in action, to your local star. There is no point in setting up a waste-chain to any other star.The waste_hour is the amount of waste you wish to transfer per hour.The percent_transferred is the percentage of waste_hour that is actually transferred. This is based on the number of ships you have servicing the waste. If you have no ships then the percent_transferred will be zero. If it is below 100 then you need to add ships so that it is at or above 100. Above 100 and you have more ship capacity than you need, but you will still only transfer the specified waste_hour, it just means some ships will be idle or not fully filled.'
+      description: 'Returns a list of the waste chains currently controlled by this Trade MinistryNote, there is no need to create a waste chain, all planets have a waste chain by default.There should only be one waste-chain in action, to your local star. There is no point in setting up a waste-chain to any other star.The waste_hour is the amount of waste you wish to transfer per hour.The percent_transferred is the percentage of waste_hour that is actually transferred. This is based on the number of ships you have servicing the waste. If you have no ships then the percent_transferred will be zero. If it is below 100 then you need to add ships so that it is at or above 100. Above 100 and you have more ship capacity than you need, but you will still only transfer the specified waste_hour, it just means some ships will be idle or not fully filled.'
       parameters:
         - name: session_id
         - name: building_id
