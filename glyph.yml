@@ -341,6 +341,7 @@ Halls of Vrbansk:
     Upgrading a glyph building: To upgrade a permanent structure you will sacrifice a number of halls equal to the level upgrade. So to upgrade a level 3 Citadel of Knope to a level 4, you will need to sacrifice 4 Halls of Vrbansk. There is no need to upgrade a Halls of Vrbansk.
     Click on any of them and a list of all the glyph buildings on your planet able to be upgraded is displayed. Select a building you want to upgrade and the appropriate number of Halls of Vrbansk are destroyed. The selected glyph building will be added to the build queue.
     Buildings upgraded in this manner are also limited to level 30.
+    Note: You now only need place a single hall now on a planet to be able to upgrade your glyph buildings.  When you select the upgrade option the upgrade will consume the required number of plans.  You do still need to maintain a sufficient number of spaces 30 max to be able to perform the upgrades.
   recipe:
     A:
       - goethite
