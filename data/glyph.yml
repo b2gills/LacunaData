@@ -197,9 +197,7 @@ Beeldeban Nest:
 Black Hole Generator:
   description: |-
     An experimental singularity lab created by the Great Race.
-    The entire universe knows very little about this building yet, until recently only found on Saben planets.  The Lacuna BHG Research Organisation (BHGO) are still pressing the top Saben officals to reveal how to operate them.
     A drawing published by BHGO of the Black Hole Generator, according to detection and spying reports.
-    Note: The webclient has a partialy built User Interface that only shows what it can do.  The code to actually make it perform the action does not work.  The BHG can only currently be used by another external tool such as the blackhole.pl script as can be found under clients.
     This building has not been added to the iphone client.
     The black hole generator is said to do a lot of crazy mind bending stuff. With the power of a singularity, it changes the universe by multiplying it with an alternate universe. Here are some evidence-supported features:
     When you try to start it you can select one of at least five options for what you want it to do; if it does not fail on startup your choice will happen.  The options we know it will have at some point are listed below.  More options may be out there.
