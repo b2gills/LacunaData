@@ -1892,6 +1892,7 @@ PlanetaryCommand:
             "status" : { ... },
             "plans" : [
                 {
+                   "quantity" : 23,
                    "name" : "Malcud Fungus Farm",
                    "level" : 1,
                    "extra_build_level" : 5
