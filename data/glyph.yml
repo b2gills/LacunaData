@@ -527,7 +527,7 @@ Temple of the Drajilites:
   description: |-
     It is said that the ancient Drajilite clerics could see the heavens above them through their rituals. Tablets found around the Expanse hint that if one were to uncover the ancient Temple of the Drajilites then one would possess their power.
     Rumor has it this building gives you the ability to scan a remote planet (as one would with a Scanner) without being detected.
-    The scanning ability of this building is limited to 10 units per level of the Temple. There is no timer or restriction on how long it takes or how many times you want to scan the planets in the system.
+    The scanning range of this building is limited to 10 distance units per level of the Temple. There is no timer or restriction on how long it takes or how many times you want to scan the planets in the system.
     You can build a temple by combining in the following order: kerogen, rutile, chromite, and chalcopyrite glyphs in the Archaeology Ministry.
   recipe:
     - kerogen
