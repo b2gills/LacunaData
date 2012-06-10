@@ -2158,6 +2158,39 @@ SpacePort:
              },
              "status" : { ... }
          }
+    get_fleet_for:
+      description: 'Provides a summary of ships that can be included in a fleet actionShips are grouped according to type,speed,stealth and combat, the number of ships in each group is given.'
+      parameters:
+        - description: A session id.
+          name: session_id
+          type: string
+        - description: The unique id of the planet that should send the ships.
+          name: from_body_id
+          type: string
+        - description: A hash reference that can contain one of five items to identify a star or body.
+          name: target
+          object:
+            body_id:
+              description: The unique id of the body.
+            body_name:
+              description: "A string with the body's name. Case insensitive, but will throw an exception for misspelling."
+            star_id:
+              description: The unique id of the star.
+            star_name:
+              description: "A string with the star's name. Case insensitive, but will throw an exception for misspelling."
+            x | y:
+              description: 'A set of x,y coordinates to locate the star or body.'
+          type: object
+      returns: |-
+        { "body_name" : "Earth" }
+        
+         { "body_id" : "id-goes-here" }
+        
+         { "star_name" : "Sol" }
+        
+         { "star_id" : "id-goes-here" }
+        
+         { "x" : 4, "y" : -3 }
     get_ships_for:
       description: 'Provides a list of incoming ships and ships that are available to send to a specific target. Use with send_ship.The unavailable block tells you about ships that are docked, but are for some reason not available to be used. The orbiting block will be returned only if the target is body and tells you about fighters that are defending and can be recalled. The mining_platforms block will be returned only if the target is an asteroid that has platforms on it. The value of fleet_send_limit tells you how many ships can be included in a fleet.'
       parameters:
@@ -2379,7 +2412,9 @@ SpacePort:
         - description: A session id.
           name: session_id
           type: string
-        - name: ship_ids
+        - description: An array reference of ship ids to send.
+          name: ship_ids
+          type: string
         - description: A hash reference that can contain one of five items to identify a star or body. Same as send_ship.
           name: target
           type: string
@@ -2389,36 +2424,36 @@ SpacePort:
       returns: |-
         {
             "status" : { ... },
-                "fleet" : [
-                        "ship" : {
-                                "id" : "id-goes-here",
-                                "name" : "P13",
-                                "type_human" : "Probe",
-                                "type" : "probe",
-                                "task" : "Travelling",
-                                "speed" : "1200",
-                    "fleet_speed" : "250",
-                                "stealth" : "0",
-                                "hold_size" : "0",
-                                "date_started" : "01 31 2010 13:09:05 +0600",
-                                "date_available" : "02 01 2010 10:08:33 +0600",
-                                "date_arrives" : "02 01 2010 10:08:33 +0600",
-                    "can_recall" : "0",
-                    "can_scuttle" : "0",
-                                "from" : {
-                                   "id" : "id-goes-here",
-                                   "type" : "body",
-                                   "name" : "Earth"
-                                },
-                                "to" : {
-                                   "id" : "id-goes-here",
-                                   "type" : "star",
-                                   "name" : "Sol"
-                                }
-                        },
-                        ...
-            ]
-         }
+              "fleet" : [
+                "ship" : {
+                  "id" : "id-goes-here",
+                  "name" : "P13",
+                  "type_human" : "Probe",
+                  "type" : "probe",
+                  "task" : "Travelling",
+                  "speed" : "1200",
+                  "fleet_speed" : "250",
+                  "stealth" : "0",
+                  "hold_size" : "0",
+                  "date_started" : "01 31 2010 13:09:05 +0600",
+                  "date_available" : "02 01 2010 10:08:33 +0600",
+                  "date_arrives" : "02 01 2010 10:08:33 +0600",
+                  "can_recall" : "0",
+                  "can_scuttle" : "0",
+                  "from" : {
+                    "id" : "id-goes-here",
+                    "type" : "body",
+                    "name" : "Earth"
+                  },
+                  "to" : {
+                    "id" : "id-goes-here",
+                    "type" : "star",
+                    "name" : "Sol"
+                  }
+                },
+                ...
+              ]
+        }
       throws:
         - 1002
         - 1009
@@ -2457,6 +2492,26 @@ SpacePort:
          { "star_id" : "id-goes-here" }
          
          { "x" : 4, "y" : -3 }
+    send_ship_types:
+      description: "Sends a quantity of ships, of a specific type (type, speed, combat, stealth) to a target.Look at get_fleet_for for a summary of what ships can be sent.Returns the same as get_fleet_for showing how many ships are remaining to be sent.A session ID.The Unique ID of the body that should send the shipsA hash reference that can contain one of five items to identify a star or body.A string with the body's name. Case insensitive, but will throw an exception for misspelling.The unique id of the body.A string with the star's name. Case insensitive, but will throw an exception for misspelling.The unique id of the star.A set of x,y coordinates to locate the star or body.An array reference that contains the specification of the ships to send and the quantity.A hash reference of the required arrival time.So long as the sending body has that quantity of ships with those specifications, then the ships will be sent.Ships will be set to arrive at the arrival time and date, which can be up to 28 days in the future. day is the day of the month, either the remainder of the current month, or the start of next month. e.g. if the current date is 23rd of January, then a day of 23 will refer to today whereas 3 would refer to 3rd of February.If an arrival time is set which is prior to the earliest arrival time of the slowest ship, then an exception is raised."
+      parameters:
+        - name: session_id
+        - name: from_body_id
+        - name: target
+        - name: types
+        - name: arrival
+      returns: |-
+        {
+            "day" : "23",
+            "hour" : "12",
+            "minute" : "01",
+            "second" : "30"
+          }
+      throws:
+        - 1002
+        - 1009
+        - 1010
+        - 1019
     send_spies:
       description: Sends one or more of spies to a planet using a selected ship. See also prepare_send_spies.
       parameters:
