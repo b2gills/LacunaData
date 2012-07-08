@@ -25,10 +25,10 @@ Archaeology:
         - description: The unique id of the Archaeology Ministry.
           name: building_id
           type: string
-        - description: An array reference containing an ordered list of up to four glyph ids or up to four glyph types.
+        - description: An array reference containing an ordered list of up to four glyph types.
           name: glyphs
           type: string
-        - description: 'An optional quantity; if left blank it defaults to 1, otherwise specify the number of times to assemble the indicated glyphs up to a maximum of 50. If greater than one, glyphs must specify types, not ids.'
+        - description: 'An optional quantity; if left blank it defaults to 1, otherwise specify the number of times to assemble the indicated glyphs up to a maximum of 50.'
           name: quantity
           type: string
       returns: |-
@@ -49,6 +49,8 @@ Archaeology:
         {
             "glyphs" : [
                 {
+                    "id" : "id-goes-here",
+                    "type: : "bauxite",
                     "type" : "bauxite",
                     "quantity" : 2
                 },
@@ -57,21 +59,10 @@ Archaeology:
             "status" : { ... }
          }
     get_glyphs:
-      description: Returns a list of glyphs that have been found by this archaeology ministry.
+      description: 'This API call is now deprecated, please use get_glyph_summary instead.'
       parameters:
         - name: session_id
         - name: building_id
-      returns: |-
-        {
-            "status" : { ... },
-            "glyphs" : [
-                {
-                    "id" : "id-goes-here",
-                    "type" : "bauxite",
-                },
-                ...
-            ]
-         }
     get_ores_available_for_processing:
       description: Returns a list of ore names that the user has enough of to process for glyphs.
       parameters:
