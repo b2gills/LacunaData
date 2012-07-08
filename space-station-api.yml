@@ -434,6 +434,36 @@ StationCommand:
                 "water_capacity" : 51050
             }
          }
+    view_incoming_supply_chains:
+      description: Returns a list of all incoming supply chains feeding this planet.
+      parameters:
+        - description: A session id.
+          name: session_id
+          type: string
+        - description: The unique id of the PCC.
+          name: building_id
+          type: string
+      returns: |-
+        {
+            "status" : { ... },
+            "incoming_supply_chains" : [
+                {
+                    "id" : "id-goes-here",
+                    "from_body" : {
+                      "id" : "id-goes-here",
+                      "name" : "Mars",
+                      "x" : 0,
+                      "y" : -123,
+                      "image" : "station"
+                    },
+                    "resource_hour" : 10000000,
+                    "resource_type" : 'water',
+                    "percent_transferred" : 95,
+                    "stalled" : 0,
+                },
+                ...
+            ]
+         }
     view_plans:
       description: "Returns a list of all the plans you've collected through various means.If the level is 1, and there is an extra_build_level, that means that the building will be built up to 1 plus the extra build level when complete. So in the example above, it would be a level 6 directly after being built."
       parameters:
