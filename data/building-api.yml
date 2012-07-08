@@ -1840,6 +1840,20 @@ PlanetaryCommand:
             "building" : { ... },
             "status" : { ... },
             "next_colony_cost" : 750000,        # the amount of happiness required to settle your next colony
+            "food" : {
+              "algae_hour" : 24,
+              "algae_stored" :1322,
+              "bean_hour" : 1,
+              "bean_stored" :42,
+              ..
+            },
+            "ore" : {
+              "anthracite_hour" : 333,
+              "anthracite_stored" : 34444,
+              "bauxite_hour" : 22,
+              "bauxite_stored" : 1235,
+              ...
+            },
             "planet" : {
                 "id" : "id-goes-here",
                 "x" : -4,
@@ -1877,6 +1891,36 @@ PlanetaryCommand:
                 "water_hour" : 295,
                 "water_capacity" : 51050
             }
+         }
+    view_incoming_supply_chains:
+      description: Returns a list of all incoming supply chains feeding this planet.
+      parameters:
+        - description: A session id.
+          name: session_id
+          type: string
+        - description: The unique id of the PCC.
+          name: building_id
+          type: string
+      returns: |-
+        {
+            "status" : { ... },
+            "incoming_supply_chains" : [
+                {
+                    "id" : "id-goes-here",
+                    "from_body" : {
+                      "id" : "id-goes-here",
+                      "name" : "Mars",
+                      "x" : 0,
+                      "y" : -123,
+                      "image" : "station"
+                    },
+                    "resource_hour" : 10000000,
+                    "resource_type" : 'water',
+                    "percent_transferred" : 95,
+                    "stalled" : 0,
+                },
+                ...
+            ]
          }
     view_plans:
       description: "Returns a list of all the plans you've collected through various means.If the level is 1, and there is an extra_build_level, that means that the building will be built up to 1 plus the extra build level when complete. So in the example above, it would be a level 6 directly after being built."
@@ -3630,7 +3674,7 @@ Trade:
             "status" : { ... }
          }
     view_supply_chains:
-      description: "Returns a list of the supply chains currently controlled by this Trade MinistryEach supply-chain can transfer any amount of any one resource (food type, ore type energy, waste or water). max_supply_chains shows you how many Supply Chains your Trade Ministry can handle.The building_id is the identifier for the Trade Ministry that is the source of the supply chain.The resource_type is the name of the resource you wish to transfer (e.g. 'Gold');The resource_hour is the amount of that resource you wish to transfer each hour.The percent_transferred is the percentage of resource_hour that is actually transferred. This is based on the number of ships you have servicing the chain. If you have no ships then the percent_transferred will be zero. If it is below 100 then you need to add ships so that it is at or above 100. Above 100 and you have more ship capacity than you need, but you will still only transfer the specified resource_hour, it just means some ships will be idle or not fully filled."
+      description: "Returns a list of the supply chains currently controlled by this Trade MinistryEach supply-chain can transfer any amount of any one resource (food type, ore type energy, waste or water). max_supply_chains shows you how many Supply Chains your Trade Ministry can handle.The building_id is the identifier for the Trade Ministry that is the source of the supply chain.The resource_type is the name of the resource you wish to transfer (e.g. 'Gold');The resource_hour is the amount of that resource you wish to transfer each hour.The percent_transferred is the percentage of resource_hour that is actually transferred. This is based on the number of ships you have servicing the chain. If you have no ships then the percent_transferred will be zero. If it is below 100 then you need to add ships so that it is at or above 100. Above 100 and you have more ship capacity than you need, but you will still only transfer the specified resource_hour, it just means some ships will be idle or not fully filled.stalled is true if there are no more of the chain's resource available in storage to push."
       parameters:
         - name: session_id
         - name: building_id
@@ -3651,6 +3695,7 @@ Trade:
                 "resource_hour" : 10000000,
                 "resource_type" : 'water',
                 "percent_transferred" : 95,
+                "stalled" : 0,
               }
             ],
             "max_supply_chains" : 30
