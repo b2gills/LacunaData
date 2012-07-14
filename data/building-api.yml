@@ -50,7 +50,7 @@ Archaeology:
             "glyphs" : [
                 {
                     "id" : "id-goes-here",
-                    "type: : "bauxite",
+                    "name: : "bauxite",
                     "type" : "bauxite",
                     "quantity" : 2
                 },
@@ -3285,35 +3285,20 @@ Trade:
         {
             "glyphs" : [
                 {
+                    "id" : "id-goes-here",
+                    "name: : "bauxite",
                     "type" : "bauxite",
                     "quantity" : 2
                 },
                 ...
             ],
-            "cargo_space_used_each" : 100,
             "status" : { ... }
          }
     get_glyphs:
-      description: Returns a list of glyphs that may be traded. Used with the add_trade method.
+      description: 'This API call is now deprecated, please use get_glyph_summary instead.'
       parameters:
-        - description: A session id.
-          name: session_id
-          type: string
-        - description: The unique id of this building.
-          name: building_id
-          type: string
-      returns: |-
-        {
-            "glyphs" : [
-                {
-                    "id" : "id-goes-here",
-                    "type" : "bauxite"
-                },
-                ...
-            ],
-            "cargo_space_used_each" : 100,
-            "status" : { ... }
-         }
+        - name: session_id
+        - name: building_id
     get_plan_summary:
       description: Returns a list of plans that may be traded in summary form. Used with the add_trade method.
       parameters:
@@ -3328,6 +3313,7 @@ Trade:
             "plans" : [
                 {
                     "name" : "Intelligence Ministry",
+                    "plan_type" : "Intelligence",
                     "level" : "7",
                     "extra_build_level" : "0",
                     "quantity" : "2"
@@ -3338,28 +3324,10 @@ Trade:
             "status" : { ... }
          }
     get_plans:
-      description: Returns a list of plans that may be traded. Used with the add_trade method.
+      description: Deprecated Method. Please use get_plan_summary instead
       parameters:
-        - description: A session id.
-          name: session_id
-          type: string
-        - description: The unique id of this building.
-          name: building_id
-          type: string
-      returns: |-
-        {
-            "plans" : [
-                {
-                    "id" : "id-goes-here",
-                    "name" : "Intelligence Ministry",
-                    "level" : "7",
-                    "extra_build_level" : "0"        # some special plans will build a building from their level all the way to this number
-                },
-                ...
-            ],
-            "cargo_space_used_each" : 10000,
-            "status" : { ... }
-         }
+        - name: session_id
+        - name: building_id
     get_prisoners:
       description: Returns a list of prisoners that may be traded. Used with the add_trade method.
       parameters:
