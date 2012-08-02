@@ -159,6 +159,9 @@ sub _load_building{
     }elsif( $desc =~ /(?:glyph recipe|combining)(\N*)/i ){
       my @match = map{ lc $_ } $1 =~ /($ore_match)/xgi;
       $data->{recipe} = \@match if @match;
+    }elsif( $desc =~ /($ore_match\b.*\b$ore_match)/i ){
+      my @match = map{ lc $_ } $1 =~ /($ore_match)/xgi;
+      $data->{recipe} = \@match if @match;
     }
 
     _add_produces($building,$data);
