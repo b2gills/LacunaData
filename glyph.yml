@@ -205,8 +205,9 @@ Black Hole Generator:
     Side Effects can occur anywhere within the zone and happen when the BHG succeeds and the side effect chance comes up.  Side effects are more random and can be beneficial.
     Failure Results:
     Failure effects tend to be non-beneficial.  For example; while a side effect can wind up adding a few plot sizes to a planet, a failure will always subtract plot sizes if that effect happens.
-    The black hole generator requires kerogen, beryl, anthracite, and monazite glyphs to be built.
-    Playing Tip: BHGs due to their multiple abilities can be used to customize empire growth and to be used offensively.
+    Recipe:
+    The glyphs must be assembled in the following order.
+    Kerogen, Beryl, Anthracite, and Monazite
     Strategies:
   recipe:
     - kerogen
