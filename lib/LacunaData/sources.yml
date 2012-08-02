@@ -1,7 +1,6 @@
 ---
 simple-download:
   - descriptions
-  - changes
   - server-list
 descriptions:
   file: ../../data/resources.json
