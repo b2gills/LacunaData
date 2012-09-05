@@ -4,6 +4,8 @@ use warnings;
 use autodie;
 use 5.10.1;
 
+use List::MoreUtils qw'uniq';
+
 use LacunaData::Sources (
   id => ['changes'],
   qw(
@@ -48,7 +50,7 @@ sub Cache{
 
   for my $key ( sort { $b <=> $a } keys %changes ){
     my $value = $changes{$key};
-    print {$fh} $_, "\n" for @$value;
+    print {$fh} $_, "\n" for uniq @$value;
   }
 
   #print {$fh} $file;
