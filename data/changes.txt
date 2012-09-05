@@ -1,3 +1,7 @@
+3.0867:
+ - Add: Fissure.
+ - Mod: BHG creates a Fissure instead of a Crater when it explodes.
+
 3.0866:
  - Fix: Freshly built ArchMin were returning results before completing their build.
  - Fix: No longer will recalculate a supply chain on an asteroid.
