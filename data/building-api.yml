@@ -125,7 +125,8 @@ Archaeology:
       returns: |-
         {
             "status" : { ... },
-            "max_excavators" : 1,
+            "max_excavators" : 2,
+            "travelling" : 1,
             "excavators" : [
                 {
                     "id" : "id-goes-here",
@@ -147,37 +148,8 @@ Archaeology:
          }
 BlackHoleGenerator:
   services:
-    generate_singularity:
-      description: 'Returns success, failure, and side effect results.Not all fields are used for every result or task.Failure rates for the Blackhole Generator increases with range.Side Effects happen fairly random, but occur more often the more difficult the task.'
-      parameters:
-        - description: A session id.
-          name: session_id
-          type: string
-        - description: The unique id of your Black Hole Generator.
-          name: building_id
-          type: string
-        - description: A hash reference that can contain one of three items to identify a body.
-          name: target
-          object:
-            body_id:
-              description: The unique id of the body.
-            body_name:
-              description: "A string with the body's name. Case insensitive, but will throw an exception for misspelling."
-            x | y:
-              description: 'A set of x,y coordinates to locate the star or body.'
-          type: object
-        - name: task_name
-        - description: 'Optional hash reference only used for Change Type that looks like this:'
-          name: params
-          type: string
-      returns: '{ "newtype" : 20 }'
-      throws:
-        - 1002
-        - 1009
-        - 1010
-        - 1013
     get_actions_for:
-      description: Returns status and task list with success percentage for defined target.Options are as described for generate_singularity
+      description: "Returns status and task list with success percentage for defined target.Options are as described for generate_singularitycost is the amount in Essentia which will make the task 'perfect' (i.e. 100% success) the lower the probability of success, the higher the cost. The minimum is 2E.If the chance of success is zero, then no amount of Essentia will make it succeed."
       parameters:
         - name: session_id
         - name: building_id
@@ -198,7 +170,8 @@ BlackHoleGenerator:
                   "reason" : "You can only make an asteroid from a planet."
                   "recovery" : 129600,
                   "side_chance" : 25,
-                  "success" : 0,
+                  "success" : 50,
+                  "essentia_cost" : 0,
                   "throw" : 1009,
                   "types" : [
                      "habitable planet",
@@ -208,6 +181,17 @@ BlackHoleGenerator:
                },...
             ]
          }
+    subsidize_cooldown:
+      description: Will spend 2 essentia to cool down the BHG immediately. Returns view.
+      parameters:
+        - description: A session id.
+          name: session_id
+          type: string
+        - description: The unique id of the Black Hole Generator.
+          name: building_id
+          type: string
+      throws:
+        - 1011
     view:
       description: This method is extended to include the list of tasks.
       parameters:
@@ -1704,7 +1688,9 @@ Observatory:
                     ...
                 ]
                 ],
-            "star_count" : 37
+            "star_count" : 37,
+            "max_probes" : 90,
+            "travelling" : 2
          }
 OracleOfAnid:
   services:
@@ -2036,6 +2022,7 @@ Security:
                 {
                     "name" : "James Bond",
                     "level" : 11,
+                    "task" : "Appropriate Technology",
                     "next_mission" : "01 31 2010 13:09:05 +0600"
                 },
                 ...
@@ -2058,9 +2045,10 @@ Security:
             "status" : { ... },
             "prisoners" : [
                 {
-                    "id" : "id-goes-here",
-                    "name" : "James Bond",
+                    "id"    : "id-goes-here",
+                    "name"  : "James Bond",
                     "level" : "20",
+                    "task"  : "Captured" or "Prisoner Transport",
                     "sentence_expires" : "01 31 2010 13:09:05 +0600"
                 },
                 ...
@@ -2121,6 +2109,8 @@ Shipyard:
                 ...
             },
             "docks_available" : 7,         # you can only build ships up to the number of docks you have available
+            "build_queue_max" : 60,        # maximum queueable ships
+            "build_queue_used" : 3,        # ships in queue for all shipyards
             "status" : { ... },
          }
     subsidize_build_queue:
@@ -4422,6 +4412,7 @@ simple:
   - Espionage
   - EssentiaVein
   - Fission
+  - Fissure
   - Fusion
   - GasGiantLab
   - GasGiantPlatform
