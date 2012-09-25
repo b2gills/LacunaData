@@ -269,6 +269,7 @@ PoliceStation:
                 {
                     "name" : "James Bond",
                     "level" : 11,
+                    "task"  : "Appropriate Technology",
                     "next_mission" : "01 31 2010 13:09:05 +0600"
                 },
                 ...
@@ -294,6 +295,7 @@ PoliceStation:
                     "id" : "id-goes-here",
                     "name" : "James Bond",
                     "level" : "20",
+                    "task"  : "Captured" or "Prisoner Transport",
                     "sentence_expires" : "01 31 2010 13:09:05 +0600"
                 },
                 ...
