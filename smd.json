@@ -244,14 +244,14 @@
                         ],
                         "returns":{"type":"object"}
                     },
-				"subsidize_cooldown" : {
-					"description": "Will spend 2 essentia to cool down the BHG immediately.",
-					"parameters": [
-					    {"name":"session_id", "type":"string", "optional":false},
+                    "subsidize_cooldown" : {
+                        "description": "Will spend 2 essentia to cool down the BHG immediately.",
+                        "parameters": [
+                            {"name":"session_id", "type":"string", "optional":false},
                             {"name":"building_id", "type":"string", "optional":false}
-					],
-					"returns":{"type":"object"}
-				}
+                        ],
+                        "returns":{"type":"object"}
+                    }
                 }
                         },
             "Capitol" : {
