@@ -337,10 +337,9 @@ Halls of Vrbansk:
   description: |-
     The Halls of Vrbansk are said to be the source of the ancient wisdom of the Great Race. You can use the Halls of Vrbansk to upgrade any permanent structure. Unlike many other glyph buildings you may build any number of Halls on your planet surface that you have room to build.
     Glyph recipes: The Halls of Vrbansk can be built at the Archaeology Ministry using any of the following recipes.
-    Upgrading a glyph building: To upgrade a permanent structure you will sacrifice a number of halls equal to the level upgrade. So to upgrade a level 3 Citadel of Knope to a level 4, you will need to sacrifice 4 Halls of Vrbansk. There is no need to upgrade a Halls of Vrbansk.
-    Click on any of them and a list of all the glyph buildings on your planet able to be upgraded is displayed. Select a building you want to upgrade and the appropriate number of Halls of Vrbansk are destroyed. The selected glyph building will be added to the build queue.
+    Upgrading a glyph building: To upgrade a permanent structure you will need to have a Halls of Vrbansk built on your planet. The number of Halls sacrificed is equal to the level of the building after you upgrade it. So to upgrade a level 3 Geo Thermal Vent to a level 4, you will need to sacrifice 4 Halls of Vrbansk plans. There is no need to upgrade a Halls of Vrbansk or build more than one on a planet.
+    Click on the Hall and a list of all the glyph buildings on your planet able to be upgraded is displayed. Select a building you want to upgrade and the appropriate number of Halls of Vrbansk plans are destroyed. The selected glyph building will be added to the build queue.
     Buildings upgraded in this manner are also limited to level 30.
-    Note: You now only need place a single hall now on a planet to be able to upgrade your glyph buildings.  When you select the upgrade option the upgrade will consume the required number of plans.  You do still need to maintain a sufficient number of spaces 30 max to be able to perform the upgrades.
   recipe:
     A:
       - goethite
@@ -376,7 +375,7 @@ Interdimensional Rift:
     Unlike the Ore Storage or Food Storage buildings do, Interdimensional Rift does not show the exact resources stored.  Neither does it allow you to dump resources.  Also it cannot reserve a specific resource from use like the Distribution Center does.
     Storage Amounts by level:
     (Numbers rounded off a little, figures shown are without boosts. Exact amounts depend on your affinities)
-    Playing Tip: The Interdimensional Rift is the ultimate in high capacity storage and is highly favored for this by top players.  Sometimes is it used to replace all other storage on a planet.  If the Interdimensional Rift is of a high level it can make recovery from a heavy Snark assault very easy since it costs nothing to repair and provides very high amounts of storage.  When combined with other high level resource producing buildings in can be used to make a colony nearly impervious to assault by ships because all glyph buildings are free to repair and produce large amounts of resources.  This building would provide all the storage needed to repair the standard buildings.  It is due to this very reason that the Saben are such a difficult AI to take down.
+    Playing Tip: The Interdimensional Rift is the ultimate in high capacity storage and is highly favored for this by top players.  Sometimes is it used to replace all other storage on a planet.  If the Interdimensional Rift is of a high level it can make recovery from a heavy Snark assault very easy since it costs nothing to repair and provides very high amounts of storage.  When combined with other high level resource producing buildings in can be used to make a colony nearly impervious to assault by ships because all glyph buildings are free to repair and produce large amounts of resources.  This building would provide all the storage needed to repair the standard buildings.  It is due to this very reason that the Saben are such a difficult AI to take down. *The Saben have been shrunk down into a pea in recent months. So, they are no longer a threat, even with glyph buildings.
     You can construct an Interdimensional Rift at the Archaeology Ministry by combining  methane, zircon, and fluorite glyphs.
   recipe:
     - methane
