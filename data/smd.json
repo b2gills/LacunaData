@@ -958,6 +958,14 @@
                         ],
                         "returns":{"type":"object"}
                     },
+                    "abandon_all_probes" : {
+                        "description": "All probes are deactivated, and allowed to burn up in the stars.",
+                        "parameters": [
+                            {"name":"session_id", "type":"string", "optional":false},
+                            {"name":"building_id", "type":"string", "optional":false}
+                        ],
+                        "returns":{"type":"object"}
+                    },
                     "get_probed_stars" : {
                         "description": "Returns a list of the stars that have been probed by this planet.",
                         "parameters": [
@@ -2597,6 +2605,14 @@
                         "returns":{"type":"object"}
                     },
                     "propose_members_only_colonization" : {
+                        "description": "",
+                        "parameters": [
+                            {"name":"session_id", "type":"string", "optional":false},
+                            {"name":"building_id", "type":"string", "optional":false}
+                        ],
+                        "returns":{"type":"object"}
+                    },
+                    "propose_neutralize_bhg" : {
                         "description": "",
                         "parameters": [
                             {"name":"session_id", "type":"string", "optional":false},
