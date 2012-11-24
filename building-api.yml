@@ -28,7 +28,7 @@ Archaeology:
         - description: An array reference containing an ordered list of up to four glyph types.
           name: glyphs
           type: string
-        - description: 'An optional quantity; if left blank it defaults to 1, otherwise specify the number of times to assemble the indicated glyphs up to a maximum of 50.'
+        - description: 'An optional quantity; if left blank it defaults to 1, otherwise specify the number of times to assemble the indicated glyphs up to a maximum of 5000.'
           name: quantity
           type: string
       returns: |-
@@ -149,7 +149,7 @@ Archaeology:
 BlackHoleGenerator:
   services:
     get_actions_for:
-      description: "Returns status and task list with success percentage for defined target.Options are as described for generate_singularitycost is the amount in Essentia which will make the task 'perfect' (i.e. 100% success) the lower the probability of success, the higher the cost. The minimum is 2E.If the chance of success is zero, then no amount of Essentia will make it succeed."
+      description: "Returns status and task list with success percentage for defined target.Options are as described for generate_singularitycost is the amount in Essentia which will make the task 'perfect' (i.e. 100% success) the lower the probability of success, the higher the cost. The minimum is 2E.If name is Change Type, a body_type parameter is provided which will be either asteroid or habitable planet.If the chance of success is zero, then no amount of Essentia will make it succeed."
       parameters:
         - name: session_id
         - name: building_id
@@ -216,7 +216,27 @@ BlackHoleGenerator:
                   "waste_cost" : 50000000
                   "reason" : "You can only make an asteroid from a planet."
                },...
-            ]
+            ],
+            "task_options" : {
+                "asteroid_types" : [
+                    1,
+                    2,
+                    ...
+                    26
+                ],
+                "planet_types" : [
+                    1,
+                    2,
+                    ...
+                    40
+                ],
+                "zones" : [
+                    "-5|-5",
+                    "-5|-4",
+                    ...
+                    "5|5"
+                ]
+            }
          }
 Capitol:
   services:
@@ -1080,6 +1100,16 @@ Intelligence:
                 }
             },
          }
+    view_all_spies:
+      description: Returns the list of spies you have on your roster from that Intelligence Ministy. Otherwise identical to view_spies.
+      parameters:
+        - name: session_id
+        - name: building_id
+    view_empire_spies:
+      description: Returns the list of spies you have on your roster from your empire. Otherwise identical to view_spies.
+      parameters:
+        - name: session_id
+        - name: building_id
     view_spies:
       description: 'Returns the list of spies you have on your roster.Take a look at the assign_spy method below for assignment descriptions.NOTE: If a spy is already recovering from a particular assignment, then possible_assignments will return only that one assignment and the recovery time will be however much recovery time is remaining.'
       parameters:
@@ -1126,6 +1156,12 @@ Intelligence:
                     "offense_rating" : 570,
                     "defense_rating" : 150,
                     "assigned_to" : {
+                        "body_id" : "id-goes-here",
+                        "name" : "Earth",
+                        "x" : 40,
+                        "y" : -71
+                    },
+                    "based_from" : {
                         "body_id" : "id-goes-here",
                         "name" : "Earth",
                         "x" : 40,
@@ -1644,6 +1680,21 @@ Network19:
 Observatory:
   description: The observatory controls stellar probes.
   services:
+    abandon_all_probes:
+      description: 'All probes controlled by this observatory are deactivated, and allowed to burn up in the stars.'
+      parameters:
+        - description: A session id.
+          name: session_id
+          type: string
+        - description: The unique id for the observatory.
+          name: building_id
+          type: string
+      returns: |-
+        {
+                "status" : { ... }
+         }
+      throws:
+        - 1010
     abandon_probe:
       description: 'The probe is deactivated, and allowed to burn up in the star.'
       parameters:
