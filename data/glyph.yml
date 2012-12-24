@@ -199,10 +199,13 @@ Black Hole Generator:
     An experimental singularity lab created by the Great Race. Commonly called the BHG.
     A drawing published by BHGO of the Black Hole Generator, according to detection and spying reports.
     This building has not been added to the iphone client.
+    Note: The UI is currently having a few issues with displaying options. It displays all legal options correctly, but does not display prohibted ones correctly at this time.
+    Space Stations now have the ability to restrict BHG use within their jurisdiction once their parliament reaches level 23.
     The black hole generator is said to do a lot of crazy mind bending stuff. With the power of a singularity, it changes the universe by multiplying it with an alternate universe. Here are some evidence-supported features:
-    When you try to start it you can select one of at least five options for what you want it to do; if it does not fail on startup your choice will happen.  The options we know it will have at some point are listed below.  More options may be out there.
+    When you try to start it you can select one of the options presented for what you want it to do; if it does not fail on startup your choice will happen. The options are listed below
     Side Effects:
     Side Effects can occur anywhere within the zone and happen when the BHG succeeds and the side effect chance comes up.  Side effects are more random and can be beneficial.
+    More about moving planets: You can move into an orbit that your species normally can't inhabit, but all food producers will still produce as normal. However, you may find yourself at negative plots which does impact your happiness production.
     Failure Results:
     Failure effects tend to be non-beneficial.  For example; while a side effect can wind up adding a few plot sizes to a planet, a failure will always subtract plot sizes if that effect happens.
     Recipe:
@@ -385,7 +388,7 @@ Interdimensional Rift:
   wiki: http://community.lacunaexpanse.com/wiki/interdimensional-rift
 Kalavian Ruins:
   description: |-
-    The Kalavian Ruins were left behind by the Great Race that once inhabited the Lacuna Expanse. Today they still hold great mystery and wonder, and attract tourists, and are a source of pride for local citizens. If you were to find the ruins on your planet, they would greatly increase the happiness of your citizens.
+    The Kalavian Ruins were left behind by the Great Race that once inhabited the Lacuna Expanse. No one knows exactly what did it do or was designed to do, but it does resemble an ancient theatre. Anyway, they still hold great mystery and wonder today, attracting tourists, while bringing a sense of pride for citizens. If you were to find the Ruins on your planet, they would greatly increase the happiness of your citizens.
     You can construct the Kalavian Ruins in the Archaeology Ministry by combining a Galena glyph with a Gold glyph.
   produces:
     - happiness
