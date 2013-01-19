@@ -3130,6 +3130,7 @@ TheDillonForge:
               "current_task" : "make_plan",
               "seconds_remaining" : 120,
               "can" : 0,
+              "working" : "Making Crater 6+0",
               "subsidy_cost" : 2,
         
               "make_plan" : [
