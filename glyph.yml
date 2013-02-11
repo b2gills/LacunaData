@@ -340,10 +340,11 @@ Halls of Vrbansk:
   description: |-
     The Halls of Vrbansk are said to be the source of the ancient wisdom of the Great Race. You can use the Halls of Vrbansk to upgrade any permanent structure. Unlike many other glyph buildings you may build any number of Halls on your planet surface that you have room to build.
     Glyph recipes: The Halls of Vrbansk can be built at the Archaeology Ministry using any of the following recipes.
-    Upgrading a glyph building: To upgrade a permanent structure you will need to have a Halls of Vrbansk built on your planet. The number of Halls sacrificed is equal to the level of the building after you upgrade it. So to upgrade a level 3 Geo Thermal Vent to a level 4, you will need to sacrifice 4 Halls of Vrbansk plans.
+    Upgrading a glyph building: To upgrade a permanent structure you will need to have a Halls of Vrbansk built on your planet. The number of Halls sacrificed is equal to the level of the building after you upgrade it. So to upgrade a level 3 Geo Thermal Vent to a level 4, you will need to sacrifice 4 Halls of Vrbansk plans. Note that you only have to build one, but need the space of the level you upgrade to. This means you need 30 free spaces to upgrade from a level 29 building to a level 30 building. (or 29 + the one your hall uses.)
     "Choosing a Plan to Sacrifice will Upgrade a permanent building relevant to the plan you have sacrificed."
     There is no need to upgrade a Halls of Vrbansk or build more than one on a planet.
     Click on the Hall and a list of all the glyph buildings on your planet able to be upgraded is displayed. Select a building you want to upgrade and the appropriate number of Halls of Vrbansk plans are destroyed. The selected glyph building will be added to the build queue.
+    Note: You can only upgrade a glyph building to your University level +1.
     Buildings upgraded in this manner are also limited to level 30.
   recipe:
     A:
