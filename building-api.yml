@@ -2192,6 +2192,18 @@ Shipyard:
           type: string
       throws:
         - 1011
+    subsidize_ship:
+      description: Will spend 1 essentia to complete the build of the specified ship.This accepts a hash of named arguments.
+      parameters:
+        - name: parameter_hash
+      returns: |-
+        {
+            "session_id"    : 1234-123-123,
+            "building_id"   : 4567,
+            "ship_id"       : 88478,
+          }
+      throws:
+        - 1011
     view_build_queue:
       description: Retrieves what is already being built at this shipyard.
       parameters:
@@ -2244,6 +2256,7 @@ SpacePort:
                 "id" : "id-goes-here",
                 "name" : "CS4",
                 "hold_size" : 1100,
+                "berth_level" : 1,
                 "speed" : 400,
                 "type" : "cargo_ship",
                 "date_arrives" : "01 31 2010 13:09:05 +0600",
@@ -2352,6 +2365,7 @@ SpacePort:
                     "id" : "id-goes-here",
                     "name" : "CS4",
                     "hold_size" : 1100,
+                    "berth_level" : 1,
                     "speed" : 400,
                     "type" : "cargo_ship",
                     "estimated_travel_time" : 3600, # in seconds
@@ -2393,6 +2407,7 @@ SpacePort:
                     "id" : "id-goes-here",
                     "name" : "CS4",
                     "hold_size" : 1100,
+                    "berth_level" : 1,
                     "speed" : 400,
                     "type" : "cargo_ship",
                     "estimated_travel_time" : 3600, # in seconds
@@ -2436,6 +2451,7 @@ SpacePort:
                     "speed" : "2000",
                     "stealth" : "0",
                     "hold_size" : "0",
+                    "berth_level" : "1",
                     "date_started" : "01 31 2010 13:09:05 +0600",
                     "date_available" : "02 01 2010 10:08:33 +0600",
                     "date_arrives" : "02 01 2010 10:08:33 +0600",
@@ -2476,6 +2492,7 @@ SpacePort:
                 "id" : "id-goes-here",
                 "name" : "SS4",
                 "hold_size" : 0,
+                "berth_level" : "1",
                 "speed" : 3400,
                 "type" : "spy_shuttle",
                 "date_arrives" : "01 31 2010 13:09:05 +0600",
@@ -2528,6 +2545,7 @@ SpacePort:
                   "fleet_speed" : "250",
                   "stealth" : "0",
                   "hold_size" : "0",
+                  "berth_level" : "1",
                   "date_started" : "01 31 2010 13:09:05 +0600",
                   "date_available" : "02 01 2010 10:08:33 +0600",
                   "date_arrives" : "02 01 2010 10:08:33 +0600",
@@ -2629,6 +2647,7 @@ SpacePort:
                 "id" : "id-goes-here",
                 "name" : "CS4",
                 "hold_size" : 1100,
+                "berth_level" : 1,
                 "speed" : 400,
                 "type" : "cargo_ship",
                 "date_arrives" : "01 31 2010 13:09:05 +0600",
