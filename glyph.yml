@@ -221,8 +221,13 @@ Black Hole Generator:
   wiki: http://community.lacunaexpanse.com/wiki/black-hole-generator
 Citadel of Knope:
   description: |-
-    The Citadel of Knope protects your colony by redirecting damage of ships to itself whenever your defense force is unable to, meaning it is the last line of your defense. When it does this it loses a level. However, if it survives the impact it automatically creates a mirror replica of the ship that damaged it, thus giving the defender the ship that just attacked them.
-    Playing Tip: This building is generally considered a waste to upgrade considering the high value of the Halls that are spent in the upgrade of it.  The few players that do have one of any significant level usually have one that was either stolen or inherrited from an AI planet.  The Saben are known to keep these on their planets.  They can also be found on random Diablotin planets.
+    The Citadel of Knope has historically been very poorly understood.  It was commonly thought that it would redirect ships to itself whenever your defense force was unable to, meaning it was the last line of defense.
+    Until recently, it's operation would be to draw down the ship with tractor beams and capture it, thus giving the defender the ship that had just attacked. However in doing so, the building would typically be damaged, thus reducing it by one level, or even destroying it totally.
+    Scientists now belive that they have discovered the true operation of the Citadel and that they may be able to operate it far more efficiently, and without damage.
+    Rather than drawing down the ships, it actually repels them, causing damage to the ships engines due to the heterodyne of the repulsor field and the ships engines. Such ships then have to return at one quarter speed back to their spaceport to have their engines retuned.  This effect has not proven to be successful on Piloted ships such as the Sweeper or the Fighter.  It has however proven to be effective in keeping ships like the Snark and Seekers from hitting their targets.
+    The only effect this has on the Citadel of Knope is that it requires a cool-down, the period depending upon the level of the building. A level 30 will cool-down within 30 seconds and then be ready to repel another 120 ships, a level 1 may take up to 15 minutes before it is ready again.
+    We will let you know when scientists are ready to release their findings so that you can safely upgrade your Citadel.
+    The Saben are known to keep these on their planets.  They can also be found on random Diablotin planets.
     The Citadel of Knope can be built in the Archaeology Ministry by combining beryl, sulfur, monazite, and galena glyphs.
   recipe:
     - beryl
@@ -341,11 +346,13 @@ Halls of Vrbansk:
     The Halls of Vrbansk are said to be the source of the ancient wisdom of the Great Race. You can use the Halls of Vrbansk to upgrade any permanent structure. Unlike many other glyph buildings you may build any number of Halls on your planet surface that you have room to build.
     Glyph recipes: The Halls of Vrbansk can be built at the Archaeology Ministry using any of the following recipes.
     Upgrading a glyph building: To upgrade a permanent structure you will need to have a Halls of Vrbansk built on your planet. The number of Halls sacrificed is equal to the level of the building after you upgrade it. So to upgrade a level 3 Geo Thermal Vent to a level 4, you will need to sacrifice 4 Halls of Vrbansk plans. Note that you only have to build one, but need the space of the level you upgrade to. This means you need 30 free spaces to upgrade from a level 29 building to a level 30 building. (or 29 + the one your hall uses.)
+    Update: As of March 2013, there is no need for x+1 spaces when sacrificing halls.
     "Choosing a Plan to Sacrifice will Upgrade a permanent building relevant to the plan you have sacrificed."
     There is no need to upgrade a Halls of Vrbansk or build more than one on a planet.
     Click on the Hall and a list of all the glyph buildings on your planet able to be upgraded is displayed. Select a building you want to upgrade and the appropriate number of Halls of Vrbansk plans are destroyed. The selected glyph building will be added to the build queue.
     Note: You can only upgrade a glyph building to your University level +1.
     Buildings upgraded in this manner are also limited to level 30.
+    Update: If you have (say) 30 hall plans, and one hall building, then when you upgrade from 29 to 30 the halls will be used, but the building won't.
   recipe:
     A:
       - goethite
