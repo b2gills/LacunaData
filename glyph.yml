@@ -343,16 +343,15 @@ Grove of Trees:
   wiki: http://community.lacunaexpanse.com/wiki/grove-of-trees
 Halls of Vrbansk:
   description: |-
-    The Halls of Vrbansk are said to be the source of the ancient wisdom of the Great Race. You can use the Halls of Vrbansk to upgrade any permanent structure. Unlike many other glyph buildings you may build any number of Halls on your planet surface that you have room to build.
-    Glyph recipes: The Halls of Vrbansk can be built at the Archaeology Ministry using any of the following recipes.
-    Upgrading a glyph building: To upgrade a permanent structure you will need to have a Halls of Vrbansk built on your planet. The number of Halls sacrificed is equal to the level of the building after you upgrade it. So to upgrade a level 3 Geo Thermal Vent to a level 4, you will need to sacrifice 4 Halls of Vrbansk plans. Note that you only have to build one, but need the space of the level you upgrade to. This means you need 30 free spaces to upgrade from a level 29 building to a level 30 building. (or 29 + the one your hall uses.)
-    Update: As of March 2013, there is no need for x+1 spaces when sacrificing halls.
-    "Choosing a Plan to Sacrifice will Upgrade a permanent building relevant to the plan you have sacrificed."
-    There is no need to upgrade a Halls of Vrbansk or build more than one on a planet.
-    Click on the Hall and a list of all the glyph buildings on your planet able to be upgraded is displayed. Select a building you want to upgrade and the appropriate number of Halls of Vrbansk plans are destroyed. The selected glyph building will be added to the build queue.
+    The Halls of Vrbansk are said to be the source of the ancient wisdom of the Great Race. You can use the plans for the Halls of Vrbansk to upgrade some permanent structures.
+    Glyph recipes: The Halls of Vrbansk plan can be built at the Archaeology Ministry using any of the following recipes.
+    Upgrading a glyph building: At one time, before scientists fully understood the Halls of Vrbansk, it was necessary to actually build a Hall Building before a sacrifice could be made. Now the technology has been improved and you can upgrade Glyph Buildings directly (using the upgrade button).
+    You still need sufficient Hall plans before you can upgrade however. The number of Hall plans should equal the level of the building after you upgrade it. So, to upgrade a level 5 building you will need 6 plans.
+    Note. Some permanent buildings (crater, platforms, grove of trees) can no longer be upgraded via Halls (but why would you want to?).
+    To upgrade a permanent building with halls, click on the building, as you would any other, and click the 'upgrade' button. The correct number of hall plans will be deducted and the upgrade will be scheduled.
+    If you don't have enough hall plans for the upgrade, the button will not be displayed and you will have a message to that effect instead.
     Note: You can only upgrade a glyph building to your University level +1.
     Buildings upgraded in this manner are also limited to level 30.
-    Update: If you have (say) 30 hall plans, and one hall building, then when you upgrade from 29 to 30 the halls will be used, but the building won't.
   recipe:
     A:
       - goethite
@@ -443,7 +442,8 @@ Lapis Forest:
 Library of Jith:
   description: |-
     It is said that the Great Race is also the first race. And that they constructed experiments to alter themselves to form a more perfect race. And the records of those experiments are contained in the Library of Jith.
-    Note: There is little reason beyond bragging rights to upgrade this building beyond level 1.  This building will work exactly the same way no matter the level.
+    A cooldown timer is part of the Library.
+    The cooldown for a level 1 is one hour, and at level 30 the cooldown is 15 seconds.
     Lets you look up other empire species stats.
     You can build this building at the Archaeology ministry by combining the following glyphs: anthracite, bauxite, beryl, and chalcopyrite.
   recipe:

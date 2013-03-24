@@ -865,46 +865,6 @@ GeneticsLab:
             },
             # the rest is the same as prepare_experiment 
          }
-HallsOfVrbansk:
-  services:
-    get_upgradable_buildings:
-      description: Returns a list of buildings that can be upgraded by the Halls of Vrbansk.
-      parameters:
-        - description: A session id.
-          name: session_id
-          type: string
-        - description: The unique id of the Halls of Vrbansk.
-          name: building_id
-          type: string
-      returns: |-
-        {
-            "status" : { ... },
-            "buildings" : [
-                {
-                    "name" : "Oracle of Anid",
-                    "id" : "id-goes-here",
-                    "x" : -3,
-                    "y" : 2,
-                    "image" : "oracleanid1",
-                    "level" : 1,
-                    "url" : "/oracleofanid"
-                },
-                ...
-            ]
-         }
-    sacrifice_to_upgrade:
-      description: 'Sacrifices a number of the Halls of Vrbansk to upgrade a building.NOTE: In all likelyhood the Halls of Vrbansk that the player is looking at when they call this method will be destroyed. The building will return a status, but then you should close whatever screen you have open for it and refresh the planet surface. The needs_surface_refresh flag will be set in the body status on the return. You should wait for the return to close the building though, in case of an exception.'
-      parameters:
-        - description: A session id.
-          name: session_id
-          type: string
-        - description: The unique id of the Halls of Vrbansk.
-          name: building_id
-          type: string
-        - description: The unique id of the building you wish to upgrade.
-          name: upgrade_building_id
-          type: string
-      returns: "{\n    \"status\" : { ... }\n }"
 IntelTraining:
   description: The Intel Training Facility is where you train your spies in the ways of intelligence gathering.
   services:
@@ -4561,6 +4521,7 @@ simple:
   - GratchsGauntlet
   - GreatBallOfJunk
   - Grove
+  - HallsOfVrbansk
   - Hydrocarbon
   - InterDimensionalRift
   - JunkHengeSculpture

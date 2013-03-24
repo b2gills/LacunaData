@@ -1,3 +1,12 @@
+3.0883:
+ - Fix: Library timer was too excessive.
+ - Mod: Gradual increase in TM range from 465 to 900.
+ - Mod: Spies can steal more than one glyph.
+ - Mod: Glyph buildings can now be upgraded (with halls) via update button
+ - Mod: All Halls of Vrbansk building have been replaced with hall plans
+ - Mod: The Halls of Vrbansk can no longer be built from a plan.
+ - Mod: Disable upgrade button on Permanent E-Veins
+
 3.0882:
  - Fix: Timers on int ministries get zeroed on flipped planets.
  - Mod: Halls no longer need x+1 free spaces to upgrade a level x building
