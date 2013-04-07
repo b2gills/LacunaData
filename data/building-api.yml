@@ -1095,11 +1095,6 @@ Intelligence:
       parameters:
         - name: session_id
         - name: building_id
-    view_empire_spies:
-      description: Returns the list of spies you have on your roster from your empire. Otherwise identical to view_spies.
-      parameters:
-        - name: session_id
-        - name: building_id
     view_spies:
       description: 'Returns the list of spies you have on your roster.Take a look at the assign_spy method below for assignment descriptions.NOTE: If a spy is already recovering from a particular assignment, then possible_assignments will return only that one assignment and the recovery time will be however much recovery time is remaining.'
       parameters:
@@ -1109,7 +1104,7 @@ Intelligence:
         - description: The unique id of your Intelligence Ministry.
           name: building_id
           type: string
-        - description: Defaults to 1. An integer representing which page to view. Shows 25 spies per page.
+        - description: Defaults to 1. An integer representing which page to view. Shows 30 spies per page.
           name: page_number
           type: string
       returns: |-

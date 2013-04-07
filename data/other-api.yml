@@ -626,6 +626,7 @@ Empire:
                     "id-goes-here" : "Earth",
                     "id-goes-here" : "Mars
                 },
+                "tech_level"           : 20,  # Highests level university has gotten to.
                 "self_destruct_active" : 0,
                 "self_destruct_date" : ""
             }
