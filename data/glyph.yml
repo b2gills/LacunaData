@@ -205,6 +205,7 @@ Black Hole Generator:
     When you try to start it you can select one of the options presented for what you want it to do; if it does not fail on startup your choice will happen. The options are listed below
     Side Effects:
     Side Effects can occur anywhere within the zone and happen when the BHG succeeds and the side effect chance comes up.  Side effects are more random and can be beneficial.
+    If a space station has enacted BHG Neutralization in it's controlled systems, side effects will not happen in those systems.
     More about moving planets: You can move into an orbit that your species normally can't inhabit, but all food producers will still produce as normal. However, you may find yourself at negative plots which does impact your happiness production.
     Failure Results:
     Failure effects tend to be non-beneficial.  For example; while a side effect can wind up adding a few plot sizes to a planet, a failure will always subtract plot sizes if that effect happens.
