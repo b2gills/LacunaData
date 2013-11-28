@@ -328,6 +328,18 @@ Body:
         - 1000
         - 1002
         - 1010
+    repair_list:
+      description: 'Repairs buildings in order of ids gived in array.Returns similar output to get_buildings, but only ones identified in building_ids'
+      parameters:
+        - description: A session id.
+          name: session_id
+          type: string
+        - description: The id of the body you wish to retrieve the buildings on.
+          name: body_id
+          type: string
+        - description: An array reference to a list of building ids to be repaired.
+          name: building_ids
+          type: string
 Empire:
   services:
     boost_building:
