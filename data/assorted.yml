@@ -1,0 +1,90 @@
+---
+resource groups:
+  conductive metals:
+    - chalcopyrite
+    - gold
+    - bauxite
+  coolants:
+    - Galena
+    - Halite
+  hydrocarbons:
+    - Kerogen
+    - Methane
+    - Anthracite
+  insulating minerals:
+    - Zircon
+    - Beryl
+    - Gypsum
+  magnetic paramagnetic minerals:
+    - Magnetite
+    - Monazite
+    - Rutile
+    - Bauxite
+    - Chromite
+  mineral agents:
+    - Halite
+    - Sulfur
+    - Trona
+  phosphorus:
+    - gypsum
+    - sulfer
+    - monazite
+  processing minerals:
+    - Sulfur Fluorite
+  radioactive minerals:
+    - uraninite
+    - monazite
+  structural minerals:
+    - Rutile
+    - Chromite
+    - Bauxite
+    - Magnetite
+    - Beryl
+    - Goethite
+resource needed for:
+  Apple:
+    - phosphorus
+  Bean:
+    - phosphorus
+  CloakingLab:
+    - conductive metals
+  Corn:
+    - phosphorus
+  Dairy:
+    - trona
+  Fission:
+    - radioactive minerals
+  Fusion:
+    - coolants
+  GasGiantLab:
+    - structural minerals
+  GasGiantPlatform:
+    - structural minerals
+  Hydrocarbon:
+    - hydrocarbons
+  Lapis:
+    - phosphorus
+  MunitionsLab:
+    - processing minerals
+  PilotTraining:
+    - gold
+  Potato:
+    - phosphorus
+  Propulsion:
+    - structural minerals
+  Reclamation:
+    - mineral agents
+  Root:
+    - phosphorus
+  SAW:
+    - magnetic and paramagnetic minerals
+  TerraformingLab:
+    - phosphorus
+  TerraformingPlatform:
+    - phosphorus
+  Treatment:
+    - mineral agents
+  Waste:
+    - insulating minerals
+  Wheat:
+    - phosphorus
