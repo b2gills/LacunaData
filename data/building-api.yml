@@ -868,8 +868,7 @@ GeneticsLab:
 IntelTraining:
   description: The Intel Training Facility is where you train your spies in the ways of intelligence gathering.
   services:
-    train_spy:
-      description: Allows you to train an idle spy in the ways of intelligence gathering.The trained spy will receive 1 intel per level of the building.The only reason not_trained might be over 0 is if you specify training more spies than you have resources to spend.
+    view:
       parameters:
         - description: A session id.
           name: session_id
@@ -877,58 +876,14 @@ IntelTraining:
         - description: The unique id of your Intel Training Facility.
           name: building_id
           type: string
-        - description: The unique id of the spy to train.
-          name: spy_id
-          type: string
-      returns: |-
-        {
-            "status" : { ... },
-            "trained" : 1,
-            "not_trained" : 0
-         }
-      throws:
-        - 1009
-        - 1013
-    view:
-      description: The list of spies available to train shows up under training_costs in the time section since that varies from spy to spy.
-      parameters:
-        - name: session_id
-        - name: building_id
       returns: |-
         {
             "status" : { ... },
             "building" : { ... },
             "spies" : {
-                "maximum" : 5,
-                "current" : 1,
-                "in_training" : 1,
-                "training_costs" : {
-                    "food" : 100,
-                    "water" : 120,
-                    "energy" : 20,
-                    "ore" : 5,
-                    "waste" : 10,
-                    "time" : [
-                        {
-                            "spy_id" : "1",
-                            "time" : "18720",
-                            "level" : 26,
-                            "offense_rating" : 2600,
-                            "defense_rating" : 2600,
-                            "intel"          : 10,
-                            "mayhem"         : 60,
-                            "politics"       : 40,
-                            "theft"          :  0,
-                            "based_from"     : {
-                                                 "body_id" :
-                                                 "name"    => "Planet Name",
-                                                 "x"       => 15,
-                                                 "y"       => 4,
-                            },
-                        },
-                        ...
-                    ],
-                }
+                "max_points" : 2600,
+                "points_per" : 45,
+                "in_training" : 4,
             },
          }
 Intelligence:
@@ -1203,8 +1158,7 @@ LibraryOfJith:
 MayhemTraining:
   description: The Mayhem Training Facility is where you train your spies in the art of destruction.
   services:
-    train_spy:
-      description: Allows you to train an idle spy in the art of destruction.The trained spy will receive 1 mayhem per level of the building.The only reason not_trained might be over 0 is if you specify training more spies than you have resources to spend.
+    view:
       parameters:
         - description: A session id.
           name: session_id
@@ -1212,58 +1166,14 @@ MayhemTraining:
         - description: The unique id of your Mayhem Training Facility.
           name: building_id
           type: string
-        - description: The unique id of the spy to train.
-          name: spy_id
-          type: string
-      returns: |-
-        {
-            "status" : { ... },
-            "trained" : 1,
-            "not_trained" : 0
-         }
-      throws:
-        - 1009
-        - 1013
-    view:
-      description: The list of spies available to train shows up under training_costs in the time section since that varies from spy to spy.
-      parameters:
-        - name: session_id
-        - name: building_id
       returns: |-
         {
             "status" : { ... },
             "building" : { ... },
             "spies" : {
-                "maximum" : 5,
-                "current" : 1,
-                "in_training" : 1,
-                "training_costs" : {
-                    "food" : 100,
-                    "water" : 120,
-                    "energy" : 20,
-                    "ore" : 5,
-                    "waste" : 10,
-                    "time" : [
-                        {
-                            "spy_id" : "1",
-                            "time" : "18720",
-                            "level" : 26,
-                            "offense_rating" : 2600,
-                            "defense_rating" : 2600,
-                            "intel"          : 10,
-                            "mayhem"         : 60,
-                            "politics"       : 40,
-                            "theft"          :  0,
-                            "based_from"     : {
-                                                 "body_id" :
-                                                 "name"    => "Planet Name",
-                                                 "x"       => 15,
-                                                 "y"       => 4,
-                            },
-                        },
-                        ...
-                    ],
-                }
+                "max_points" : 2600,
+                "points_per" : 45,
+                "in_training" : 4,
             },
          }
 MercenariesGuild:
@@ -1973,8 +1883,7 @@ PlanetaryCommand:
 PoliticsTraining:
   description: The Politics Training Facility is where you train your spies in the dark art of social engineering.
   services:
-    train_spy:
-      description: Allows you to train an idle spy in the dark art of social engineering.The trained spy will receive 1 politics per level of the building.The only reason not_trained might be over 0 is if you specify training more spies than you have resources to spend.
+    view:
       parameters:
         - description: A session id.
           name: session_id
@@ -1982,58 +1891,14 @@ PoliticsTraining:
         - description: The unique id of your Politics Training Facility.
           name: building_id
           type: string
-        - description: The unique id of the spy to train.
-          name: spy_id
-          type: string
-      returns: |-
-        {
-            "status" : { ... },
-            "trained" : 1,
-            "not_trained" : 0
-         }
-      throws:
-        - 1009
-        - 1013
-    view:
-      description: The list of spies available to train shows up under training_costs in the time section since that varies from spy to spy.
-      parameters:
-        - name: session_id
-        - name: building_id
       returns: |-
         {
             "status" : { ... },
             "building" : { ... },
             "spies" : {
-                "maximum" : 5,
-                "current" : 1,
-                "in_training" : 1,
-                "training_costs" : {
-                    "food" : 100,
-                    "water" : 120,
-                    "energy" : 20,
-                    "ore" : 5,
-                    "waste" : 10,
-                    "time" : [
-                        {
-                            "spy_id" : "1",
-                            "time" : "18720",
-                            "level" : 26,
-                            "offense_rating" : 2600,
-                            "defense_rating" : 2600,
-                            "intel"          : 10,
-                            "mayhem"         : 60,
-                            "politics"       : 40,
-                            "theft"          :  0,
-                            "based_from"     : {
-                                                 "body_id" :
-                                                 "name"    => "Planet Name",
-                                                 "x"       => 15,
-                                                 "y"       => 4,
-                            },
-                        },
-                        ...
-                    ],
-                }
+                "max_points" : 2600,
+                "points_per" : 45,
+                "in_training" : 4,
             },
          }
 Security:
@@ -3169,8 +3034,7 @@ TheDillonForge:
 TheftTraining:
   description: The Theft Training Facility is where you train your spies in the art of appropriation.
   services:
-    train_spy:
-      description: Allows you to train an idle spy in the art of appropriation.The trained spy will receive 1 theft per level of the building.The only reason not_trained might be over 0 is if you specify training more spies than you have resources to spend.
+    view:
       parameters:
         - description: A session id.
           name: session_id
@@ -3178,58 +3042,14 @@ TheftTraining:
         - description: The unique id of your Theft Training Facility.
           name: building_id
           type: string
-        - description: The unique id of the spy to train.
-          name: spy_id
-          type: string
-      returns: |-
-        {
-            "status" : { ... },
-            "trained" : 1,
-            "not_trained" : 0
-         }
-      throws:
-        - 1009
-        - 1013
-    view:
-      description: The list of spies available to train shows up under training_costs in the time section since that varies from spy to spy.
-      parameters:
-        - name: session_id
-        - name: building_id
       returns: |-
         {
             "status" : { ... },
             "building" : { ... },
             "spies" : {
-                "maximum" : 5,
-                "current" : 1,
-                "in_training" : 1,
-                "training_costs" : {
-                    "food" : 100,
-                    "water" : 120,
-                    "energy" : 20,
-                    "ore" : 5,
-                    "waste" : 10,
-                    "time" : [
-                        {
-                            "spy_id" : "1",
-                            "time" : "18720",
-                            "level" : 26,
-                            "offense_rating" : 2600,
-                            "defense_rating" : 2600,
-                            "intel"          : 10,
-                            "mayhem"         : 60,
-                            "politics"       : 40,
-                            "theft"          :  0,
-                            "based_from"     : {
-                                                 "body_id" :
-                                                 "name"    => "Planet Name",
-                                                 "x"       => 15,
-                                                 "y"       => 4,
-                            },
-                        },
-                        ...
-                    ],
-                }
+                "max_points" : 2600,
+                "points_per" : 45,
+                "in_training" : 4,
             },
          }
 ThemePark:
