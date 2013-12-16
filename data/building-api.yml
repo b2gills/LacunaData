@@ -142,6 +142,7 @@ Archaeology:
                     "glyph" : 30,
                     "plan" : 7,
                     "resource" : 53
+                    "date_landed" : Date excav started at location
                 },
                 ...
             ]
