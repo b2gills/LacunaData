@@ -164,7 +164,9 @@ sub _load_building{
       $data->{recipe} = \@match if @match;
     }
 
+    unless( $building eq 'Black Hole Generator' ){
     _add_produces($building,$data);
+    }
   }
 
   unless( $data->{$building}{recipe} ){
@@ -215,6 +217,8 @@ sub _load_list{
     for my $a ( $table->find('tbody')->find('a') ){
       my $link = $a->attr('href');
       my $name = $a->as_text;
+
+      $link =~ s/crashed-ship-site\K2//;
 
       if( substr($link,0,1) eq '/' ){
         $link = $uri_root.$link;
