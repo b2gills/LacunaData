@@ -348,7 +348,11 @@ Empire:
         - description: A session id.
           name: session_id
           type: string
-      returns: "{\n    \"status\" : { ... }\n }"
+      returns: |-
+        {
+            "status" : { ... },
+            "building_boost" : "01 31 2010 13:09:05 +0600"
+         }
       throws:
         - 1011
     boost_energy:
@@ -533,6 +537,13 @@ Empire:
       throws:
         - 1005
         - 1009
+    enable_self_destruct:
+      description: 'Enables a destruction countdown of 24 hours. Sometime after the timer runs out, the empire will vaporize.'
+      parameters:
+        - description: A session id.
+          name: session_id
+          type: string
+      returns: "{\n    \"status\" : { ... }\n }"
     fetch_captcha:
       description: Retrieves a captcha that is required in order to call the create method. Display the resulting captcha in your creation form and then call create with the user's response.
       returns: |-
@@ -782,6 +793,19 @@ Empire:
         - description: "A message to indicate what you're doing, how you're feeling, or other status indicator. Limited to 100 characters, cannot be blank, and cannot contain @, &, <, >, or ;."
           name: message
           type: string
+    spy_training_boost:
+      description: 'Spends 5 essentia, and boosts spy training speed on all planets 50% for 7 days. If a boost is already underway, calling again will add 7 more days. Unlike other boosts, this one will boost spies currently in specialist training.'
+      parameters:
+        - description: A session id.
+          name: session_id
+          type: string
+      returns: |-
+        {
+            "status" : { ... },
+            "spy_training_boost" : "01 31 2010 13:09:05 +0600"
+         }
+      throws:
+        - 1011
     update_species:
       description: "Updates the empire's species and returns 1. Can only be called after create has been called and before found has been called. Before or after that will throw an exception. If you have already founded your empire then use redefine_species.See also: get_species_templates"
       parameters:
@@ -847,6 +871,7 @@ Empire:
                 "happiness" : "01 31 2010 13:09:05 +0600",
                 "storage" : "01 31 2010 13:09:05 +0600",
                 "building" : ""01 31 2010 13:09:05 +0600"
+                "spy_training_boost" : ""01 31 2010 13:09:05 +0600"
             }
          }
     view_profile:
