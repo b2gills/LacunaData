@@ -2190,6 +2190,18 @@ SpacePort:
          { "star_id" : "id-goes-here" }
          
          { "x" : 4, "y" : -3 }
+    mass_scuttle_ship:
+      description: Destroy a ship that you no longer need. It must be docked to scuttle it.
+      parameters:
+        - description: A session id.
+          name: session_id
+          type: string
+        - description: The unique id for the space port.
+          name: building_id
+          type: string
+        - description: Reference to an array of ship ids
+          name: ship_ids
+          type: string
     name_ship:
       description: Set the name of a ship.
       parameters:
@@ -2985,8 +2997,11 @@ TheDillonForge:
         - description: The extra build levels (if any) for that plan.
           name: extra_build_level
           type: string
+        - description: 'Number of plans to feed into the forge. Time does not go up linearly, but the more plans fed in, the more efficient.'
+          name: quantity
+          type: string
     subsidize:
-      description: Will spend 2 essentia to complete the current task immediately. Returns view
+      description: Will spend essentia to complete the current task immediately. Cost is 2e unless splitting multiple plans. Returns view
       parameters:
         - description: A session id.
           name: session_id
