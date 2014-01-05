@@ -213,6 +213,7 @@ Black Hole Generator:
     The glyphs must be assembled in the following order.
     Kerogen, Beryl, Anthracite, and Monazite
     Strategies:
+    Glyphs from the spliting of 5 BHG plans in the Dillon Forge provided clues on the recipe:
   recipe:
     - kerogen
     - beryl
