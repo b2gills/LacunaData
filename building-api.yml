@@ -3147,7 +3147,7 @@ Trade:
         - description: 'An array reference of hash references of items you wish to trade. There are five types of items that can be traded via this mechanism. They are resources, glyphs, plans, prisoners, and ships.'
           name: offer
           type: string
-        - description: An integer representing the amount of essentia you are asking for in this trade. Must be between 1 and 99.
+        - description: An number representing the amount of essentia you are asking for in this trade. Must be between 0.1 and 100.
           name: ask
           type: string
         - description: A hash reference of options to modify the trade.
@@ -3643,7 +3643,7 @@ Transporter:
           name: building_id
           type: string
         - name: offer
-        - description: An integer which represents how much essentia you are asking for in this trade. Must be between 1 and 99.
+        - description: An number which represents how much essentia you are asking for in this trade. Must be between 0.1 and 100.
           name: ask
           type: string
       returns: |-
@@ -3679,7 +3679,7 @@ Transporter:
             "status" : { ... }
          }
     get_glyphs:
-      description: Returns a list of glyphs that may be traded. Used with the add_trade method.
+      description: 'This API call is now deprecated, please use get_glyph_summary instead.'
       parameters:
         - description: A session id.
           name: session_id
@@ -3723,7 +3723,7 @@ Transporter:
             "status" : { ... }
          }
     get_plans:
-      description: Returns a list of plans that may be traded. Used with the add_trade method.
+      description: Deprecated Method. Please use get_plan_summary instead
       parameters:
         - description: A session id.
           name: session_id
