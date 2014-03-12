@@ -2577,7 +2577,7 @@ SpacePort:
             tag:
               description: 'Note: Tags will be converted to types prior to filtering and any types that were passed will be replaced.'
             task:
-              description: 'Optional. An array reference or string with the task(s) to filter on. Valid tasks include Docked, Building, Mining, Travelling, and Defend.'
+              description: 'Optional. An array reference or string with the task(s) to filter on. Valid tasks include Building, Defend, Docked, Mining, Orbiting, Supply Chain, Travelling, Waiting on Trade, and Waste Chain'
             type:
               description: Optional. An array reference or string with the type(s) to filter on. Valid types are the existing ship types.
           type: object
