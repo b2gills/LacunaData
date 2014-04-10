@@ -202,7 +202,7 @@ Black Hole Generator:
     Note: The UI is currently having a few issues with displaying options. It displays all legal options correctly, but does not display prohibted ones correctly at this time.
     Space Stations now have the ability to restrict BHG use within their jurisdiction once their parliament reaches level 23.
     The black hole generator is said to do a lot of crazy mind bending stuff. With the power of a singularity, it changes the universe by multiplying it with an alternate universe. Here are some evidence-supported features:
-    When you try to start it you can select one of the options presented for what you want it to do; if it does not fail on startup your choice will happen. The options are listed below
+    When you try to start it you can select one of the options presented for what you want it to do; if it does not fail on startup your choice will happen. The options are listed below:
     Side Effects:
     Side Effects can occur anywhere within the zone and happen when the BHG succeeds and the side effect chance comes up.  Side effects are more random and can be beneficial.
     If a space station has enacted BHG Neutralization in it's controlled systems, side effects will not happen in those systems.
@@ -321,7 +321,7 @@ Geo Thermal Vent:
 Gratch's Gauntlet:
   description: |-
     Thought to be one way the Great Race protected themselves from enemy agents.
-    Slows down infiltration time by 3 hours per level of the gauntlet. While spies are mired and spending time trying to find their way through the gauntlet, they cannot attack and are vulnerable to security sweeps. Because spies from allies don't "infiltrate", they are immune to Gratch's Gauntlet.
+    Slows down infiltration time by 1 hour plus 3 hours per level of the gauntlet. While spies are mired and spending time trying to find their way through the gauntlet, they cannot attack and are vulnerable to security sweeps. Because spies from allies don't "infiltrate", they are immune to Gratch's Gauntlet. A 0% efficiency Gratch's Guantlet still adds the 1 hour to the 'standard' infiltration time of one hour, for a total infiltration time of 2 hours.
     The actual practical usefullness of this glyph building is often highly debated.  Most arguements revolve around the fact that this building does not actualy catch incoming spies and just slows them down.  Still the player is actually required to run security sweeps to catch mirred down spies.  Othere debates tend to center around what level to build it to whether level 8 is suffiecent to keep spies mirred down for 24 hours, or to keep them mirred down for a full 90 hours.
     Note: previously this building was in-effective, but since the zero-travel-time spy bug has been fixed Gratch's Gauntlet should now work correctly.
     You can build this at the archaeology ministry by combining chromite, bauxite, gold, and kerogen glyphs.
