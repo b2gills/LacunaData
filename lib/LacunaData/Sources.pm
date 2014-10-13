@@ -166,8 +166,13 @@ sub get_source_from_url{
   my $uri = source_url( $_[0] );
 
   if( $uri =~ m(^(?: https? | ftp ):// )x ){
-    require LWP::Simple;
-    my $return = LWP::Simple::get( $uri );
+    require LWP::UserAgent;
+    my $ua = LWP::UserAgent->new( ssl_opts => { verify_hostname => 0 } );
+    my $result = $ua->get( $uri );
+
+    die $result->message if $result->is_error;
+
+    my $return = $result->decoded_content;
     die unless $return;
     return $return;
   }
