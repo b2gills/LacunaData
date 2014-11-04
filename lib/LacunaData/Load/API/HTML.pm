@@ -169,15 +169,29 @@ sub _get_api_method_info{
       }
       when( 'p' ){
         if( $arg and $method ){
+
+          my $arg_info = $method{$method}{'arg-info'} //= {};
+
           if($arg2){
-            unless(ref $method{$method}{'arg-info'}{$arg} ){
-              $method{$method}{'arg-info'}{$arg} = {
-                _description => $method{$method}{'arg-info'}{$arg}
+            unless(ref $arg_info->{$arg} ){
+              $arg_info->{$arg} = {
+                _description => $arg_info->{$arg}
               }
             }
-            $method{$method}{'arg-info'}{$arg}{$arg2}{description} = $text;
+
+            my $arg2_info = $arg_info->{$arg}{$arg2} //= {};
+
+            if( $arg2_info->{description} ){
+              $arg2_info->{description} .= ' ' . $text
+            }else{
+              $arg2_info->{description} = $text;
+            }
           }else{
-            $method{$method}{'arg-info'}{$arg} = $text;
+            if( $arg_info->{$arg} ){
+              $arg_info->{$arg} .= ' ' . $text;
+            }else{
+              $arg_info->{$arg} = $text;
+            }
             if( $text =~ /\b(?: defaults? | optional )\b/xi ){
               $method{$method}{required}{$arg} = 0;
             }
