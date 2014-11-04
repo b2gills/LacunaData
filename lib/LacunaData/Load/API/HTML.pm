@@ -3,7 +3,7 @@ use strict;
 use warnings;
 use 5.12.2;
 
-use HTML::TreeBuilder;
+use HTML::TreeBuilder 5 -weak;
 use LWP::Simple 'get';
 use autodie qw':default get';
 
@@ -221,13 +221,6 @@ sub _get_api_method_info{
   }
 
   return \%method;
-}
-
-sub DESTROY{
-  my($self) = @_;
-  if( $self->{tree} ){
-    $self->{tree}->delete;
-  }
 }
 
 use namespace::clean;
