@@ -139,9 +139,10 @@ sub _get_api_method_info{
     my $text = $elem->as_text;
 
     given( $tag ){
-      when( 'h1' ){ last }
+      when( 'h1' ){ last } # skip any POD ERRORS section
       when( 'h2' ){
         my($name,$args) = $text =~ /(\w+) \s* \(\s* (.*?) \s*\)/x;
+
         unless( defined $args ){
           $name //= $text;
           $args = '';
