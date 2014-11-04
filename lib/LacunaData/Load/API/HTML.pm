@@ -132,6 +132,7 @@ sub _get_api_method_info{
   my %method;
 
   my($method,$arg,$arg2);
+  my($arg_order,$arg_order_set);
 
   for my $elem ( @tail ){
     my $tag  = $elem->tag;
@@ -141,6 +142,11 @@ sub _get_api_method_info{
       when( 'h1' ){ last }
       when( 'h2' ){
         my($name,$args) = $text =~ /(\w+) \s* \(\s* (.*?) \s*\)/x;
+        unless( defined $args ){
+          $name //= $text;
+          $args = '';
+        }
+
         my @args = map{
           $a = "$_";
           $a =~ s/^ \s* \[ \s*  //x;
@@ -148,8 +154,14 @@ sub _get_api_method_info{
           $a
         } split ', ', $args;
 
-        if( @args && $args[0] ne 'params' ){
-          $method{$name}{'arg-order'} = \@args;
+        if( @args && $args[0] !~ /^param/ ){
+          # We know the argument names ahead of time
+          $arg_order = $method{$name}{'arg-order'} = \@args;
+          $arg_order_set = 1;
+        }else{
+          # Pick up the argument names as they come
+          undef $arg_order;
+          $arg_order_set = 0;
         }
 
         $method = $name;
@@ -166,6 +178,9 @@ sub _get_api_method_info{
             $method{$method}{'arg-info'}{$arg}{$arg2}{description} = $text;
           }else{
             $method{$method}{'arg-info'}{$arg} = $text;
+            if( $text =~ /\b(?: defaults? | optional )\b/xi ){
+              $method{$method}{required}{$arg} = 0;
+            }
           }
         }elsif( $method ){
           if( $text =~ /^throw\D*(.*)/i ){
@@ -187,18 +202,39 @@ sub _get_api_method_info{
         }
       }
       when( 'h3' ){
-        $arg = $text;
+        my($temp,$required) = $text =~ /(\w+) \s* \(\s* (.*?) \s*\)/x;
+        if( defined $temp ){
+          next if $required =~ /^original/;
+          $arg = $temp;
+          $required = $required eq 'required' || 0;
+          $method{$method}{required}{$arg} = $required;
+        }else{
+          next if $text eq 'named arguments';
+          $arg = $text;
+        }
+        if( $arg =~ /^param/ and not $arg_order ){
+          $arg_order_set = 1;
+        }
+
+        push @$arg_order, $arg unless $arg_order_set;
         undef $arg2;
       }
       when( 'h4' ){
         $arg2 = $text;
       }
     }
+    if( $method and $arg_order ){
+      if( @$arg_order and $arg_order->[-1] eq 'RESPONSE' ){
+        pop @$arg_order;
+      }
+      $method{$method}{'arg-order'} ||= $arg_order
+    }
   }
 
   while( my($method,$data) = each %method ){
     my $order = delete $data->{'arg-order'};
     my $info  = delete $data->{'arg-info'};
+    my $required = delete $data->{required};
     if( $order ){
       for my $name (@$order){
         my %param = ( name => $name );
@@ -210,6 +246,11 @@ sub _get_api_method_info{
           }else{
             $param{type} = 'string';
             $param{description} = $info->{$name};
+            if( $required ){
+              $param{required} = $required->{$name} // 1;
+            }else{
+              $param{required} = 1;
+            }
           }
         }
         push @{$method{$method}{parameters}}, \%param;
