@@ -91,6 +91,18 @@ Archaeology:
                 "rutile" : 19393
                 }
          }
+    mass_abandon_excavator:
+      description: Destroy all excavators.
+      parameters:
+        - description: A session id.
+          name: session_id
+          required: 1
+          type: string
+        - description: The unique id for the archaeology ministry.
+          name: building_id
+          required: 1
+          type: string
+        - name: ship_ids
     search_for_glyph:
       description: 'Searches through ore looking for glyphs left behind by the ancient race. Takes 10,000 of one type of ore to search. Returns view.'
       parameters:
@@ -1613,6 +1625,18 @@ MiningMinistry:
       returns: "{\n    \"status\" : { ... }\n }"
       throws:
         - 1009
+    mass_abandon_platform:
+      description: Destroy all platforms.
+      parameters:
+        - description: A session id.
+          name: session_id
+          required: 1
+          type: string
+        - description: The unique id for the mining ministry.
+          name: building_id
+          required: 1
+          type: string
+        - name: ship_ids
     remove_cargo_ship_from_fleet:
       description: Tell one of the cargo ships in the mining fleet to come home and park at the space port.
       parameters:
@@ -2068,6 +2092,19 @@ Park:
 PlanetaryCommand:
   description: 'The Planetary Command Center (PCC), or just Command, is the hub of your empire on a planet. It gives you the resources and storage you need to get a foothold on a planet.'
   services:
+    subsidize_pod_cooldown:
+      description: Will spend 2 essentia to allow a new pod to be sent immediately. Returns view.
+      parameters:
+        - description: A session id.
+          name: session_id
+          required: 1
+          type: string
+        - description: The unique id of the Planetary Command Center.
+          name: building_id
+          required: 1
+          type: string
+      throws:
+        - 1011
     view:
       description: Command extends the view method to include a planet section.
       parameters:
