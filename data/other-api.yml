@@ -252,6 +252,7 @@ Body:
                 "happiness" : 3939,
                 "happiness_hour" : 25,
                 "unhappy_date" : "01 13 2014 16:11:21 +0600",  # Only given if happiness is below zero
+                "neutral_entry" : "01 13 2014 16:11:21 +0600",  # Earliest time body can enter neutral area
                 "propaganda_boost" : 20,
                 "food_stored" : 33329,
                 "food_capacity" : 40000,
@@ -366,6 +367,30 @@ Body:
           name: building_ids
           required: 1
           type: string
+    view_laws:
+      description: 'NOTE: Pass in a the id of the station, not the id of the parliament building. This is because anyone that wants to should be able to view the laws in this jurisdiction.Returns a list of the laws.'
+      parameters:
+        - description: A session id.
+          name: session_id
+          required: 1
+          type: string
+        - description: The unique id of the space station.
+          name: body_id
+          required: 1
+          type: string
+      returns: |-
+        {
+            "status" : { ... },
+            "laws" : [
+                {
+                    "id" : "id-goes-here",
+                    "name" : "Censure of Jamie Vrbsky",
+                    "description" : "Jamie Vrbsky is bad at playing Lacuna!",
+                    "date_enacted" : "01 31 2010 13:09:05 +0600"
+                },
+                ...
+            ]
+         }
 Empire:
   services:
     boost_building:
@@ -683,6 +708,10 @@ Empire:
             "server" : { ... },
             "empire" : {
                 "id" : "xxxx",
+                "colonies" : {
+                    "id-goes-here" : "Earth",
+                    "id-goes-here" : "Mars"
+                },
                 "rpc_count" : 321, # the number of calls made to the server
                 "is_isolationist" : 1, # hasn't sent out probes or colony ships
                 "name" : "The Syndicate",
@@ -693,11 +722,15 @@ Empire:
                 "essentia" : 0,
                 "planets" : {
                     "id-goes-here" : "Earth",
-                    "id-goes-here" : "Mars
+                    "id-goes-here" : "Mars",
+                    "id-goes-here" : "Death Star"
                 },
                 "tech_level"           : 20,  # Highests level university has gotten to.
                 "self_destruct_active" : 0,
                 "self_destruct_date" : "",
+                "stations" : {
+                    "id-goes-here" : "Death Star"
+                },
                 "primary_embassy_id" : 234567
             }
          }
@@ -1577,6 +1610,30 @@ Map:
                 }
              ],
             "status" : { ... }
+         }
+    view_laws:
+      description: 'NOTE: Pass in a the id of a star and the laws enacted by the controlling station will be returned.Returns a list of the laws.'
+      parameters:
+        - description: A session id.
+          name: session_id
+          required: 1
+          type: string
+        - description: The unique id of the star
+          name: star_id
+          required: 1
+          type: string
+      returns: |-
+        {
+            "status" : { ... },
+            "laws" : [
+                {
+                    "id" : "id-goes-here",
+                    "name" : "Censure of Jamie Vrbsky",
+                    "description" : "Jamie Vrbsky is bad at playing Lacuna!",
+                    "date_enacted" : "01 31 2010 13:09:05 +0600"
+                },
+                ...
+            ]
          }
 Stats:
   services:

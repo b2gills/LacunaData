@@ -124,7 +124,7 @@ Parliament:
             ]
          }
     view_laws:
-      description: 'NOTE: Pass in a the id of the station, not the id of the parliament building. This is because anyone that wants to should be able to view the laws in this jurisdiction.Returns a list of the laws.'
+      description: 'While still usable, replaced by a body call instead of via the station. See Body for details.'
       parameters:
         - description: A session id.
           name: session_id
