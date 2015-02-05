@@ -223,6 +223,14 @@
                             {"name":"excavator_id", "type":"string", "optional":false}
                         ],
                         "returns":{"type":"object"}
+                    },
+                    "mass_abandon_excavator" : {
+                        "description": "Close down all existing excavator sites.",
+                        "parameters": [
+                            {"name":"session_id", "type":"string", "optional":false},
+                            {"name":"building_id", "type":"string", "optional":false}
+                        ],
+                        "returns":{"type":"object"}
                     }
                 }
             },
@@ -532,6 +540,24 @@
                             {"name":"building_id", "type":"string", "optional":false}
                         ],
                         "returns":{"type":"string"}
+                    }
+                }
+            },
+            "EssentiaVein" : {
+                "SMDVersion":"2.0",
+                "description": "Essentia Vein",
+                "envelope":"JSON-RPC-2.0",
+                "transport":"POST",
+                "target":"/essentiavein",
+                "services": {
+                    "drain" : {
+                        "description": "Drain the evein for an immediate, but smaller, amount of Essentia.",
+                        "parameters": [
+                            {"name":"session_id", "type":"string", "optional":false},
+                            {"name":"building_id", "type":"string", "optional":false},
+                            {"name":"times", "type":"number", "optional":true},
+                        ],
+                        "returns":{"type":"object"},
                     }
                 }
             },
@@ -865,6 +891,14 @@
                             {"name":"session_id", "type":"string", "optional":false},
                             {"name":"building_id", "type":"string", "optional":false},
                             {"name":"platform_id", "type":"string", "optional":false}
+                        ],
+                        "returns":{"type":"object"}
+                    },
+                    "mass_abandon_platform" : {
+                        "description": "Close down all existing mining platforms.",
+                        "parameters": [
+                            {"name":"session_id", "type":"string", "optional":false},
+                            {"name":"building_id", "type":"string", "optional":false}
                         ],
                         "returns":{"type":"object"}
                     }
@@ -1243,6 +1277,15 @@
                         ],
                         "returns":{"type":"object"}
                     },
+                    "get_fleet_for" : {
+                        "description": "Provides a list of incoming ships and ships that are available to send to a specific target. Use with send_ship_types.",
+                        "parameters": [
+                            {"name":"session_id", "type":"string", "optional":false},
+                            {"name":"from_body_id", "type":"string", "optional":false},
+                            {"name":"target", "type":"object", "optional":false}
+                        ],
+                        "returns":{"type":"object"}
+                    },
                     "get_ships_for" : {
                         "description": "Provides a list of incoming ships and ships that are available to send to a specific target. Use with send_ship.",
                         "parameters": [
@@ -1295,6 +1338,17 @@
                             {"name":"ship_ids", "type":"array", "optional":false},
                             {"name":"target", "type":"string", "optional":false},
                             {"name":"set_speed", "type":"number", "optional":true}
+                        ],
+                        "returns":{"type":"object"}
+                    },
+                    "send_ship_types" : {
+                        "description": "Sends a group of ships to a specified body or star. Use with get_fleet_for.",
+                        "parameters": [
+                            {"name":"session_id", "type":"string", "optional":false},
+                            {"name":"body_id", "type":"string", "optional":false},
+                            {"name":"target", "type":"string", "optional":false},
+                            {"name":"type_params", "type":"object", "optional":false},
+                            {"name":"arrival", "type":"object", "optional":false}
                         ],
                         "returns":{"type":"object"}
                     },
