@@ -2,6 +2,12 @@ package LacunaData::Load::ErrorCodes;
 use strict;
 use warnings;
 use 5.12.2;
+BEGIN {
+  if ( $] >= 5.020_000 ){
+    require experimental;
+    experimental->import('smartmatch');
+  }
+}
 use autodie;
 
 use YAML qw'freeze thaw';
