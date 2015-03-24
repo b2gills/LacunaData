@@ -248,6 +248,8 @@ Body:
                 
                 "needs_surface_refresh" : 1, # indicates that the client needs to call get_buildings() because something has changed
                 "building_count" : 7,
+                "build_queue_size" : 15, # can build 15 at once
+                "build_queue_len" : 10,  # have 10 building now
                 "plots_available" :60,
                 "happiness" : 3939,
                 "happiness_hour" : 25,
@@ -1213,7 +1215,7 @@ Inbox:
         - 1005
         - 1006
     trash_messages:
-      description: "Trashed messages are marked as read.Trashes a list of messages.NOTE: You cannot trash sent messages. You'll get a failure if the message is either already trashed, or it's a message that cannot be trashed, like a message in your sent folder."
+      description: 'Trashed messages are marked as read.Trashes a list of messages.NOTE: You cannot trash messages sent to others. Only messages sent to you.'
       parameters:
         - description: A session id.
           name: session_id
@@ -1226,7 +1228,6 @@ Inbox:
       returns: |-
         {
             "success" : ["id-goes-here","id-goes-here"],
-            "failure" : ["id-goes-here","id-goes-here"],
             "status" : { ... }
          }
     trash_messages_where:
