@@ -3,6 +3,7 @@ use strict;
 use warnings;
 use autodie;
 use 5.10.1;
+use if $] >= 5.019011, qw'experimental smartmatch';
 
 use DateTime;
 use File::Spec::Functions qw'no_upwards catfile';
