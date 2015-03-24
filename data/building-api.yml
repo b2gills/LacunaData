@@ -102,7 +102,6 @@ Archaeology:
           name: building_id
           required: 1
           type: string
-        - name: ship_ids
     search_for_glyph:
       description: 'Searches through ore looking for glyphs left behind by the ancient race. Takes 10,000 of one type of ore to search. Returns view.'
       parameters:
@@ -924,6 +923,27 @@ Entertainment:
             "status" : { ... },
             "ducks_quacked" : 493
          }
+EssentiaVein:
+  services:
+    drain:
+      description: "Allows draining of an evein quickly. Instead of 4e per day over 30 days, this will use up 30 days and provide 30e instantly. The optional times parameter allows draining of multiple months' worth in a single RPC. Periods less than 30 days cannot be drained quickly."
+      parameters:
+        - name: session_id
+        - name: 'building_id['
+        - name: times
+    view:
+      description: Addition of a drain_capable flag indicating how many groups of 30 days can be drained. Above example shows 90-119 days remaining.
+      parameters:
+        - name: session_id
+        - name: building_id
+      returns: |-
+        {
+            "status" : { ... },
+            "building" : { 
+               "drain_capable" : 3,
+               ...
+            },
+         }
 FoodReserve:
   description: The food reserve stores the excess food you produce.
   services:
@@ -1636,7 +1656,6 @@ MiningMinistry:
           name: building_id
           required: 1
           type: string
-        - name: ship_ids
     remove_cargo_ship_from_fleet:
       description: Tell one of the cargo ships in the mining fleet to come home and park at the space port.
       parameters:
@@ -2129,6 +2148,7 @@ PlanetaryCommand:
               "bauxite_stored" : 1235,
               ...
             },
+            "pod_delay" : 70515,  # seconds between supply pod sendings
             "planet" : {
                 "id" : "id-goes-here",
                 "x" : -4,
@@ -2890,7 +2910,7 @@ SpacePort:
          
          { "x" : 4, "y" : -3 }
     send_ship_types:
-      description: "Sends a quantity of ships, of a specific type (type, speed, combat, stealth) to a target.Look at get_fleet_for for a summary of what ships can be sent.Returns the same as get_fleet_for showing how many ships are remaining to be sent.A session ID.The Unique ID of the body that should send the shipsA hash reference that can contain one of five items to identify a star or body.A string with the body's name. Case insensitive, but will throw an exception for misspelling.The unique id of the body.A string with the star's name. Case insensitive, but will throw an exception for misspelling.The unique id of the star.A set of x,y coordinates to locate the star or body.An array reference that contains the specification of the ships to send and the quantity.A hash reference of the required arrival time.So long as the sending body has that quantity of ships with those specifications, then the ships will be sent.Ships will be set to arrive at the arrival time and date, which can be up to 28 days in the future. day is the day of the month, either the remainder of the current month, or the start of next month. e.g. if the current date is 23rd of January, then a day of 23 will refer to today whereas 3 would refer to 3rd of February.If an arrival time is set which is prior to the earliest arrival time of the slowest ship, then an exception is raised."
+      description: "Sends a quantity of ships, of a specific type (type, speed, combat, stealth) to a target.Look at get_fleet_for for a summary of what ships can be sent.Returns the same as get_fleet_for showing how many ships are remaining to be sent.A session ID.The Unique ID of the body that should send the shipsA hash reference that can contain one of five items to identify a star or body.A string with the body's name. Case insensitive, but will throw an exception for misspelling.The unique id of the body.A string with the star's name. Case insensitive, but will throw an exception for misspelling.The unique id of the star.A set of x,y coordinates to locate the star or body.An array reference that contains the specification of the ships to send and the quantity.A hash reference of the required arrival time.So long as the sending body has that quantity of ships with those specifications, then the ships will be sent.Ships will be set to arrive at the arrival time and date, which can be up to 60 days in the future. day is the day of the month, either the remainder of the current month, or the start of next month. e.g. if the current date is 23rd of January, then a day of 23 will refer to today whereas 3 would refer to 3rd of February.If an arrival time is set which is prior to the earliest arrival time of the slowest ship, then an exception is raised.If earliest is set, all other values are ignored and ships are sent at fastest speed possible. They may still be grouped together by the server into an attack group."
       parameters:
         - name: session_id
         - name: from_body_id
@@ -2903,6 +2923,10 @@ SpacePort:
             "hour" : "12",
             "minute" : "01",
             "second" : "30"
+          }
+        or
+          {
+            "earliest" : 1,
           }
       throws:
         - 1002
@@ -4219,24 +4243,8 @@ Transporter:
     get_glyphs:
       description: 'This API call is now deprecated, please use get_glyph_summary instead.'
       parameters:
-        - description: A session id.
-          name: session_id
-          type: string
-        - description: The unique id of this building.
-          name: building_id
-          type: string
-      returns: |-
-        {
-            "glyphs" : [
-                {
-                    "id" : "id-goes-here",
-                    "type" : "bauxite"
-                },
-                ...
-            ],
-            "cargo_space_used_each" : 100,
-            "status" : { ... }
-         }
+        - name: session_id
+        - name: building_id
     get_plan_summary:
       description: Returns a list of plans that may be traded in summary form. Used with the add_trade method.
       parameters:
@@ -4265,26 +4273,8 @@ Transporter:
     get_plans:
       description: Deprecated Method. Please use get_plan_summary instead
       parameters:
-        - description: A session id.
-          name: session_id
-          type: string
-        - description: The unique id of this building.
-          name: building_id
-          type: string
-      returns: |-
-        {
-            "plans" : [
-                {
-                    "id" : "id-goes-here",
-                    "name" : "Intelligence Ministry",
-                    "level" : "7",
-                    "extra_build_level" : "0"        # some special plans will build a building from their level all the way to this number
-                },
-                ...
-            ],
-            "cargo_space_used_each" : 100,
-            "status" : { ... }
-         }
+        - name: session_id
+        - name: building_id
     get_prisoners:
       description: Returns a list of prisoners that may be traded. Used with the add_trade method.
       parameters:
@@ -4940,7 +4930,6 @@ simple:
   - DentonBrambles
   - DeployedBleeder
   - Espionage
-  - EssentiaVein
   - Fission
   - Fissure
   - Fusion
