@@ -1,3 +1,16 @@
+3.0910:
+ - Add: Unread option in inbox UI
+ - Add: view_unread Inbox API
+ - Add: Stations auto-seize
+ - Add: Voting allowed in embassy
+ - Fix: If star is a target, no grouping.
+ - Fix: Detonators work properly on arrival.
+ - Fix: Offline Essentia veins can be repaired again in UI.
+ - Mod: Stations sort to bottom of UI list.
+ - Fix: Allied fighters let allies past.
+ - Add: Members Only Station law added.
+ - Add: BHG Passport law added.
+
 3.0909:
  - Add: Admin UI to set alliance logo.
  - Add: Admin UI display more info on bodies & stars.
@@ -37,6 +50,7 @@
  - Fix: Known colonies includes allied knowledge.
  - Mod: Balancing ships some more.
  - Mod: Multiple Forges in empire ramp up costs.
+ - Mod: SRCS costs less happiness to send.
 
 3.0908:
  - Mod: trash_messages_where now defaults to not returning deleted message IDs.
