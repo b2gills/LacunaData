@@ -2692,6 +2692,23 @@
                         ],
                         "returns":{"type":"object"}
                     },
+                    "propose_members_only_stations" : {
+                        "description": "",
+                        "parameters": [
+                            {"name":"session_id", "type":"string", "optional":false},
+                            {"name":"building_id", "type":"string", "optional":false}
+                        ],
+                        "returns":{"type":"object"}
+                    },
+                    "allow_bhg_by_alliance" : {
+                        "description": "",
+                        "parameters": [
+                            {"name":"session_id", "type":"string", "optional":false},
+                            {"name":"building_id", "type":"string", "optional":false},
+                            {"name":"alliance_id", "type":"string", "optional":false},
+                        ],
+                        "returns":{"type":"object"}
+                    },
                     "propose_neutralize_bhg" : {
                         "description": "",
                         "parameters": [
