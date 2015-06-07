@@ -10,7 +10,7 @@ changes:
   url: http://us1.lacunaexpanse.com/changes.txt
 smd:
   file: ../../data/smd.json
-  url: https://github.com/plainblack/Lacuna-Web-Client/raw/master/smd.js
+  url: https://raw.githubusercontent.com/plainblack/Lacuna-Web-Client/master/app/js/smd.js
 server-list:
   file: ../../data/servers.json
   url: http://www.lacunaexpanse.com/servers.json
