@@ -87,7 +87,16 @@
                         {"name":"name", "type":"string", "optional":false}
                     ],
                     "returns":{"type":"object"}
-                }
+                },
+                "set_colony_notes" : {
+                    "description": "Sets the colony notes",
+                    "parameters": [
+                        {"name":"session_id", "type":"string", "optional":false},
+                        {"name":"body_id", "type":"string", "optional":false},
+                        {"name":"options", "type":"object", "optional":false}
+                    ],
+                    "returns":{"type":"object"}
+                },
             }
         },
         "Buildings" : {
@@ -1243,6 +1252,14 @@
                             {"name":"building_id", "type":"string", "optional":false},
                             {"name":"type", "type":"string", "optional":false},
                             {"name":"quantity", "type":"number", "optional":false}
+                        ],
+                        "returns":{"type":"object"}
+                    },
+                    "build_ships" : {
+                        "description": "Adds ships to build queues.",
+                        "parameters": [
+                            {"name":"session_id", "type":"string", "optional":false},
+                            {"name":"options", "type":"object", "optional":false},
                         ],
                         "returns":{"type":"object"}
                     }

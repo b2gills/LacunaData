@@ -198,8 +198,7 @@ Black Hole Generator:
   description: |-
     An experimental singularity lab created by the Great Race. Commonly called the BHG.
     A drawing published by BHGO of the Black Hole Generator, according to detection and spying reports.
-    This building has not been added to the iphone client.
-    Note: The UI is currently having a few issues with displaying options. It displays all legal options correctly, but does not display prohibted ones correctly at this time.
+    This building has not been implemented in the iPhone client.
     Space Stations now have the ability to restrict BHG use within their jurisdiction once their parliament reaches level 23.
     The black hole generator is said to do a lot of crazy mind bending stuff. With the power of a singularity, it changes the universe by multiplying it with an alternate universe. Here are some evidence-supported features:
     When you try to start it you can select one of the options presented for what you want it to do; if it does not fail on startup your choice will happen. The options are listed below:
