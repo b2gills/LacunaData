@@ -70,7 +70,7 @@ Alliance:
 Body:
   services:
     abandon:
-      description: "Abandon's a colony, and destroys everything on the planet. Returns a status block."
+      description: 'Abandons a colony, and destroys everything on the planet. Returns a status block.'
       parameters:
         - description: A session id.
           name: session_id
@@ -148,6 +148,18 @@ Body:
         - 1011
         - 1012
         - 1013
+    get_buildable_locations:
+      description: Tells you where you can build buildings. The order of the returned list is not guaranteed.
+      parameters:
+        - description: 'A hash whose keys are:'
+          name: options
+          required: 1
+          type: string
+      returns: |-
+        {
+                "unoccupied": [ [ "2", "-5" ], [ "2", "-4" ], ... ],
+                "status": ...
+            }
     get_buildings:
       description: "Retrieves a list of the buildings on a planet. The surface of all planet's is made up of an 11x11 tile grid stretching from -5 to 5 in both an x and y axis. The planetary command building is always built at 0,0.The get_body method (among others) will give you size and building_count. A planet's size is the number of buildings that can be built on it. The building count is the number of buildings you have built so far. The maximum size of any planet is 121 (11x11=121), however just because there are spots remaining doesn't mean you can fill them. Also, sometimes permanent structures such as lakes will occupy a tile space, and can artificially lower the number of buildings you can place on a planet.The list of building's retreived by this method should be placed on the 11x11 grid, and the extra space should be filled in by blank ground tiles."
       parameters:
@@ -367,6 +379,21 @@ Body:
           type: string
         - description: An array reference to a list of building ids to be repaired.
           name: building_ids
+          required: 1
+          type: string
+    set_colony_notes:
+      description: Sets the per-colony notes for an owned body (colony or station). Returns a status block.
+      parameters:
+        - description: A session id.
+          name: session_id
+          required: 1
+          type: string
+        - description: The unique id of the body whose notes you want to update.
+          name: body_id
+          required: 1
+          type: string
+        - description: 'A hash of options. Currently, the only valid key is notes, and its value is the notes to assign.'
+          name: options
           required: 1
           type: string
     view_laws:
@@ -823,7 +850,11 @@ Empire:
           name: code
           required: 1
           type: string
-      returns: "{\n    \"status\" : { ... }\n }"
+      returns: |-
+        {
+            "amount" : ...,
+            "status" : { ... }
+         }
     redefine_species:
       description: 'Allows a user to spend essentia and redefine their species affinities, name, and description. This can only be used after the empire has been founded. If you want to redefine the species during empire creation then see update_species.See also redefine_species_limits.WARNING: Once this is done it cannot be redone for 1 month, so make sure the user is aware of this and prompt them appropriately before submitting the request.'
       parameters:
