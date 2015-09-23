@@ -1,3 +1,36 @@
+3.0912:
+ - Fix: get_fleet_for returns berth appropriate ships.
+ - Fix: embassy stash could be exploited.
+ - Fix: trade ministry's supply chain tab now works after selecting ship tab.
+ - Add: build_ships API to automatically spread out ship building across multiple yards.
+ - Add: per-colony notes in PCC
+ - Fix: Oracles now work even during colonisation (60-second timer).
+ - Fix: Starter Zone limit enforced.
+ - Mod: Warehouses no longer use affinities or storage boosts.
+ - Add: RPC counter always displayed in UI
+ - Fix: Can now change station owner to oneself (UI)
+ - Add: homeworld highlighted and always at the top of the public profile
+ - Mod: Spies from tech levels above 15 on Jackpot are bounced automatically instead of jailed.
+ - Fix: allow_bhg_by_alliance rejection fixed.
+ - Fix: Supply Pods don't count toward population.
+ - Add: abandoned colony, fissure explosion, and fissure repair medals
+ - Add: get_buildable_locations API for bodies (Jazz request)
+ - Add: Happy citizens can build faster.
+ - Add: image field to ship lists
+ - Fix: Sitters cannot join alliances.
+ - Fix: Sitters cannot start colonies, stations.
+ - Fix: The Gift's hold size needs specifying.
+ - Fix: Essentia code redeeming no longer gives more than one digit after decimal point.
+ - Mod: Stations sort to bottom of list for TM and SST.
+ - Mod: Excavs show in arch min in order of distance.
+ - Mod: Default ships in fleet tab is now 1.
+ - Mod: Make all the big numbers more readable (UI side).
+ - Mod: Happiness Boost works on max rates.
+ - Mod: Increase Market time out from three days to seven.
+ - Fix: Redefine species doesn't care about stations.
+ - Mod: Faster spy boost calculation, remove 250-spy limit.
+ - Mod: Maximum time for an incoming ship set to 60 days if greater.
+
 3.0911:
  - Add: Reduce opacity for less-well-controlled stars.
  - Add: Upped limit of how many ships that could be ordered via Shipyard to 600.
