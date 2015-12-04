@@ -222,16 +222,13 @@ Black Hole Generator:
   wiki: http://community.lacunaexpanse.com/wiki/black-hole-generator
 Citadel of Knope:
   description: |-
-    The Citadel of Knope has historically been very poorly understood.  It was commonly thought that it would redirect ships to itself whenever your defense force was unable to, meaning it was the last line of defense.
-    Until recently, it's operation would be to draw down the ship with tractor beams and capture it, thus giving the defender the ship that had just attacked. However in doing so, the building would typically be damaged, thus reducing it by one level, or even destroying it totally.
-    Scientists now belive that they have discovered the true operation of the Citadel and that they may be able to operate it far more efficiently, and without damage.
-    Rather than drawing down the ships, it actually repels them, causing damage to the ships engines due to the heterodyne of the repulsor field and the ships engines. Such ships then have to return at one quarter speed back to their spaceport to have their engines retuned.  This effect has not proven to be successful on Piloted ships such as the Sweeper or the Fighter.  It has however proven to be effective in keeping ships like the Snark and Seekers from hitting their targets.
-    The only effect this has on the Citadel of Knope is that it requires a cool-down, the period depending upon the level of the building. A level 30 will cool-down within 30 seconds and then be ready to repel another 120 ships, a level 1 may take up to 15 minutes before it is ready again.
-    It seems now that a Citadel will help amplify the defensive values of the planet it is placed on.
-    It has been discovered that a Citadel will also repel debris from nearby planets destroyed by fissures. It has been estimated that every level added to the Citadel will reduce max fissure damage by 2%.
-    We will let you know when scientists are ready to release their findings so that you can safely upgrade your Citadel.
-    The Saben are known to keep these on their planets.  They can also be found on random Diablotin planets.
-    The Citadel of Knope can be built in the Archaeology Ministry by combining beryl, sulfur, monazite, and galena glyphs.
+    The Citadel of Knope has historically been very poorly understood. It seems now that a Citadel amplifies the defensive value of SAW buildings.
+    It has been discovered that a Citadel will also repel debris from nearby planets destroyed by fissures. Damage from an imploding planet is calculated by these factors:
+    Range, Citadel, if Gas Giant
+    ((100 - range)/divide by 2 if target a GG) - (2 * Citadel level)
+    What this means is that a Citadel of level 25 or greater on a gas Giant protects it completely.
+    The Saben are known to keep these on their planets. They can also be found on random Diablotin planets.
+    A Citadel of Knope plan can be built in the Archaeology Ministry by combining beryl, sulfur, monazite, and galena glyphs.
   recipe:
     - beryl
     - sulfur
@@ -346,15 +343,10 @@ Grove of Trees:
   wiki: http://community.lacunaexpanse.com/wiki/grove-of-trees
 Halls of Vrbansk:
   description: |-
-    The Halls of Vrbansk are said to be the source of the ancient wisdom of the Great Race. You can use the plans for the Halls of Vrbansk to upgrade some permanent structures.
-    Glyph recipes: The Halls of Vrbansk plan can be built at the Archaeology Ministry using any of the following recipes.
-    Upgrading a glyph building: At one time, before scientists fully understood the Halls of Vrbansk, it was necessary to actually build a Hall Building before a sacrifice could be made. Now the technology has been improved and you can upgrade Glyph Buildings directly (using the upgrade button).
-    You still need sufficient Hall plans before you can upgrade however. The number of Hall plans should equal the level of the building after you upgrade it. So, to upgrade a level 5 building you will need 6 plans.
-    Note. Some permanent buildings (crater, platforms, grove of trees) can no longer be upgraded via Halls (but why would you want to?).
-    To upgrade a permanent building with halls, click on the building, as you would any other, and click the 'upgrade' button. The correct number of hall plans will be deducted and the upgrade will be scheduled.
-    If you don't have enough hall plans for the upgrade, the button will not be displayed and you will have a message to that effect instead.
-    Note: You can only upgrade a glyph building to your University level +1.
-    Buildings upgraded in this manner are also limited to level 30.
+    "The source of ancient wisdom." in-game description
+    Halls of Vrbansk plans can be built at the Archaeology Ministry using any of the following recipes.
+    Upgrading buildings with Halls Of Vrbansk is done by visiting the respective building and activating "Upgrade to Level X" where the amount of sacrificed plans equals X. The upgrade process usually takes 15 seconds, except for Waste buildings. Some permanent buildings like beaches, craters, grove of trees, etc cannot be upgraded with Halls plans since they "form naturally".
+    Note: You can only upgrade a glyph building to your University level +1. Buildings upgraded in this manner are also limited to level 30.
   recipe:
     A:
       - goethite

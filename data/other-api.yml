@@ -1271,26 +1271,10 @@ Inbox:
           name: session_id
           required: 1
           type: string
-        - description: 'A hash reference of extra options. A message must match all options to be deleted ("AND"). It is an error to specify no options. To delete all non-archived messages, simply use subject of %. Compounding multiple delete requests can be done by passing in additional hash references.'
-          name: options
-          object: &1
-            from:
-              description: An array reference of from names. Full names are required.
-            subject:
-              description: 'A subject line to match. Use % to represent zero or more characters in that position, such as "Pass:%" to select all messages whose subject starts with "Pass:". Default is essentially any subject (no subject evaluation).'
-            tags:
-              description: An array reference of tags. Messages with any of these tags will be eligible for deletion. Default is any and all tags (no tag evaluation).
-          type: object
-        - description: ~
-          name: options
-          object: *1
-          type: object
-        - name: ...
-      returns: |-
-        {
-            "deleted" : ["id-goes-here","id-goes-here"],
-            "status" : { ... }
-         }
+        - name: '{ spec => [ options'
+        - name: options
+        - name: '... ] }'
+      returns: "{ tags => [ 'Attack', 'Alert' ], subject => 'BFG%' }"
     view_archived:
       description: Exactly the same as view_inbox except that it shows archived messages instead.
       parameters:
