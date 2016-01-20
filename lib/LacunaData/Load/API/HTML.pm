@@ -159,7 +159,7 @@ sub _get_api_method_info{
           $a =~ s/^ \s* \[ \s*  //x;
           $a =~ s/  \s* \] \s* $//x;
           $a
-        } split ', ', $args;
+        } split / \s* \[? \s* , [ ]/x, $args;
 
         if( @args && $args[0] !~ /^param/ ){
           # We know the argument names ahead of time
