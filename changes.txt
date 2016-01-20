@@ -1,3 +1,16 @@
+3.0917:
+ - Fix: Recalc stats when building 1+x plans.
+ - Fix: Station incoming shows your incoming as own, not station owner's incoming.
+ - Fix: Better input validation for fleet.
+ - Fix: On flip, remove any excavator sites.
+ - UI : SST list only shows valid SST targets.
+ - Fix: Duck quacking now shows RPC updates in UI. (API change.)
+ - UI : Scow images updated (thanks Husky).
+ - Fix: Remove item from SST trade now shows proper hold size requirement.
+ - UI : Add propaganda boost to the happy popup (spy icon).
+ - UI : Promotional events show up during the event.
+ - Mod: AI spies get easy jobs their first shift.
+
 3.0916:
  - Mod: Jackpot enhanced.
  - Fix: If parliament missing, better error handling.
