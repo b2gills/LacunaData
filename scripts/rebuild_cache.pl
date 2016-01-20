@@ -17,6 +17,10 @@ opendir my($dh), catdir($dir,'LacunaData','Load');
 while( readdir $dh ){
   next unless s/\.pm$//;
   my $module =  "LacunaData::Load::$_";
+  if( @ARGV && not $_ ~~ @ARGV ){
+    say STDERR 'Skipping ', $module;
+    next;
+  }
   say STDERR 'Loading ', $module;
   if( eval "require $module" ){
     if( $module->can('Cache')){
