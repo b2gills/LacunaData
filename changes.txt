@@ -1,3 +1,26 @@
+3.0918:
+ - Fix: Unallied players should never see anyone else in purple on the starmap.
+ - Fix: Some of the numbers in the APIs are now returned as numbers instead of strings.
+ - Mod: Add commas to total cargo in TM and SST.
+ - Fix: Initialize date_created field for spies.
+ - Mod: Can cancel more than one build at a time via API.
+ - Add: Cancel All button to dev ministry.
+ - Fix: Abandoned planets' build queues are now cancelled.
+ - Fix: Fissure medal when you cause a fissure with BHG.
+ - Fix: Training and Propaganda pays attention to the clock.
+ - Cht: /wiki replaces spaces with + so you can search for multiple words.
+ - Cht: /planet is more forgiving for new players to use.
+ - Fix: Renaming a planet changes top-right planet name.
+ - Fix: SSL resources and timers use lowest level of all tiles.
+ - Fix: Spies start infiltrating when they arrive.
+ - Fix: Burning PP spies really does make planet unhappy.
+ - Mod: Remove limit for number of plans created at a time in Arch. Min.
+ - Fix: After flipping, layoff police.
+ - Add: Intel Min can rename all spies at once (new API).
+ - Add: Incoming view to police station.
+ - Mod: Remove RPC total from options panel, put in iso status.
+ - Mod: Moved explanation texts from root to info directory.
+
 3.0917:
  - Fix: Recalc stats when building 1+x plans.
  - Fix: Station incoming shows your incoming as own, not station owner's incoming.

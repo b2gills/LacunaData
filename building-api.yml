@@ -196,6 +196,8 @@ BlackHoleGenerator:
               description: The unique id of the body.
             body_name:
               description: "A string with the body's name. Case insensitive, but will throw an exception for misspelling."
+            orbit:
+              description: 'If star_name or star_id are given, an extra "orbit" parameter is allowed. This allows easier specifying of unoccupied orbits. If not given, then the target remains the star, otherwise the target is the given position, whether occupied or not, about the given star.'
             star_id:
               description: The unique id of the star.
             star_name:
@@ -3840,7 +3842,7 @@ Trade:
                 },
                 ...
             ],
-            "cargo_space_used_each" : 10000,
+            "cargo_space_used_each" : 1000,
             "status" : { ... }
          }
     get_plans:
@@ -3896,7 +3898,7 @@ Trade:
                 },
                 ...
             ],
-            "cargo_space_used_each" : 10000,
+            "cargo_space_used_each" : 50000,
             "status" : { ... }
          }
     get_stored_resources:
@@ -4349,7 +4351,7 @@ Transporter:
                 },
                 ...
             ],
-            "cargo_space_used_each" : 10000,
+            "cargo_space_used_each" : 1000,
             "status" : { ... }
          }
     get_plans:
@@ -4405,7 +4407,7 @@ Transporter:
                 },
                 ...
             ],
-            "cargo_space_used_each" : 10000,
+            "cargo_space_used_each" : 50000,
             "status" : { ... }
          }
     get_stored_resources:

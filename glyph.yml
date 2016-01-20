@@ -274,9 +274,7 @@ Denton Brambles:
   wiki: http://community.lacunaexpanse.com/wiki/denton-brambles
 Gas Giant Settlement Platform:
   description: |-
-    The Gas Giant Settlement Platform allows settlement of a gas giant when this would otherwise not be possible. In order to upgrade platforms you'll need a good supply of structural minerals such as rutile, chromite, bauxite, magnetite, beryl, or goethite.
-    The Gas Giant Settlement Platform is a permanent structure, which means that it remains even after you abandon the gas giant colony, unless you specifically demolish it.
-    The gas giant settlement platform does not allow you to settle gas giants outside your normal range, for that you need a terraforming platform as well.
+    The Gas Giant Settlement Platform is a permanent structure which allows settlement of a gas giant. The gas giant settlement platform does not allow you to settle gas giants outside your species' range of habitle orbits, for that you need a terraforming platform as well.
     Note: You have to have University at Level 19 or above to be able to settle a Gas Giant, regardless of wether you have a platform or ship.  The game will not even allow you to launch a Colony Ship to a Gas Giant until you have reached the required University level.  However it is possible for a player with a lower University level to take control of a Gas Giant from another player via the Insurrection spy mission.  All existing Gas Giant Settlement Platforms in such a situation will continue to work however new platforms will not be able to be built until the player obtains the appropriate University Level.
     Each level of platform provides one usable plot on the target planet.
     A Gas Giant Platform can not be demolished or downgraded if, by doing so, it would cause the number of plots available on your colony to go negative.
@@ -288,14 +286,8 @@ Gas Giant Settlement Platform:
     The build time that is shown on the plan is the actual build time based on the level of the lab on the planet that launched the platform ship plus one.
     You cannot demolish a Gas Giant Settlement Platform during its initial build.
     The plot count for a gas giant always starts at -1 because there must be a Planetary Command Center and the Gas Giant Settlement Platform, which is required to provide plots, hasn't been built yet. While demolishing the GGSP doesn't cause the plot count to go negative (since the GGSP itself doesn't take up a plot) it prevents the plot count from getting out of the negative.
-    How to Use a Settlement Platform
-    You can send a colony ship or platform first. The colony ship (or stake) reserves the planet, where the platform does not. Once you have the Gas Giant Settlement Ship built you can go to the star map and send it to a Gas Giant you would like to colonize.  One it arrives it will disapear from your SpacePort.  After you send a Colony Ship and the Gas Giant Settlement Platform, the platform will appear in Planetary Command Center (PCC) under Plans.
-    A high level Gas Giant Lab can leave you waiting a day or more if the level is high enough.  In addition the Gas Giant Settlement Platform does produce a fair amount of trash at higher levels so you will need to plan accordingly.  Building a set of glyph buildings is generally a smart idea as it will give you something you can work with that will not be detrimental to you colony.  Building a Spaceport and having a scow on the planet can also work for some short term trash management.
-    Also add some buildings to generate happiness.  Kalavian Ruins will give you about 5000 per hour happiness to begin with to counteract the trash.
     Glyph Recipie
     As an alternative to building a Gas Giant Settlement Ship at the shipyard, you can create a level one platform by combining sulfur, methane, galena, and anthracite glyphs at the Archaeology Ministry.
-  produces:
-    - happiness
   recipe:
     - sulfur
     - methane
@@ -546,7 +538,7 @@ Temple of the Drajilites:
   wiki: http://community.lacunaexpanse.com/wiki/temple-of-the-drajilites
 Terraforming Platform:
   description: |-
-    The Terraforming Platform is deployed from a Terraforming Platform Ship.  Once deployed it allows you to inhabit planets that your species couldn't normally survive on.
+    The Terraforming Platform is a building that allows you to inhabit planets or gas giants outside of your species' range of inhabitable orbits.
     A Level 1 Terraforming Platform can be constructed in the Archaeology Ministry using methane, zircon, magnetite, and beryl glyphs.
   recipe:
     - methane
