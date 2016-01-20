@@ -429,6 +429,7 @@ Empire:
           name: session_id
           required: 1
           type: string
+        - name: weeks
       returns: |-
         {
             "status" : { ... },
@@ -443,6 +444,7 @@ Empire:
           name: session_id
           required: 1
           type: string
+        - name: weeks
       returns: |-
         {
             "status" : { ... },
@@ -457,6 +459,7 @@ Empire:
           name: session_id
           required: 1
           type: string
+        - name: weeks
       returns: |-
         {
             "status" : { ... },
@@ -471,6 +474,7 @@ Empire:
           name: session_id
           required: 1
           type: string
+        - name: weeks
       returns: |-
         {
             "status" : { ... },
@@ -485,10 +489,26 @@ Empire:
           name: session_id
           required: 1
           type: string
+        - name: weeks
       returns: |-
         {
             "status" : { ... },
             "ore_boost" : "01 31 2010 13:09:05 +0600"
+         }
+      throws:
+        - 1011
+    boost_spy_training:
+      description: 'Spends 5 essentia, and boosts spy training speed on all planets 50% for 7 days. If a boost is already underway, calling again will add 7 more days. Unlike other boosts, this one will boost spies currently in specialist training.'
+      parameters:
+        - description: A session id.
+          name: session_id
+          required: 1
+          type: string
+        - name: weeks
+      returns: |-
+        {
+            "status" : { ... },
+            "spy_training_boost" : "01 31 2010 13:09:05 +0600"
          }
       throws:
         - 1011
@@ -499,6 +519,7 @@ Empire:
           name: session_id
           required: 1
           type: string
+        - name: weeks
       returns: |-
         {
             "status" : { ... },
@@ -513,6 +534,7 @@ Empire:
           name: session_id
           required: 1
           type: string
+        - name: weeks
       returns: |-
         {
             "status" : { ... },
@@ -928,20 +950,6 @@ Empire:
           name: message
           required: 1
           type: string
-    spy_training_boost:
-      description: 'Spends 5 essentia, and boosts spy training speed on all planets 50% for 7 days. If a boost is already underway, calling again will add 7 more days. Unlike other boosts, this one will boost spies currently in specialist training.'
-      parameters:
-        - description: A session id.
-          name: session_id
-          required: 1
-          type: string
-      returns: |-
-        {
-            "status" : { ... },
-            "spy_training_boost" : "01 31 2010 13:09:05 +0600"
-         }
-      throws:
-        - 1011
     update_species:
       description: "Updates the empire's species and returns 1. Can only be called after create has been called and before found has been called. Before or after that will throw an exception. If you have already founded your empire then use redefine_species.See also: get_species_templates"
       parameters:
