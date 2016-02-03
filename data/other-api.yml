@@ -422,6 +422,39 @@ Body:
          }
 Empire:
   services:
+    authorize_sitters:
+      description: 'Authorizes other empires to babysit your account. Each authorisation will be created if needed, and authorized for the full server-defined amount of time.Returns view of authorized sitters (see view_authorized_sitters) plus any rejected IDs.'
+      parameters:
+        - description: A session id.
+          name: session_id
+          required: 1
+          type: string
+        - description: 'One or more of the following options:'
+          name: options
+          object:
+            alliance:
+              description: The name of another alliance all of whom are automatically selected.
+            alliance_id:
+              description: The ID of another alliance all of whom are automatically selected.
+            allied:
+              description: 'If true, all allies are automatically selected.'
+            empires:
+              description: An array of IDs and/or names of specific empires being authorized.
+            revalidate_all:
+              description: A quick method for selecting all currently-authorized empires to extend their authorization period.
+          type: object
+      returns: |-
+        {
+            "status" : { ... },
+            "auths" : [
+              {
+                id => ...,
+                name => ...
+              },
+              ...
+            ],
+            "rejected_ids" : [ 57, "No Such Empire", ... ],
+         }
     boost_building:
       description: 'Spends 5 essentia, and boosts build queues on all planets for 7 days. If a boost is already underway, calling again will add 7 more days. It will not boost builds currently under way, only new builds added to a build queue.'
       parameters:
@@ -583,6 +616,19 @@ Empire:
         - 1001
         - 1002
         - 1014
+    deauthorize_sitters:
+      description: Remove sitters from being permitted to sit this account.
+      parameters:
+        - description: A session id.
+          name: session_id
+          required: 1
+          type: string
+        - description: 'One or more of the following options:'
+          name: options
+          object:
+            empires:
+              description: An array of IDs (not names) of specific empires being removed.
+          type: object
     disable_self_destruct:
       description: Disables the self distruction countdown.
       parameters:
@@ -759,6 +805,40 @@ Empire:
             "server" : { ... },
             "empire" : {
                 "id" : "xxxx",
+                "bodies" : {
+                    "colonies" : [
+                        # bodies are provided sorted by name already.
+                        { "id" : "xxxx", "name" : "...", "x": "#", "y": "#", "orbit": #, "empire_name": "your name", "empire_id": 12345 },
+                        ...
+                    ],
+                    "mystations" : [
+                        { "id" : "xxxx", "name" : "...", "x": "#", "y": "#", "orbit": #, "empire_name": "your name", "empire_id": 12345 },
+                        ...
+                    ],
+                    "ourstations" : [
+                        { "id" : "xxxx", "name" : "...", "x": "#", "y": "#", "orbit": #, "empire_name": "their name", "empire_id": 12346 },
+                        ...
+                    ],
+                    "babies" : {
+                        "baby name" : {
+                            "alliance_id" : 3, # key doesn't exist if not in alliance
+                            "id" : 12355, # empire ID
+                            "has_new_messages" : 30,
+                            "bodies" : [
+                                { "id" : "xxxx", "name" : "...", "x": "#", "y": "#", "orbit": #, "empire_name": "their name", "empire_id": 12346 },
+                                ...
+                            ],
+                        },
+                        "another baby name" : {
+                            "has_new_messages" : 30,
+                            "id" : 12884,
+                            "bodies" : [
+                                { "id" : "xxxx", "name" : "...", "x": "#", "y": "#", "orbit": #, "empire_name": "their name too", "empire_id": 12347 },
+                                ...
+                            ],
+                        }
+                    }
+                },
                 "colonies" : {
                     "id-goes-here" : "Earth",
                     "id-goes-here" : "Mars"
@@ -880,7 +960,7 @@ Empire:
     redefine_species:
       description: 'Allows a user to spend essentia and redefine their species affinities, name, and description. This can only be used after the empire has been founded. If you want to redefine the species during empire creation then see update_species.See also redefine_species_limits.WARNING: Once this is done it cannot be redone for 1 month, so make sure the user is aware of this and prompt them appropriately before submitting the request.'
       parameters:
-        - description: A ssession id.
+        - description: A session id.
           name: session_id
           required: 1
           type: string
@@ -999,6 +1079,20 @@ Empire:
         - 1008
         - 1009
         - 1010
+    view_authorized_sitters:
+      description: Returns the currently authorized sitters for this baby.
+      returns: |-
+        {
+            "status" : { ... },
+            "sitters" : [
+              {
+                "id" : 12345,
+                "name" : "Some Empire",
+                "expiry" : "2015-10-10 17:20:03"
+              },
+              ...
+            ]
+         }
     view_boosts:
       description: Shows the dates at which boosts have expired or will expire. Boosts are subsidies applied to various resources using essentia.
       parameters:
@@ -1298,6 +1392,8 @@ Inbox:
         - description: A hash reference of extra options.
           name: options
           object:
+            empire:
+              description: A name or ID of the baby empire to check the inbox of.
             page_number:
               description: An integer representing which page of the inbox you'd like to view. Defaults to 1.
             tags:
