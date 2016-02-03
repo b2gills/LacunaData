@@ -1,3 +1,13 @@
+3.0919:
+ - Add: Adding docker support.
+ - Fix: Emails to GG owners during fissure explosion were missing numbers.
+ - Fix: Halls don't need to show up as buildable.
+ - Fix: Downgrade of SS modules fixed.
+ - Fix: Merc Guild shouldn't call not allowed RPCs when damaged.
+ - Mod: Repair tab moved to first.
+ - Mod: Terraforming platforms only form terra, GG plats can handle all gas giants.
+ - Fix: SSL shouldn't show waste in red, it's not being consumed.
+
 3.0918:
  - Fix: Unallied players should never see anyone else in purple on the starmap.
  - Fix: Some of the numbers in the APIs are now returned as numbers instead of strings.

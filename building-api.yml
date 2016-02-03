@@ -34,7 +34,7 @@ Archaeology:
           name: glyphs
           required: 1
           type: string
-        - description: 'An optional quantity; if left blank it defaults to 1, otherwise specify the number of times to assemble the indicated glyphs up to a maximum of 5000.'
+        - description: 'An optional quantity; if left blank it defaults to 1, otherwise specify the number of times to assemble the indicated glyphs.'
           name: quantity
           required: 0
           type: string
@@ -352,9 +352,13 @@ Development:
           name: building_id
           required: 1
           type: string
-        - description: The ID of the building scheduled to be build/upgraded that you wish to cancel.
+        - description: 'The ID, or array of IDs, of the building(s) scheduled to be build/upgraded that you wish to cancel.'
           name: scheduled_id
-          required: 1
+          required: 0
+          type: string
+        - description: 'If set to a true value, cancels all builds currently scheduled. One of scheduled_id and cancel_all is required.'
+          name: cancel_all
+          required: 0
           type: string
       returns: |-
         {
@@ -964,6 +968,11 @@ Entertainment:
           name: building_id
           required: 1
           type: string
+      returns: |-
+        {
+            "quack" : "quack text",
+            "status" : { ... }
+         }
     get_lottery_voting_options:
       description: 'This is the starting point to a voting lottery system. The user can vote on a site once and only once per day and each vote enters him/her into a lottery. At the end of the day a lottery ticket will be drawn, and a winner will be chosen to receive 10 essentia. Every vote is equal, but the more votes you have the greater your odds of winning.Returns a list of sites that the user can vote on.NOTE: The URLs returned in the url parameter need to be opened into a new browser window so that the user can go vote on a remote site.Each url is usable only once every 24 hours. The server keeps track of this, but the client must remove the URL from the list after the user has clicked on it so they know not to click again.'
       parameters:
@@ -1002,7 +1011,7 @@ EssentiaVein:
       description: "Allows draining of an evein quickly. Instead of 4e per day over 30 days, this will use up 30 days and provide 30e instantly. The optional times parameter allows draining of multiple months' worth in a single RPC. Periods less than 30 days cannot be drained quickly."
       parameters:
         - name: session_id
-        - name: 'building_id['
+        - name: building_id
         - name: times
     view:
       description: Addition of a drain_capable flag indicating how many groups of 30 days can be drained. Above example shows 90-119 days remaining.
@@ -1249,6 +1258,20 @@ Intelligence:
       throws:
         - 1002
         - 1010
+    name_spies:
+      description: "Sets the name of (almost) all spies. The new name of the spy will be of the form \"p ## s\" if both prefix and suffix are given, \"p ##\" if only prefix is given, and \"## s\" if only suffix is given.If rename_null_only is given, only spies currently named \"Agent Null\" will be renamed. If you want some spies set to specific values, and the rest can be given generic names, you can use this flag.Note that spies that already have valid names according to the prefix and/or suffix given will not be renamed (unless they are duplicates). If you've already got spy \"p 08 s\", that spy will not get renamed as long as \"p\" and \"s\" are given as prefix and suffix, respectively, and no new spy will get that name until the current \"p 08 s\" is retired and replaced.Returns view_all_spies plus a renamed key with the count of spies renamed."
+      parameters:
+        building_id:
+          description: The unique id of the intelligence building.
+          required: 1
+          type: string
+        prefix: {}
+        rename_null_only: {}
+        session_id:
+          description: A session id.
+          required: 1
+          type: string
+        suffix: {}
     name_spy:
       description: Set the name of the spy.
       parameters:
@@ -4106,6 +4129,26 @@ Trade:
         - name: building_id
         - name: waste_chain_id
         - name: waste_hour
+    view:
+      description: 'The alphabetical (on name) pushable list will only include planets and stations that this planet can push to, even if being sat (correct list of stations for their alliance).'
+      parameters:
+        - name: session_id
+        - name: building_id
+      returns: |-
+        {
+           "building" : { ... },
+           "status" : { ... },
+           "transport" : {
+             "max" : 2500,
+             "pushable" : [
+                 "id" : 1234, # body ID
+                 "name" : "Planet Name",
+                 "x" : -35,
+                 "y" : 47,
+                 "zone" : "0|0",
+             ]
+           }
+         }
     view_market:
       description: Displays a list of trades available at the present time.
       parameters:
@@ -4503,6 +4546,7 @@ Transporter:
           type: string
       returns: "{\n    \"status\" : { ... }\n }"
     view:
+      description: The alphabetical (on name) pushable list will only include planets with currently-online Transporters.
       parameters:
         - name: session_id
         - name: building_id
@@ -4511,7 +4555,14 @@ Transporter:
            "building" : { ... },
            "status" : { ... },
            "transport" : {
-             "max" : 2500
+             "max" : 2500,
+             "pushable" : [
+                 "id" : 1234, # body ID
+                 "name" : "Planet Name",
+                 "x" : -35,
+                 "y" : 47,
+                 "zone" : "0|0",
+             ]
            }
          }
     view_market:
