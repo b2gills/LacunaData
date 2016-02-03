@@ -154,12 +154,22 @@ sub _get_api_method_info{
           $args = '';
         }
 
+        my $is_object = $method{$name}{'is-object'} = !!($args =~ s/^ \{ \s* (.*?) \s* \} &/$1/x);
+
         my @args = map{
           $a = "$_";
           $a =~ s/^ \s* \[ \s*  //x;
           $a =~ s/  \s* \] \s* $//x;
           $a
         } split / \s* \[? \s* , [ ]/x, $args;
+
+        if( $is_object ){
+          my $arg_info = $method{$name}{'arg-info'} //= {};
+          for( @args ){
+            ($_,my $desc) = split / \s* (?: : | => ) \s* /x;
+            $arg_info->{$_} = undef;
+          }
+        }
 
         if( @args && $args[0] !~ /^param/ ){
           # We know the argument names ahead of time
@@ -256,6 +266,8 @@ sub _get_api_method_info{
     my $order = delete $data->{'arg-order'};
     my $info  = delete $data->{'arg-info'};
     my $required = delete $data->{required};
+    my $is_object = delete $data->{'is-object'};
+
     if( $order ){
       for my $name (@$order){
         my %param = ( name => $name );
@@ -274,7 +286,11 @@ sub _get_api_method_info{
             }
           }
         }
-        push @{$method{$method}{parameters}}, \%param;
+        if( $is_object ){
+          $method{$method}{parameters}{ delete $param{name} } = \%param;
+        }else{
+          push @{$method{$method}{parameters}}, \%param;
+        }
       }
     }elsif( $info->{params} ){
       delete $info->{params}{_description} if ref $info->{params};
