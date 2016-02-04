@@ -149,12 +149,15 @@ sub _get_api_method_info{
       when( 'h2' ){
         my($name,$args) = $text =~ /(\w+) \s* \(\s* (.*?) \s*\)/x;
 
-        unless( defined $args ){
+        my $is_object;
+        if( $args ){
+          $is_object = $method{$name}{'is-object'} = !!($args =~ s/^ \{ \s* (.*?) \s* \} $/$1/x);
+        }else{
           $name //= $text;
           $args = '';
         }
 
-        my $is_object = $method{$name}{'is-object'} = !!($args =~ s/^ \{ \s* (.*?) \s* \} &/$1/x);
+        $method = $method{$name} //= {};
 
         my @args = map{
           $a = "$_";
@@ -164,7 +167,7 @@ sub _get_api_method_info{
         } split / \s* \[? \s* , [ ]/x, $args;
 
         if( $is_object ){
-          my $arg_info = $method{$name}{'arg-info'} //= {};
+          my $arg_info = $method->{'arg-info'} //= {};
           for( @args ){
             ($_,my $desc) = split / \s* (?: : | => ) \s* /x;
             $arg_info->{$_} = undef;
@@ -173,7 +176,7 @@ sub _get_api_method_info{
 
         if( @args && $args[0] !~ /^param/ ){
           # We know the argument names ahead of time
-          $arg_order = $method{$name}{'arg-order'} = \@args;
+          $arg_order = $method->{'arg-order'} = \@args;
           $arg_order_set = 1;
         }else{
           # Pick up the argument names as they come
@@ -181,13 +184,13 @@ sub _get_api_method_info{
           $arg_order_set = 0;
         }
 
-        $method = $name;
         undef $arg;
+        undef $arg2;
       }
       when( 'p' ){
         if( $arg and $method ){
 
-          my $arg_info = $method{$method}{'arg-info'} //= {};
+          my $arg_info = $method->{'arg-info'} //= {};
 
           if($arg2){
             unless(ref $arg_info->{$arg} ){
@@ -210,17 +213,17 @@ sub _get_api_method_info{
               $arg_info->{$arg} = $text;
             }
             if( $text =~ /\b(?: defaults? | optional )\b/xi ){
-              $method{$method}{required}{$arg} = 0;
+              $method->{required}{$arg} = 0;
             }
           }
         }elsif( $method ){
           if( $text =~ /^throw\D*(.*)/i ){
             my @throws = sort {$a<=>$b} split /\D+/, $1;
-            $method{$method}{throws} = \@throws;
+            $method->{throws} = \@throws;
           }else{
             $text =~ s/\s* (?: It\s*)? Returns:? \s* $//ix;
             no warnings 'uninitialized';
-            $method{$method}{description} .= $text;
+            $method->{description} .= $text;
           }
         }
       }
@@ -229,7 +232,7 @@ sub _get_api_method_info{
           next unless $text =~ /\s*[{]/;
           $text =~ s/^\s* ( [{\[0-9] )     /$1/x;
           $text =~ s/     ( [}\]0-9] ) \s*$/$1/x;
-          $method{$method}{returns} = $text;
+          $method->{returns} = $text;
         }
       }
       when( 'h3' ){
@@ -238,7 +241,7 @@ sub _get_api_method_info{
           next if $required =~ /^original/;
           $arg = $temp;
           $required = $required eq 'required' || 0;
-          $method{$method}{required}{$arg} = $required;
+          $method->{required}{$arg} = $required;
         }else{
           next if $text eq 'named arguments';
           $arg = $text;
@@ -258,9 +261,10 @@ sub _get_api_method_info{
       if( @$arg_order and $arg_order->[-1] eq 'RESPONSE' ){
         pop @$arg_order;
       }
-      $method{$method}{'arg-order'} ||= $arg_order
+      $method->{'arg-order'} ||= $arg_order
     }
   }
+  $method = undef;
 
   while( my($method,$data) = each %method ){
     my $order = delete $data->{'arg-order'};
@@ -287,14 +291,14 @@ sub _get_api_method_info{
           }
         }
         if( $is_object ){
-          $method{$method}{parameters}{ delete $param{name} } = \%param;
+          $data->{parameters}{ delete $param{name} } = \%param;
         }else{
-          push @{$method{$method}{parameters}}, \%param;
+          push @{$data->{parameters}}, \%param;
         }
       }
     }elsif( $info->{params} ){
       delete $info->{params}{_description} if ref $info->{params};
-      $method{$method}{parameters} = $info->{params};
+      $data->{parameters} = $info->{params};
     }
   }
 
